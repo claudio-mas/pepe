@@ -1,0 +1,117 @@
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+Partial Public Class Balanço0
+    Inherits DevExpress.XtraReports.UI.XtraReport
+
+    'XtraReport overrides dispose to clean up the component list.
+    <System.Diagnostics.DebuggerNonUserCode()>
+    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+        If disposing AndAlso components IsNot Nothing Then
+            components.Dispose()
+        End If
+        MyBase.Dispose(disposing)
+    End Sub
+
+    'Required by the Designer
+    Private components As System.ComponentModel.IContainer
+
+    'NOTE: The following procedure is required by the Designer
+    'It can be modified using the Designer.  
+    'Do not modify it using the code editor.
+    <System.Diagnostics.DebuggerStepThrough()>
+    Private Sub InitializeComponent()
+        Me.TopMargin = New DevExpress.XtraReports.UI.TopMarginBand()
+        Me.BottomMargin = New DevExpress.XtraReports.UI.BottomMarginBand()
+        Me.Detail = New DevExpress.XtraReports.UI.DetailBand()
+        Me.XrPageBreak2 = New DevExpress.XtraReports.UI.XRPageBreak()
+        Me.XrSubreport3 = New DevExpress.XtraReports.UI.XRSubreport()
+        Me.XrPageBreak1 = New DevExpress.XtraReports.UI.XRPageBreak()
+        Me.XrSubreport2 = New DevExpress.XtraReports.UI.XRSubreport()
+        Me.XrPageBreak = New DevExpress.XtraReports.UI.XRPageBreak()
+        Me.XrSubreport1 = New DevExpress.XtraReports.UI.XRSubreport()
+        Me.XrSubreport = New DevExpress.XtraReports.UI.XRSubreport()
+        CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
+        '
+        'TopMargin
+        '
+        Me.TopMargin.HeightF = 9.0!
+        Me.TopMargin.Name = "TopMargin"
+        '
+        'BottomMargin
+        '
+        Me.BottomMargin.HeightF = 5.0!
+        Me.BottomMargin.Name = "BottomMargin"
+        '
+        'Detail
+        '
+        Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrPageBreak2, Me.XrSubreport3, Me.XrPageBreak1, Me.XrSubreport2, Me.XrPageBreak, Me.XrSubreport1, Me.XrSubreport})
+        Me.Detail.HeightF = 575.6668!
+        Me.Detail.KeepTogether = True
+        Me.Detail.Name = "Detail"
+        '
+        'XrPageBreak2
+        '
+        Me.XrPageBreak2.LocationFloat = New DevExpress.Utils.PointFloat(0!, 434.2501!)
+        Me.XrPageBreak2.Name = "XrPageBreak2"
+        '
+        'XrSubreport3
+        '
+        Me.XrSubreport3.LocationFloat = New DevExpress.Utils.PointFloat(0!, 440.2501!)
+        Me.XrSubreport3.Name = "XrSubreport3"
+        Me.XrSubreport3.ReportSource = New Pepe.Balanço5()
+        Me.XrSubreport3.SizeF = New System.Drawing.SizeF(810.0!, 135.4167!)
+        '
+        'XrPageBreak1
+        '
+        Me.XrPageBreak1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 288.8334!)
+        Me.XrPageBreak1.Name = "XrPageBreak1"
+        '
+        'XrSubreport2
+        '
+        Me.XrSubreport2.LocationFloat = New DevExpress.Utils.PointFloat(0!, 294.8334!)
+        Me.XrSubreport2.Name = "XrSubreport2"
+        Me.XrSubreport2.ReportSource = New Pepe.Balanço4()
+        Me.XrSubreport2.SizeF = New System.Drawing.SizeF(810.0!, 135.4167!)
+        '
+        'XrPageBreak
+        '
+        Me.XrPageBreak.LocationFloat = New DevExpress.Utils.PointFloat(0!, 140.9583!)
+        Me.XrPageBreak.Name = "XrPageBreak"
+        '
+        'XrSubreport1
+        '
+        Me.XrSubreport1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 148.4167!)
+        Me.XrSubreport1.Name = "XrSubreport1"
+        Me.XrSubreport1.ReportSource = New Pepe.Balanço3()
+        Me.XrSubreport1.SizeF = New System.Drawing.SizeF(810.0!, 135.4167!)
+        '
+        'XrSubreport
+        '
+        Me.XrSubreport.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
+        Me.XrSubreport.Name = "XrSubreport"
+        Me.XrSubreport.ReportSource = New Pepe.Balanço2()
+        Me.XrSubreport.SizeF = New System.Drawing.SizeF(810.0!, 135.4167!)
+        '
+        'Balanço0
+        '
+        Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.TopMargin, Me.BottomMargin, Me.Detail})
+        Me.Font = New DevExpress.Drawing.DXFont("Arial", 9.75!)
+        Me.Margins = New DevExpress.Drawing.DXMargins(10, 5, 9, 5)
+        Me.PageHeight = 1169
+        Me.PageWidth = 827
+        Me.PaperKind = DevExpress.Drawing.Printing.DXPaperKind.A4
+        Me.Version = "21.2"
+        CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
+
+    End Sub
+
+    Friend WithEvents TopMargin As DevExpress.XtraReports.UI.TopMarginBand
+    Friend WithEvents BottomMargin As DevExpress.XtraReports.UI.BottomMarginBand
+    Friend WithEvents Detail As DevExpress.XtraReports.UI.DetailBand
+    Friend WithEvents XrSubreport As DevExpress.XtraReports.UI.XRSubreport
+    Friend WithEvents XrSubreport1 As DevExpress.XtraReports.UI.XRSubreport
+    Friend WithEvents XrPageBreak As DevExpress.XtraReports.UI.XRPageBreak
+    Friend WithEvents XrPageBreak1 As DevExpress.XtraReports.UI.XRPageBreak
+    Friend WithEvents XrSubreport2 As DevExpress.XtraReports.UI.XRSubreport
+    Friend WithEvents XrPageBreak2 As DevExpress.XtraReports.UI.XRPageBreak
+    Friend WithEvents XrSubreport3 As DevExpress.XtraReports.UI.XRSubreport
+End Class

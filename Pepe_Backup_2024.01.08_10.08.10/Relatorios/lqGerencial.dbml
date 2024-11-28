@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BDTorras" Class="lqGerencialDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=CLINICAMENTA\SQLEXPRESS;Initial Catalog=BDTorras;Persist Security Info=True;User ID=sa" SettingsObjectName="Pepe.My.MySettings" SettingsPropertyName="Pepe_ConnString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.[Vencto Cheques]" Member="Vencto_Cheques">
+    <Type Name="Vencto_Cheques">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Venda" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Parcela" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="Vencto" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="VValor" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Pagto" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="Cheque" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="Uso" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="Destino" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Obs" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="IdConserto" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IdCC" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Banco" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SSMA_TimeStamp" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Vencto Cartão]" Member="Vencto_Cartão">
+    <Type Name="Vencto_Cartão">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Venda" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Vencto" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="VValor" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Pagto" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="Parcela" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="IdConserto" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IdCC" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NomeCartão" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="SSMA_TimeStamp" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VI_PEÇAS" Member="VI_PEÇAS">
+    <Type Name="VI_PEÇAS">
+      <Column Name="IDPeça" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Custo" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DataReg" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="Origem" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="MOExt" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="MOInt" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="MO" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VI_METAIS" Member="VI_METAIS">
+    <Type Name="VI_METAIS">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DataReg" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="OuroQtde" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="OuroV" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Origem" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Família" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="OT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="OV" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Clientes" Member="Clientes">
+    <Type Name="Clientes">
+      <Column Name="IDCliente" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Título" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Nome" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
+      <Column Name="Endereço" Type="System.String" DbType="NVarChar(80)" CanBeNull="true" />
+      <Column Name="Bairro" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Cidade" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Column Name="CEP" Type="System.String" DbType="NVarChar(9)" CanBeNull="true" />
+      <Column Name="Telefone" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Fax" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="Imp" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Cliente" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Aniv" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="Indicaçao" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Medidas" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Saldo" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Oculto" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="SSMA_TimeStamp" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
+      <Column Name="CPF" Type="System.String" DbType="NVarChar(11)" CanBeNull="true" />
+      <Column Name="CPF_MD" Type="System.String" DbType="NVarChar(11)" CanBeNull="true" />
+      <Column Name="DataCad" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VI_CC" Member="VI_CC">
+    <Type Name="VI_CC">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Cliente" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Data" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="Valor" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Venda" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="NCartão" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="Vencto" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="Conserto" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Parcela" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="IdConserto" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Real" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Ouro" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Dolar" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Cartão" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Cheque" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FormaCheque" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="FormaCartão" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="ChequeCC" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CartãoCC" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DolarCC" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CashCC" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="OuroCC" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Banco" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NomeCartão" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="CCDeb" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ValorFinal" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SSMA_TimeStamp" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
+      <Column Name="ValorTransf" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="BancoTransf" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VI_VENDIDAS" Member="VI_VENDIDAS">
+    <Type Name="VI_VENDIDAS">
+      <Column Name="Peça" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Custo" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DataVenda" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="ValorVenda" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VI_CONSERTOS" Member="VI_CONSERTOS">
+    <Type Name="VI_CONSERTOS">
+      <Column Name="Tot" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DT" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="Comis" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Custo" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Real" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Ouro" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Dolar" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Debito" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ValorTransfC" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="CCDeb" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VI_VENDAS" Member="VI_VENDAS">
+    <Type Name="VI_VENDAS">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DataVenda" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="Real" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Ouro" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Dolar" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="ValorTransf" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="CCDeb" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Comissão" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ValorFinal" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="V" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Deb" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="valCC" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VI_W" Member="VI_W">
+    <Type Name="VI_W">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DataVenda" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="ValorVenda" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

@@ -1,0 +1,703 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{264B16F0-235C-4186-8199-87FA9A8A50EE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>Pepe.My.MyApplication</StartupObject>
+    <RootNamespace>Pepe</RootNamespace>
+    <AssemblyName>Pepe</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <PublishUrl>ftp://ftp.drivehq.com/wwwhome/ceu/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>1</UpdateInterval>
+    <UpdateIntervalUnits>Hours</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>http://www.drivehq.com/file/df.aspx/publish/Claudio_Mas/wwwhome/ceu/</InstallUrl>
+    <UpdateUrl>http://www.drivehq.com/file/df.aspx/publish/Claudio_Mas/wwwhome/ceu/</UpdateUrl>
+    <ProductName>Clube CEU - Sistema de Cobrança</ProductName>
+    <PublisherName>Cláudio Más Sistemas</PublisherName>
+    <SuiteName>SisCob</SuiteName>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
+    <TrustUrlParameters>true</TrustUrlParameters>
+    <ApplicationRevision>57</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>Pepe.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>Pepe.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>5CA0ACB0CFFD58C3A650B8F43E53B627A811D872</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>Pepe.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>Pepe.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\Mysitemyway-Clean-3d-Glossy-3d-blue-plane.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="adodb, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="C1.C1Report.4, Version=4.0.20152.67, Culture=neutral, PublicKeyToken=594a0605db190bb9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\ComponentOne\ASP.NET Web Forms Edition\bin\v4\C1.C1Report.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Win.4, Version=4.0.20152.67, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\ComponentOne\ASP.NET Web Forms Edition\bin\v4\C1.Win.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Win.C1Report.4, Version=4.0.20152.67, Culture=neutral, PublicKeyToken=41780e2fc605e636, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\ComponentOne\WinForms Edition\bin\v4.0\C1.Win.C1Report.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Win.ImportServices.4, Version=4.0.20152.67, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\ComponentOne\WinForms Edition\bin\v4.0\C1.Win.ImportServices.4.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.BonusSkins.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Data.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.DataAccess.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpo.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Infragistics4.Shared.v16.1, Version=16.1.20161.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2016.1\Windows Forms\CLR4.0\Bin\Infragistics4.Shared.v16.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinEditors.v16.1, Version=16.1.20161.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2016.1\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinEditors.v16.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.v16.1, Version=16.1.20161.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2016.1\Windows Forms\CLR4.0\Bin\Infragistics4.Win.v16.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic.PowerPacks, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\VBPowerPacks\v12.0\Microsoft.VisualBasic.PowerPacks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="ReachFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Telerik.WinControls, Version=2015.1.225.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Telerik\UI for WinForms Q1 2015\Bin40\Telerik.WinControls.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.GridView, Version=2015.1.225.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Telerik\UI for WinForms Q1 2015\Bin40\Telerik.WinControls.GridView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.Themes.Office2007Black, Version=2015.1.225.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Telerik\UI for WinForms Q1 2015\Bin40\Telerik.WinControls.Themes.Office2007Black.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.Themes.Office2010Black, Version=2015.1.225.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Telerik\UI for WinForms Q1 2015\Bin40\Telerik.WinControls.Themes.Office2010Black.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.Themes.Office2010Blue, Version=2015.1.225.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Telerik\UI for WinForms Q1 2015\Bin40\Telerik.WinControls.Themes.Office2010Blue.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.UI, Version=2015.1.225.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Telerik\UI for WinForms Q1 2015\Bin40\Telerik.WinControls.UI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TelerikCommon, Version=2015.1.225.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Telerik\UI for WinForms Q1 2015\Bin40\TelerikCommon.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TelerikData, Version=2015.1.225.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Telerik\UI for WinForms Q1 2015\Bin40\TelerikData.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="Telerik.WinControls.Data" />
+    <Import Include="Telerik.WinControls.UI.Export" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="dsCheques.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsCheques.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsCheques.vb">
+      <DependentUpon>dsCheques.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsCliente.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsCliente.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsEstoque1.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsEstoque1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsPrincipal.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsPrincipal.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.Designer.vb">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAcesso.Designer.vb">
+      <DependentUpon>frmAcesso.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAcesso.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCartoesDG.Designer.vb">
+      <DependentUpon>frmCartoesDG.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCartoesDG.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChequesDG.Designer.vb">
+      <DependentUpon>frmChequesDG.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmChequesDG.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClientes.Designer.vb">
+      <DependentUpon>frmClientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmClientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClientesDG.Designer.vb">
+      <DependentUpon>frmClientesDG.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmClientesDG.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmComprasSub.Designer.vb">
+      <DependentUpon>frmComprasSub.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmComprasSub.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDevPrincipal.Designer.vb">
+      <DependentUpon>frmDevPrincipal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDevPrincipal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEstoqueDG.Designer.vb">
+      <DependentUpon>frmEstoqueDG.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEstoqueDG.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEtiqAniv.Designer.vb">
+      <DependentUpon>frmEtiqAniv.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEtiqAniv.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEtiquetas.Designer.vb">
+      <DependentUpon>frmEtiquetas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEtiquetas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRptPecasCompradas.Designer.vb">
+      <DependentUpon>frmRptPecasCompradas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRptPecasCompradas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVenda.Designer.vb">
+      <DependentUpon>frmVenda.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmVenda.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVendaPeça.Designer.vb">
+      <DependentUpon>frmVendaPeça.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmVendaPeça.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVendasDG.Designer.vb">
+      <DependentUpon>frmVendasDG.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmVendasDG.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modConn.vb" />
+    <Compile Include="modInternas.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="x.Designer.vb">
+      <DependentUpon>x.vb</DependentUpon>
+    </Compile>
+    <Compile Include="x.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAcesso.resx">
+      <DependentUpon>frmAcesso.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCartoesDG.resx">
+      <DependentUpon>frmCartoesDG.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChequesDG.resx">
+      <DependentUpon>frmChequesDG.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmClientes.resx">
+      <DependentUpon>frmClientes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmClientesDG.resx">
+      <DependentUpon>frmClientesDG.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmComprasSub.resx">
+      <DependentUpon>frmComprasSub.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDevPrincipal.resx">
+      <DependentUpon>frmDevPrincipal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEstoqueDG.resx">
+      <DependentUpon>frmEstoqueDG.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEtiqAniv.resx">
+      <DependentUpon>frmEtiqAniv.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEtiquetas.resx">
+      <DependentUpon>frmEtiquetas.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRptPecasCompradas.resx">
+      <DependentUpon>frmRptPecasCompradas.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVenda.resx">
+      <DependentUpon>frmVenda.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVendaPeça.resx">
+      <DependentUpon>frmVendaPeça.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVendasDG.resx">
+      <DependentUpon>frmVendasDG.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="x.resx">
+      <DependentUpon>x.vb</DependentUpon>
+    </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Clube CEU - Sistema de Cobrança_TemporaryKey.pfx" />
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="dsCheques.xsc">
+      <DependentUpon>dsCheques.xsd</DependentUpon>
+    </None>
+    <None Include="dsCheques.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsCheques.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsCheques.xss">
+      <DependentUpon>dsCheques.xsd</DependentUpon>
+    </None>
+    <None Include="dsCliente.xsc">
+      <DependentUpon>dsCliente.xsd</DependentUpon>
+    </None>
+    <None Include="dsCliente.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsCliente.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="dsCliente.xss">
+      <DependentUpon>dsCliente.xsd</DependentUpon>
+    </None>
+    <None Include="dsEstoque1.xsc">
+      <DependentUpon>dsEstoque1.xsd</DependentUpon>
+    </None>
+    <None Include="dsEstoque1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsEstoque1.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsEstoque1.xss">
+      <DependentUpon>dsEstoque1.xsd</DependentUpon>
+    </None>
+    <None Include="dsPrincipal.xsc">
+      <DependentUpon>dsPrincipal.xsd</DependentUpon>
+    </None>
+    <None Include="dsPrincipal.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsPrincipal.xss">
+      <DependentUpon>dsPrincipal.xsd</DependentUpon>
+    </None>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 e x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="ADODB">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="C1.C1Report.4">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="C1.Win.C1Input.4">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="C1.Win.C1Report.4">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="C1.Win.C1Ribbon.4">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="C1.Win.C1SuperTooltip.4">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="C1.Win.C1TrueDBGrid.4">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevComponents.DotNetBar2">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="EQATEC.Analytics.Monitor">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.VisualBasic.PowerPacks">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Telerik.WinControls">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Telerik.WinControls.GridView">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Telerik.WinControls.Themes.Desert">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Telerik.WinControls.Themes.Office2007Black">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Telerik.WinControls.Themes.Office2010Black">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Telerik.WinControls.UI">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="TelerikCommon">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System-Info-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Osullivanluke-Orb-Os-X-System-Info.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mysitemyway-Clean-3d-Glossy-3d-blue-plane.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pepe1.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

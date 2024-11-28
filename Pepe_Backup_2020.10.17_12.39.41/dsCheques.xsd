@@ -1,0 +1,755 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsCheques" targetNamespace="http://tempuri.org/dsCheques.xsd" xmlns:mstns="http://tempuri.org/dsCheques.xsd" xmlns="http://tempuri.org/dsCheques.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="Pepe_ConnString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="Pepe_ConnString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Pepe.My.MySettings.GlobalReference.Default.Pepe_ConnString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ChequesTodosOkTableAdapter" GeneratorDataComponentClassName="ChequesTodosOkTableAdapter" Name="ChequesTodosOk" UserDataComponentName="ChequesTodosOkTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="Pepe_ConnString (MySettings)" DbObjectName="SELECT [Vencto Cheques].IdCC, [Vencto Cheques].IdConserto, [Vencto Cheques].Id AS IDV, ISNULL(VENDAS.SEMCADASTRO, Clientes_2.Nome) AS N, Clientes_2.Nome, VENDAS.Venda, VENDAS.DataVenda, ISNULL([Vencto Cheques].Vencto, VENDAS.DataVenda) AS DataVendaAnt, [Vencto Cheques].Destino, [Vencto Cheques].Parcela, [Vencto Cheques].VValor, [Vencto Cheques].Pagto, [Vencto Cheques].Cheque, VENDAS.Banco, [Vencto Cheques].Uso, [Vencto Cheques].Obs, [Vencto Cheques].Vencto, VENDAS.ValorFinal FROM VENDAS LEFT OUTER JOIN Clientes AS Clientes_2 ON VENDAS.IDCliente = Clientes_2.IDCliente RIGHT OUTER JOIN [Vencto Cheques] ON VENDAS.Id = [Vencto Cheques].Venda" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        base.IdCC, ISNULL(CONSERTOS.SEMCADASTRO, Clientes.Nome) AS N1, CASE WHEN Base.[Venda] &lt;&gt; NULL THEN Base.[N] ELSE (CASE WHEN [IdCC] &lt;&gt; NULL AND 
+                         [IdCC] &gt; 0 THEN 'C/C' ELSE (CASE WHEN [IdConserto] = NULL OR
+                         [IdConserto] = 0 THEN isnull(Base.[N], '') ELSE [Clientes].[Nome] END) END) END AS N, CASE WHEN Base.[Venda] &lt;&gt; NULL THEN [Venda] ELSE (CASE WHEN [IdCC] &lt;&gt; NULL AND 
+                         [IdCC] &gt; 0 THEN 'C/C' ELSE (CASE WHEN [IdConserto] = NULL OR
+                         [IdConserto] = 0 THEN isnull(Base.[Venda], 'Ch.avulso') ELSE 'Conserto' END) END) END AS Venda, CASE WHEN [IdCC] &lt;&gt; NULL AND [IdCC] &gt; 0 THEN [CCNovo].[Data] ELSE isnull(Base.[DataVenda], 
+                         [Consertos].[DT]) END AS DataVenda, base.Destino, base.Parcela, base.VValor, base.Pagto, base.Cheque, CASE WHEN [IdCC] &lt;&gt; NULL AND [IdCC] &gt; 0 THEN [CCNovo].[Banco] ELSE isnull(Base.[Banco], 
+                         [Consertos].[Banco]) END AS Banco, base.Uso, base.Obs, base.Vencto
+FROM            Clientes RIGHT OUTER JOIN
+                         CONSERTOS RIGHT OUTER JOIN
+                             (SELECT        [Vencto Cheques].IdCC, [Vencto Cheques].IdConserto, [Vencto Cheques].Id AS IDV, ISNULL(VENDAS.SEMCADASTRO, Clientes_2.Nome) AS N, Clientes_2.Nome, VENDAS.Venda, VENDAS.DataVenda, 
+                                                         ISNULL([Vencto Cheques].Vencto, VENDAS.DataVenda) AS DataVendaAnt, [Vencto Cheques].Destino, [Vencto Cheques].Parcela, [Vencto Cheques].VValor, [Vencto Cheques].Pagto, 
+                                                         [Vencto Cheques].Cheque, VENDAS.Banco, [Vencto Cheques].Uso, [Vencto Cheques].Obs, [Vencto Cheques].Vencto, VENDAS.ValorFinal
+                               FROM            VENDAS LEFT OUTER JOIN
+                                                         Clientes AS Clientes_2 ON VENDAS.IDCliente = Clientes_2.IDCliente RIGHT OUTER JOIN
+                                                         [Vencto Cheques] ON VENDAS.Id = [Vencto Cheques].Venda) AS base ON CONSERTOS.ID = base.IdConserto ON Clientes.IDCliente = CONSERTOS.CLIENTE LEFT OUTER JOIN
+                             (SELECT        [Conta Corrente].ID, [Conta Corrente].Data, [Conta Corrente].Banco
+                               FROM            Clientes AS Clientes_1 INNER JOIN
+                                                         [Conta Corrente] ON Clientes_1.IDCliente = [Conta Corrente].Cliente LEFT OUTER JOIN
+                                                         [Vencto Cheques] AS [Vencto Cheques_1] ON [Conta Corrente].ID = [Vencto Cheques_1].IdCC
+                               GROUP BY [Conta Corrente].ID, [Conta Corrente].Data, [Conta Corrente].Banco) AS CCNovo ON base.IdCC = CCNovo.ID</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="IdCC" DataSetColumn="IdCC" />
+              <Mapping SourceColumn="N1" DataSetColumn="N1" />
+              <Mapping SourceColumn="N" DataSetColumn="N" />
+              <Mapping SourceColumn="Venda" DataSetColumn="Venda" />
+              <Mapping SourceColumn="DataVenda" DataSetColumn="DataVenda" />
+              <Mapping SourceColumn="Destino" DataSetColumn="Destino" />
+              <Mapping SourceColumn="Parcela" DataSetColumn="Parcela" />
+              <Mapping SourceColumn="VValor" DataSetColumn="VValor" />
+              <Mapping SourceColumn="Pagto" DataSetColumn="Pagto" />
+              <Mapping SourceColumn="Cheque" DataSetColumn="Cheque" />
+              <Mapping SourceColumn="Banco" DataSetColumn="Banco" />
+              <Mapping SourceColumn="Uso" DataSetColumn="Uso" />
+              <Mapping SourceColumn="Obs" DataSetColumn="Obs" />
+              <Mapping SourceColumn="Vencto" DataSetColumn="Vencto" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CartõesTodosOkTableAdapter" GeneratorDataComponentClassName="CartõesTodosOkTableAdapter" Name="CartõesTodosOk" UserDataComponentName="CartõesTodosOkTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="Pepe_ConnString (MySettings)" DbObjectName="SELECT [Vencto Cartão].IdCC, [Vencto Cartão].IdConserto, [Vencto Cartão].Id AS IDC, ISNULL(VENDAS.SEMCADASTRO, Clientes_2.Nome) AS N, Clientes_2.Nome, VENDAS.Venda, VENDAS.DataVenda, VENDAS.NomeCartão, [Vencto Cartão].Parcela, [Vencto Cartão].VValor, [Vencto Cartão].Pagto, [Vencto Cartão].Vencto, VENDAS.ValorFinal FROM VENDAS LEFT OUTER JOIN Clientes AS Clientes_2 ON VENDAS.IDCliente = Clientes_2.IDCliente RIGHT OUTER JOIN [Vencto Cartão] ON VENDAS.Id = [Vencto Cartão].Venda" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        c0.IdCC, ISNULL(CONSERTOS.SEMCADASTRO, c0.N) AS N1, CASE WHEN [IdCC] &lt;&gt; NULL AND [IdCC] &gt; 0 THEN [C0].[N] ELSE isnull(isnull([SEMCADASTRO], [C0].[N]), [Clientes].[Nome]) END AS N, 
+                         CASE WHEN [C0].[Venda] &lt;&gt; NULL THEN [C0].[Venda] ELSE (CASE WHEN [IdCC] &lt;&gt; NULL AND [IdCC] &gt; 0 THEN 'C/C' ELSE (CASE WHEN [IdConserto] IS NULL OR
+                         [IdConserto] = 0 THEN isnull([C0].[Venda], 'Avulso') ELSE 'Conserto' END) END) END AS Venda, CASE WHEN [IdCC] &lt;&gt; NULL AND [IdCC] &gt; 0 THEN [CC2].[Data] ELSE isnull([C0].[DataVenda], [Consertos].[DT]) 
+                         END AS DataVenda, CASE WHEN [IdCC] &lt;&gt; NULL AND [IdCC] &gt; 0 THEN [CC2].[NCartão] ELSE isnull([C0].[NomeCartão], [Consertos].[NomeCartão]) END AS NomeCartão, c0.Parcela, c0.VValor, c0.Pagto, 
+                         c0.Vencto
+FROM            Clientes RIGHT OUTER JOIN
+                         CONSERTOS ON Clientes.IDCliente = CONSERTOS.CLIENTE RIGHT OUTER JOIN
+                             (SELECT        [Vencto Cartão].IdCC, [Vencto Cartão].IdConserto, [Vencto Cartão].Id AS IDC, ISNULL(VENDAS.SEMCADASTRO, Clientes_2.Nome) AS N, Clientes_2.Nome, VENDAS.Venda, VENDAS.DataVenda, 
+                                                         VENDAS.NomeCartão, [Vencto Cartão].Parcela, [Vencto Cartão].VValor, [Vencto Cartão].Pagto, [Vencto Cartão].Vencto, VENDAS.ValorFinal
+                               FROM            VENDAS LEFT OUTER JOIN
+                                                         Clientes AS Clientes_2 ON VENDAS.IDCliente = Clientes_2.IDCliente RIGHT OUTER JOIN
+                                                         [Vencto Cartão] ON VENDAS.Id = [Vencto Cartão].Venda) AS c0 ON CONSERTOS.ID = c0.IdConserto LEFT OUTER JOIN
+                             (SELECT        [Conta Corrente].ID, ISNULL(Clientes_1.Nome, Clientes_1.Cliente) AS N, [Conta Corrente].NomeCartão AS NCartão, [Conta Corrente].Data
+                               FROM            Clientes AS Clientes_1 INNER JOIN
+                                                         [Conta Corrente] ON Clientes_1.IDCliente = [Conta Corrente].Cliente INNER JOIN
+                                                         [Vencto Cartão] AS [Vencto Cartão_1] ON [Conta Corrente].ID = [Vencto Cartão_1].IdCC
+                               GROUP BY [Conta Corrente].ID, ISNULL(Clientes_1.Nome, Clientes_1.Cliente), [Conta Corrente].NomeCartão, [Conta Corrente].Data) AS cc2 ON c0.IdCC = cc2.ID</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="IdCC" DataSetColumn="IdCC" />
+              <Mapping SourceColumn="N1" DataSetColumn="N1" />
+              <Mapping SourceColumn="N" DataSetColumn="N" />
+              <Mapping SourceColumn="Venda" DataSetColumn="Venda" />
+              <Mapping SourceColumn="DataVenda" DataSetColumn="DataVenda" />
+              <Mapping SourceColumn="NomeCartão" DataSetColumn="NomeCartão" />
+              <Mapping SourceColumn="Parcela" DataSetColumn="Parcela" />
+              <Mapping SourceColumn="VValor" DataSetColumn="VValor" />
+              <Mapping SourceColumn="Pagto" DataSetColumn="Pagto" />
+              <Mapping SourceColumn="Vencto" DataSetColumn="Vencto" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ChequesTodosTableAdapter" GeneratorDataComponentClassName="ChequesTodosTableAdapter" Name="ChequesTodos" UserDataComponentName="ChequesTodosTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="Pepe_ConnString (MySettings)" DbObjectName="BDTorras.dbo.tabCheques" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [dbo].[tabCheques] WHERE (([IDV] = @Original_IDV) AND ((@IsNull_IdCC = 1 AND [IdCC] IS NULL) OR ([IdCC] = @Original_IdCC)) AND ((@IsNull_N1 = 1 AND [N1] IS NULL) OR ([N1] = @Original_N1)) AND ((@IsNull_N = 1 AND [N] IS NULL) OR ([N] = @Original_N)) AND ((@IsNull_Venda = 1 AND [Venda] IS NULL) OR ([Venda] = @Original_Venda)) AND ((@IsNull_DataVenda = 1 AND [DataVenda] IS NULL) OR ([DataVenda] = @Original_DataVenda)) AND ((@IsNull_Destino = 1 AND [Destino] IS NULL) OR ([Destino] = @Original_Destino)) AND ((@IsNull_Parcela = 1 AND [Parcela] IS NULL) OR ([Parcela] = @Original_Parcela)) AND ((@IsNull_VValor = 1 AND [VValor] IS NULL) OR ([VValor] = @Original_VValor)) AND ((@IsNull_Pagto = 1 AND [Pagto] IS NULL) OR ([Pagto] = @Original_Pagto)) AND ((@IsNull_Cheque = 1 AND [Cheque] IS NULL) OR ([Cheque] = @Original_Cheque)) AND ((@IsNull_Banco = 1 AND [Banco] IS NULL) OR ([Banco] = @Original_Banco)) AND ((@IsNull_Uso = 1 AND [Uso] IS NULL) OR ([Uso] = @Original_Uso)) AND ((@IsNull_Obs = 1 AND [Obs] IS NULL) OR ([Obs] = @Original_Obs)) AND ((@IsNull_Vencto = 1 AND [Vencto] IS NULL) OR ([Vencto] = @Original_Vencto)) AND ((@IsNull_Baixar = 1 AND [Baixar] IS NULL) OR ([Baixar] = @Original_Baixar)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_IDV" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IDV" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_IdCC" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IdCC" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_IdCC" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IdCC" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_N1" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="N1" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_N1" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="N1" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_N" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="N" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_N" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="N" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Venda" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Venda" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Venda" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Venda" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_DataVenda" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="DataVenda" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime2" Direction="Input" ParameterName="@Original_DataVenda" Precision="0" ProviderType="DateTime2" Scale="0" Size="0" SourceColumn="DataVenda" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Destino" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Destino" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Destino" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Destino" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Parcela" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Parcela" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Parcela" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Parcela" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_VValor" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="VValor" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Original_VValor" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="VValor" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Pagto" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Pagto" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime2" Direction="Input" ParameterName="@Original_Pagto" Precision="0" ProviderType="DateTime2" Scale="0" Size="0" SourceColumn="Pagto" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Cheque" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Cheque" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Cheque" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Cheque" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Banco" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Banco" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Banco" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Banco" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Uso" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Uso" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime2" Direction="Input" ParameterName="@Original_Uso" Precision="0" ProviderType="DateTime2" Scale="0" Size="0" SourceColumn="Uso" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Obs" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Obs" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Obs" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Obs" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Vencto" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Vencto" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime2" Direction="Input" ParameterName="@Original_Vencto" Precision="0" ProviderType="DateTime2" Scale="0" Size="0" SourceColumn="Vencto" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Baixar" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Baixar" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_Baixar" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Baixar" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [dbo].[tabCheques] ([IDV], [IdCC], [N1], [N], [Venda], [DataVenda], [Destino], [Parcela], [VValor], [Pagto], [Cheque], [Banco], [Uso], [Obs], [Vencto], [Baixar]) VALUES (@IDV, @IdCC, @N1, @N, @Venda, @DataVenda, @Destino, @Parcela, @VValor, @Pagto, @Cheque, @Banco, @Uso, @Obs, @Vencto, @Baixar);
+SELECT IDV, IdCC, N1, N, Venda, DataVenda, Destino, Parcela, VValor, Pagto, Cheque, Banco, Uso, Obs, Vencto, Baixar FROM tabCheques WHERE (IDV = @IDV)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IDV" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IDV" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IdCC" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IdCC" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@N1" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="N1" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@N" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="N" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Venda" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Venda" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime2" Direction="Input" ParameterName="@DataVenda" Precision="0" ProviderType="DateTime2" Scale="0" Size="0" SourceColumn="DataVenda" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Destino" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Destino" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Parcela" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Parcela" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@VValor" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="VValor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime2" Direction="Input" ParameterName="@Pagto" Precision="0" ProviderType="DateTime2" Scale="0" Size="0" SourceColumn="Pagto" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Cheque" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Cheque" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Banco" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Banco" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime2" Direction="Input" ParameterName="@Uso" Precision="0" ProviderType="DateTime2" Scale="0" Size="0" SourceColumn="Uso" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Obs" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Obs" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime2" Direction="Input" ParameterName="@Vencto" Precision="0" ProviderType="DateTime2" Scale="0" Size="0" SourceColumn="Vencto" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Baixar" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Baixar" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT IDV, IdCC, N1, N, Venda, DataVenda, Destino, Parcela, VValor, Pagto, Cheque, Banco, Uso, Obs, Vencto, Baixar FROM dbo.tabCheques</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [dbo].[tabCheques] SET [IDV] = @IDV, [IdCC] = @IdCC, [N1] = @N1, [N] = @N, [Venda] = @Venda, [DataVenda] = @DataVenda, [Destino] = @Destino, [Parcela] = @Parcela, [VValor] = @VValor, [Pagto] = @Pagto, [Cheque] = @Cheque, [Banco] = @Banco, [Uso] = @Uso, [Obs] = @Obs, [Vencto] = @Vencto, [Baixar] = @Baixar WHERE (([IDV] = @Original_IDV) AND ((@IsNull_IdCC = 1 AND [IdCC] IS NULL) OR ([IdCC] = @Original_IdCC)) AND ((@IsNull_N1 = 1 AND [N1] IS NULL) OR ([N1] = @Original_N1)) AND ((@IsNull_N = 1 AND [N] IS NULL) OR ([N] = @Original_N)) AND ((@IsNull_Venda = 1 AND [Venda] IS NULL) OR ([Venda] = @Original_Venda)) AND ((@IsNull_DataVenda = 1 AND [DataVenda] IS NULL) OR ([DataVenda] = @Original_DataVenda)) AND ((@IsNull_Destino = 1 AND [Destino] IS NULL) OR ([Destino] = @Original_Destino)) AND ((@IsNull_Parcela = 1 AND [Parcela] IS NULL) OR ([Parcela] = @Original_Parcela)) AND ((@IsNull_VValor = 1 AND [VValor] IS NULL) OR ([VValor] = @Original_VValor)) AND ((@IsNull_Pagto = 1 AND [Pagto] IS NULL) OR ([Pagto] = @Original_Pagto)) AND ((@IsNull_Cheque = 1 AND [Cheque] IS NULL) OR ([Cheque] = @Original_Cheque)) AND ((@IsNull_Banco = 1 AND [Banco] IS NULL) OR ([Banco] = @Original_Banco)) AND ((@IsNull_Uso = 1 AND [Uso] IS NULL) OR ([Uso] = @Original_Uso)) AND ((@IsNull_Obs = 1 AND [Obs] IS NULL) OR ([Obs] = @Original_Obs)) AND ((@IsNull_Vencto = 1 AND [Vencto] IS NULL) OR ([Vencto] = @Original_Vencto)) AND ((@IsNull_Baixar = 1 AND [Baixar] IS NULL) OR ([Baixar] = @Original_Baixar)));
+SELECT IDV, IdCC, N1, N, Venda, DataVenda, Destino, Parcela, VValor, Pagto, Cheque, Banco, Uso, Obs, Vencto, Baixar FROM tabCheques WHERE (IDV = @IDV)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IDV" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IDV" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IdCC" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IdCC" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@N1" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="N1" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@N" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="N" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Venda" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Venda" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime2" Direction="Input" ParameterName="@DataVenda" Precision="0" ProviderType="DateTime2" Scale="0" Size="0" SourceColumn="DataVenda" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Destino" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Destino" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Parcela" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Parcela" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@VValor" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="VValor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime2" Direction="Input" ParameterName="@Pagto" Precision="0" ProviderType="DateTime2" Scale="0" Size="0" SourceColumn="Pagto" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Cheque" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Cheque" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Banco" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Banco" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime2" Direction="Input" ParameterName="@Uso" Precision="0" ProviderType="DateTime2" Scale="0" Size="0" SourceColumn="Uso" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Obs" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Obs" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime2" Direction="Input" ParameterName="@Vencto" Precision="0" ProviderType="DateTime2" Scale="0" Size="0" SourceColumn="Vencto" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Baixar" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Baixar" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_IDV" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IDV" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_IdCC" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IdCC" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_IdCC" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IdCC" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_N1" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="N1" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_N1" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="N1" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_N" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="N" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_N" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="N" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Venda" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Venda" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Venda" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Venda" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_DataVenda" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="DataVenda" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime2" Direction="Input" ParameterName="@Original_DataVenda" Precision="0" ProviderType="DateTime2" Scale="0" Size="0" SourceColumn="DataVenda" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Destino" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Destino" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Destino" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Destino" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Parcela" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Parcela" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Parcela" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Parcela" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_VValor" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="VValor" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Original_VValor" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="VValor" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Pagto" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Pagto" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime2" Direction="Input" ParameterName="@Original_Pagto" Precision="0" ProviderType="DateTime2" Scale="0" Size="0" SourceColumn="Pagto" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Cheque" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Cheque" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Cheque" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Cheque" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Banco" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Banco" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Banco" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Banco" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Uso" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Uso" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime2" Direction="Input" ParameterName="@Original_Uso" Precision="0" ProviderType="DateTime2" Scale="0" Size="0" SourceColumn="Uso" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Obs" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Obs" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Obs" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Obs" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Vencto" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Vencto" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime2" Direction="Input" ParameterName="@Original_Vencto" Precision="0" ProviderType="DateTime2" Scale="0" Size="0" SourceColumn="Vencto" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Baixar" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Baixar" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_Baixar" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Baixar" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="IDV" DataSetColumn="IDV" />
+              <Mapping SourceColumn="IdCC" DataSetColumn="IdCC" />
+              <Mapping SourceColumn="N1" DataSetColumn="N1" />
+              <Mapping SourceColumn="N" DataSetColumn="N" />
+              <Mapping SourceColumn="Venda" DataSetColumn="Venda" />
+              <Mapping SourceColumn="DataVenda" DataSetColumn="DataVenda" />
+              <Mapping SourceColumn="Destino" DataSetColumn="Destino" />
+              <Mapping SourceColumn="Parcela" DataSetColumn="Parcela" />
+              <Mapping SourceColumn="VValor" DataSetColumn="VValor" />
+              <Mapping SourceColumn="Pagto" DataSetColumn="Pagto" />
+              <Mapping SourceColumn="Cheque" DataSetColumn="Cheque" />
+              <Mapping SourceColumn="Banco" DataSetColumn="Banco" />
+              <Mapping SourceColumn="Uso" DataSetColumn="Uso" />
+              <Mapping SourceColumn="Obs" DataSetColumn="Obs" />
+              <Mapping SourceColumn="Vencto" DataSetColumn="Vencto" />
+              <Mapping SourceColumn="Baixar" DataSetColumn="Baixar" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CartõesTodosTableAdapter" GeneratorDataComponentClassName="CartõesTodosTableAdapter" Name="CartõesTodos" UserDataComponentName="CartõesTodosTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="Pepe_ConnString (MySettings)" DbObjectName="BDTorras.dbo.tabCartões" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [dbo].[tabCartões] WHERE (((@IsNull_IdCC = 1 AND [IdCC] IS NULL) OR ([IdCC] = @Original_IdCC)) AND ((@IsNull_N1 = 1 AND [N1] IS NULL) OR ([N1] = @Original_N1)) AND ((@IsNull_N = 1 AND [N] IS NULL) OR ([N] = @Original_N)) AND ((@IsNull_Venda = 1 AND [Venda] IS NULL) OR ([Venda] = @Original_Venda)) AND ((@IsNull_DataVenda = 1 AND [DataVenda] IS NULL) OR ([DataVenda] = @Original_DataVenda)) AND ((@IsNull_NomeCartão = 1 AND [NomeCartão] IS NULL) OR ([NomeCartão] = @Original_NomeCartão)) AND ((@IsNull_Parcela = 1 AND [Parcela] IS NULL) OR ([Parcela] = @Original_Parcela)) AND ((@IsNull_VValor = 1 AND [VValor] IS NULL) OR ([VValor] = @Original_VValor)) AND ((@IsNull_Pagto = 1 AND [Pagto] IS NULL) OR ([Pagto] = @Original_Pagto)) AND ((@IsNull_Vencto = 1 AND [Vencto] IS NULL) OR ([Vencto] = @Original_Vencto)) AND ([IDC] = @Original_IDC) AND ((@IsNull_Baixar = 1 AND [Baixar] IS NULL) OR ([Baixar] = @Original_Baixar)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_IdCC" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IdCC" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_IdCC" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IdCC" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_N1" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="N1" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_N1" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="N1" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_N" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="N" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_N" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="N" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Venda" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Venda" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Venda" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Venda" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_DataVenda" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="DataVenda" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime2" Direction="Input" ParameterName="@Original_DataVenda" Precision="0" ProviderType="DateTime2" Scale="0" Size="0" SourceColumn="DataVenda" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_NomeCartão" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="NomeCartão" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_NomeCartão" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="NomeCartão" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Parcela" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Parcela" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Parcela" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Parcela" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_VValor" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="VValor" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Original_VValor" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="VValor" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Pagto" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Pagto" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime2" Direction="Input" ParameterName="@Original_Pagto" Precision="0" ProviderType="DateTime2" Scale="0" Size="0" SourceColumn="Pagto" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Vencto" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Vencto" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime2" Direction="Input" ParameterName="@Original_Vencto" Precision="0" ProviderType="DateTime2" Scale="0" Size="0" SourceColumn="Vencto" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_IDC" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IDC" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Baixar" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Baixar" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_Baixar" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Baixar" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [dbo].[tabCartões] ([IdCC], [N1], [N], [Venda], [DataVenda], [NomeCartão], [Parcela], [VValor], [Pagto], [Vencto], [IDC], [Baixar]) VALUES (@IdCC, @N1, @N, @Venda, @DataVenda, @NomeCartão, @Parcela, @VValor, @Pagto, @Vencto, @IDC, @Baixar);
+SELECT IdCC, N1, N, Venda, DataVenda, NomeCartão, Parcela, VValor, Pagto, Vencto, IDC, Baixar FROM tabCartões WHERE (IDC = @IDC)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IdCC" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IdCC" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@N1" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="N1" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@N" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="N" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Venda" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Venda" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime2" Direction="Input" ParameterName="@DataVenda" Precision="0" ProviderType="DateTime2" Scale="0" Size="0" SourceColumn="DataVenda" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@NomeCartão" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="NomeCartão" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Parcela" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Parcela" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@VValor" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="VValor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime2" Direction="Input" ParameterName="@Pagto" Precision="0" ProviderType="DateTime2" Scale="0" Size="0" SourceColumn="Pagto" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime2" Direction="Input" ParameterName="@Vencto" Precision="0" ProviderType="DateTime2" Scale="0" Size="0" SourceColumn="Vencto" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IDC" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IDC" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Baixar" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Baixar" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT IdCC, N1, N, Venda, DataVenda, NomeCartão, Parcela, VValor, Pagto, Vencto, IDC, Baixar FROM dbo.tabCartões</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [dbo].[tabCartões] SET [IdCC] = @IdCC, [N1] = @N1, [N] = @N, [Venda] = @Venda, [DataVenda] = @DataVenda, [NomeCartão] = @NomeCartão, [Parcela] = @Parcela, [VValor] = @VValor, [Pagto] = @Pagto, [Vencto] = @Vencto, [IDC] = @IDC, [Baixar] = @Baixar WHERE (((@IsNull_IdCC = 1 AND [IdCC] IS NULL) OR ([IdCC] = @Original_IdCC)) AND ((@IsNull_N1 = 1 AND [N1] IS NULL) OR ([N1] = @Original_N1)) AND ((@IsNull_N = 1 AND [N] IS NULL) OR ([N] = @Original_N)) AND ((@IsNull_Venda = 1 AND [Venda] IS NULL) OR ([Venda] = @Original_Venda)) AND ((@IsNull_DataVenda = 1 AND [DataVenda] IS NULL) OR ([DataVenda] = @Original_DataVenda)) AND ((@IsNull_NomeCartão = 1 AND [NomeCartão] IS NULL) OR ([NomeCartão] = @Original_NomeCartão)) AND ((@IsNull_Parcela = 1 AND [Parcela] IS NULL) OR ([Parcela] = @Original_Parcela)) AND ((@IsNull_VValor = 1 AND [VValor] IS NULL) OR ([VValor] = @Original_VValor)) AND ((@IsNull_Pagto = 1 AND [Pagto] IS NULL) OR ([Pagto] = @Original_Pagto)) AND ((@IsNull_Vencto = 1 AND [Vencto] IS NULL) OR ([Vencto] = @Original_Vencto)) AND ([IDC] = @Original_IDC) AND ((@IsNull_Baixar = 1 AND [Baixar] IS NULL) OR ([Baixar] = @Original_Baixar)));
+SELECT IdCC, N1, N, Venda, DataVenda, NomeCartão, Parcela, VValor, Pagto, Vencto, IDC, Baixar FROM tabCartões WHERE (IDC = @IDC)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IdCC" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IdCC" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@N1" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="N1" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@N" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="N" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Venda" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Venda" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime2" Direction="Input" ParameterName="@DataVenda" Precision="0" ProviderType="DateTime2" Scale="0" Size="0" SourceColumn="DataVenda" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@NomeCartão" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="NomeCartão" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Parcela" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Parcela" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@VValor" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="VValor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime2" Direction="Input" ParameterName="@Pagto" Precision="0" ProviderType="DateTime2" Scale="0" Size="0" SourceColumn="Pagto" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime2" Direction="Input" ParameterName="@Vencto" Precision="0" ProviderType="DateTime2" Scale="0" Size="0" SourceColumn="Vencto" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IDC" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IDC" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Baixar" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Baixar" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_IdCC" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IdCC" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_IdCC" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IdCC" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_N1" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="N1" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_N1" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="N1" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_N" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="N" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_N" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="N" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Venda" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Venda" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Venda" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Venda" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_DataVenda" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="DataVenda" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime2" Direction="Input" ParameterName="@Original_DataVenda" Precision="0" ProviderType="DateTime2" Scale="0" Size="0" SourceColumn="DataVenda" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_NomeCartão" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="NomeCartão" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_NomeCartão" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="NomeCartão" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Parcela" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Parcela" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Parcela" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Parcela" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_VValor" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="VValor" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Original_VValor" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="VValor" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Pagto" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Pagto" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime2" Direction="Input" ParameterName="@Original_Pagto" Precision="0" ProviderType="DateTime2" Scale="0" Size="0" SourceColumn="Pagto" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Vencto" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Vencto" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime2" Direction="Input" ParameterName="@Original_Vencto" Precision="0" ProviderType="DateTime2" Scale="0" Size="0" SourceColumn="Vencto" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_IDC" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IDC" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Baixar" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Baixar" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_Baixar" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Baixar" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="IdCC" DataSetColumn="IdCC" />
+              <Mapping SourceColumn="N1" DataSetColumn="N1" />
+              <Mapping SourceColumn="N" DataSetColumn="N" />
+              <Mapping SourceColumn="Venda" DataSetColumn="Venda" />
+              <Mapping SourceColumn="DataVenda" DataSetColumn="DataVenda" />
+              <Mapping SourceColumn="NomeCartão" DataSetColumn="NomeCartão" />
+              <Mapping SourceColumn="Parcela" DataSetColumn="Parcela" />
+              <Mapping SourceColumn="VValor" DataSetColumn="VValor" />
+              <Mapping SourceColumn="Pagto" DataSetColumn="Pagto" />
+              <Mapping SourceColumn="Vencto" DataSetColumn="Vencto" />
+              <Mapping SourceColumn="IDC" DataSetColumn="IDC" />
+              <Mapping SourceColumn="Baixar" DataSetColumn="Baixar" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VENDAS DETTableAdapter" GeneratorDataComponentClassName="VENDAS_DETTableAdapter" Name="VENDAS DET" UserDataComponentName="VENDAS DETTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="Pepe_ConnString (MySettings)" DbObjectName="BDTorras.dbo.[VENDAS DET]" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [VENDAS DET] WHERE (([Id] = @Original_Id) AND ((@IsNull_Peça = 1 AND [Peça] IS NULL) OR ([Peça] = @Original_Peça)) AND ((@IsNull_ValorVenda = 1 AND [ValorVenda] IS NULL) OR ([ValorVenda] = @Original_ValorVenda)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Id" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Id" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Peça" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Peça" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Peça" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Peça" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ValorVenda" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ValorVenda" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Original_ValorVenda" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="ValorVenda" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Id, Peça, ValorVenda
+FROM            [VENDAS DET]
+WHERE        (Id = @IdDet)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="IdDet" ColumnName="Id" DataSourceName="BDTorras.dbo.[VENDAS DET]" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@IdDet" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="Id" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [VENDAS DET] SET [Peça] = @Peça, [ValorVenda] = @ValorVenda WHERE (([Id] = @Original_Id) AND ((@IsNull_Peça = 1 AND [Peça] IS NULL) OR ([Peça] = @Original_Peça)) AND ((@IsNull_ValorVenda = 1 AND [ValorVenda] IS NULL) OR ([ValorVenda] = @Original_ValorVenda)));
+SELECT Id, Peça, ValorVenda FROM [VENDAS DET] WHERE (Id = @Id)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Peça" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Peça" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@ValorVenda" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="ValorVenda" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Id" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Id" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Peça" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Peça" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Peça" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Peça" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ValorVenda" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ValorVenda" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="@Original_ValorVenda" Precision="0" ProviderType="Float" Scale="0" Size="0" SourceColumn="ValorVenda" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Id" ColumnName="Id" DataSourceName="BDTorras.dbo.[VENDAS DET]" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Id" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="Id" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Id" DataSetColumn="Id" />
+              <Mapping SourceColumn="Peça" DataSetColumn="Peça" />
+              <Mapping SourceColumn="ValorVenda" DataSetColumn="ValorVenda" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="cboPeçasTableAdapter" GeneratorDataComponentClassName="cboPeçasTableAdapter" Name="cboPeças" UserDataComponentName="cboPeçasTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="Pepe_ConnString (MySettings)" DbObjectName="BDTorras.dbo.[1TabPeças]" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [1TabPeças] WHERE (([IDPeça] = @Original_IDPeça) AND ((@IsNull_Modêlo = 1 AND [Modêlo] IS NULL) OR ([Modêlo] = @Original_Modêlo)) AND ((@IsNull_Comissão = 1 AND [Comissão] IS NULL) OR ([Comissão] = @Original_Comissão)) AND ((@IsNull_Vendida = 1 AND [Vendida] IS NULL) OR ([Vendida] = @Original_Vendida)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_IDPeça" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IDPeça" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Modêlo" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Modêlo" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Modêlo" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Modêlo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Comissão" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Comissão" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Currency" Direction="Input" ParameterName="@Original_Comissão" Precision="0" ProviderType="Money" Scale="0" Size="0" SourceColumn="Comissão" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Vendida" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Vendida" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_Vendida" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Vendida" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        IDPeça, Modêlo, Comissão, Vendida
+FROM            [1TabPeças]
+WHERE        (Modêlo IS NOT NULL)</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [1TabPeças] SET [Modêlo] = @Modêlo, [Comissão] = @Comissão, [Vendida] = @Vendida WHERE (([IDPeça] = @Original_IDPeça) AND ((@IsNull_Modêlo = 1 AND [Modêlo] IS NULL) OR ([Modêlo] = @Original_Modêlo)) AND ((@IsNull_Comissão = 1 AND [Comissão] IS NULL) OR ([Comissão] = @Original_Comissão)) AND ((@IsNull_Vendida = 1 AND [Vendida] IS NULL) OR ([Vendida] = @Original_Vendida)));
+SELECT IDPeça, Modêlo, Comissão, Vendida FROM [1TabPeças] WHERE (IDPeça = @IDPeça)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Modêlo" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Modêlo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Currency" Direction="Input" ParameterName="@Comissão" Precision="0" ProviderType="Money" Scale="0" Size="0" SourceColumn="Comissão" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Vendida" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Vendida" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_IDPeça" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IDPeça" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Modêlo" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Modêlo" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Modêlo" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Modêlo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Comissão" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Comissão" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Currency" Direction="Input" ParameterName="@Original_Comissão" Precision="0" ProviderType="Money" Scale="0" Size="0" SourceColumn="Comissão" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Vendida" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Vendida" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_Vendida" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Vendida" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="IDPeça" ColumnName="IDPeça" DataSourceName="BDTorras.dbo.[1TabPeças]" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@IDPeça" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="IDPeça" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="IDPeça" DataSetColumn="IDPeça" />
+              <Mapping SourceColumn="Modêlo" DataSetColumn="Modêlo" />
+              <Mapping SourceColumn="Comissão" DataSetColumn="Comissão" />
+              <Mapping SourceColumn="Vendida" DataSetColumn="Vendida" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsCheques" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="dsCheques" msprop:Generator_UserDSName="dsCheques">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ChequesTodosOk" msprop:Generator_TableClassName="ChequesTodosOkDataTable" msprop:Generator_TableVarName="tableChequesTodosOk" msprop:Generator_RowChangedName="ChequesTodosOkRowChanged" msprop:Generator_TablePropName="ChequesTodosOk" msprop:Generator_RowDeletingName="ChequesTodosOkRowDeleting" msprop:Generator_RowChangingName="ChequesTodosOkRowChanging" msprop:Generator_RowEvHandlerName="ChequesTodosOkRowChangeEventHandler" msprop:Generator_RowDeletedName="ChequesTodosOkRowDeleted" msprop:Generator_RowClassName="ChequesTodosOkRow" msprop:Generator_UserTableName="ChequesTodosOk" msprop:Generator_RowEvArgName="ChequesTodosOkRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdCC" msprop:Generator_ColumnVarNameInTable="columnIdCC" msprop:Generator_ColumnPropNameInRow="IdCC" msprop:Generator_ColumnPropNameInTable="IdCCColumn" msprop:Generator_UserColumnName="IdCC" type="xs:int" minOccurs="0" />
+              <xs:element name="N1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnN1" msprop:Generator_ColumnPropNameInRow="N1" msprop:Generator_ColumnPropNameInTable="N1Column" msprop:Generator_UserColumnName="N1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="80" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="N" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnN" msprop:Generator_ColumnPropNameInRow="N" msprop:Generator_ColumnPropNameInTable="NColumn" msprop:Generator_UserColumnName="N" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="80" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Venda" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnVenda" msprop:Generator_ColumnPropNameInRow="Venda" msprop:Generator_ColumnPropNameInTable="VendaColumn" msprop:Generator_UserColumnName="Venda" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DataVenda" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDataVenda" msprop:Generator_ColumnPropNameInRow="DataVenda" msprop:Generator_ColumnPropNameInTable="DataVendaColumn" msprop:Generator_UserColumnName="DataVenda" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Destino" msprop:Generator_ColumnVarNameInTable="columnDestino" msprop:Generator_ColumnPropNameInRow="Destino" msprop:Generator_ColumnPropNameInTable="DestinoColumn" msprop:Generator_UserColumnName="Destino" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Parcela" msprop:Generator_ColumnVarNameInTable="columnParcela" msprop:Generator_ColumnPropNameInRow="Parcela" msprop:Generator_ColumnPropNameInTable="ParcelaColumn" msprop:Generator_UserColumnName="Parcela" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="VValor" msprop:Generator_ColumnVarNameInTable="columnVValor" msprop:Generator_ColumnPropNameInRow="VValor" msprop:Generator_ColumnPropNameInTable="VValorColumn" msprop:Generator_UserColumnName="VValor" type="xs:double" minOccurs="0" />
+              <xs:element name="Pagto" msprop:Generator_ColumnVarNameInTable="columnPagto" msprop:Generator_ColumnPropNameInRow="Pagto" msprop:Generator_ColumnPropNameInTable="PagtoColumn" msprop:Generator_UserColumnName="Pagto" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Cheque" msprop:Generator_ColumnVarNameInTable="columnCheque" msprop:Generator_ColumnPropNameInRow="Cheque" msprop:Generator_ColumnPropNameInTable="ChequeColumn" msprop:Generator_UserColumnName="Cheque" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Banco" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnBanco" msprop:Generator_ColumnPropNameInRow="Banco" msprop:Generator_ColumnPropNameInTable="BancoColumn" msprop:Generator_UserColumnName="Banco" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Uso" msprop:Generator_ColumnVarNameInTable="columnUso" msprop:Generator_ColumnPropNameInRow="Uso" msprop:Generator_ColumnPropNameInTable="UsoColumn" msprop:Generator_UserColumnName="Uso" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Obs" msprop:Generator_ColumnVarNameInTable="columnObs" msprop:Generator_ColumnPropNameInRow="Obs" msprop:Generator_ColumnPropNameInTable="ObsColumn" msprop:Generator_UserColumnName="Obs" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Vencto" msprop:Generator_ColumnVarNameInTable="columnVencto" msprop:Generator_ColumnPropNameInRow="Vencto" msprop:Generator_ColumnPropNameInTable="VenctoColumn" msprop:Generator_UserColumnName="Vencto" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CartõesTodosOk" msprop:Generator_TableClassName="CartõesTodosOkDataTable" msprop:Generator_TableVarName="tableCartõesTodosOk" msprop:Generator_RowChangedName="CartõesTodosOkRowChanged" msprop:Generator_TablePropName="CartõesTodosOk" msprop:Generator_RowDeletingName="CartõesTodosOkRowDeleting" msprop:Generator_RowChangingName="CartõesTodosOkRowChanging" msprop:Generator_RowEvHandlerName="CartõesTodosOkRowChangeEventHandler" msprop:Generator_RowDeletedName="CartõesTodosOkRowDeleted" msprop:Generator_RowClassName="CartõesTodosOkRow" msprop:Generator_UserTableName="CartõesTodosOk" msprop:Generator_RowEvArgName="CartõesTodosOkRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdCC" msprop:Generator_ColumnVarNameInTable="columnIdCC" msprop:Generator_ColumnPropNameInRow="IdCC" msprop:Generator_ColumnPropNameInTable="IdCCColumn" msprop:Generator_UserColumnName="IdCC" type="xs:int" minOccurs="0" />
+              <xs:element name="N1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnN1" msprop:Generator_ColumnPropNameInRow="N1" msprop:Generator_ColumnPropNameInTable="N1Column" msprop:Generator_UserColumnName="N1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="80" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="N" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnN" msprop:Generator_ColumnPropNameInRow="N" msprop:Generator_ColumnPropNameInTable="NColumn" msprop:Generator_UserColumnName="N" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="80" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Venda" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnVenda" msprop:Generator_ColumnPropNameInRow="Venda" msprop:Generator_ColumnPropNameInTable="VendaColumn" msprop:Generator_UserColumnName="Venda" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DataVenda" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDataVenda" msprop:Generator_ColumnPropNameInRow="DataVenda" msprop:Generator_ColumnPropNameInTable="DataVendaColumn" msprop:Generator_UserColumnName="DataVenda" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="NomeCartão" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnNomeCartão" msprop:Generator_ColumnPropNameInRow="NomeCartão" msprop:Generator_ColumnPropNameInTable="NomeCartãoColumn" msprop:Generator_UserColumnName="NomeCartão" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Parcela" msprop:Generator_ColumnVarNameInTable="columnParcela" msprop:Generator_ColumnPropNameInRow="Parcela" msprop:Generator_ColumnPropNameInTable="ParcelaColumn" msprop:Generator_UserColumnName="Parcela" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="VValor" msprop:Generator_ColumnVarNameInTable="columnVValor" msprop:Generator_ColumnPropNameInRow="VValor" msprop:Generator_ColumnPropNameInTable="VValorColumn" msprop:Generator_UserColumnName="VValor" type="xs:double" minOccurs="0" />
+              <xs:element name="Pagto" msprop:Generator_ColumnVarNameInTable="columnPagto" msprop:Generator_ColumnPropNameInRow="Pagto" msprop:Generator_ColumnPropNameInTable="PagtoColumn" msprop:Generator_UserColumnName="Pagto" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Vencto" msprop:Generator_ColumnVarNameInTable="columnVencto" msprop:Generator_ColumnPropNameInRow="Vencto" msprop:Generator_ColumnPropNameInTable="VenctoColumn" msprop:Generator_UserColumnName="Vencto" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ChequesTodos" msprop:Generator_TableClassName="ChequesTodosDataTable" msprop:Generator_TableVarName="tableChequesTodos" msprop:Generator_RowChangedName="ChequesTodosRowChanged" msprop:Generator_TablePropName="ChequesTodos" msprop:Generator_RowDeletingName="ChequesTodosRowDeleting" msprop:Generator_RowChangingName="ChequesTodosRowChanging" msprop:Generator_RowEvHandlerName="ChequesTodosRowChangeEventHandler" msprop:Generator_RowDeletedName="ChequesTodosRowDeleted" msprop:Generator_RowClassName="ChequesTodosRow" msprop:Generator_UserTableName="ChequesTodos" msprop:Generator_RowEvArgName="ChequesTodosRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IDV" msprop:Generator_ColumnVarNameInTable="columnIDV" msprop:Generator_ColumnPropNameInRow="IDV" msprop:Generator_ColumnPropNameInTable="IDVColumn" msprop:Generator_UserColumnName="IDV" type="xs:int" />
+              <xs:element name="IdCC" msprop:Generator_ColumnVarNameInTable="columnIdCC" msprop:Generator_ColumnPropNameInRow="IdCC" msprop:Generator_ColumnPropNameInTable="IdCCColumn" msprop:Generator_UserColumnName="IdCC" type="xs:int" minOccurs="0" />
+              <xs:element name="N1" msprop:Generator_ColumnVarNameInTable="columnN1" msprop:Generator_ColumnPropNameInRow="N1" msprop:Generator_ColumnPropNameInTable="N1Column" msprop:Generator_UserColumnName="N1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="80" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="N" msprop:Generator_ColumnVarNameInTable="columnN" msprop:Generator_ColumnPropNameInRow="N" msprop:Generator_ColumnPropNameInTable="NColumn" msprop:Generator_UserColumnName="N" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="80" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Venda" msprop:Generator_ColumnVarNameInTable="columnVenda" msprop:Generator_ColumnPropNameInRow="Venda" msprop:Generator_ColumnPropNameInTable="VendaColumn" msprop:Generator_UserColumnName="Venda" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DataVenda" msprop:Generator_ColumnVarNameInTable="columnDataVenda" msprop:Generator_ColumnPropNameInRow="DataVenda" msprop:Generator_ColumnPropNameInTable="DataVendaColumn" msprop:Generator_UserColumnName="DataVenda" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Destino" msprop:Generator_ColumnVarNameInTable="columnDestino" msprop:Generator_ColumnPropNameInRow="Destino" msprop:Generator_ColumnPropNameInTable="DestinoColumn" msprop:Generator_UserColumnName="Destino" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Parcela" msprop:Generator_ColumnVarNameInTable="columnParcela" msprop:Generator_ColumnPropNameInRow="Parcela" msprop:Generator_ColumnPropNameInTable="ParcelaColumn" msprop:Generator_UserColumnName="Parcela" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="VValor" msprop:Generator_ColumnVarNameInTable="columnVValor" msprop:Generator_ColumnPropNameInRow="VValor" msprop:Generator_ColumnPropNameInTable="VValorColumn" msprop:Generator_UserColumnName="VValor" type="xs:double" minOccurs="0" />
+              <xs:element name="Pagto" msprop:Generator_ColumnVarNameInTable="columnPagto" msprop:Generator_ColumnPropNameInRow="Pagto" msprop:Generator_ColumnPropNameInTable="PagtoColumn" msprop:Generator_UserColumnName="Pagto" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Cheque" msprop:Generator_ColumnVarNameInTable="columnCheque" msprop:Generator_ColumnPropNameInRow="Cheque" msprop:Generator_ColumnPropNameInTable="ChequeColumn" msprop:Generator_UserColumnName="Cheque" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Banco" msprop:Generator_ColumnVarNameInTable="columnBanco" msprop:Generator_ColumnPropNameInRow="Banco" msprop:Generator_ColumnPropNameInTable="BancoColumn" msprop:Generator_UserColumnName="Banco" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Uso" msprop:Generator_ColumnVarNameInTable="columnUso" msprop:Generator_ColumnPropNameInRow="Uso" msprop:Generator_ColumnPropNameInTable="UsoColumn" msprop:Generator_UserColumnName="Uso" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Obs" msprop:Generator_ColumnVarNameInTable="columnObs" msprop:Generator_ColumnPropNameInRow="Obs" msprop:Generator_ColumnPropNameInTable="ObsColumn" msprop:Generator_UserColumnName="Obs" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Vencto" msprop:Generator_ColumnVarNameInTable="columnVencto" msprop:Generator_ColumnPropNameInRow="Vencto" msprop:Generator_ColumnPropNameInTable="VenctoColumn" msprop:Generator_UserColumnName="Vencto" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Baixar" msprop:Generator_ColumnVarNameInTable="columnBaixar" msprop:Generator_ColumnPropNameInRow="Baixar" msprop:Generator_ColumnPropNameInTable="BaixarColumn" msprop:Generator_UserColumnName="Baixar" type="xs:boolean" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CartõesTodos" msprop:Generator_TableClassName="CartõesTodosDataTable" msprop:Generator_TableVarName="tableCartõesTodos" msprop:Generator_TablePropName="CartõesTodos" msprop:Generator_RowDeletingName="CartõesTodosRowDeleting" msprop:Generator_RowChangingName="CartõesTodosRowChanging" msprop:Generator_RowEvHandlerName="CartõesTodosRowChangeEventHandler" msprop:Generator_RowDeletedName="CartõesTodosRowDeleted" msprop:Generator_UserTableName="CartõesTodos" msprop:Generator_RowChangedName="CartõesTodosRowChanged" msprop:Generator_RowEvArgName="CartõesTodosRowChangeEvent" msprop:Generator_RowClassName="CartõesTodosRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdCC" msprop:Generator_ColumnVarNameInTable="columnIdCC" msprop:Generator_ColumnPropNameInRow="IdCC" msprop:Generator_ColumnPropNameInTable="IdCCColumn" msprop:Generator_UserColumnName="IdCC" type="xs:int" minOccurs="0" />
+              <xs:element name="N1" msprop:Generator_ColumnVarNameInTable="columnN1" msprop:Generator_ColumnPropNameInRow="N1" msprop:Generator_ColumnPropNameInTable="N1Column" msprop:Generator_UserColumnName="N1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="80" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="N" msprop:Generator_ColumnVarNameInTable="columnN" msprop:Generator_ColumnPropNameInRow="N" msprop:Generator_ColumnPropNameInTable="NColumn" msprop:Generator_UserColumnName="N" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="80" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Venda" msprop:Generator_ColumnVarNameInTable="columnVenda" msprop:Generator_ColumnPropNameInRow="Venda" msprop:Generator_ColumnPropNameInTable="VendaColumn" msprop:Generator_UserColumnName="Venda" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DataVenda" msprop:Generator_ColumnVarNameInTable="columnDataVenda" msprop:Generator_ColumnPropNameInRow="DataVenda" msprop:Generator_ColumnPropNameInTable="DataVendaColumn" msprop:Generator_UserColumnName="DataVenda" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="NomeCartão" msprop:Generator_ColumnVarNameInTable="columnNomeCartão" msprop:Generator_ColumnPropNameInRow="NomeCartão" msprop:Generator_ColumnPropNameInTable="NomeCartãoColumn" msprop:Generator_UserColumnName="NomeCartão" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Parcela" msprop:Generator_ColumnVarNameInTable="columnParcela" msprop:Generator_ColumnPropNameInRow="Parcela" msprop:Generator_ColumnPropNameInTable="ParcelaColumn" msprop:Generator_UserColumnName="Parcela" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="VValor" msprop:Generator_ColumnVarNameInTable="columnVValor" msprop:Generator_ColumnPropNameInRow="VValor" msprop:Generator_ColumnPropNameInTable="VValorColumn" msprop:Generator_UserColumnName="VValor" type="xs:double" minOccurs="0" />
+              <xs:element name="Pagto" msprop:Generator_ColumnVarNameInTable="columnPagto" msprop:Generator_ColumnPropNameInRow="Pagto" msprop:Generator_ColumnPropNameInTable="PagtoColumn" msprop:Generator_UserColumnName="Pagto" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Vencto" msprop:Generator_ColumnVarNameInTable="columnVencto" msprop:Generator_ColumnPropNameInRow="Vencto" msprop:Generator_ColumnPropNameInTable="VenctoColumn" msprop:Generator_UserColumnName="Vencto" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="IDC" msprop:Generator_ColumnVarNameInTable="columnIDC" msprop:Generator_ColumnPropNameInRow="IDC" msprop:Generator_ColumnPropNameInTable="IDCColumn" msprop:Generator_UserColumnName="IDC" type="xs:int" />
+              <xs:element name="Baixar" msprop:Generator_ColumnVarNameInTable="columnBaixar" msprop:Generator_ColumnPropNameInRow="Baixar" msprop:Generator_ColumnPropNameInTable="BaixarColumn" msprop:Generator_UserColumnName="Baixar" type="xs:boolean" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="VENDAS_x0020_DET" msprop:Generator_TableClassName="VENDAS_DETDataTable" msprop:Generator_TableVarName="tableVENDAS_DET" msprop:Generator_TablePropName="VENDAS_DET" msprop:Generator_RowDeletingName="VENDAS_DETRowDeleting" msprop:Generator_RowChangingName="VENDAS_DETRowChanging" msprop:Generator_RowEvHandlerName="VENDAS_DETRowChangeEventHandler" msprop:Generator_RowDeletedName="VENDAS_DETRowDeleted" msprop:Generator_UserTableName="VENDAS DET" msprop:Generator_RowChangedName="VENDAS_DETRowChanged" msprop:Generator_RowEvArgName="VENDAS_DETRowChangeEvent" msprop:Generator_RowClassName="VENDAS_DETRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
+              <xs:element name="Peça" msprop:Generator_ColumnVarNameInTable="columnPeça" msprop:Generator_ColumnPropNameInRow="Peça" msprop:Generator_ColumnPropNameInTable="PeçaColumn" msprop:Generator_UserColumnName="Peça" type="xs:int" minOccurs="0" />
+              <xs:element name="ValorVenda" msprop:Generator_ColumnVarNameInTable="columnValorVenda" msprop:Generator_ColumnPropNameInRow="ValorVenda" msprop:Generator_ColumnPropNameInTable="ValorVendaColumn" msprop:Generator_UserColumnName="ValorVenda" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="cboPeças" msprop:Generator_TableClassName="cboPeçasDataTable" msprop:Generator_TableVarName="tablecboPeças" msprop:Generator_TablePropName="cboPeças" msprop:Generator_RowDeletingName="cboPeçasRowDeleting" msprop:Generator_RowChangingName="cboPeçasRowChanging" msprop:Generator_RowEvHandlerName="cboPeçasRowChangeEventHandler" msprop:Generator_RowDeletedName="cboPeçasRowDeleted" msprop:Generator_UserTableName="cboPeças" msprop:Generator_RowChangedName="cboPeçasRowChanged" msprop:Generator_RowEvArgName="cboPeçasRowChangeEvent" msprop:Generator_RowClassName="cboPeçasRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IDPeça" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIDPeça" msprop:Generator_ColumnPropNameInRow="IDPeça" msprop:Generator_ColumnPropNameInTable="IDPeçaColumn" msprop:Generator_UserColumnName="IDPeça" type="xs:int" />
+              <xs:element name="Modêlo" msprop:Generator_ColumnVarNameInTable="columnModêlo" msprop:Generator_ColumnPropNameInRow="Modêlo" msprop:Generator_ColumnPropNameInTable="ModêloColumn" msprop:Generator_UserColumnName="Modêlo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Comissão" msprop:Generator_ColumnVarNameInTable="columnComissão" msprop:Generator_ColumnPropNameInRow="Comissão" msprop:Generator_ColumnPropNameInTable="ComissãoColumn" msprop:Generator_UserColumnName="Comissão" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Vendida" msprop:Generator_ColumnVarNameInTable="columnVendida" msprop:Generator_ColumnPropNameInRow="Vendida" msprop:Generator_ColumnPropNameInTable="VendidaColumn" msprop:Generator_UserColumnName="Vendida" type="xs:boolean" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ChequesTodos" />
+      <xs:field xpath="mstns:IDV" />
+    </xs:unique>
+    <xs:unique name="CartõesTodos_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:CartõesTodos" />
+      <xs:field xpath="mstns:IDC" />
+    </xs:unique>
+    <xs:unique name="VENDAS_x0020_DET_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:VENDAS_x0020_DET" />
+      <xs:field xpath="mstns:Id" />
+    </xs:unique>
+    <xs:unique name="cboPeças_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:cboPeças" />
+      <xs:field xpath="mstns:IDPeça" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
