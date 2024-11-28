@@ -1,0 +1,1498 @@
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+Partial Public Class rptMateriaPrima
+    Inherits DevExpress.XtraReports.UI.XtraReport
+
+    'XtraReport overrides dispose to clean up the component list.
+    <System.Diagnostics.DebuggerNonUserCode()> _
+    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+        If disposing AndAlso components IsNot Nothing Then
+            components.Dispose()
+        End If
+        MyBase.Dispose(disposing)
+    End Sub
+
+    'Required by the Designer
+    Private components As System.ComponentModel.IContainer
+
+    'NOTE: The following procedure is required by the Designer
+    'It can be modified using the Designer.  
+    'Do not modify it using the code editor.
+    <System.Diagnostics.DebuggerStepThrough()> _
+    Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
+        Dim CustomSqlQuery1 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(rptMateriaPrima))
+        Me.TopMargin = New DevExpress.XtraReports.UI.TopMarginBand()
+        Me.BottomMargin = New DevExpress.XtraReports.UI.BottomMarginBand()
+        Me.pageInfo1 = New DevExpress.XtraReports.UI.XRPageInfo()
+        Me.ReportHeader = New DevExpress.XtraReports.UI.ReportHeaderBand()
+        Me.label1 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.VerticalHeader = New DevExpress.XtraReports.UI.VerticalHeaderBand()
+        Me.XrLabel13 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel3 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel2 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel1 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel7 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel10 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel12 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel15 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel18 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel21 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.VerticalDetail = New DevExpress.XtraReports.UI.VerticalDetailBand()
+        Me.XrLabel11 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel9 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel8 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel6 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel5 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel4 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel24 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel25 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel26 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel27 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel28 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel29 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel30 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel31 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel32 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel33 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel34 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel35 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel36 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel37 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel38 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel39 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel40 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel41 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel42 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel43 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel44 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel45 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel46 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.SqlDataSource1 = New DevExpress.DataAccess.Sql.SqlDataSource(Me.components)
+        Me.Title = New DevExpress.XtraReports.UI.XRControlStyle()
+        Me.PageInfo = New DevExpress.XtraReports.UI.XRControlStyle()
+        Me.DetailData1Vertical = New DevExpress.XtraReports.UI.XRControlStyle()
+        Me.DetailData1VerticalFirstRow = New DevExpress.XtraReports.UI.XRControlStyle()
+        Me.DetailData1VerticalLastRow = New DevExpress.XtraReports.UI.XRControlStyle()
+        Me.DetailData1VerticalRow_Even = New DevExpress.XtraReports.UI.XRControlStyle()
+        Me.HeaderData1Vertical = New DevExpress.XtraReports.UI.XRControlStyle()
+        Me.HeaderData1VerticalFirstRow = New DevExpress.XtraReports.UI.XRControlStyle()
+        Me.HeaderData1VerticalLastRow = New DevExpress.XtraReports.UI.XRControlStyle()
+        Me.HeaderData1VerticalRow_Even = New DevExpress.XtraReports.UI.XRControlStyle()
+        CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
+        '
+        'TopMargin
+        '
+        Me.TopMargin.Dpi = 254.0!
+        Me.TopMargin.HeightF = 243.0!
+        Me.TopMargin.Name = "TopMargin"
+        '
+        'BottomMargin
+        '
+        Me.BottomMargin.Dpi = 254.0!
+        Me.BottomMargin.HeightF = 58.0!
+        Me.BottomMargin.Name = "BottomMargin"
+        '
+        'pageInfo1
+        '
+        Me.pageInfo1.Borders = CType((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right), DevExpress.XtraPrinting.BorderSide)
+        Me.pageInfo1.Dpi = 254.0!
+        Me.pageInfo1.Font = New System.Drawing.Font("Arial", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.pageInfo1.ForeColor = System.Drawing.Color.Black
+        Me.pageInfo1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 69.39996!)
+        Me.pageInfo1.Name = "pageInfo1"
+        Me.pageInfo1.PageInfo = DevExpress.XtraPrinting.PageInfo.DateTime
+        Me.pageInfo1.SizeF = New System.Drawing.SizeF(1145.18!, 58.00002!)
+        Me.pageInfo1.StyleName = "PageInfo"
+        Me.pageInfo1.StylePriority.UseBorders = False
+        Me.pageInfo1.StylePriority.UseFont = False
+        Me.pageInfo1.StylePriority.UseForeColor = False
+        Me.pageInfo1.StylePriority.UseTextAlignment = False
+        Me.pageInfo1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.pageInfo1.TextFormatString = "{0:dd/MM/yyyy}"
+        '
+        'ReportHeader
+        '
+        Me.ReportHeader.Borders = DevExpress.XtraPrinting.BorderSide.Bottom
+        Me.ReportHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.pageInfo1, Me.label1})
+        Me.ReportHeader.Dpi = 254.0!
+        Me.ReportHeader.HeightF = 127.4!
+        Me.ReportHeader.Name = "ReportHeader"
+        Me.ReportHeader.StylePriority.UseBorders = False
+        '
+        'label1
+        '
+        Me.label1.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
+            Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.label1.Dpi = 254.0!
+        Me.label1.ForeColor = System.Drawing.Color.Black
+        Me.label1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 7.946354!)
+        Me.label1.Name = "label1"
+        Me.label1.SizeF = New System.Drawing.SizeF(1145.18!, 61.4536!)
+        Me.label1.StyleName = "Title"
+        Me.label1.StylePriority.UseBorders = False
+        Me.label1.StylePriority.UseForeColor = False
+        Me.label1.StylePriority.UseTextAlignment = False
+        Me.label1.Text = "Matéria Prima"
+        Me.label1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
+        '
+        'VerticalHeader
+        '
+        Me.VerticalHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel13, Me.XrLabel3, Me.XrLabel2, Me.XrLabel1, Me.XrLabel7, Me.XrLabel10, Me.XrLabel12, Me.XrLabel15, Me.XrLabel18, Me.XrLabel21})
+        Me.VerticalHeader.Dpi = 254.0!
+        Me.VerticalHeader.HeightF = 719.85!
+        Me.VerticalHeader.Name = "VerticalHeader"
+        Me.VerticalHeader.RepeatEveryPage = True
+        Me.VerticalHeader.WidthF = 286.045!
+        '
+        'XrLabel13
+        '
+        Me.XrLabel13.BackColor = System.Drawing.Color.White
+        Me.XrLabel13.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel13.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel13.Borders = DevExpress.XtraPrinting.BorderSide.Left
+        Me.XrLabel13.BorderWidth = 1.0!
+        Me.XrLabel13.CanGrow = False
+        Me.XrLabel13.Dpi = 254.0!
+        Me.XrLabel13.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel13.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel13.LocationFloat = New DevExpress.Utils.PointFloat(0!, 71.12!)
+        Me.XrLabel13.Name = "XrLabel13"
+        Me.XrLabel13.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel13.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel13.StyleName = "HeaderData1VerticalFirstRow"
+        Me.XrLabel13.StylePriority.UseBackColor = False
+        Me.XrLabel13.StylePriority.UseBorderColor = False
+        Me.XrLabel13.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel13.StylePriority.UseBorders = False
+        Me.XrLabel13.StylePriority.UseBorderWidth = False
+        Me.XrLabel13.StylePriority.UseFont = False
+        Me.XrLabel13.StylePriority.UseForeColor = False
+        Me.XrLabel13.StylePriority.UsePadding = False
+        Me.XrLabel13.StylePriority.UseTextAlignment = False
+        Me.XrLabel13.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.XrLabel13.WordWrap = False
+        '
+        'XrLabel3
+        '
+        Me.XrLabel3.BackColor = System.Drawing.Color.White
+        Me.XrLabel3.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel3.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel3.Borders = CType((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel3.BorderWidth = 1.0!
+        Me.XrLabel3.CanGrow = False
+        Me.XrLabel3.Dpi = 254.0!
+        Me.XrLabel3.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel3.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel3.LocationFloat = New DevExpress.Utils.PointFloat(0!, 640.08!)
+        Me.XrLabel3.Name = "XrLabel3"
+        Me.XrLabel3.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel3.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel3.StyleName = "HeaderData1Vertical"
+        Me.XrLabel3.StylePriority.UseBackColor = False
+        Me.XrLabel3.StylePriority.UseBorderColor = False
+        Me.XrLabel3.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel3.StylePriority.UseBorders = False
+        Me.XrLabel3.StylePriority.UseBorderWidth = False
+        Me.XrLabel3.StylePriority.UseFont = False
+        Me.XrLabel3.StylePriority.UseForeColor = False
+        Me.XrLabel3.StylePriority.UsePadding = False
+        Me.XrLabel3.StylePriority.UseTextAlignment = False
+        Me.XrLabel3.Text = "Prata"
+        Me.XrLabel3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.XrLabel3.WordWrap = False
+        '
+        'XrLabel2
+        '
+        Me.XrLabel2.BackColor = System.Drawing.Color.White
+        Me.XrLabel2.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel2.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel2.Borders = CType((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel2.BorderWidth = 1.0!
+        Me.XrLabel2.CanGrow = False
+        Me.XrLabel2.Dpi = 254.0!
+        Me.XrLabel2.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel2.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel2.LocationFloat = New DevExpress.Utils.PointFloat(0!, 568.96!)
+        Me.XrLabel2.Name = "XrLabel2"
+        Me.XrLabel2.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel2.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel2.StyleName = "HeaderData1Vertical"
+        Me.XrLabel2.StylePriority.UseBackColor = False
+        Me.XrLabel2.StylePriority.UseBorderColor = False
+        Me.XrLabel2.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel2.StylePriority.UseBorders = False
+        Me.XrLabel2.StylePriority.UseBorderWidth = False
+        Me.XrLabel2.StylePriority.UseFont = False
+        Me.XrLabel2.StylePriority.UseForeColor = False
+        Me.XrLabel2.StylePriority.UsePadding = False
+        Me.XrLabel2.StylePriority.UseTextAlignment = False
+        Me.XrLabel2.Text = "Ouro"
+        Me.XrLabel2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.XrLabel2.WordWrap = False
+        '
+        'XrLabel1
+        '
+        Me.XrLabel1.BackColor = System.Drawing.Color.White
+        Me.XrLabel1.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel1.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel1.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel1.BorderWidth = 1.0!
+        Me.XrLabel1.Dpi = 254.0!
+        Me.XrLabel1.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel1.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
+        Me.XrLabel1.Name = "XrLabel1"
+        Me.XrLabel1.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel1.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel1.StyleName = "HeaderData1VerticalFirstRow"
+        Me.XrLabel1.StylePriority.UseBackColor = False
+        Me.XrLabel1.StylePriority.UseBorderColor = False
+        Me.XrLabel1.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel1.StylePriority.UseBorders = False
+        Me.XrLabel1.StylePriority.UseBorderWidth = False
+        Me.XrLabel1.StylePriority.UseFont = False
+        Me.XrLabel1.StylePriority.UseForeColor = False
+        Me.XrLabel1.StylePriority.UsePadding = False
+        Me.XrLabel1.StylePriority.UseTextAlignment = False
+        Me.XrLabel1.Text = "Diamantes"
+        Me.XrLabel1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.XrLabel1.WordWrap = False
+        '
+        'XrLabel7
+        '
+        Me.XrLabel7.BackColor = System.Drawing.Color.White
+        Me.XrLabel7.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel7.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel7.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel7.BorderWidth = 1.0!
+        Me.XrLabel7.Dpi = 254.0!
+        Me.XrLabel7.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel7.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel7.LocationFloat = New DevExpress.Utils.PointFloat(0!, 142.24!)
+        Me.XrLabel7.Name = "XrLabel7"
+        Me.XrLabel7.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel7.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel7.StyleName = "HeaderData1Vertical"
+        Me.XrLabel7.StylePriority.UseBackColor = False
+        Me.XrLabel7.StylePriority.UseBorderColor = False
+        Me.XrLabel7.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel7.StylePriority.UseBorders = False
+        Me.XrLabel7.StylePriority.UseBorderWidth = False
+        Me.XrLabel7.StylePriority.UseFont = False
+        Me.XrLabel7.StylePriority.UseForeColor = False
+        Me.XrLabel7.StylePriority.UsePadding = False
+        Me.XrLabel7.StylePriority.UseTextAlignment = False
+        Me.XrLabel7.Text = "Pedras Bras."
+        Me.XrLabel7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.XrLabel7.WordWrap = False
+        '
+        'XrLabel10
+        '
+        Me.XrLabel10.BackColor = System.Drawing.Color.White
+        Me.XrLabel10.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel10.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel10.Borders = CType((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel10.BorderWidth = 1.0!
+        Me.XrLabel10.Dpi = 254.0!
+        Me.XrLabel10.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel10.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel10.LocationFloat = New DevExpress.Utils.PointFloat(0!, 213.36!)
+        Me.XrLabel10.Name = "XrLabel10"
+        Me.XrLabel10.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel10.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel10.StyleName = "HeaderData1VerticalRow_Even"
+        Me.XrLabel10.StylePriority.UseBackColor = False
+        Me.XrLabel10.StylePriority.UseBorderColor = False
+        Me.XrLabel10.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel10.StylePriority.UseBorders = False
+        Me.XrLabel10.StylePriority.UseBorderWidth = False
+        Me.XrLabel10.StylePriority.UseFont = False
+        Me.XrLabel10.StylePriority.UseForeColor = False
+        Me.XrLabel10.StylePriority.UsePadding = False
+        Me.XrLabel10.StylePriority.UseTextAlignment = False
+        Me.XrLabel10.Text = "Pérolas"
+        Me.XrLabel10.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.XrLabel10.WordWrap = False
+        '
+        'XrLabel12
+        '
+        Me.XrLabel12.BackColor = System.Drawing.Color.White
+        Me.XrLabel12.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel12.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel12.Borders = CType((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel12.BorderWidth = 1.0!
+        Me.XrLabel12.Dpi = 254.0!
+        Me.XrLabel12.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel12.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel12.LocationFloat = New DevExpress.Utils.PointFloat(0!, 284.48!)
+        Me.XrLabel12.Name = "XrLabel12"
+        Me.XrLabel12.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel12.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel12.StyleName = "HeaderData1VerticalRow_Even"
+        Me.XrLabel12.StylePriority.UseBackColor = False
+        Me.XrLabel12.StylePriority.UseBorderColor = False
+        Me.XrLabel12.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel12.StylePriority.UseBorders = False
+        Me.XrLabel12.StylePriority.UseBorderWidth = False
+        Me.XrLabel12.StylePriority.UseFont = False
+        Me.XrLabel12.StylePriority.UseForeColor = False
+        Me.XrLabel12.StylePriority.UsePadding = False
+        Me.XrLabel12.StylePriority.UseTextAlignment = False
+        Me.XrLabel12.Text = "Rubis"
+        Me.XrLabel12.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.XrLabel12.WordWrap = False
+        '
+        'XrLabel15
+        '
+        Me.XrLabel15.BackColor = System.Drawing.Color.White
+        Me.XrLabel15.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel15.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel15.Borders = CType((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel15.BorderWidth = 1.0!
+        Me.XrLabel15.Dpi = 254.0!
+        Me.XrLabel15.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel15.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel15.LocationFloat = New DevExpress.Utils.PointFloat(0!, 355.6!)
+        Me.XrLabel15.Name = "XrLabel15"
+        Me.XrLabel15.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel15.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel15.StyleName = "HeaderData1Vertical"
+        Me.XrLabel15.StylePriority.UseBackColor = False
+        Me.XrLabel15.StylePriority.UseBorderColor = False
+        Me.XrLabel15.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel15.StylePriority.UseBorders = False
+        Me.XrLabel15.StylePriority.UseBorderWidth = False
+        Me.XrLabel15.StylePriority.UseFont = False
+        Me.XrLabel15.StylePriority.UseForeColor = False
+        Me.XrLabel15.StylePriority.UsePadding = False
+        Me.XrLabel15.StylePriority.UseTextAlignment = False
+        Me.XrLabel15.Text = "Safiras"
+        Me.XrLabel15.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.XrLabel15.WordWrap = False
+        '
+        'XrLabel18
+        '
+        Me.XrLabel18.BackColor = System.Drawing.Color.White
+        Me.XrLabel18.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel18.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel18.Borders = CType((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel18.BorderWidth = 1.0!
+        Me.XrLabel18.Dpi = 254.0!
+        Me.XrLabel18.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel18.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel18.LocationFloat = New DevExpress.Utils.PointFloat(0!, 426.72!)
+        Me.XrLabel18.Name = "XrLabel18"
+        Me.XrLabel18.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel18.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel18.StyleName = "HeaderData1VerticalRow_Even"
+        Me.XrLabel18.StylePriority.UseBackColor = False
+        Me.XrLabel18.StylePriority.UseBorderColor = False
+        Me.XrLabel18.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel18.StylePriority.UseBorders = False
+        Me.XrLabel18.StylePriority.UseBorderWidth = False
+        Me.XrLabel18.StylePriority.UseFont = False
+        Me.XrLabel18.StylePriority.UseForeColor = False
+        Me.XrLabel18.StylePriority.UsePadding = False
+        Me.XrLabel18.StylePriority.UseTextAlignment = False
+        Me.XrLabel18.Text = "Esmeraldas"
+        Me.XrLabel18.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.XrLabel18.WordWrap = False
+        '
+        'XrLabel21
+        '
+        Me.XrLabel21.BackColor = System.Drawing.Color.White
+        Me.XrLabel21.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel21.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel21.Borders = CType((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel21.BorderWidth = 1.0!
+        Me.XrLabel21.Dpi = 254.0!
+        Me.XrLabel21.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel21.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel21.LocationFloat = New DevExpress.Utils.PointFloat(0!, 497.84!)
+        Me.XrLabel21.Name = "XrLabel21"
+        Me.XrLabel21.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel21.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel21.StyleName = "HeaderData1Vertical"
+        Me.XrLabel21.StylePriority.UseBackColor = False
+        Me.XrLabel21.StylePriority.UseBorderColor = False
+        Me.XrLabel21.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel21.StylePriority.UseBorders = False
+        Me.XrLabel21.StylePriority.UseBorderWidth = False
+        Me.XrLabel21.StylePriority.UseFont = False
+        Me.XrLabel21.StylePriority.UseForeColor = False
+        Me.XrLabel21.StylePriority.UsePadding = False
+        Me.XrLabel21.StylePriority.UseTextAlignment = False
+        Me.XrLabel21.Text = "Pedras Opacas"
+        Me.XrLabel21.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.XrLabel21.WordWrap = False
+        '
+        'VerticalDetail
+        '
+        Me.VerticalDetail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel11, Me.XrLabel9, Me.XrLabel8, Me.XrLabel6, Me.XrLabel5, Me.XrLabel4, Me.XrLabel24, Me.XrLabel25, Me.XrLabel26, Me.XrLabel27, Me.XrLabel28, Me.XrLabel29, Me.XrLabel30, Me.XrLabel31, Me.XrLabel32, Me.XrLabel33, Me.XrLabel34, Me.XrLabel35, Me.XrLabel36, Me.XrLabel37, Me.XrLabel38, Me.XrLabel39, Me.XrLabel40, Me.XrLabel41, Me.XrLabel42, Me.XrLabel43, Me.XrLabel44, Me.XrLabel45, Me.XrLabel46})
+        Me.VerticalDetail.Dpi = 254.0!
+        Me.VerticalDetail.HeightF = 719.85!
+        Me.VerticalDetail.KeepTogether = True
+        Me.VerticalDetail.Name = "VerticalDetail"
+        Me.VerticalDetail.WidthF = 989.5175!
+        '
+        'XrLabel11
+        '
+        Me.XrLabel11.BackColor = System.Drawing.Color.Transparent
+        Me.XrLabel11.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel11.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel11.Borders = CType((DevExpress.XtraPrinting.BorderSide.Right Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel11.BorderWidth = 1.0!
+        Me.XrLabel11.CanGrow = False
+        Me.XrLabel11.Dpi = 254.0!
+        Me.XrLabel11.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.XrLabel11.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel11.LocationFloat = New DevExpress.Utils.PointFloat(286.045!, 640.08!)
+        Me.XrLabel11.Name = "XrLabel11"
+        Me.XrLabel11.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel11.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel11.StyleName = "DetailData1VerticalRow_Even"
+        Me.XrLabel11.StylePriority.UseBackColor = False
+        Me.XrLabel11.StylePriority.UseBorderColor = False
+        Me.XrLabel11.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel11.StylePriority.UseBorders = False
+        Me.XrLabel11.StylePriority.UseBorderWidth = False
+        Me.XrLabel11.StylePriority.UseFont = False
+        Me.XrLabel11.StylePriority.UseForeColor = False
+        Me.XrLabel11.StylePriority.UsePadding = False
+        Me.XrLabel11.StylePriority.UseTextAlignment = False
+        Me.XrLabel11.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
+        Me.XrLabel11.WordWrap = False
+        '
+        'XrLabel9
+        '
+        Me.XrLabel9.BackColor = System.Drawing.Color.Transparent
+        Me.XrLabel9.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel9.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel9.Borders = CType((DevExpress.XtraPrinting.BorderSide.Right Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel9.BorderWidth = 1.0!
+        Me.XrLabel9.CanGrow = False
+        Me.XrLabel9.Dpi = 254.0!
+        Me.XrLabel9.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.XrLabel9.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel9.LocationFloat = New DevExpress.Utils.PointFloat(286.045!, 568.96!)
+        Me.XrLabel9.Name = "XrLabel9"
+        Me.XrLabel9.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel9.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel9.StyleName = "DetailData1VerticalRow_Even"
+        Me.XrLabel9.StylePriority.UseBackColor = False
+        Me.XrLabel9.StylePriority.UseBorderColor = False
+        Me.XrLabel9.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel9.StylePriority.UseBorders = False
+        Me.XrLabel9.StylePriority.UseBorderWidth = False
+        Me.XrLabel9.StylePriority.UseFont = False
+        Me.XrLabel9.StylePriority.UseForeColor = False
+        Me.XrLabel9.StylePriority.UsePadding = False
+        Me.XrLabel9.StylePriority.UseTextAlignment = False
+        Me.XrLabel9.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
+        Me.XrLabel9.WordWrap = False
+        '
+        'XrLabel8
+        '
+        Me.XrLabel8.BackColor = System.Drawing.Color.White
+        Me.XrLabel8.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel8.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel8.Borders = CType((DevExpress.XtraPrinting.BorderSide.Right Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel8.BorderWidth = 1.0!
+        Me.XrLabel8.CanGrow = False
+        Me.XrLabel8.Dpi = 254.0!
+        Me.XrLabel8.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[PrataVal]")})
+        Me.XrLabel8.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.XrLabel8.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel8.LocationFloat = New DevExpress.Utils.PointFloat(572.0901!, 640.08!)
+        Me.XrLabel8.Name = "XrLabel8"
+        Me.XrLabel8.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel8.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel8.StyleName = "DetailData1Vertical"
+        Me.XrLabel8.StylePriority.UseBackColor = False
+        Me.XrLabel8.StylePriority.UseBorderColor = False
+        Me.XrLabel8.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel8.StylePriority.UseBorders = False
+        Me.XrLabel8.StylePriority.UseBorderWidth = False
+        Me.XrLabel8.StylePriority.UseFont = False
+        Me.XrLabel8.StylePriority.UseForeColor = False
+        Me.XrLabel8.StylePriority.UsePadding = False
+        Me.XrLabel8.StylePriority.UseTextAlignment = False
+        Me.XrLabel8.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
+        Me.XrLabel8.WordWrap = False
+        '
+        'XrLabel6
+        '
+        Me.XrLabel6.BackColor = System.Drawing.Color.White
+        Me.XrLabel6.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel6.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel6.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel6.BorderWidth = 1.0!
+        Me.XrLabel6.CanGrow = False
+        Me.XrLabel6.Dpi = 254.0!
+        Me.XrLabel6.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[PrataQt]")})
+        Me.XrLabel6.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.XrLabel6.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel6.LocationFloat = New DevExpress.Utils.PointFloat(0!, 640.08!)
+        Me.XrLabel6.Name = "XrLabel6"
+        Me.XrLabel6.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel6.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel6.StyleName = "DetailData1Vertical"
+        Me.XrLabel6.StylePriority.UseBackColor = False
+        Me.XrLabel6.StylePriority.UseBorderColor = False
+        Me.XrLabel6.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel6.StylePriority.UseBorders = False
+        Me.XrLabel6.StylePriority.UseBorderWidth = False
+        Me.XrLabel6.StylePriority.UseFont = False
+        Me.XrLabel6.StylePriority.UseForeColor = False
+        Me.XrLabel6.StylePriority.UsePadding = False
+        Me.XrLabel6.StylePriority.UseTextAlignment = False
+        Me.XrLabel6.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
+        Me.XrLabel6.WordWrap = False
+        '
+        'XrLabel5
+        '
+        Me.XrLabel5.BackColor = System.Drawing.Color.White
+        Me.XrLabel5.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel5.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel5.Borders = CType((DevExpress.XtraPrinting.BorderSide.Right Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel5.BorderWidth = 1.0!
+        Me.XrLabel5.CanGrow = False
+        Me.XrLabel5.Dpi = 254.0!
+        Me.XrLabel5.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[OuroVal]")})
+        Me.XrLabel5.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.XrLabel5.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel5.LocationFloat = New DevExpress.Utils.PointFloat(572.0901!, 568.96!)
+        Me.XrLabel5.Name = "XrLabel5"
+        Me.XrLabel5.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel5.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel5.StyleName = "DetailData1Vertical"
+        Me.XrLabel5.StylePriority.UseBackColor = False
+        Me.XrLabel5.StylePriority.UseBorderColor = False
+        Me.XrLabel5.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel5.StylePriority.UseBorders = False
+        Me.XrLabel5.StylePriority.UseBorderWidth = False
+        Me.XrLabel5.StylePriority.UseFont = False
+        Me.XrLabel5.StylePriority.UseForeColor = False
+        Me.XrLabel5.StylePriority.UsePadding = False
+        Me.XrLabel5.StylePriority.UseTextAlignment = False
+        Me.XrLabel5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
+        Me.XrLabel5.WordWrap = False
+        '
+        'XrLabel4
+        '
+        Me.XrLabel4.BackColor = System.Drawing.Color.White
+        Me.XrLabel4.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel4.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel4.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel4.BorderWidth = 1.0!
+        Me.XrLabel4.CanGrow = False
+        Me.XrLabel4.Dpi = 254.0!
+        Me.XrLabel4.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[OuroQt]")})
+        Me.XrLabel4.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.XrLabel4.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel4.LocationFloat = New DevExpress.Utils.PointFloat(0!, 568.96!)
+        Me.XrLabel4.Name = "XrLabel4"
+        Me.XrLabel4.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel4.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel4.StyleName = "DetailData1Vertical"
+        Me.XrLabel4.StylePriority.UseBackColor = False
+        Me.XrLabel4.StylePriority.UseBorderColor = False
+        Me.XrLabel4.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel4.StylePriority.UseBorders = False
+        Me.XrLabel4.StylePriority.UseBorderWidth = False
+        Me.XrLabel4.StylePriority.UseFont = False
+        Me.XrLabel4.StylePriority.UseForeColor = False
+        Me.XrLabel4.StylePriority.UsePadding = False
+        Me.XrLabel4.StylePriority.UseTextAlignment = False
+        Me.XrLabel4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
+        Me.XrLabel4.WordWrap = False
+        '
+        'XrLabel24
+        '
+        Me.XrLabel24.BackColor = System.Drawing.Color.White
+        Me.XrLabel24.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel24.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel24.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
+            Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel24.BorderWidth = 1.0!
+        Me.XrLabel24.CanGrow = False
+        Me.XrLabel24.Dpi = 254.0!
+        Me.XrLabel24.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DiamantesCT]")})
+        Me.XrLabel24.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.XrLabel24.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel24.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
+        Me.XrLabel24.Name = "XrLabel24"
+        Me.XrLabel24.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel24.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel24.StyleName = "DetailData1VerticalFirstRow"
+        Me.XrLabel24.StylePriority.UseBackColor = False
+        Me.XrLabel24.StylePriority.UseBorderColor = False
+        Me.XrLabel24.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel24.StylePriority.UseBorders = False
+        Me.XrLabel24.StylePriority.UseBorderWidth = False
+        Me.XrLabel24.StylePriority.UseFont = False
+        Me.XrLabel24.StylePriority.UseForeColor = False
+        Me.XrLabel24.StylePriority.UsePadding = False
+        Me.XrLabel24.StylePriority.UseTextAlignment = False
+        Me.XrLabel24.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
+        Me.XrLabel24.WordWrap = False
+        '
+        'XrLabel25
+        '
+        Me.XrLabel25.BackColor = System.Drawing.Color.Transparent
+        Me.XrLabel25.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel25.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel25.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Top Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel25.BorderWidth = 1.0!
+        Me.XrLabel25.CanGrow = False
+        Me.XrLabel25.Dpi = 254.0!
+        Me.XrLabel25.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DiamantesQtde]")})
+        Me.XrLabel25.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.XrLabel25.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel25.LocationFloat = New DevExpress.Utils.PointFloat(286.045!, 0!)
+        Me.XrLabel25.Name = "XrLabel25"
+        Me.XrLabel25.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel25.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel25.StyleName = "DetailData1VerticalRow_Even"
+        Me.XrLabel25.StylePriority.UseBackColor = False
+        Me.XrLabel25.StylePriority.UseBorderColor = False
+        Me.XrLabel25.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel25.StylePriority.UseBorders = False
+        Me.XrLabel25.StylePriority.UseBorderWidth = False
+        Me.XrLabel25.StylePriority.UseFont = False
+        Me.XrLabel25.StylePriority.UseForeColor = False
+        Me.XrLabel25.StylePriority.UsePadding = False
+        Me.XrLabel25.StylePriority.UseTextAlignment = False
+        Me.XrLabel25.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
+        Me.XrLabel25.WordWrap = False
+        '
+        'XrLabel26
+        '
+        Me.XrLabel26.BackColor = System.Drawing.Color.White
+        Me.XrLabel26.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel26.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel26.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Top Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel26.BorderWidth = 1.0!
+        Me.XrLabel26.CanGrow = False
+        Me.XrLabel26.Dpi = 254.0!
+        Me.XrLabel26.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DiamantesValor]")})
+        Me.XrLabel26.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.XrLabel26.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel26.LocationFloat = New DevExpress.Utils.PointFloat(572.0901!, 0!)
+        Me.XrLabel26.Name = "XrLabel26"
+        Me.XrLabel26.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel26.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel26.StyleName = "DetailData1Vertical"
+        Me.XrLabel26.StylePriority.UseBackColor = False
+        Me.XrLabel26.StylePriority.UseBorderColor = False
+        Me.XrLabel26.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel26.StylePriority.UseBorders = False
+        Me.XrLabel26.StylePriority.UseBorderWidth = False
+        Me.XrLabel26.StylePriority.UseFont = False
+        Me.XrLabel26.StylePriority.UseForeColor = False
+        Me.XrLabel26.StylePriority.UsePadding = False
+        Me.XrLabel26.StylePriority.UseTextAlignment = False
+        Me.XrLabel26.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
+        Me.XrLabel26.WordWrap = False
+        '
+        'XrLabel27
+        '
+        Me.XrLabel27.BackColor = System.Drawing.Color.Transparent
+        Me.XrLabel27.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel27.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel27.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel27.BorderWidth = 1.0!
+        Me.XrLabel27.CanGrow = False
+        Me.XrLabel27.Dpi = 254.0!
+        Me.XrLabel27.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Diamantes2CT]")})
+        Me.XrLabel27.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.XrLabel27.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel27.LocationFloat = New DevExpress.Utils.PointFloat(0!, 71.12!)
+        Me.XrLabel27.Name = "XrLabel27"
+        Me.XrLabel27.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel27.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel27.StyleName = "DetailData1VerticalRow_Even"
+        Me.XrLabel27.StylePriority.UseBackColor = False
+        Me.XrLabel27.StylePriority.UseBorderColor = False
+        Me.XrLabel27.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel27.StylePriority.UseBorders = False
+        Me.XrLabel27.StylePriority.UseBorderWidth = False
+        Me.XrLabel27.StylePriority.UseFont = False
+        Me.XrLabel27.StylePriority.UseForeColor = False
+        Me.XrLabel27.StylePriority.UsePadding = False
+        Me.XrLabel27.StylePriority.UseTextAlignment = False
+        Me.XrLabel27.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
+        Me.XrLabel27.WordWrap = False
+        '
+        'XrLabel28
+        '
+        Me.XrLabel28.BackColor = System.Drawing.Color.White
+        Me.XrLabel28.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel28.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel28.Borders = CType((DevExpress.XtraPrinting.BorderSide.Right Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel28.BorderWidth = 1.0!
+        Me.XrLabel28.CanGrow = False
+        Me.XrLabel28.Dpi = 254.0!
+        Me.XrLabel28.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Diamantes2Qtde]")})
+        Me.XrLabel28.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.XrLabel28.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel28.LocationFloat = New DevExpress.Utils.PointFloat(286.045!, 71.12001!)
+        Me.XrLabel28.Name = "XrLabel28"
+        Me.XrLabel28.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel28.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel28.StyleName = "DetailData1Vertical"
+        Me.XrLabel28.StylePriority.UseBackColor = False
+        Me.XrLabel28.StylePriority.UseBorderColor = False
+        Me.XrLabel28.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel28.StylePriority.UseBorders = False
+        Me.XrLabel28.StylePriority.UseBorderWidth = False
+        Me.XrLabel28.StylePriority.UseFont = False
+        Me.XrLabel28.StylePriority.UseForeColor = False
+        Me.XrLabel28.StylePriority.UsePadding = False
+        Me.XrLabel28.StylePriority.UseTextAlignment = False
+        Me.XrLabel28.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
+        Me.XrLabel28.WordWrap = False
+        '
+        'XrLabel29
+        '
+        Me.XrLabel29.BackColor = System.Drawing.Color.Transparent
+        Me.XrLabel29.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel29.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel29.Borders = CType((DevExpress.XtraPrinting.BorderSide.Right Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel29.BorderWidth = 1.0!
+        Me.XrLabel29.CanGrow = False
+        Me.XrLabel29.Dpi = 254.0!
+        Me.XrLabel29.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Diamantes2Valor]")})
+        Me.XrLabel29.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.XrLabel29.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel29.LocationFloat = New DevExpress.Utils.PointFloat(572.0901!, 71.12001!)
+        Me.XrLabel29.Name = "XrLabel29"
+        Me.XrLabel29.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel29.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel29.StyleName = "DetailData1VerticalRow_Even"
+        Me.XrLabel29.StylePriority.UseBackColor = False
+        Me.XrLabel29.StylePriority.UseBorderColor = False
+        Me.XrLabel29.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel29.StylePriority.UseBorders = False
+        Me.XrLabel29.StylePriority.UseBorderWidth = False
+        Me.XrLabel29.StylePriority.UseFont = False
+        Me.XrLabel29.StylePriority.UseForeColor = False
+        Me.XrLabel29.StylePriority.UsePadding = False
+        Me.XrLabel29.StylePriority.UseTextAlignment = False
+        Me.XrLabel29.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
+        Me.XrLabel29.WordWrap = False
+        '
+        'XrLabel30
+        '
+        Me.XrLabel30.BackColor = System.Drawing.Color.White
+        Me.XrLabel30.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel30.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel30.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel30.BorderWidth = 1.0!
+        Me.XrLabel30.CanGrow = False
+        Me.XrLabel30.Dpi = 254.0!
+        Me.XrLabel30.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[BrasCT]")})
+        Me.XrLabel30.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.XrLabel30.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel30.LocationFloat = New DevExpress.Utils.PointFloat(0!, 142.24!)
+        Me.XrLabel30.Name = "XrLabel30"
+        Me.XrLabel30.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel30.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel30.StyleName = "DetailData1Vertical"
+        Me.XrLabel30.StylePriority.UseBackColor = False
+        Me.XrLabel30.StylePriority.UseBorderColor = False
+        Me.XrLabel30.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel30.StylePriority.UseBorders = False
+        Me.XrLabel30.StylePriority.UseBorderWidth = False
+        Me.XrLabel30.StylePriority.UseFont = False
+        Me.XrLabel30.StylePriority.UseForeColor = False
+        Me.XrLabel30.StylePriority.UsePadding = False
+        Me.XrLabel30.StylePriority.UseTextAlignment = False
+        Me.XrLabel30.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
+        Me.XrLabel30.WordWrap = False
+        '
+        'XrLabel31
+        '
+        Me.XrLabel31.BackColor = System.Drawing.Color.Transparent
+        Me.XrLabel31.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel31.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel31.Borders = CType((DevExpress.XtraPrinting.BorderSide.Right Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel31.BorderWidth = 1.0!
+        Me.XrLabel31.CanGrow = False
+        Me.XrLabel31.Dpi = 254.0!
+        Me.XrLabel31.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[PedrasBrasQtde]")})
+        Me.XrLabel31.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.XrLabel31.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel31.LocationFloat = New DevExpress.Utils.PointFloat(286.045!, 142.24!)
+        Me.XrLabel31.Name = "XrLabel31"
+        Me.XrLabel31.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel31.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel31.StyleName = "DetailData1VerticalRow_Even"
+        Me.XrLabel31.StylePriority.UseBackColor = False
+        Me.XrLabel31.StylePriority.UseBorderColor = False
+        Me.XrLabel31.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel31.StylePriority.UseBorders = False
+        Me.XrLabel31.StylePriority.UseBorderWidth = False
+        Me.XrLabel31.StylePriority.UseFont = False
+        Me.XrLabel31.StylePriority.UseForeColor = False
+        Me.XrLabel31.StylePriority.UsePadding = False
+        Me.XrLabel31.StylePriority.UseTextAlignment = False
+        Me.XrLabel31.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
+        Me.XrLabel31.WordWrap = False
+        '
+        'XrLabel32
+        '
+        Me.XrLabel32.BackColor = System.Drawing.Color.White
+        Me.XrLabel32.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel32.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel32.Borders = CType((DevExpress.XtraPrinting.BorderSide.Right Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel32.BorderWidth = 1.0!
+        Me.XrLabel32.CanGrow = False
+        Me.XrLabel32.Dpi = 254.0!
+        Me.XrLabel32.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[PedrasBrasValor]")})
+        Me.XrLabel32.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.XrLabel32.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel32.LocationFloat = New DevExpress.Utils.PointFloat(572.0901!, 142.24!)
+        Me.XrLabel32.Name = "XrLabel32"
+        Me.XrLabel32.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel32.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel32.StyleName = "DetailData1Vertical"
+        Me.XrLabel32.StylePriority.UseBackColor = False
+        Me.XrLabel32.StylePriority.UseBorderColor = False
+        Me.XrLabel32.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel32.StylePriority.UseBorders = False
+        Me.XrLabel32.StylePriority.UseBorderWidth = False
+        Me.XrLabel32.StylePriority.UseFont = False
+        Me.XrLabel32.StylePriority.UseForeColor = False
+        Me.XrLabel32.StylePriority.UsePadding = False
+        Me.XrLabel32.StylePriority.UseTextAlignment = False
+        Me.XrLabel32.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
+        Me.XrLabel32.WordWrap = False
+        '
+        'XrLabel33
+        '
+        Me.XrLabel33.BackColor = System.Drawing.Color.Transparent
+        Me.XrLabel33.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel33.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel33.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel33.BorderWidth = 1.0!
+        Me.XrLabel33.CanGrow = False
+        Me.XrLabel33.Dpi = 254.0!
+        Me.XrLabel33.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[PerolasCT]")})
+        Me.XrLabel33.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.XrLabel33.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel33.LocationFloat = New DevExpress.Utils.PointFloat(0!, 213.36!)
+        Me.XrLabel33.Name = "XrLabel33"
+        Me.XrLabel33.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel33.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel33.StyleName = "DetailData1VerticalRow_Even"
+        Me.XrLabel33.StylePriority.UseBackColor = False
+        Me.XrLabel33.StylePriority.UseBorderColor = False
+        Me.XrLabel33.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel33.StylePriority.UseBorders = False
+        Me.XrLabel33.StylePriority.UseBorderWidth = False
+        Me.XrLabel33.StylePriority.UseFont = False
+        Me.XrLabel33.StylePriority.UseForeColor = False
+        Me.XrLabel33.StylePriority.UsePadding = False
+        Me.XrLabel33.StylePriority.UseTextAlignment = False
+        Me.XrLabel33.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
+        Me.XrLabel33.WordWrap = False
+        '
+        'XrLabel34
+        '
+        Me.XrLabel34.BackColor = System.Drawing.Color.White
+        Me.XrLabel34.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel34.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel34.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel34.BorderWidth = 1.0!
+        Me.XrLabel34.CanGrow = False
+        Me.XrLabel34.Dpi = 254.0!
+        Me.XrLabel34.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[PerolasValor]")})
+        Me.XrLabel34.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.XrLabel34.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel34.LocationFloat = New DevExpress.Utils.PointFloat(570.09!, 213.36!)
+        Me.XrLabel34.Name = "XrLabel34"
+        Me.XrLabel34.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel34.SizeF = New System.Drawing.SizeF(288.0451!, 71.12!)
+        Me.XrLabel34.StyleName = "DetailData1Vertical"
+        Me.XrLabel34.StylePriority.UseBackColor = False
+        Me.XrLabel34.StylePriority.UseBorderColor = False
+        Me.XrLabel34.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel34.StylePriority.UseBorders = False
+        Me.XrLabel34.StylePriority.UseBorderWidth = False
+        Me.XrLabel34.StylePriority.UseFont = False
+        Me.XrLabel34.StylePriority.UseForeColor = False
+        Me.XrLabel34.StylePriority.UsePadding = False
+        Me.XrLabel34.StylePriority.UseTextAlignment = False
+        Me.XrLabel34.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
+        Me.XrLabel34.WordWrap = False
+        '
+        'XrLabel35
+        '
+        Me.XrLabel35.BackColor = System.Drawing.Color.Transparent
+        Me.XrLabel35.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel35.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel35.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel35.BorderWidth = 1.0!
+        Me.XrLabel35.CanGrow = False
+        Me.XrLabel35.Dpi = 254.0!
+        Me.XrLabel35.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[RubisCT]")})
+        Me.XrLabel35.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.XrLabel35.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel35.LocationFloat = New DevExpress.Utils.PointFloat(0!, 284.48!)
+        Me.XrLabel35.Name = "XrLabel35"
+        Me.XrLabel35.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel35.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel35.StyleName = "DetailData1VerticalRow_Even"
+        Me.XrLabel35.StylePriority.UseBackColor = False
+        Me.XrLabel35.StylePriority.UseBorderColor = False
+        Me.XrLabel35.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel35.StylePriority.UseBorders = False
+        Me.XrLabel35.StylePriority.UseBorderWidth = False
+        Me.XrLabel35.StylePriority.UseFont = False
+        Me.XrLabel35.StylePriority.UseForeColor = False
+        Me.XrLabel35.StylePriority.UsePadding = False
+        Me.XrLabel35.StylePriority.UseTextAlignment = False
+        Me.XrLabel35.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
+        Me.XrLabel35.WordWrap = False
+        '
+        'XrLabel36
+        '
+        Me.XrLabel36.BackColor = System.Drawing.Color.White
+        Me.XrLabel36.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel36.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel36.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Top Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel36.BorderWidth = 1.0!
+        Me.XrLabel36.CanGrow = False
+        Me.XrLabel36.Dpi = 254.0!
+        Me.XrLabel36.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[RubiQtde]")})
+        Me.XrLabel36.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.XrLabel36.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel36.LocationFloat = New DevExpress.Utils.PointFloat(286.045!, 284.48!)
+        Me.XrLabel36.Name = "XrLabel36"
+        Me.XrLabel36.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel36.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel36.StyleName = "DetailData1Vertical"
+        Me.XrLabel36.StylePriority.UseBackColor = False
+        Me.XrLabel36.StylePriority.UseBorderColor = False
+        Me.XrLabel36.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel36.StylePriority.UseBorders = False
+        Me.XrLabel36.StylePriority.UseBorderWidth = False
+        Me.XrLabel36.StylePriority.UseFont = False
+        Me.XrLabel36.StylePriority.UseForeColor = False
+        Me.XrLabel36.StylePriority.UsePadding = False
+        Me.XrLabel36.StylePriority.UseTextAlignment = False
+        Me.XrLabel36.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
+        Me.XrLabel36.WordWrap = False
+        '
+        'XrLabel37
+        '
+        Me.XrLabel37.BackColor = System.Drawing.Color.Transparent
+        Me.XrLabel37.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel37.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel37.Borders = CType((DevExpress.XtraPrinting.BorderSide.Right Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel37.BorderWidth = 1.0!
+        Me.XrLabel37.CanGrow = False
+        Me.XrLabel37.Dpi = 254.0!
+        Me.XrLabel37.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[RubiValor]")})
+        Me.XrLabel37.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.XrLabel37.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel37.LocationFloat = New DevExpress.Utils.PointFloat(572.0901!, 284.48!)
+        Me.XrLabel37.Name = "XrLabel37"
+        Me.XrLabel37.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel37.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel37.StyleName = "DetailData1VerticalRow_Even"
+        Me.XrLabel37.StylePriority.UseBackColor = False
+        Me.XrLabel37.StylePriority.UseBorderColor = False
+        Me.XrLabel37.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel37.StylePriority.UseBorders = False
+        Me.XrLabel37.StylePriority.UseBorderWidth = False
+        Me.XrLabel37.StylePriority.UseFont = False
+        Me.XrLabel37.StylePriority.UseForeColor = False
+        Me.XrLabel37.StylePriority.UsePadding = False
+        Me.XrLabel37.StylePriority.UseTextAlignment = False
+        Me.XrLabel37.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
+        Me.XrLabel37.WordWrap = False
+        '
+        'XrLabel38
+        '
+        Me.XrLabel38.BackColor = System.Drawing.Color.White
+        Me.XrLabel38.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel38.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel38.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel38.BorderWidth = 1.0!
+        Me.XrLabel38.CanGrow = False
+        Me.XrLabel38.Dpi = 254.0!
+        Me.XrLabel38.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[SafirasCT]")})
+        Me.XrLabel38.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.XrLabel38.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel38.LocationFloat = New DevExpress.Utils.PointFloat(0!, 355.6!)
+        Me.XrLabel38.Name = "XrLabel38"
+        Me.XrLabel38.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel38.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel38.StyleName = "DetailData1Vertical"
+        Me.XrLabel38.StylePriority.UseBackColor = False
+        Me.XrLabel38.StylePriority.UseBorderColor = False
+        Me.XrLabel38.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel38.StylePriority.UseBorders = False
+        Me.XrLabel38.StylePriority.UseBorderWidth = False
+        Me.XrLabel38.StylePriority.UseFont = False
+        Me.XrLabel38.StylePriority.UseForeColor = False
+        Me.XrLabel38.StylePriority.UsePadding = False
+        Me.XrLabel38.StylePriority.UseTextAlignment = False
+        Me.XrLabel38.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
+        Me.XrLabel38.WordWrap = False
+        '
+        'XrLabel39
+        '
+        Me.XrLabel39.BackColor = System.Drawing.Color.Transparent
+        Me.XrLabel39.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel39.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel39.Borders = CType((DevExpress.XtraPrinting.BorderSide.Right Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel39.BorderWidth = 1.0!
+        Me.XrLabel39.CanGrow = False
+        Me.XrLabel39.Dpi = 254.0!
+        Me.XrLabel39.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[SafiraQtde]")})
+        Me.XrLabel39.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.XrLabel39.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel39.LocationFloat = New DevExpress.Utils.PointFloat(286.045!, 355.6!)
+        Me.XrLabel39.Name = "XrLabel39"
+        Me.XrLabel39.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel39.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel39.StyleName = "DetailData1VerticalRow_Even"
+        Me.XrLabel39.StylePriority.UseBackColor = False
+        Me.XrLabel39.StylePriority.UseBorderColor = False
+        Me.XrLabel39.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel39.StylePriority.UseBorders = False
+        Me.XrLabel39.StylePriority.UseBorderWidth = False
+        Me.XrLabel39.StylePriority.UseFont = False
+        Me.XrLabel39.StylePriority.UseForeColor = False
+        Me.XrLabel39.StylePriority.UsePadding = False
+        Me.XrLabel39.StylePriority.UseTextAlignment = False
+        Me.XrLabel39.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
+        Me.XrLabel39.WordWrap = False
+        '
+        'XrLabel40
+        '
+        Me.XrLabel40.BackColor = System.Drawing.Color.White
+        Me.XrLabel40.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel40.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel40.Borders = CType((DevExpress.XtraPrinting.BorderSide.Right Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel40.BorderWidth = 1.0!
+        Me.XrLabel40.CanGrow = False
+        Me.XrLabel40.Dpi = 254.0!
+        Me.XrLabel40.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[SafiraValor]")})
+        Me.XrLabel40.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.XrLabel40.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel40.LocationFloat = New DevExpress.Utils.PointFloat(572.0901!, 355.6!)
+        Me.XrLabel40.Name = "XrLabel40"
+        Me.XrLabel40.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel40.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel40.StyleName = "DetailData1Vertical"
+        Me.XrLabel40.StylePriority.UseBackColor = False
+        Me.XrLabel40.StylePriority.UseBorderColor = False
+        Me.XrLabel40.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel40.StylePriority.UseBorders = False
+        Me.XrLabel40.StylePriority.UseBorderWidth = False
+        Me.XrLabel40.StylePriority.UseFont = False
+        Me.XrLabel40.StylePriority.UseForeColor = False
+        Me.XrLabel40.StylePriority.UsePadding = False
+        Me.XrLabel40.StylePriority.UseTextAlignment = False
+        Me.XrLabel40.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
+        Me.XrLabel40.WordWrap = False
+        '
+        'XrLabel41
+        '
+        Me.XrLabel41.BackColor = System.Drawing.Color.Transparent
+        Me.XrLabel41.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel41.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel41.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel41.BorderWidth = 1.0!
+        Me.XrLabel41.CanGrow = False
+        Me.XrLabel41.Dpi = 254.0!
+        Me.XrLabel41.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[EsmeraldasCT]")})
+        Me.XrLabel41.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.XrLabel41.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel41.LocationFloat = New DevExpress.Utils.PointFloat(0!, 426.72!)
+        Me.XrLabel41.Name = "XrLabel41"
+        Me.XrLabel41.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel41.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel41.StyleName = "DetailData1VerticalRow_Even"
+        Me.XrLabel41.StylePriority.UseBackColor = False
+        Me.XrLabel41.StylePriority.UseBorderColor = False
+        Me.XrLabel41.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel41.StylePriority.UseBorders = False
+        Me.XrLabel41.StylePriority.UseBorderWidth = False
+        Me.XrLabel41.StylePriority.UseFont = False
+        Me.XrLabel41.StylePriority.UseForeColor = False
+        Me.XrLabel41.StylePriority.UsePadding = False
+        Me.XrLabel41.StylePriority.UseTextAlignment = False
+        Me.XrLabel41.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
+        Me.XrLabel41.WordWrap = False
+        '
+        'XrLabel42
+        '
+        Me.XrLabel42.BackColor = System.Drawing.Color.White
+        Me.XrLabel42.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel42.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel42.Borders = CType((DevExpress.XtraPrinting.BorderSide.Right Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel42.BorderWidth = 1.0!
+        Me.XrLabel42.CanGrow = False
+        Me.XrLabel42.Dpi = 254.0!
+        Me.XrLabel42.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[EsmeraldaQtde]")})
+        Me.XrLabel42.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.XrLabel42.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel42.LocationFloat = New DevExpress.Utils.PointFloat(286.045!, 426.72!)
+        Me.XrLabel42.Name = "XrLabel42"
+        Me.XrLabel42.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel42.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel42.StyleName = "DetailData1Vertical"
+        Me.XrLabel42.StylePriority.UseBackColor = False
+        Me.XrLabel42.StylePriority.UseBorderColor = False
+        Me.XrLabel42.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel42.StylePriority.UseBorders = False
+        Me.XrLabel42.StylePriority.UseBorderWidth = False
+        Me.XrLabel42.StylePriority.UseFont = False
+        Me.XrLabel42.StylePriority.UseForeColor = False
+        Me.XrLabel42.StylePriority.UsePadding = False
+        Me.XrLabel42.StylePriority.UseTextAlignment = False
+        Me.XrLabel42.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
+        Me.XrLabel42.WordWrap = False
+        '
+        'XrLabel43
+        '
+        Me.XrLabel43.BackColor = System.Drawing.Color.Transparent
+        Me.XrLabel43.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel43.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel43.Borders = CType((DevExpress.XtraPrinting.BorderSide.Right Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel43.BorderWidth = 1.0!
+        Me.XrLabel43.CanGrow = False
+        Me.XrLabel43.Dpi = 254.0!
+        Me.XrLabel43.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[EsmeraldaValor]")})
+        Me.XrLabel43.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.XrLabel43.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel43.LocationFloat = New DevExpress.Utils.PointFloat(572.0901!, 426.72!)
+        Me.XrLabel43.Name = "XrLabel43"
+        Me.XrLabel43.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel43.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel43.StyleName = "DetailData1VerticalRow_Even"
+        Me.XrLabel43.StylePriority.UseBackColor = False
+        Me.XrLabel43.StylePriority.UseBorderColor = False
+        Me.XrLabel43.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel43.StylePriority.UseBorders = False
+        Me.XrLabel43.StylePriority.UseBorderWidth = False
+        Me.XrLabel43.StylePriority.UseFont = False
+        Me.XrLabel43.StylePriority.UseForeColor = False
+        Me.XrLabel43.StylePriority.UsePadding = False
+        Me.XrLabel43.StylePriority.UseTextAlignment = False
+        Me.XrLabel43.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
+        Me.XrLabel43.WordWrap = False
+        '
+        'XrLabel44
+        '
+        Me.XrLabel44.BackColor = System.Drawing.Color.White
+        Me.XrLabel44.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel44.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel44.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel44.BorderWidth = 1.0!
+        Me.XrLabel44.CanGrow = False
+        Me.XrLabel44.Dpi = 254.0!
+        Me.XrLabel44.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[PedrasCT]")})
+        Me.XrLabel44.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.XrLabel44.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel44.LocationFloat = New DevExpress.Utils.PointFloat(0!, 497.84!)
+        Me.XrLabel44.Name = "XrLabel44"
+        Me.XrLabel44.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel44.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel44.StyleName = "DetailData1Vertical"
+        Me.XrLabel44.StylePriority.UseBackColor = False
+        Me.XrLabel44.StylePriority.UseBorderColor = False
+        Me.XrLabel44.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel44.StylePriority.UseBorders = False
+        Me.XrLabel44.StylePriority.UseBorderWidth = False
+        Me.XrLabel44.StylePriority.UseFont = False
+        Me.XrLabel44.StylePriority.UseForeColor = False
+        Me.XrLabel44.StylePriority.UsePadding = False
+        Me.XrLabel44.StylePriority.UseTextAlignment = False
+        Me.XrLabel44.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
+        Me.XrLabel44.WordWrap = False
+        '
+        'XrLabel45
+        '
+        Me.XrLabel45.BackColor = System.Drawing.Color.Transparent
+        Me.XrLabel45.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel45.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel45.Borders = CType((DevExpress.XtraPrinting.BorderSide.Right Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel45.BorderWidth = 1.0!
+        Me.XrLabel45.CanGrow = False
+        Me.XrLabel45.Dpi = 254.0!
+        Me.XrLabel45.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CitrinoQtde]")})
+        Me.XrLabel45.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.XrLabel45.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel45.LocationFloat = New DevExpress.Utils.PointFloat(286.045!, 497.84!)
+        Me.XrLabel45.Name = "XrLabel45"
+        Me.XrLabel45.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel45.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel45.StyleName = "DetailData1VerticalRow_Even"
+        Me.XrLabel45.StylePriority.UseBackColor = False
+        Me.XrLabel45.StylePriority.UseBorderColor = False
+        Me.XrLabel45.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel45.StylePriority.UseBorders = False
+        Me.XrLabel45.StylePriority.UseBorderWidth = False
+        Me.XrLabel45.StylePriority.UseFont = False
+        Me.XrLabel45.StylePriority.UseForeColor = False
+        Me.XrLabel45.StylePriority.UsePadding = False
+        Me.XrLabel45.StylePriority.UseTextAlignment = False
+        Me.XrLabel45.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
+        Me.XrLabel45.WordWrap = False
+        '
+        'XrLabel46
+        '
+        Me.XrLabel46.BackColor = System.Drawing.Color.White
+        Me.XrLabel46.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel46.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel46.Borders = CType((DevExpress.XtraPrinting.BorderSide.Right Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel46.BorderWidth = 1.0!
+        Me.XrLabel46.CanGrow = False
+        Me.XrLabel46.Dpi = 254.0!
+        Me.XrLabel46.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CitrinoValor]")})
+        Me.XrLabel46.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.XrLabel46.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel46.LocationFloat = New DevExpress.Utils.PointFloat(572.0901!, 497.84!)
+        Me.XrLabel46.Name = "XrLabel46"
+        Me.XrLabel46.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel46.SizeF = New System.Drawing.SizeF(286.045!, 71.12!)
+        Me.XrLabel46.StyleName = "DetailData1VerticalLastRow"
+        Me.XrLabel46.StylePriority.UseBackColor = False
+        Me.XrLabel46.StylePriority.UseBorderColor = False
+        Me.XrLabel46.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel46.StylePriority.UseBorders = False
+        Me.XrLabel46.StylePriority.UseBorderWidth = False
+        Me.XrLabel46.StylePriority.UseFont = False
+        Me.XrLabel46.StylePriority.UseForeColor = False
+        Me.XrLabel46.StylePriority.UsePadding = False
+        Me.XrLabel46.StylePriority.UseTextAlignment = False
+        Me.XrLabel46.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
+        Me.XrLabel46.WordWrap = False
+        '
+        'SqlDataSource1
+        '
+        Me.SqlDataSource1.ConnectionName = "Pepe.My.MySettings.Pepe_ConnString"
+        Me.SqlDataSource1.Name = "SqlDataSource1"
+        CustomSqlQuery1.Name = "Query"
+        CustomSqlQuery1.Sql = resources.GetString("CustomSqlQuery1.Sql")
+        Me.SqlDataSource1.Queries.AddRange(New DevExpress.DataAccess.Sql.SqlQuery() {CustomSqlQuery1})
+        Me.SqlDataSource1.ResultSchemaSerializable = resources.GetString("SqlDataSource1.ResultSchemaSerializable")
+        '
+        'Title
+        '
+        Me.Title.BackColor = System.Drawing.Color.Transparent
+        Me.Title.BorderColor = System.Drawing.Color.Black
+        Me.Title.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.Title.BorderWidth = 1.0!
+        Me.Title.Font = New System.Drawing.Font("Arial", 14.25!)
+        Me.Title.ForeColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
+        Me.Title.Name = "Title"
+        Me.Title.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        '
+        'PageInfo
+        '
+        Me.PageInfo.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.PageInfo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
+        Me.PageInfo.Name = "PageInfo"
+        Me.PageInfo.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        '
+        'DetailData1Vertical
+        '
+        Me.DetailData1Vertical.BackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(231, Byte), Integer), CType(CType(231, Byte), Integer))
+        Me.DetailData1Vertical.BorderColor = System.Drawing.Color.White
+        Me.DetailData1Vertical.Borders = DevExpress.XtraPrinting.BorderSide.Right
+        Me.DetailData1Vertical.BorderWidth = 2.0!
+        Me.DetailData1Vertical.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.DetailData1Vertical.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.DetailData1Vertical.Name = "DetailData1Vertical"
+        Me.DetailData1Vertical.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.DetailData1Vertical.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
+        '
+        'DetailData1VerticalFirstRow
+        '
+        Me.DetailData1VerticalFirstRow.BackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(231, Byte), Integer), CType(CType(231, Byte), Integer))
+        Me.DetailData1VerticalFirstRow.BorderColor = System.Drawing.Color.White
+        Me.DetailData1VerticalFirstRow.Borders = CType((DevExpress.XtraPrinting.BorderSide.Top Or DevExpress.XtraPrinting.BorderSide.Right), DevExpress.XtraPrinting.BorderSide)
+        Me.DetailData1VerticalFirstRow.BorderWidth = 2.0!
+        Me.DetailData1VerticalFirstRow.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.DetailData1VerticalFirstRow.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.DetailData1VerticalFirstRow.Name = "DetailData1VerticalFirstRow"
+        Me.DetailData1VerticalFirstRow.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.DetailData1VerticalFirstRow.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
+        '
+        'DetailData1VerticalLastRow
+        '
+        Me.DetailData1VerticalLastRow.BackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(231, Byte), Integer), CType(CType(231, Byte), Integer))
+        Me.DetailData1VerticalLastRow.BorderColor = System.Drawing.Color.White
+        Me.DetailData1VerticalLastRow.Borders = CType((DevExpress.XtraPrinting.BorderSide.Right Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.DetailData1VerticalLastRow.BorderWidth = 2.0!
+        Me.DetailData1VerticalLastRow.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.DetailData1VerticalLastRow.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.DetailData1VerticalLastRow.Name = "DetailData1VerticalLastRow"
+        Me.DetailData1VerticalLastRow.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.DetailData1VerticalLastRow.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
+        '
+        'DetailData1VerticalRow_Even
+        '
+        Me.DetailData1VerticalRow_Even.BackColor = System.Drawing.Color.Transparent
+        Me.DetailData1VerticalRow_Even.BorderColor = System.Drawing.Color.White
+        Me.DetailData1VerticalRow_Even.Borders = DevExpress.XtraPrinting.BorderSide.Right
+        Me.DetailData1VerticalRow_Even.BorderWidth = 2.0!
+        Me.DetailData1VerticalRow_Even.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.DetailData1VerticalRow_Even.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.DetailData1VerticalRow_Even.Name = "DetailData1VerticalRow_Even"
+        Me.DetailData1VerticalRow_Even.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.DetailData1VerticalRow_Even.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
+        '
+        'HeaderData1Vertical
+        '
+        Me.HeaderData1Vertical.BackColor = System.Drawing.Color.FromArgb(CType(CType(111, Byte), Integer), CType(CType(111, Byte), Integer), CType(CType(111, Byte), Integer))
+        Me.HeaderData1Vertical.BorderColor = System.Drawing.Color.White
+        Me.HeaderData1Vertical.Borders = DevExpress.XtraPrinting.BorderSide.Right
+        Me.HeaderData1Vertical.BorderWidth = 2.0!
+        Me.HeaderData1Vertical.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.HeaderData1Vertical.ForeColor = System.Drawing.Color.White
+        Me.HeaderData1Vertical.Name = "HeaderData1Vertical"
+        Me.HeaderData1Vertical.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.HeaderData1Vertical.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
+        '
+        'HeaderData1VerticalFirstRow
+        '
+        Me.HeaderData1VerticalFirstRow.BackColor = System.Drawing.Color.FromArgb(CType(CType(111, Byte), Integer), CType(CType(111, Byte), Integer), CType(CType(111, Byte), Integer))
+        Me.HeaderData1VerticalFirstRow.BorderColor = System.Drawing.Color.White
+        Me.HeaderData1VerticalFirstRow.Borders = CType((DevExpress.XtraPrinting.BorderSide.Top Or DevExpress.XtraPrinting.BorderSide.Right), DevExpress.XtraPrinting.BorderSide)
+        Me.HeaderData1VerticalFirstRow.BorderWidth = 2.0!
+        Me.HeaderData1VerticalFirstRow.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.HeaderData1VerticalFirstRow.ForeColor = System.Drawing.Color.White
+        Me.HeaderData1VerticalFirstRow.Name = "HeaderData1VerticalFirstRow"
+        Me.HeaderData1VerticalFirstRow.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.HeaderData1VerticalFirstRow.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
+        '
+        'HeaderData1VerticalLastRow
+        '
+        Me.HeaderData1VerticalLastRow.BackColor = System.Drawing.Color.FromArgb(CType(CType(111, Byte), Integer), CType(CType(111, Byte), Integer), CType(CType(111, Byte), Integer))
+        Me.HeaderData1VerticalLastRow.BorderColor = System.Drawing.Color.White
+        Me.HeaderData1VerticalLastRow.Borders = CType((DevExpress.XtraPrinting.BorderSide.Right Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.HeaderData1VerticalLastRow.BorderWidth = 2.0!
+        Me.HeaderData1VerticalLastRow.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.HeaderData1VerticalLastRow.ForeColor = System.Drawing.Color.White
+        Me.HeaderData1VerticalLastRow.Name = "HeaderData1VerticalLastRow"
+        Me.HeaderData1VerticalLastRow.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.HeaderData1VerticalLastRow.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
+        '
+        'HeaderData1VerticalRow_Even
+        '
+        Me.HeaderData1VerticalRow_Even.BackColor = System.Drawing.Color.FromArgb(CType(CType(131, Byte), Integer), CType(CType(131, Byte), Integer), CType(CType(131, Byte), Integer))
+        Me.HeaderData1VerticalRow_Even.BorderColor = System.Drawing.Color.White
+        Me.HeaderData1VerticalRow_Even.Borders = DevExpress.XtraPrinting.BorderSide.Right
+        Me.HeaderData1VerticalRow_Even.BorderWidth = 2.0!
+        Me.HeaderData1VerticalRow_Even.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.HeaderData1VerticalRow_Even.ForeColor = System.Drawing.Color.White
+        Me.HeaderData1VerticalRow_Even.Name = "HeaderData1VerticalRow_Even"
+        Me.HeaderData1VerticalRow_Even.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.HeaderData1VerticalRow_Even.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
+        '
+        'rptMateriaPrima
+        '
+        Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.TopMargin, Me.BottomMargin, Me.ReportHeader, Me.VerticalHeader, Me.VerticalDetail})
+        Me.ComponentStorage.AddRange(New System.ComponentModel.IComponent() {Me.SqlDataSource1})
+        Me.DataMember = "Query"
+        Me.DataSource = Me.SqlDataSource1
+        Me.Dpi = 254.0!
+        Me.Font = New System.Drawing.Font("Arial", 9.75!)
+        Me.Margins = New System.Drawing.Printing.Margins(511, 50, 243, 58)
+        Me.PageHeight = 2970
+        Me.PageWidth = 2100
+        Me.PaperKind = System.Drawing.Printing.PaperKind.A4
+        Me.ReportUnit = DevExpress.XtraReports.UI.ReportUnit.TenthsOfAMillimeter
+        Me.ScriptLanguage = DevExpress.XtraReports.ScriptLanguage.VisualBasic
+        Me.SnapGridSize = 25.0!
+        Me.StyleSheet.AddRange(New DevExpress.XtraReports.UI.XRControlStyle() {Me.Title, Me.PageInfo, Me.DetailData1Vertical, Me.DetailData1VerticalFirstRow, Me.DetailData1VerticalLastRow, Me.DetailData1VerticalRow_Even, Me.HeaderData1Vertical, Me.HeaderData1VerticalFirstRow, Me.HeaderData1VerticalLastRow, Me.HeaderData1VerticalRow_Even})
+        Me.Version = "21.1"
+        Me.VerticalContentSplitting = DevExpress.XtraPrinting.VerticalContentSplitting.Smart
+        CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
+
+    End Sub
+
+    Friend WithEvents TopMargin As DevExpress.XtraReports.UI.TopMarginBand
+    Friend WithEvents BottomMargin As DevExpress.XtraReports.UI.BottomMarginBand
+    Friend WithEvents pageInfo1 As DevExpress.XtraReports.UI.XRPageInfo
+    Friend WithEvents ReportHeader As DevExpress.XtraReports.UI.ReportHeaderBand
+    Friend WithEvents label1 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents VerticalHeader As DevExpress.XtraReports.UI.VerticalHeaderBand
+    Friend WithEvents XrLabel1 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel7 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel10 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel12 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel15 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel18 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel21 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents VerticalDetail As DevExpress.XtraReports.UI.VerticalDetailBand
+    Friend WithEvents XrLabel24 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel25 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel26 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel27 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel28 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel29 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel30 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel31 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel32 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel33 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel34 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel35 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel36 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel37 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel38 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel39 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel40 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel41 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel42 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel43 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel44 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel45 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel46 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents SqlDataSource1 As DevExpress.DataAccess.Sql.SqlDataSource
+    Friend WithEvents Title As DevExpress.XtraReports.UI.XRControlStyle
+    Friend WithEvents PageInfo As DevExpress.XtraReports.UI.XRControlStyle
+    Friend WithEvents DetailData1Vertical As DevExpress.XtraReports.UI.XRControlStyle
+    Friend WithEvents DetailData1VerticalFirstRow As DevExpress.XtraReports.UI.XRControlStyle
+    Friend WithEvents DetailData1VerticalLastRow As DevExpress.XtraReports.UI.XRControlStyle
+    Friend WithEvents DetailData1VerticalRow_Even As DevExpress.XtraReports.UI.XRControlStyle
+    Friend WithEvents HeaderData1Vertical As DevExpress.XtraReports.UI.XRControlStyle
+    Friend WithEvents HeaderData1VerticalFirstRow As DevExpress.XtraReports.UI.XRControlStyle
+    Friend WithEvents HeaderData1VerticalLastRow As DevExpress.XtraReports.UI.XRControlStyle
+    Friend WithEvents HeaderData1VerticalRow_Even As DevExpress.XtraReports.UI.XRControlStyle
+    Friend WithEvents XrLabel3 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel2 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel11 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel9 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel8 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel6 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel5 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel4 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel13 As DevExpress.XtraReports.UI.XRLabel
+End Class
