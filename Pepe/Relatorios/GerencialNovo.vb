@@ -40,9 +40,9 @@ Public Class GerencialNovo
     Private Const COL_I As Single = 1750.0F : Private Const LAR_I As Single = 150.0F  ' Markup
 
     ' Seção 2 usa grade própria: três blocos lado a lado.
-    Private Const S2A_ROT As Single = 0.0F : Private Const S2A_LAR_ROT As Single = 360.0F
-    Private Const S2A_VAL As Single = 360.0F : Private Const S2A_LAR_VAL As Single = 170.0F
-    Private Const S2A_PCT As Single = 530.0F : Private Const S2A_LAR_PCT As Single = 120.0F
+    Private Const S2A_ROT As Single = 0.0F : Private Const S2A_LAR_ROT As Single = 350.0F
+    Private Const S2A_VAL As Single = 350.0F : Private Const S2A_LAR_VAL As Single = 170.0F
+    Private Const S2A_PCT As Single = 520.0F : Private Const S2A_LAR_PCT As Single = 130.0F
     Private Const S2B_ROT As Single = 690.0F : Private Const S2B_LAR_ROT As Single = 270.0F
     Private Const S2B_VAL As Single = 960.0F : Private Const S2B_LAR_VAL As Single = 160.0F
     ' Largura imposta por GerencialSubFormas1/2: 2100 - 8 - 1323 = 769.
@@ -218,8 +218,13 @@ Public Class GerencialNovo
             .TextAlignment = alinhamento,
             .Padding = New PaddingInfo(15, 15, 0, 0, 254.0F),
             .BackColor = Color.Transparent,
-            .Borders = BorderSide.None
+            .Borders = BorderSide.None,
+            .WordWrap = False,
+            .CanGrow = False
         }
+        ' WordWrap/CanGrow desligados de propósito: com eles, um rótulo de cabeçalho que
+        ' não coubesse na coluna quebrava em duas linhas, crescia e EMPURRAVA para baixo
+        ' os controles seguintes da banda, deslocando o resto do layout.
         l.StylePriority.UseFont = False
         l.StylePriority.UseTextAlignment = False
         l.StylePriority.UsePadding = False
@@ -262,15 +267,18 @@ Public Class GerencialNovo
         Return l
     End Function
 
-    ''' <summary>Fundo cinza-claro atrás de uma linha de totais, na largura útil.</summary>
+    ''' <summary>
+    ''' Fundo cinza-claro atrás de uma linha de totais, na largura útil.
+    ''' CHAMAR DEPOIS de criar os rótulos da linha: na coleção Controls o índice MENOR
+    ''' é o que fica na frente, então esta faixa opaca precisa ser a última inserida,
+    ''' senão cobre o texto do total.
+    ''' </summary>
     Private Sub FundoTotal(y As Single)
         Dim l = Novo(_banda, 0.0F, y, LARGURA_UTIL, ALT_LINHA, String.Empty, FonteBase, TextAlignment.MiddleLeft)
         l.BackColor = CorLinhaTotal
         l.Borders = BorderSide.Top
         l.StylePriority.UseBackColor = False
         l.StylePriority.UseBorders = False
-        ' Novo() já inseriu na banda; aqui só mandamos para trás dos rótulos da linha.
-        l.SendToBack()
     End Sub
 
 #End Region
@@ -358,7 +366,7 @@ Public Class GerencialNovo
 
         ' --- Bloco B: movimentação de conta corrente ----------------------------
         Dim yB As Single = yTopo
-        Cabecalho(yB, S2B_ROT, S2B_LAR_ROT, "Movimentação C/C", TextAlignment.MiddleLeft)
+        Cabecalho(yB, S2B_ROT, S2B_LAR_ROT, "Conta corrente", TextAlignment.MiddleLeft)
         Cabecalho(yB, S2B_VAL, S2B_LAR_VAL, "Valor")
         yB += ALT_LINHA
 
@@ -370,7 +378,8 @@ Public Class GerencialNovo
         lblCCCreditos = Celula(yB, S2B_VAL, S2B_LAR_VAL, FMT_N2)
         yB += ALT_LINHA
 
-        Rotulo(yB, S2B_ROT, S2B_LAR_ROT, "SALDO LÍQUIDO C/C", negrito:=True)
+        ' "SALDO LÍQUIDO C/C" em negrito mede ~27,5 mm e não cabe nos 27 da coluna.
+        Rotulo(yB, S2B_ROT, S2B_LAR_ROT, "SALDO LÍQUIDO", negrito:=True)
         lblCCSaldo = Celula(yB, S2B_VAL, S2B_LAR_VAL, FMT_N2, negrito:=True)
         yB += ALT_LINHA
 
@@ -437,12 +446,12 @@ Public Class GerencialNovo
         lblVdEncAgPct = Celula(y, COL_D, LAR_D, FMT_PCT)
         y += ALT_LINHA
 
-        FundoTotal(y)
         Rotulo(y, COL_A, LAR_A, "TOTAL", negrito:=True)
         lblVdTotOper = Celula(y, COL_B, LAR_B, FMT_N0, negrito:=True)
         lblVdTotVal = Celula(y, COL_C, LAR_C, FMT_N2, negrito:=True)
         lblVdTotPct = Celula(y, COL_D, LAR_D, FMT_PCT, negrito:=True)
         lblVdTotTkt = Celula(y, COL_E, LAR_E, FMT_N2, negrito:=True)
+        FundoTotal(y)
 
         Return y + ALT_LINHA + GAP
     End Function
@@ -465,9 +474,9 @@ Public Class GerencialNovo
         lblCsTkt = Celula(y, COL_E, LAR_E, FMT_N2)
         y += ALT_LINHA + GAP_CURTO
 
-        FundoTotal(y)
         Rotulo(y, COL_A, LAR_A, "TOTAL VENDAS + CONSERTOS", negrito:=True)
         lblTotVendasConsertos = Celula(y, COL_C, LAR_C, FMT_N2, negrito:=True)
+        FundoTotal(y)
 
         Return y + ALT_LINHA + GAP
     End Function
@@ -484,9 +493,9 @@ Public Class GerencialNovo
         lblComOficina = Celula(y, COL_C, LAR_C, FMT_N2)
         y += ALT_LINHA
 
-        FundoTotal(y)
         Rotulo(y, COL_A, LAR_A, "TOTAL COMISSÕES", negrito:=True)
         lblComTotal = Celula(y, COL_C, LAR_C, FMT_N2, negrito:=True)
+        FundoTotal(y)
 
         Return y + ALT_LINHA + GAP
     End Function
@@ -501,7 +510,7 @@ Public Class GerencialNovo
         Cabecalho(y, COL_D, LAR_D + LAR_E, "Metal", TextAlignment.MiddleCenter)
         Cabecalho(y, COL_F, LAR_F, "M.O.")
         Cabecalho(y, COL_G, LAR_G, "Outros")
-        Cabecalho(y, COL_H, LAR_H, "Preço venda")
+        Cabecalho(y, COL_H, LAR_H, "Pr. venda")
         ' "Markup" e não "Margem": a fórmula da planilha é Venda / Custo, que é múltiplo
         ' sobre o custo, não margem contábil.
         Cabecalho(y, COL_I, LAR_I, "Markup")
@@ -542,7 +551,6 @@ Public Class GerencialNovo
             y += ALT_LINHA
         End If
 
-        FundoTotal(y)
         Rotulo(y, COL_A, LAR_A, "TOTAL PEÇAS VENDIDAS", negrito:=True)
         lblPvTotQtd = Celula(y, COL_B, LAR_B, FMT_N0, negrito:=True)
         lblPvTotCusto = Celula(y, COL_C, LAR_C, FMT_N2, negrito:=True)
@@ -552,6 +560,7 @@ Public Class GerencialNovo
         lblPvTotOutros = Celula(y, COL_G, LAR_G, FMT_N2, negrito:=True)
         lblPvTotVenda = Celula(y, COL_H, LAR_H, FMT_N2, negrito:=True)
         lblPvTotMarkup = Celula(y, COL_I, LAR_I, FMT_MULT, negrito:=True)
+        FundoTotal(y)
 
         Return y + ALT_LINHA + GAP
     End Function
@@ -566,7 +575,7 @@ Public Class GerencialNovo
         Cabecalho(y, COL_D, LAR_D + LAR_E, "Metal", TextAlignment.MiddleCenter)
         Cabecalho(y, COL_F, LAR_F, "Valor")
         Cabecalho(y, COL_G, LAR_G, "M.O.")
-        Cabecalho(y, COL_H, LAR_H, "Custo - M.O.")
+        Cabecalho(y, COL_H, LAR_H, "Custo - MO")
         y += ALT_LINHA
 
         Rotulo(y, COL_A, LAR_A, "F.P. Ouro")
@@ -599,7 +608,6 @@ Public Class GerencialNovo
         lblPrFfLiq = Celula(y, COL_H, LAR_H, FMT_N2)
         y += ALT_LINHA
 
-        FundoTotal(y)
         Rotulo(y, COL_A, LAR_A, "TOTAL REGISTRADAS", negrito:=True)
         lblPrTotQtd = Celula(y, COL_B, LAR_B, FMT_N0, negrito:=True)
         lblPrTotCusto = Celula(y, COL_C, LAR_C, FMT_N2, negrito:=True)
@@ -608,6 +616,7 @@ Public Class GerencialNovo
         lblPrTotValor = Celula(y, COL_F, LAR_F, FMT_N2, negrito:=True)
         lblPrTotMO = Celula(y, COL_G, LAR_G, FMT_N2, negrito:=True)
         lblPrTotLiq = Celula(y, COL_H, LAR_H, FMT_N2, negrito:=True)
+        FundoTotal(y)
 
         Return y + ALT_LINHA + GAP
     End Function
@@ -677,12 +686,12 @@ Public Class GerencialNovo
             y += ALT_LINHA
         End If
 
-        FundoTotal(y)
         Rotulo(y, COL_A, LAR_A, "TOTAL", negrito:=True)
         lblEstTotQtd = Celula(y, COL_B, LAR_B, FMT_N0, negrito:=True)
         lblEstTotPeso = Celula(y, COL_C, LAR_C, FMT_N2, negrito:=True)
         lblEstTotCusto = Celula(y, COL_D, LAR_D, FMT_N2, negrito:=True)
         lblEstTotVenda = Celula(y, COL_E, LAR_E, FMT_N2, negrito:=True)
+        FundoTotal(y)
 
         Return y + ALT_LINHA
     End Function
