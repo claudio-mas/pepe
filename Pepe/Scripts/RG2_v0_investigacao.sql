@@ -15,20 +15,50 @@ GO
    BLOCO 1 -- Definicao das views e procs existentes
    Responde: A-1 (VI_VENDAS.V), A-2 (OT/OV), A-3 (VI_PECAS.MO),
              A-4 (VI_PECAS_VENDAS.Outras), A-6 (PEENBase), A-7 (SP cartoes)
+
+   >>> RODAR COM "Results to Text" (Ctrl+T) <<<
+   sp_helptext devolve o codigo em linhas de ate 255 caracteres, preservando as
+   quebras. Em modo Grid (Ctrl+D) o texto vem numa celula so, truncado e ilegivel
+   -- que foi o que aconteceu na primeira tentativa.
    --------------------------------------------------------------------------- */
 PRINT '=== BLOCO 1: definicoes ===';
-
-SELECT  o.name                              AS Objeto,
-        o.type_desc                         AS Tipo,
-        OBJECT_DEFINITION(o.object_id)      AS Definicao
-FROM    sys.objects o
-WHERE   o.name IN ( N'VI_VENDAS', N'VI_CONSERTOS', N'VI_PEÇAS', N'VI_PEÇAS_VENDAS',
-                    N'VI_METAIS', N'VI_METAIS_VENDAS', N'VI_VENDIDAS', N'VI_W',
-                    N'VI_CC', N'VI_GER_DEB', N'VI_GER_CRED', N'CCNovoGer',
-                    N'PEENBase',
-                    N'USP_Gerencial_Cartoes', N'USP_Gerencial_Consertos' )
-ORDER BY o.type_desc, o.name;
 GO
+
+PRINT ''; PRINT '----- VI_VENDAS (A-1: de onde sai a coluna V) -----';
+EXEC sp_helptext 'dbo.VI_VENDAS';
+GO
+PRINT ''; PRINT '----- VI_METAIS (A-2: OT e OV sao gramas ou reais?) -----';
+EXEC sp_helptext 'dbo.VI_METAIS';
+GO
+PRINT ''; PRINT '----- VI_PECAS (A-3: MO inclui o que?) -----';
+EXEC sp_helptext 'dbo.VI_PEÇAS';
+GO
+PRINT ''; PRINT '----- VI_PECAS_VENDAS (A-4: Outras ja e derivado?) -----';
+EXEC sp_helptext 'dbo.VI_PEÇAS_VENDAS';
+GO
+PRINT ''; PRINT '----- VI_METAIS_VENDAS -----';
+EXEC sp_helptext 'dbo.VI_METAIS_VENDAS';
+GO
+PRINT ''; PRINT '----- VI_VENDIDAS -----';
+EXEC sp_helptext 'dbo.VI_VENDIDAS';
+GO
+PRINT ''; PRINT '----- PEENBase (A-6: qual o criterio?) -----';
+EXEC sp_helptext 'dbo.PEENBase';
+GO
+PRINT ''; PRINT '----- VI_CONSERTOS -----';
+EXEC sp_helptext 'dbo.VI_CONSERTOS';
+GO
+PRINT ''; PRINT '----- USP_Gerencial_Cartoes (A-7: retorna Percentual?) -----';
+EXEC sp_helptext 'dbo.USP_Gerencial_Cartoes';
+GO
+PRINT ''; PRINT '----- USP_Gerencial_Consertos -----';
+EXEC sp_helptext 'dbo.USP_Gerencial_Consertos';
+GO
+
+-- VI_W ja confirmado: SELECT VENDAS.Id, VENDAS.DataVenda, [VENDAS DET].ValorVenda
+-- FROM [1TabPecas] JOIN [VENDAS DET] JOIN VENDAS WHERE [1TabPecas].Oficial = 1
+-- ou seja: nivel de ITEM e criterio Oficial=1, igual ao Canal='ENC' de
+-- VW_RG2_VENDAS_ITENS. Nao precisa rodar de novo.
 
 
 /* ---------------------------------------------------------------------------
