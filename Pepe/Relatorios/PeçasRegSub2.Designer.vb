@@ -30,9 +30,13 @@ Partial Public Class PeçasRegSub2
         Dim XrSummary4 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
         Dim XrSummary5 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
         Dim XrSummary6 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
+        Dim XrSummary7 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
+        Dim XrSummary8 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
         Me.TopMargin = New DevExpress.XtraReports.UI.TopMarginBand()
         Me.BottomMargin = New DevExpress.XtraReports.UI.BottomMarginBand()
         Me.Detail = New DevExpress.XtraReports.UI.DetailBand()
+        Me.XrLabel27 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel29 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel11 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel17 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel20 = New DevExpress.XtraReports.UI.XRLabel()
@@ -58,6 +62,8 @@ Partial Public Class PeçasRegSub2
         Me.XrLabel2 = New DevExpress.XtraReports.UI.XRLabel()
         Me.ReportFooter = New DevExpress.XtraReports.UI.ReportFooterBand()
         Me.panel2 = New DevExpress.XtraReports.UI.XRPanel()
+        Me.XrLabel28 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel30 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel12 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel18 = New DevExpress.XtraReports.UI.XRLabel()
         Me.label13 = New DevExpress.XtraReports.UI.XRLabel()
@@ -82,11 +88,67 @@ Partial Public Class PeçasRegSub2
         '
         'Detail
         '
-        Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel11, Me.XrLabel17, Me.XrLabel20, Me.XrLabel4, Me.XrLabel5, Me.XrLabel3, Me.XrLabel1})
+        Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel27, Me.XrLabel29, Me.XrLabel11, Me.XrLabel17, Me.XrLabel20, Me.XrLabel4, Me.XrLabel5, Me.XrLabel3, Me.XrLabel1})
         Me.Detail.Dpi = 254.0!
         Me.Detail.HeightF = 63.50002!
         Me.Detail.HierarchyPrintOptions.Indent = 50.8!
         Me.Detail.Name = "Detail"
+        '
+        'XrLabel27
+        '
+        Me.XrLabel27.BackColor = System.Drawing.Color.Transparent
+        Me.XrLabel27.BorderColor = System.Drawing.Color.Transparent
+        Me.XrLabel27.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel27.Borders = DevExpress.XtraPrinting.BorderSide.Left
+        Me.XrLabel27.BorderWidth = 2.0!
+        Me.XrLabel27.Dpi = 254.0!
+        Me.XrLabel27.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vFund]")})
+        Me.XrLabel27.Font = New DevExpress.Drawing.DXFont("Arial", 8.25!, DevExpress.Drawing.DXFontStyle.Regular, DevExpress.Drawing.DXGraphicsUnit.Point, New DevExpress.Drawing.DXFontAdditionalProperty() {New DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", CType(0, Byte))})
+        Me.XrLabel27.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel27.LocationFloat = New DevExpress.Utils.PointFloat(1652.12!, 0.0800209!)
+        Me.XrLabel27.Name = "XrLabel27"
+        Me.XrLabel27.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel27.SizeF = New System.Drawing.SizeF(192.1647!, 63.42!)
+        Me.XrLabel27.StyleName = "DetailData1"
+        Me.XrLabel27.StylePriority.UseBackColor = False
+        Me.XrLabel27.StylePriority.UseBorderColor = False
+        Me.XrLabel27.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel27.StylePriority.UseBorders = False
+        Me.XrLabel27.StylePriority.UseBorderWidth = False
+        Me.XrLabel27.StylePriority.UseFont = False
+        Me.XrLabel27.StylePriority.UseForeColor = False
+        Me.XrLabel27.StylePriority.UsePadding = False
+        Me.XrLabel27.StylePriority.UseTextAlignment = False
+        Me.XrLabel27.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
+        Me.XrLabel27.TextFormatString = "{0:N2}"
+        '
+        'XrLabel29
+        '
+        Me.XrLabel29.BackColor = System.Drawing.Color.Transparent
+        Me.XrLabel29.BorderColor = System.Drawing.Color.Transparent
+        Me.XrLabel29.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid
+        Me.XrLabel29.Borders = DevExpress.XtraPrinting.BorderSide.Left
+        Me.XrLabel29.BorderWidth = 2.0!
+        Me.XrLabel29.Dpi = 254.0!
+        Me.XrLabel29.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[pFund]")})
+        Me.XrLabel29.Font = New DevExpress.Drawing.DXFont("Arial", 8.25!, DevExpress.Drawing.DXFontStyle.Regular, DevExpress.Drawing.DXGraphicsUnit.Point, New DevExpress.Drawing.DXFontAdditionalProperty() {New DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", CType(0, Byte))})
+        Me.XrLabel29.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel29.LocationFloat = New DevExpress.Utils.PointFloat(1832.286!, 0.08001772!)
+        Me.XrLabel29.Name = "XrLabel29"
+        Me.XrLabel29.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
+        Me.XrLabel29.SizeF = New System.Drawing.SizeF(170.7145!, 63.42!)
+        Me.XrLabel29.StyleName = "DetailData1"
+        Me.XrLabel29.StylePriority.UseBackColor = False
+        Me.XrLabel29.StylePriority.UseBorderColor = False
+        Me.XrLabel29.StylePriority.UseBorderDashStyle = False
+        Me.XrLabel29.StylePriority.UseBorders = False
+        Me.XrLabel29.StylePriority.UseBorderWidth = False
+        Me.XrLabel29.StylePriority.UseFont = False
+        Me.XrLabel29.StylePriority.UseForeColor = False
+        Me.XrLabel29.StylePriority.UsePadding = False
+        Me.XrLabel29.StylePriority.UseTextAlignment = False
+        Me.XrLabel29.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
+        Me.XrLabel29.TextFormatString = "{0:N2}"
         '
         'XrLabel11
         '
@@ -99,7 +161,7 @@ Partial Public Class PeçasRegSub2
         Me.XrLabel11.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Custo]")})
         Me.XrLabel11.Font = New DevExpress.Drawing.DXFont("Arial", 8.25!, DevExpress.Drawing.DXFontStyle.Regular, DevExpress.Drawing.DXGraphicsUnit.Point, New DevExpress.Drawing.DXFontAdditionalProperty() {New DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", CType(0, Byte))})
         Me.XrLabel11.ForeColor = System.Drawing.Color.Black
-        Me.XrLabel11.LocationFloat = New DevExpress.Utils.PointFloat(755.5416!, 0!)
+        Me.XrLabel11.LocationFloat = New DevExpress.Utils.PointFloat(632.0864!, 0!)
         Me.XrLabel11.Name = "XrLabel11"
         Me.XrLabel11.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
         Me.XrLabel11.SizeF = New System.Drawing.SizeF(238.0269!, 63.42!)
@@ -127,7 +189,7 @@ Partial Public Class PeçasRegSub2
         Me.XrLabel17.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[PrVenda]")})
         Me.XrLabel17.Font = New DevExpress.Drawing.DXFont("Arial", 8.25!, DevExpress.Drawing.DXFontStyle.Regular, DevExpress.Drawing.DXGraphicsUnit.Point, New DevExpress.Drawing.DXFontAdditionalProperty() {New DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", CType(0, Byte))})
         Me.XrLabel17.ForeColor = System.Drawing.Color.Black
-        Me.XrLabel17.LocationFloat = New DevExpress.Utils.PointFloat(996.5685!, 0.08001772!)
+        Me.XrLabel17.LocationFloat = New DevExpress.Utils.PointFloat(873.1133!, 0.08001772!)
         Me.XrLabel17.Name = "XrLabel17"
         Me.XrLabel17.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
         Me.XrLabel17.SizeF = New System.Drawing.SizeF(219.506!, 63.42!)
@@ -155,7 +217,7 @@ Partial Public Class PeçasRegSub2
         Me.XrLabel20.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[MO]")})
         Me.XrLabel20.Font = New DevExpress.Drawing.DXFont("Arial", 8.25!, DevExpress.Drawing.DXFontStyle.Regular, DevExpress.Drawing.DXGraphicsUnit.Point, New DevExpress.Drawing.DXFontAdditionalProperty() {New DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", CType(0, Byte))})
         Me.XrLabel20.ForeColor = System.Drawing.Color.Black
-        Me.XrLabel20.LocationFloat = New DevExpress.Utils.PointFloat(1173.075!, 0.08001772!)
+        Me.XrLabel20.LocationFloat = New DevExpress.Utils.PointFloat(1049.62!, 0.08001772!)
         Me.XrLabel20.Name = "XrLabel20"
         Me.XrLabel20.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
         Me.XrLabel20.SizeF = New System.Drawing.SizeF(215.2146!, 63.42!)
@@ -183,7 +245,7 @@ Partial Public Class PeçasRegSub2
         Me.XrLabel4.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[OT]")})
         Me.XrLabel4.Font = New DevExpress.Drawing.DXFont("Arial", 8.25!, DevExpress.Drawing.DXFontStyle.Regular, DevExpress.Drawing.DXGraphicsUnit.Point, New DevExpress.Drawing.DXFontAdditionalProperty() {New DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", CType(0, Byte))})
         Me.XrLabel4.ForeColor = System.Drawing.Color.Black
-        Me.XrLabel4.LocationFloat = New DevExpress.Utils.PointFloat(1343.009!, 0!)
+        Me.XrLabel4.LocationFloat = New DevExpress.Utils.PointFloat(1219.554!, 0!)
         Me.XrLabel4.Name = "XrLabel4"
         Me.XrLabel4.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
         Me.XrLabel4.SizeF = New System.Drawing.SizeF(195.3251!, 63.42!)
@@ -211,7 +273,7 @@ Partial Public Class PeçasRegSub2
         Me.XrLabel5.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[OV]")})
         Me.XrLabel5.Font = New DevExpress.Drawing.DXFont("Arial", 8.25!, DevExpress.Drawing.DXFontStyle.Regular, DevExpress.Drawing.DXGraphicsUnit.Point, New DevExpress.Drawing.DXFontAdditionalProperty() {New DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", CType(0, Byte))})
         Me.XrLabel5.ForeColor = System.Drawing.Color.Black
-        Me.XrLabel5.LocationFloat = New DevExpress.Utils.PointFloat(1540.333!, 0!)
+        Me.XrLabel5.LocationFloat = New DevExpress.Utils.PointFloat(1416.878!, 0!)
         Me.XrLabel5.Name = "XrLabel5"
         Me.XrLabel5.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
         Me.XrLabel5.SizeF = New System.Drawing.SizeF(215.9771!, 63.42!)
@@ -239,7 +301,7 @@ Partial Public Class PeçasRegSub2
         Me.XrLabel3.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[I]")})
         Me.XrLabel3.Font = New DevExpress.Drawing.DXFont("Arial", 8.25!, DevExpress.Drawing.DXFontStyle.Regular, DevExpress.Drawing.DXGraphicsUnit.Point, New DevExpress.Drawing.DXFontAdditionalProperty() {New DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", CType(0, Byte))})
         Me.XrLabel3.ForeColor = System.Drawing.Color.Black
-        Me.XrLabel3.LocationFloat = New DevExpress.Utils.PointFloat(596.2004!, 0!)
+        Me.XrLabel3.LocationFloat = New DevExpress.Utils.PointFloat(472.7451!, 0!)
         Me.XrLabel3.Name = "XrLabel3"
         Me.XrLabel3.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
         Me.XrLabel3.SizeF = New System.Drawing.SizeF(169.3412!, 63.42!)
@@ -587,12 +649,50 @@ Partial Public Class PeçasRegSub2
         'panel2
         '
         Me.panel2.Borders = DevExpress.XtraPrinting.BorderSide.None
-        Me.panel2.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel12, Me.XrLabel18, Me.label13, Me.XrLabel21, Me.label15, Me.XrLabel15, Me.label10, Me.label11})
+        Me.panel2.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel28, Me.XrLabel30, Me.XrLabel12, Me.XrLabel18, Me.label13, Me.XrLabel21, Me.label15, Me.XrLabel15, Me.label10, Me.label11})
         Me.panel2.Dpi = 254.0!
         Me.panel2.LocationFloat = New DevExpress.Utils.PointFloat(0.0002422333!, 0!)
         Me.panel2.Name = "panel2"
         Me.panel2.SizeF = New System.Drawing.SizeF(2050.0!, 92.49895!)
         Me.panel2.StylePriority.UseBorders = False
+        '
+        'XrLabel28
+        '
+        Me.XrLabel28.CanGrow = False
+        Me.XrLabel28.Dpi = 254.0!
+        Me.XrLabel28.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "sumSum([vFund])")})
+        Me.XrLabel28.Font = New DevExpress.Drawing.DXFont("Arial", 8.25!, DevExpress.Drawing.DXFontStyle.Regular, DevExpress.Drawing.DXGraphicsUnit.Point, New DevExpress.Drawing.DXFontAdditionalProperty() {New DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", CType(0, Byte))})
+        Me.XrLabel28.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel28.LocationFloat = New DevExpress.Utils.PointFloat(1631.577!, 9.367592!)
+        Me.XrLabel28.Name = "XrLabel28"
+        Me.XrLabel28.SizeF = New System.Drawing.SizeF(199.7083!, 52.06884!)
+        Me.XrLabel28.StylePriority.UseFont = False
+        Me.XrLabel28.StylePriority.UseForeColor = False
+        Me.XrLabel28.StylePriority.UseTextAlignment = False
+        XrSummary1.Running = DevExpress.XtraReports.UI.SummaryRunning.Report
+        Me.XrLabel28.Summary = XrSummary1
+        Me.XrLabel28.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
+        Me.XrLabel28.TextFormatString = "{0:N2}"
+        Me.XrLabel28.WordWrap = False
+        '
+        'XrLabel30
+        '
+        Me.XrLabel30.CanGrow = False
+        Me.XrLabel30.Dpi = 254.0!
+        Me.XrLabel30.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "sumSum([pFund])")})
+        Me.XrLabel30.Font = New DevExpress.Drawing.DXFont("Arial", 8.25!, DevExpress.Drawing.DXFontStyle.Regular, DevExpress.Drawing.DXGraphicsUnit.Point, New DevExpress.Drawing.DXFontAdditionalProperty() {New DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", CType(0, Byte))})
+        Me.XrLabel30.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel30.LocationFloat = New DevExpress.Utils.PointFloat(1815.292!, 9.367592!)
+        Me.XrLabel30.Name = "XrLabel30"
+        Me.XrLabel30.SizeF = New System.Drawing.SizeF(174.7083!, 52.06884!)
+        Me.XrLabel30.StylePriority.UseFont = False
+        Me.XrLabel30.StylePriority.UseForeColor = False
+        Me.XrLabel30.StylePriority.UseTextAlignment = False
+        XrSummary2.Running = DevExpress.XtraReports.UI.SummaryRunning.Report
+        Me.XrLabel30.Summary = XrSummary2
+        Me.XrLabel30.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
+        Me.XrLabel30.TextFormatString = "{0:N2}"
+        Me.XrLabel30.WordWrap = False
         '
         'XrLabel12
         '
@@ -601,14 +701,14 @@ Partial Public Class PeçasRegSub2
         Me.XrLabel12.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "sumSum([Custo])")})
         Me.XrLabel12.Font = New DevExpress.Drawing.DXFont("Arial", 8.25!, DevExpress.Drawing.DXFontStyle.Regular, DevExpress.Drawing.DXGraphicsUnit.Point, New DevExpress.Drawing.DXFontAdditionalProperty() {New DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", CType(0, Byte))})
         Me.XrLabel12.ForeColor = System.Drawing.Color.Black
-        Me.XrLabel12.LocationFloat = New DevExpress.Utils.PointFloat(738.5413!, 9.367592!)
+        Me.XrLabel12.LocationFloat = New DevExpress.Utils.PointFloat(615.0861!, 9.367592!)
         Me.XrLabel12.Name = "XrLabel12"
         Me.XrLabel12.SizeF = New System.Drawing.SizeF(238.0269!, 52.06884!)
         Me.XrLabel12.StylePriority.UseFont = False
         Me.XrLabel12.StylePriority.UseForeColor = False
         Me.XrLabel12.StylePriority.UseTextAlignment = False
-        XrSummary1.Running = DevExpress.XtraReports.UI.SummaryRunning.Report
-        Me.XrLabel12.Summary = XrSummary1
+        XrSummary3.Running = DevExpress.XtraReports.UI.SummaryRunning.Report
+        Me.XrLabel12.Summary = XrSummary3
         Me.XrLabel12.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
         Me.XrLabel12.TextFormatString = "{0:N2}"
         Me.XrLabel12.WordWrap = False
@@ -620,14 +720,14 @@ Partial Public Class PeçasRegSub2
         Me.XrLabel18.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "sumSum([PrVenda])")})
         Me.XrLabel18.Font = New DevExpress.Drawing.DXFont("Arial", 8.25!, DevExpress.Drawing.DXFontStyle.Regular, DevExpress.Drawing.DXGraphicsUnit.Point, New DevExpress.Drawing.DXFontAdditionalProperty() {New DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", CType(0, Byte))})
         Me.XrLabel18.ForeColor = System.Drawing.Color.Black
-        Me.XrLabel18.LocationFloat = New DevExpress.Utils.PointFloat(982.2847!, 9.367564!)
+        Me.XrLabel18.LocationFloat = New DevExpress.Utils.PointFloat(858.8295!, 9.367564!)
         Me.XrLabel18.Name = "XrLabel18"
         Me.XrLabel18.SizeF = New System.Drawing.SizeF(219.5062!, 52.06884!)
         Me.XrLabel18.StylePriority.UseFont = False
         Me.XrLabel18.StylePriority.UseForeColor = False
         Me.XrLabel18.StylePriority.UseTextAlignment = False
-        XrSummary2.Running = DevExpress.XtraReports.UI.SummaryRunning.Report
-        Me.XrLabel18.Summary = XrSummary2
+        XrSummary4.Running = DevExpress.XtraReports.UI.SummaryRunning.Report
+        Me.XrLabel18.Summary = XrSummary4
         Me.XrLabel18.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
         Me.XrLabel18.TextFormatString = "{0:N2}"
         Me.XrLabel18.WordWrap = False
@@ -639,14 +739,14 @@ Partial Public Class PeçasRegSub2
         Me.label13.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "sumSum([OT])")})
         Me.label13.Font = New DevExpress.Drawing.DXFont("Arial", 8.25!, DevExpress.Drawing.DXFontStyle.Regular, DevExpress.Drawing.DXGraphicsUnit.Point, New DevExpress.Drawing.DXFontAdditionalProperty() {New DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", CType(0, Byte))})
         Me.label13.ForeColor = System.Drawing.Color.Black
-        Me.label13.LocationFloat = New DevExpress.Utils.PointFloat(1344.639!, 9.367592!)
+        Me.label13.LocationFloat = New DevExpress.Utils.PointFloat(1221.184!, 9.367592!)
         Me.label13.Name = "label13"
         Me.label13.SizeF = New System.Drawing.SizeF(178.6927!, 52.06884!)
         Me.label13.StylePriority.UseFont = False
         Me.label13.StylePriority.UseForeColor = False
         Me.label13.StylePriority.UseTextAlignment = False
-        XrSummary3.Running = DevExpress.XtraReports.UI.SummaryRunning.Report
-        Me.label13.Summary = XrSummary3
+        XrSummary5.Running = DevExpress.XtraReports.UI.SummaryRunning.Report
+        Me.label13.Summary = XrSummary5
         Me.label13.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
         Me.label13.TextFormatString = "{0:N2}"
         Me.label13.WordWrap = False
@@ -658,14 +758,14 @@ Partial Public Class PeçasRegSub2
         Me.XrLabel21.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "sumSum([MO])")})
         Me.XrLabel21.Font = New DevExpress.Drawing.DXFont("Arial", 8.25!, DevExpress.Drawing.DXFontStyle.Regular, DevExpress.Drawing.DXGraphicsUnit.Point, New DevExpress.Drawing.DXFontAdditionalProperty() {New DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", CType(0, Byte))})
         Me.XrLabel21.ForeColor = System.Drawing.Color.Black
-        Me.XrLabel21.LocationFloat = New DevExpress.Utils.PointFloat(1174.075!, 9.367564!)
+        Me.XrLabel21.LocationFloat = New DevExpress.Utils.PointFloat(1050.62!, 9.367564!)
         Me.XrLabel21.Name = "XrLabel21"
         Me.XrLabel21.SizeF = New System.Drawing.SizeF(198.2141!, 52.07!)
         Me.XrLabel21.StylePriority.UseFont = False
         Me.XrLabel21.StylePriority.UseForeColor = False
         Me.XrLabel21.StylePriority.UseTextAlignment = False
-        XrSummary4.Running = DevExpress.XtraReports.UI.SummaryRunning.Report
-        Me.XrLabel21.Summary = XrSummary4
+        XrSummary6.Running = DevExpress.XtraReports.UI.SummaryRunning.Report
+        Me.XrLabel21.Summary = XrSummary6
         Me.XrLabel21.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
         Me.XrLabel21.TextFormatString = "{0:N2}"
         Me.XrLabel21.WordWrap = False
@@ -677,14 +777,14 @@ Partial Public Class PeçasRegSub2
         Me.label15.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "sumSum([OV])")})
         Me.label15.Font = New DevExpress.Drawing.DXFont("Arial", 8.25!, DevExpress.Drawing.DXFontStyle.Regular, DevExpress.Drawing.DXGraphicsUnit.Point, New DevExpress.Drawing.DXFontAdditionalProperty() {New DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", CType(0, Byte))})
         Me.label15.ForeColor = System.Drawing.Color.Black
-        Me.label15.LocationFloat = New DevExpress.Utils.PointFloat(1517.789!, 9.367564!)
+        Me.label15.LocationFloat = New DevExpress.Utils.PointFloat(1394.334!, 9.367564!)
         Me.label15.Name = "label15"
         Me.label15.SizeF = New System.Drawing.SizeF(223.5208!, 52.06884!)
         Me.label15.StylePriority.UseFont = False
         Me.label15.StylePriority.UseForeColor = False
         Me.label15.StylePriority.UseTextAlignment = False
-        XrSummary5.Running = DevExpress.XtraReports.UI.SummaryRunning.Report
-        Me.label15.Summary = XrSummary5
+        XrSummary7.Running = DevExpress.XtraReports.UI.SummaryRunning.Report
+        Me.label15.Summary = XrSummary7
         Me.label15.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
         Me.label15.TextFormatString = "{0:N2}"
         Me.label15.WordWrap = False
@@ -722,14 +822,14 @@ Partial Public Class PeçasRegSub2
         Me.label11.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "sumSum([I])")})
         Me.label11.Font = New DevExpress.Drawing.DXFont("Arial", 8.25!, DevExpress.Drawing.DXFontStyle.Regular, DevExpress.Drawing.DXGraphicsUnit.Point, New DevExpress.Drawing.DXFontAdditionalProperty() {New DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", CType(0, Byte))})
         Me.label11.ForeColor = System.Drawing.Color.Black
-        Me.label11.LocationFloat = New DevExpress.Utils.PointFloat(580.2002!, 9.36758!)
+        Me.label11.LocationFloat = New DevExpress.Utils.PointFloat(456.745!, 9.36758!)
         Me.label11.Name = "label11"
         Me.label11.SizeF = New System.Drawing.SizeF(169.3412!, 52.06885!)
         Me.label11.StylePriority.UseFont = False
         Me.label11.StylePriority.UseForeColor = False
         Me.label11.StylePriority.UseTextAlignment = False
-        XrSummary6.Running = DevExpress.XtraReports.UI.SummaryRunning.Report
-        Me.label11.Summary = XrSummary6
+        XrSummary8.Running = DevExpress.XtraReports.UI.SummaryRunning.Report
+        Me.label11.Summary = XrSummary8
         Me.label11.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
         Me.label11.WordWrap = False
         '
@@ -741,14 +841,14 @@ Partial Public Class PeçasRegSub2
         Me.DataSource = Me.SqlDataSource1
         Me.Dpi = 254.0!
         Me.Font = New DevExpress.Drawing.DXFont("Arial", 9.75!)
-        Me.Margins = New DevExpress.Drawing.DXMargins(3, 82, 18, 3)
+        Me.Margins = New DevExpress.Drawing.DXMargins(3.0!, 82.0!, 18.0!, 3.0!)
         Me.PageHeight = 2970
         Me.PageWidth = 2100
         Me.PaperKind = DevExpress.Drawing.Printing.DXPaperKind.A4
         Me.ReportUnit = DevExpress.XtraReports.UI.ReportUnit.TenthsOfAMillimeter
         Me.SnapGridSize = 25.0!
         Me.StyleSheet.AddRange(New DevExpress.XtraReports.UI.XRControlStyle() {Me.Title, Me.DetailCaption1, Me.DetailData1, Me.DetailData3_Odd, Me.PageInfo})
-        Me.Version = "21.2"
+        Me.Version = "23.2"
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
 
     End Sub
@@ -789,4 +889,8 @@ Partial Public Class PeçasRegSub2
     Friend WithEvents XrLabel21 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents label13 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents label15 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel27 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel29 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel28 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel30 As DevExpress.XtraReports.UI.XRLabel
 End Class

@@ -1,4 +1,6 @@
-﻿Imports DevExpress.XtraEditors.Controls
+﻿Imports DevExpress.CodeParser
+Imports DevExpress.Data.Linq.Helpers
+Imports DevExpress.XtraEditors.Controls
 
 Public Class GerencialBase
     Private Sub GerencialBase_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -30,21 +32,92 @@ Public Class GerencialBase
 
         report.SqlDataSource.Queries(0).Parameters(0).Value = Me.txtData1.EditValue
         report.SqlDataSource.Queries(0).Parameters(1).Value = Me.txtData2.EditValue
-        'report.SqlDataSource.Fill()
+        'report.SqlDataSource.Fill()     
 
         report.Período.Text = txtData1.Text & " a " & txtData2.Text
 
-        Dim dt1 As Date = Me.txtData1.EditValue
-        Dim dt2 As Date = Me.txtData2.EditValue
+        Dim formattedDt1 As Date = Me.txtData1.EditValue
+        Dim formattedDt2 As Date = Me.txtData2.EditValue
+        Dim ddt1 As String = formattedDt1.ToString("yyyy/MM/dd")
+        Dim ddt2 As String = formattedDt2.ToString("yyyy/MM/dd")
+
+        'Dim dt1 As String = formattedDt1.ToString("yyyy/MM/dd")
+        'Dim dt2 As String = formattedDt2.ToString("yyyy/MM/dd")
+        Dim dt1 As Date = ConvertToSafeDate(txtData1.Text, Date.MinValue)
+        Dim dt2 As Date = ConvertToSafeDate(txtData2.Text, Date.MaxValue)
 
         Dim dc As New lqGerencialDataContext
 
-        Dim query = (From tb In dc.GetTable(Of Vencto_Cartão)() Where (tb.Venda > 0 Or tb.IdConserto > 0 Or tb.IdCC > 0) And (tb.Pagto >= dt1 And tb.Pagto <= dt2) Select tb)
-        Dim ent As Double = 0
-        If query.Count > 0 Then
-            ent = ConvertToDouble((From c In query Select c.VValor).Sum)
-            report.txtEntCart.Text = FormatNumber(ent, 2)
+        Dim querycot = (From tb In dc.GetTable(Of Cotação)() Where tb.DataCot <= dt2 Order By tb.DataCot Descending, tb.Id Descending Select tb)
+        Dim aux = (From c In querycot Select c.ValDolar).Count
+        If aux = 0 Then
+            valDolar = 1
+            valOuro = 1
+        Else
+            valDolar = ConvertToDouble((From c In querycot Select c.ValDolar).First)
+            valOuro = ConvertToDouble((From c In querycot Select c.ValOuro).First)
         End If
+        report.cotDolar.Text = FormatNumber(valDolar, 2)
+        report.cotOuro.Text = FormatNumber(valOuro, 2)
+
+        'Dim query = (From tb In dc.GetTable(Of Vencto_Cartão)() Where (tb.Venda > 0 Or tb.IdConserto > 0 Or tb.IdCC > 0) And (tb.Pagto >= dt1 And tb.Pagto <= dt2) Select tb)
+        Dim ent As Double = 0
+        'If query.Count > 0 Then
+        '    ent = ConvertToDouble((From c In query Select c.VValor).Sum)
+        '    report.txtEntCart.Text = FormatNumber(ent, 2)
+        'End If
+
+        ' Novo: 
+        'Dim query = (From tb In dc.GetTable(Of VI_VENDAS)() Where (tb.DataVenda >= dt1 And tb.DataVenda <= dt2) Select tb)
+        'Dim ent As Double = 0
+        'If query.Count > 0 Then
+        '    ent = ConvertToDouble((From c In query Select c.Deb).Sum)
+        '    report.txtEntCart.Text = FormatNumber(ent, 2)
+        'End If
+
+        'Dim query1 = (From tb In dc.GetTable(Of VI_VENDAS)() Where (tb.DataVenda >= dt1 And tb.DataVenda <= dt2) Select tb)
+        'If query1.Count > 0 Then
+        '    ent = ConvertToDouble((From c In query1 Select c.TotalCartãoVista).Sum)
+        '    report.txtCredVista.Text = FormatNumber(ent, 2)
+        'End If
+
+        'Dim query3 = (From tb In dc.GetTable(Of VI_VENDAS)() Where (tb.DataVenda >= dt1 And tb.DataVenda <= dt2) Select tb)
+        'If query3.Count > 0 Then
+        '    ent = ConvertToDouble((From c In query3 Select c.TotalCartãoParc).Sum)
+        '    report.txtCredParc.Text = FormatNumber(ent, 2)
+        'End If
+
+        'Dim q = (From tb In dc.GetTable(Of VI_CONSERTOS)() Where (tb.DT >= dt1 And tb.DT <= dt2) Select tb)
+        'If q.Count > 0 Then
+        '    ent = ConvertToDouble((From c In q Select c.Debito).Sum)
+        '    report.txtEntCart.Text = FormatNumber(CDbl(report.txtEntCart.Text) + ent, 2)
+        'End If
+
+        'Dim q1 = (From tb In dc.GetTable(Of VI_CONSERTOS)() Where (tb.DT >= dt1 And tb.DT <= dt2) Select tb)
+        'If q1.Count > 0 Then
+        '    ent = ConvertToDouble((From c In q1 Select c.CredVista).Sum)
+        '    report.txtCredVista.Text = FormatNumber(CDbl(report.txtCredVista.Text) + ent, 2)
+        'End If
+
+        'Dim q3 = (From tb In dc.GetTable(Of VI_CONSERTOS)() Where (tb.DT >= dt1 And tb.DT <= dt2) Select tb)
+        'If q3.Count > 0 Then
+        '    ent = ConvertToDouble((From c In q3 Select c.CredParc).Sum)
+        '    report.txtCredParc.Text = FormatNumber(CDbl(report.txtCredParc.Text) + ent, 2)
+        'End If
+
+        'Dim qq1 = (From tb In dc.GetTable(Of VI_CC)() Where (tb.Data >= dt1 And tb.Data <= dt2) Select tb)
+        'If qq1.Count > 0 Then
+        '    ent = ConvertToDouble((From c In qq1 Select c.CredVista).Sum)
+        '    report.txtCredVista.Text = FormatNumber(CDbl(report.txtCredVista.Text) + ent, 2)
+        'End If
+
+        'Dim qq3 = (From tb In dc.GetTable(Of VI_CC)() Where (tb.Data >= dt1 And tb.Data <= dt2) Select tb)
+        'If qq3.Count > 0 Then
+        '    ent = ConvertToDouble((From c In qq3 Select c.CredParc).Sum)
+        '    report.txtCredParc.Text = FormatNumber(CDbl(report.txtCredParc.Text) + ent, 2)
+        'End If
+        ' Novo acima:
+
 
         'ent = 0
         'Dim query1 = (From tb In dc.GetTable(Of VI_VENDAS)() Where tb.DataVenda >= dt1 And tb.DataVenda <= dt2 Select tb)
@@ -59,6 +132,61 @@ Public Class GerencialBase
         '    ent = ConvertToDouble((From c In query1 Select c.VValor).Sum)
         '    report.txtEntCart.Text = FormatNumber(ent + ConvertToDouble(report.txtEntCart.Text), 2)
         'End If
+
+        'Novo 2:
+        'Dim query = (From tb In dc.GetTable(Of VI_VENDAS)() Where (tb.DataVenda >= dt1 And tb.DataVenda <= dt2) Select tb)
+        'If query.Count > 0 Then
+        '    ent = ConvertToDouble((From c In query Select c.Deb).Sum)
+        '    report.txtEntCart.Text = FormatNumber(ent, 2)
+        'End If
+
+        Dim query = (From tb In dc.GetTable(Of VI_GER_DEB)() Where (tb.Pagto >= dt1 And tb.Pagto <= dt2) Select tb)
+        If query.Count > 0 Then
+            ent = ConvertToDouble((From c In query Select c.VValor).Sum)
+            report.txtEntCart.Text = FormatNumber(ent, 2)
+        End If
+
+        Dim query1 = (From tb In dc.GetTable(Of VI_GER_CRED)() Where (tb.Pagto >= dt1 AndAlso tb.Pagto <= dt2 AndAlso tb.CondPag = "A vista") Select tb)
+        If query1.Count > 0 Then
+            ent = ConvertToDouble((From c In query1 Select c.VValor).Sum)
+            If ent = 0 Then report.txtCredVista.Text = "" Else report.txtCredVista.Text = FormatNumber(ent, 2)
+        Else
+            report.txtCredVista.Text = ""
+        End If
+        'Try
+        '    Dim total = (From tb In dc.GetTable(Of VI_GER_CRED)()
+        '                 Where tb.Pagto >= dt1 AndAlso tb.Pagto <= dt2 AndAlso tb.CondPag = "A vista"
+        '                 Select tb.VValor).Sum()
+
+        '    Dim valorConvertido As Double = ConvertToSafeDouble(total)
+
+        '    report.txtCredVista.Text = FormatSafeNumber(valorConvertido)
+
+        'Catch ex As Exception
+        '    MessageBox.Show("Erro ao calcular créditos à vista: " & ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        'End Try
+
+        Dim query3 = (From tb In dc.GetTable(Of VI_GER_CRED)() Where (tb.Pagto >= dt1 AndAlso tb.Pagto <= dt2 AndAlso tb.CondPag = "Parcelado") Select tb)
+        If query3.Count > 0 Then
+            ent = ConvertToDouble((From c In query3 Select c.VValor).Sum)
+            'report.txtCredParc.Text = FormatNumber(ent, 2)
+            If ent = 0 Then report.XrLabel75.Text = "" Else report.XrLabel75.Text = FormatNumber(ent, 2)
+        Else
+            report.XrLabel75.Text = ""
+        End If
+        'Try
+        '    Dim total = (From tb In dc.GetTable(Of VI_GER_CRED)()
+        '                 Where tb.Pagto >= dt1 AndAlso tb.Pagto <= dt2 AndAlso tb.CondPag = "Parcelado"
+        '                 Select tb.VValor).Sum()
+
+        '    Dim valorConvertido As Double = ConvertToSafeDouble(total)
+
+        '    report.txtCredParc.Text = FormatSafeNumber(valorConvertido)
+
+        'Catch ex As Exception
+        '    MessageBox.Show("Erro ao calcular créditos parcelados: " & ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        'End Try
+        'Novo 2 acima:
 
         ent = 0
         Dim query2 = (From tb In dc.GetTable(Of VI_VENDAS)() Where tb.DataVenda >= dt1 And tb.DataVenda <= dt2 Select tb)
@@ -79,41 +207,50 @@ Public Class GerencialBase
             report.txtEntCash.Text = FormatNumber(ent + ConvertToDouble(report.txtEntCash.Text), 2)
         End If
 
-        ent = 0
-        Dim query3 = (From tb In dc.GetTable(Of VI_VENDAS)() Where tb.DataVenda >= dt1 And tb.DataVenda <= dt2 Select tb)
-        If query3.Count > 0 Then
-            ent = ConvertToDouble((From c In query3 Select c.Dolar).Sum)
-            report.txtEntDolar.Text = FormatNumber(ent, 2)
-        End If
-        ent = 0
-        Dim query3a = (From tb In dc.GetTable(Of VI_CONSERTOS)() Where tb.DT >= dt1 And tb.DT <= dt2 Select tb)
-        If query3a.Count > 0 Then
-            ent = ConvertToDouble((From c In query3a Select c.Dolar).Sum)
-            report.txtEntDolar.Text = FormatNumber(ent + ConvertToDouble(report.txtEntDolar.Text), 2)
-        End If
-        Dim query3aa = (From tb In dc.GetTable(Of VI_CC)() Where tb.Data >= dt1 And tb.Data <= dt2 And tb.Venda Is Nothing And (tb.IdConserto Is Nothing Or tb.IdConserto = 0) Select tb)
-        If query3aa.Count > 0 Then
-            ent = ConvertToDouble((From c In query3aa Select c.Dolar).Sum)
-            report.txtEntDolar.Text = FormatNumber(ent + ConvertToDouble(report.txtEntDolar.Text), 2)
-        End If
+        'ent = 0
+        'Dim query3 = (From tb In dc.GetTable(Of VI_VENDAS)() Where tb.DataVenda >= dt1 And tb.DataVenda <= dt2 Select tb)
+        'If query3.Count > 0 Then
+        '    ent = ConvertToDouble((From c In query3 Select c.Dolar).Sum)
+        '    report.txtEntDolar.Text = FormatNumber(ent, 2)
+        'End If
 
-        ent = 0
-        Dim query4 = (From tb In dc.GetTable(Of VI_VENDAS)() Where tb.DataVenda >= dt1 And tb.DataVenda <= dt2 Select tb)
-        If query4.Count > 0 Then
-            ent = ConvertToDouble((From c In query4 Select c.Ouro).Sum)
-            report.txtEntOu.Text = FormatNumber(ent, 2)
-        End If
-        ent = 0
-        Dim query4a = (From tb In dc.GetTable(Of VI_CONSERTOS)() Where tb.DT >= dt1 And tb.DT <= dt2 Select tb)
-        If query4a.Count > 0 Then
-            ent = ConvertToDouble((From c In query4a Select c.Ouro).Sum)
-            report.txtEntOu.Text = FormatNumber(ent + ConvertToDouble(report.txtEntOu.Text), 2)
-        End If
-        Dim query4aa = (From tb In dc.GetTable(Of VI_CC)() Where tb.Data >= dt1 And tb.Data <= dt2 And tb.Venda Is Nothing And (tb.IdConserto Is Nothing Or tb.IdConserto = 0) Select tb)
-        If query4aa.Count > 0 Then
-            ent = ConvertToDouble((From c In query4aa Select c.Ouro).Sum)
-            report.txtEntOu.Text = FormatNumber(ent + ConvertToDouble(report.txtEntOu.Text), 2)
-        End If
+        'ent = 0
+        'Dim query3a = (From tb In dc.GetTable(Of VI_CONSERTOS)() Where tb.DT >= dt1 And tb.DT <= dt2 Select tb)
+        'If query3a.Count > 0 Then
+        '    ent = ConvertToDouble((From c In query3a Select c.Dolar).Sum)
+        '    report.txtEntDolar.Text = FormatNumber(ent + ConvertToDouble(report.txtEntDolar.Text), 2)
+        'End If
+
+        'Dim query3aa = (From tb In dc.GetTable(Of VI_CC)() Where tb.Data >= dt1 And tb.Data <= dt2 And tb.Venda Is Nothing And (tb.IdConserto Is Nothing Or tb.IdConserto = 0) Select tb)
+        'If query3aa.Count > 0 Then
+        '    ent = ConvertToDouble((From c In query3aa Select c.Dolar).Sum)
+        '    report.txtEntDolar.Text = FormatNumber(ent + ConvertToDouble(report.txtEntDolar.Text), 2)
+        'End If
+
+        'ent = ConvertToDouble(report.txtEntDolar.Text)
+        'report.txtEntCash.Text = FormatNumber(ConvertToDouble(report.txtEntCash.Text) + (ent * valDolar), 2)
+
+        'ent = 0
+        'Dim query4 = (From tb In dc.GetTable(Of VI_VENDAS)() Where tb.DataVenda >= dt1 And tb.DataVenda <= dt2 Select tb)
+        'If query4.Count > 0 Then
+        '    ent = ConvertToDouble((From c In query4 Select c.Ouro).Sum)
+        '    report.txtEntOu.Text = FormatNumber(ent, 2)
+        'End If
+        'ent = 0
+        'Dim query4a = (From tb In dc.GetTable(Of VI_CONSERTOS)() Where tb.DT >= dt1 And tb.DT <= dt2 Select tb)
+        'If query4a.Count > 0 Then
+        '    ent = ConvertToDouble((From c In query4a Select c.Ouro).Sum)
+        '    report.txtEntOu.Text = FormatNumber(ent + ConvertToDouble(report.txtEntOu.Text), 2)
+        'End If
+        'Dim query4aa = (From tb In dc.GetTable(Of VI_CC)() Where tb.Data >= dt1 And tb.Data <= dt2 And tb.Venda Is Nothing And (tb.IdConserto Is Nothing Or tb.IdConserto = 0) Select tb)
+        'If query4aa.Count > 0 Then
+        '    ent = ConvertToDouble((From c In query4aa Select c.Ouro).Sum)
+        '    report.txtEntOu.Text = FormatNumber(ent + ConvertToDouble(report.txtEntOu.Text), 2)
+        'End If
+        'ent = ConvertToDouble(report.txtEntOu.Text)
+
+        'report.txtEntCash.Text = FormatNumber(ConvertToDouble(report.txtEntCash.Text) + (ent * valOuro * 0.75), 2)
+        report.ouro18k.Text = FormatNumber(valOuro * 0.75, 2)
 
         ent = 0
         Dim query6 = (From tb In dc.GetTable(Of VI_VENDAS)() Where tb.DataVenda >= dt1 And tb.DataVenda <= dt2 And tb.V = "Loja" Select tb)
@@ -139,7 +276,7 @@ Public Class GerencialBase
         Try
             Dim rs As New ADODB.Recordset()
             Dim cnStr1 As String = strAdoConnection()
-            Dim strSQL As String = "SELECT Sum([VENDAS DET].ValorVenda) AS W FROM [1TabPeças] INNER JOIN (VENDAS INNER JOIN [VENDAS DET] ON VENDAS.Id = [VENDAS DET].Venda) ON [1TabPeças].IDPeça = [VENDAS DET].Peça WHERE (((VENDAS.DataVenda) Between '" & dt1 & "' And '" & dt2 & "')) GROUP BY [1TabPeças].Oficial HAVING ((([1TabPeças].Oficial)=1))"
+            Dim strSQL As String = "SELECT Sum([VENDAS DET].ValorVenda) AS W FROM [1TabPeças] INNER JOIN (VENDAS INNER JOIN [VENDAS DET] ON VENDAS.Id = [VENDAS DET].Venda) ON [1TabPeças].IDPeça = [VENDAS DET].Peça WHERE (((VENDAS.DataVenda) Between '" & ddt1 & "' And '" & ddt2 & "')) GROUP BY [1TabPeças].Oficial HAVING ((([1TabPeças].Oficial)=1))"
             rs.Open(strSQL, cnStr1, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic)
             If rs.EOF Then
                 report.txtW.Text = ""
@@ -153,7 +290,7 @@ Public Class GerencialBase
 
             rs.Close()
 
-            strSQL = "SELECT COUNT(Id) AS Qt, SUM(Custo) AS TotCusto, SUM(ValorSaida) AS TotValor FROM Saidas WHERE (DataSaida Between '" & dt1 & "' And '" & dt2 & "')"
+            strSQL = "SELECT COUNT(Id) AS Qt, SUM(Custo) AS TotCusto, SUM(ValorSaida) AS TotValor FROM Saidas WHERE (DataSaida Between '" & ddt1 & "' And '" & ddt2 & "')"
             rs.Open(strSQL) ', cnStr, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic)
             If Not rs.EOF Then
                 Dim x
@@ -166,6 +303,24 @@ Public Class GerencialBase
             End If
             rs.Close()
 
+            strSQL = "select count(Id) as qt from VENDAS where (DataVenda between '" & ddt1 & "' And '" & ddt2 & "')"
+            rs.Open(strSQL) ', cnStr, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic)
+            If Not rs.EOF Then
+                Dim x
+                x = rs("qt").Value
+                If ConvertToDouble(x) > 0 Then report.qtVendas.Text = rs("Qt").Value
+            End If
+            rs.Close()
+
+            strSQL = "select count(ID) as qt from CONSERTOS where (DT between '" & ddt1 & "' And '" & ddt2 & "')"
+            rs.Open(strSQL) ', cnStr, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic)
+            If Not rs.EOF Then
+                Dim x
+                x = rs("qt").Value
+                If ConvertToDouble(x) > 0 Then report.qtConsertos.Text = rs("Qt").Value
+            End If
+            rs.Close()
+
         Catch ex As Exception
             MsgBox(ex.Message)
             Exit Sub
@@ -174,6 +329,8 @@ Public Class GerencialBase
 
 
         report.TT2.Text = FormatNumber(ConvertToDouble(report.T6.Text) + ConvertToDouble(report.T7.Text) + ConvertToDouble(report.T8.Text), 2)
+        'report.TT2.Text = FormatNumber(ConvertToDouble(report.T6.Text) + ConvertToDouble(report.txtW.Text), 2)
+        report.T6.Text = FormatNumber(ConvertToDouble(report.TT2.Text) - ConvertToDouble(report.txtW.Text), 2)
 
         If ConvertToDouble(report.TT2.Text) = 0 Then
             report.txtPercVendaLoja.Text = ""
@@ -183,6 +340,7 @@ Public Class GerencialBase
             report.txtPercVendaLoja.Text = FormatPercent(ConvertToDouble(report.T6.Text) / ConvertToDouble(report.TT2.Text))
             'report.txtPercVendaPT.Text = FormatPercent(ConvertToDouble(report.T7.Text) / ConvertToDouble(report.TT2.Text))
             'report.txtPercVendaOutros.Text = FormatPercent(ConvertToDouble(report.T8.Text) / ConvertToDouble(report.TT2.Text))
+            report.tmv.Text = FormatNumber(ConvertToDouble(report.TT2.Text) / ConvertToDouble(report.qtVendas.Text), 2)
         End If
         'txtPercVendaW
         ent = 0
@@ -197,6 +355,7 @@ Public Class GerencialBase
         If query9.Count > 0 Then
             ent = ConvertToDouble((From c In query9 Select c.Tot).Sum)
             report.txtConsertos.Text = FormatNumber(ent, 2)
+            report.tmc.Text = FormatNumber(ent / ConvertToDouble(report.qtConsertos.Text), 2)
         End If
 
         ent = 0
@@ -311,10 +470,12 @@ Public Class GerencialBase
         'End If
 
         ent = 0
-        Dim query23a = (From tb In dc.GetTable(Of VI_CONSERTOS)() Where tb.DT >= dt1 And tb.DT <= dt2 Select tb)
+        'Dim query23a = (From tb In dc.GetTable(Of VI_CONSERTOS)() Where tb.DT >= dt1 And tb.DT <= dt2 Select tb)
+        Dim query23a = (From tb In dc.GetTable(Of CCNovoGer)() Where tb.Saldo < 0 Select tb)
         If query23a.Count > 0 Then
-            ent = ConvertToDouble((From c In query23a Select c.CCDeb).Sum)
-            report.txtEntDeb.Text = FormatNumber(ent + ConvertToDouble(report.txtEntDeb.Text), 2)
+            ent = ConvertToDouble((From c In query23a Select c.Saldo).Sum)
+            report.txtEntDeb.Text = FormatNumber(ent, 2)
+            report.XrLabel78.Text = report.txtEntDeb.Text
         End If
         'ent = 0
         'Dim query23aa = (From tb In dc.GetTable(Of VI_CC)() Where tb.Data >= dt1 And tb.Data <= dt2 And tb.Venda Is Nothing And (tb.IdConserto Is Nothing Or tb.IdConserto = 0) Select tb)
@@ -322,12 +483,31 @@ Public Class GerencialBase
         '    ent = ConvertToDouble((From c In query23aa Select c.CCDeb).Sum)
         '    report.txtEntDeb.Text = FormatNumber(ent + ConvertToDouble(report.txtEntDeb.Text), 2)
         'End If
+        'ent = 0
+        'Dim query23aa = (From tb In dc.GetTable(Of VI_VENDAS)() Where tb.DataVenda >= dt1 And tb.DataVenda <= dt2 Select tb) 'And Not tb.Venda Is Nothing And (tb.IdConserto Is Nothing Or tb.IdConserto = 0) Select tb)
+        'If query23aa.Count > 0 Then
+        '    ent = ConvertToDouble((From c In query23aa Select c.CCDeb).Sum)
+        '    report.txtEntDeb.Text = FormatNumber(Math.Abs(ent) + ConvertToDouble(report.txtEntDeb.Text), 2)
+        'End If
+
         ent = 0
-        Dim query23aa = (From tb In dc.GetTable(Of VI_VENDAS)() Where tb.DataVenda >= dt1 And tb.DataVenda <= dt2 Select tb) 'And Not tb.Venda Is Nothing And (tb.IdConserto Is Nothing Or tb.IdConserto = 0) Select tb)
-        If query23aa.Count > 0 Then
-            ent = ConvertToDouble((From c In query23aa Select c.CCDeb).Sum)
-            report.txtEntDeb.Text = FormatNumber(Math.Abs(ent) + ConvertToDouble(report.txtEntDeb.Text), 2)
+        'Dim query23a2 = (From tb In dc.GetTable(Of VI_CONSERTOS)() Where tb.DT >= dt1 And tb.DT <= dt2 Select tb)
+        Dim query23a2 = (From tb In dc.GetTable(Of CCNovoGer)() Where tb.Saldo > 0 Select tb) 'And Not tb.Venda Is Nothing And (tb.IdConserto Is Nothing Or tb.IdConserto = 0) Select tb) >= dt1 And tb.DT <= dt2 Select tb)
+        If query23a2.Count > 0 Then
+            ent = ConvertToDouble((From c In query23a2 Select c.Saldo).Sum)
+            report.txtEntCred.Text = FormatNumber(ent, 2)
+            report.XrLabel79.Text = report.txtEntCred.Text
         End If
+
+        'ent = 0
+        'Dim query23aa2 = (From tb In dc.GetTable(Of VI_VENDAS)() Where tb.DataVenda >= dt1 And tb.DataVenda <= dt2 Select tb) 'And Not tb.Venda Is Nothing And (tb.IdConserto Is Nothing Or tb.IdConserto = 0) Select tb)
+        'If query23aa2.Count > 0 Then
+        '    ent = ConvertToDouble((From c In query23aa2 Select c.CCCred).Sum)
+        '    report.txtEntCred.Text = FormatNumber(Math.Abs(ent) + ConvertToDouble(report.txtEntCred.Text), 2)
+        'End If
+
+        report.txtEntSaldo.Text = FormatNumber(ConvertToDouble(report.txtEntCred.Text) + ConvertToDouble(report.txtEntDeb.Text), 2)
+        report.XrLabel80.Text = report.txtEntSaldo.Text
 
         ent = 0
         Dim query24 = (From tb In dc.GetTable(Of VI_METAIS)() Where tb.DataReg >= dt1 And tb.DataReg <= dt2 Select tb)
@@ -367,6 +547,20 @@ Public Class GerencialBase
         End If
 
         ent = 0
+        Dim query27a = (From tb In dc.GetTable(Of VI_METAIS_VENDAS)() Where ((tb.DataVenda >= dt1 And tb.DataVenda <= dt2)) Select tb)
+        If query27a.Count > 0 Then
+            ent = ConvertToDouble((From c In query27a Select c.OT).Sum)
+            report.pvAU.Text = FormatNumber(ent, 2)
+        End If
+
+        ent = 0
+        Dim query28a = (From tb In dc.GetTable(Of VI_METAIS_VENDAS)() Where ((tb.DataVenda >= dt1 And tb.DataVenda <= dt2)) Select tb)
+        If query28a.Count > 0 Then
+            ent = ConvertToDouble((From c In query28a Select c.OV).Sum)
+            report.pvRS.Text = FormatNumber(ent, 2)
+        End If
+
+        ent = 0
         Dim query29 = (From tb In dc.GetTable(Of VI_PEÇAS)() Where ((tb.DataReg >= dt1 And tb.DataReg <= dt2) And tb.Origem = "F.P.") Select tb)
         If query29.Count > 0 Then
             ent = ConvertToDouble((From c In query29 Select c.MO).Sum)
@@ -374,6 +568,17 @@ Public Class GerencialBase
         End If
 
         report.T22.Text = FormatNumber(ConvertToDouble(report.T12.Text) - (ConvertToDouble(report.T20.Text) + ConvertToDouble(report.T21.Text)), 2)
+
+        Dim ent2 As Double = 0
+        ent = 0
+        Dim query29a = (From tb In dc.GetTable(Of VI_PEÇAS_VENDAS)() Where ((tb.DataVenda >= dt1 And tb.DataVenda <= dt2)) Select tb)
+        If query29a.Count > 0 Then
+            ent = ConvertToDouble((From c In query29a Select c.MO).Sum)
+            ent2 = ConvertToDouble((From c In query29a Select c.Outras).Sum)
+            report.pvMO.Text = FormatNumber(ent, 2)
+            report.pvOUT.Text = FormatNumber(ent2, 2)
+        End If
+        'report.pvOUT.Text = FormatNumber(ConvertToDouble(report.T12.Text) - (ConvertToDouble(report.T20.Text) + ConvertToDouble(report.T21.Text)), 2)
 
         ent = 0
         Dim query30 = (From tb In dc.GetTable(Of VI_METAIS)() Where ((tb.DataReg >= dt1 And tb.DataReg <= dt2) And tb.Origem <> "F.P.") Select tb)
@@ -404,16 +609,26 @@ Public Class GerencialBase
             ent = ConvertToDouble((From c In query5 Select c.VValor).Sum)
         End If
 
-        report.txtTT.Text = FormatNumber(ent + ConvertToDouble(report.txtEntCart.Text) + ConvertToDouble(report.txtEntCash.Text) + ConvertToDouble(report.txtEntDolar.Text) + ConvertToDouble(report.txtEntOu.Text) + ConvertToDouble(report.txtEntTransf.Text) + ConvertToDouble(report.txtEntDeb.Text), 2)
+        'report.txtTT.Text = FormatNumber(ent + ConvertToDouble(report.txtEntCart.Text) + ConvertToDouble(report.txtEntCash.Text) + ConvertToDouble(report.txtEntDolar.Text) + ConvertToDouble(report.txtEntOu.Text) + ConvertToDouble(report.txtEntTransf.Text) + ConvertToDouble(report.txtEntDeb.Text), 2)
+        'report.txtTT.Text = FormatNumber(ent + ConvertToDouble(report.txtEntCart.Text) + ConvertToDouble(report.txtEntCash.Text) + ConvertToDouble(report.txtEntDolar.Text) + ConvertToDouble(report.txtEntOu.Text) + ConvertToDouble(report.txtEntTransf.Text), 2)
+        'report.txtTT.Text = FormatNumber(ent + ConvertToDouble(report.txtEntCart.Text) + ConvertToDouble(report.txtEntCash.Text) + ConvertToDouble(report.txtEntTransf.Text), 2)
+        'report.txtTT.Text = FormatNumber(ent + ConvertToDouble(report.txtEntCart.Text) + ConvertToDouble(report.txtEntCash.Text) + ConvertToDouble(report.txtEntTransf.Text) + ConvertToDouble(report.txtCredVista.Text) + ConvertToDouble(report.txtCredParc.Text), 2)
+        report.txtTT.Text = FormatNumber(ent + ConvertToDouble(report.txtEntCart.Text) + ConvertToDouble(report.txtEntCash.Text) + ConvertToDouble(report.txtEntTransf.Text) + ConvertToDouble(report.txtCredVista.Text) + ConvertToDouble(report.XrLabel75.Text), 2)
+
         report.GroupFooterBand1.Tag = ConvertToDouble(report.txtTT.Text)
         report.txtPercCheques.Text = FormatPercent(ent / ConvertToDouble(report.txtTT.Text))
         report.txtPercCart.Text = FormatPercent(ConvertToDouble(report.txtEntCart.Text) / ConvertToDouble(report.txtTT.Text))
         report.txtPercCash.Text = FormatPercent(ConvertToDouble(report.txtEntCash.Text) / ConvertToDouble(report.txtTT.Text))
-        report.txtPercDolar.Text = FormatPercent(ConvertToDouble(report.txtEntDolar.Text) / ConvertToDouble(report.txtTT.Text))
-        report.txtPercOu.Text = FormatPercent(ConvertToDouble(report.txtEntOu.Text) / ConvertToDouble(report.txtTT.Text))
+        'report.txtPercDolar.Text = 0 'FormatPercent(ConvertToDouble(report.txtEntDolar.Text) / ConvertToDouble(report.txtTT.Text))
+        'report.txtPercOu.Text = 0 'FormatPercent(ConvertToDouble(report.txtEntOu.Text) / ConvertToDouble(report.txtTT.Text))
         report.txtPercTransf.Text = FormatPercent(ConvertToDouble(report.txtEntTransf.Text) / ConvertToDouble(report.txtTT.Text))
-        report.txtPercDeb.Text = FormatPercent(ConvertToDouble(report.txtEntDeb.Text) / ConvertToDouble(report.txtTT.Text))
+        'report.txtPercDeb.Text = FormatPercent(ConvertToDouble(report.txtEntDeb.Text) / ConvertToDouble(report.txtTT.Text))
         'End If
+        report.txtPercVista.Text = FormatPercent(ConvertToDouble(report.txtCredVista.Text) / ConvertToDouble(report.txtTT.Text))
+        If report.txtPercVista.Text = "0,00%" Then report.txtPercVista.Text = ""
+        'report.txtPercParc.Text = FormatPercent(ConvertToDouble(report.txtCredParc.Text) / ConvertToDouble(report.txtTT.Text))
+        report.txtPercParc.Text = FormatPercent(ConvertToDouble(report.XrLabel75.Text) / ConvertToDouble(report.txtTT.Text))
+        If report.txtPercParc.Text = "0,00%" Then report.txtPercParc.Text = ""
 
         If CDbl(report.T9.Text) > 0 Then report.txtPercFPQ.Text = FormatPercent(CDbl(report.T11.Text) / CDbl(report.T9.Text))
         If CDbl(report.T10.Text) > 0 Then report.txtPercFPC.Text = FormatPercent(CDbl(report.T12.Text) / CDbl(report.T10.Text))
@@ -441,6 +656,8 @@ Public Class GerencialBase
 
         report.XrLabel34.Text = report.txtEntTransf.Text
         report.XrLabel37.Text = report.txtPercTransf.Text
+        report.XrLabel76.Text = report.txtEntTransf.Text
+        report.XrLabel77.Text = report.txtPercTransf.Text
 
         Dim rs2 As New ADODB.Recordset()
         Dim strSQL2 As String = My.Resources.EmEstoque
@@ -467,6 +684,9 @@ Public Class GerencialBase
         report.XrSubreport1.ReportSource = subreport2
 
         report.SqlDataSource.Fill()
+
+        If report.txtCredVista.Text = "0" Then report.txtCredVista.Text = ""
+        If report.XrLabel75.Text = "0" Then report.XrLabel75.Text = ""
 
         Me.DocumentViewer1.DocumentSource = report
         Me.DocumentViewer1.Visible = True

@@ -8160,7 +8160,7 @@ Namespace dsEstoqueTableAdapters
                 "      CASE WHEN Família IS NULL OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Família = 'Null' TH"& _ 
                 "EN '' ELSE Família END AS Fam, PrVenda, Saida, CASE WHEN Saida = 1 THEN 'Saída' "& _ 
                 "WHEN Vendida = 1 THEN 'Sim' ELSE 'Não' END AS Status"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            [1TabPeças"& _ 
-                "]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Modêlo IS NOT NULL)"
+                "]"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         

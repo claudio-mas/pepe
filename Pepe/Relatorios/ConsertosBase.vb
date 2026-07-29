@@ -1,10 +1,30 @@
-﻿Imports DevExpress.XtraEditors.Controls
+﻿Imports DevExpress.CodeParser
+Imports DevExpress.XtraEditors.Controls
 
 Public Class ConsertosBase
 
     Private Sub btnOk2_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles btnOk2.ButtonClick
 
         Dim report As New Consertos
+
+        Dim formattedDt1 As Date = Me.txtData1.EditValue
+        Dim formattedDt2 As Date = Me.txtData2.EditValue
+
+        Dim dt1 As String = formattedDt1.ToString("yyyy/MM/dd")
+        Dim dt2 As String = formattedDt2.ToString("yyyy/MM/dd")
+
+        Dim rs As New ADODB.Recordset()
+        Dim cnStr1 As String = strAdoConnection()
+        Dim strSQL As String = ""
+
+        strSQL = "select count(Id) as qt, SUM(VVALOR) AS vval from CONSERTOS where (DT between '" & dt1 & "' And '" & dt2 & "')"
+        rs.Open(strSQL, cnStr1, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic)
+        If Not rs.EOF Then
+            Dim x
+            x = rs("vval").Value
+            If ConvertToDouble(x) > 0 Then report.txtConsertos.Text = rs("Qt").Value : report.txtTicket.Text = FormatNumber(rs("vval").Value / rs("Qt").Value, 2)
+        End If
+        rs.Close()
 
         Try
             report.SqlDataSource.Queries(0).Parameters(0).Value = Me.txtData1.EditValue 'CInt(Nz(cboAno.Text, System.DateTime.Today.ToString("yyyy")))
@@ -36,7 +56,27 @@ Public Class ConsertosBase
 
         Dim report As New Consertos
 
+        Dim formattedDt1 As Date = Me.txtData1.EditValue
+        Dim formattedDt2 As Date = Me.txtData2.EditValue
+
+        Dim dt1 As String = formattedDt1.ToString("yyyy/MM/dd")
+        Dim dt2 As String = formattedDt2.ToString("yyyy/MM/dd")
+
+        Dim rs As New ADODB.Recordset()
+        Dim cnStr1 As String = strAdoConnection()
+        Dim strSQL As String = ""
+
+        strSQL = "select count(Id) as qt, SUM(VVALOR) AS vval from CONSERTOS where (DT between '" & dt1 & "' And '" & dt2 & "')"
+        rs.Open(strSQL, cnStr1, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic)
+        If Not rs.EOF Then
+            Dim x
+            x = rs("vval").Value
+            If ConvertToDouble(x) > 0 Then report.txtConsertos.Text = rs("Qt").Value : report.txtTicket.Text = FormatNumber(rs("vval").Value / rs("Qt").Value, 2)
+        End If
+        rs.Close()
+
         Try
+
             report.SqlDataSource.Queries(0).Parameters(0).Value = Me.txtData1.EditValue 'CInt(Nz(cboAno.Text, System.DateTime.Today.ToString("yyyy")))
             report.SqlDataSource.Queries(0).Parameters(1).Value = Me.txtData2.EditValue
             report.SqlDataSource.Fill()
@@ -59,5 +99,29 @@ Public Class ConsertosBase
         frmDevPrincipal.Visible = True
 
     End Sub
+
+    Private Sub ticket(report)
+
+        Dim formattedDt1 As Date = Me.txtData1.EditValue
+        Dim formattedDt2 As Date = Me.txtData2.EditValue
+
+        Dim dt1 As String = formattedDt1.ToString("yyyy/MM/dd")
+        Dim dt2 As String = formattedDt2.ToString("yyyy/MM/dd")
+
+        Dim rs As New ADODB.Recordset()
+        Dim cnStr1 As String = strAdoConnection()
+        Dim strSQL As String = ""
+
+        strSQL = "select count(Id) as qt from CONSERTOS where (DT between '" & dt1 & "' And '" & dt2 & "')"
+        rs.Open(strSQL, cnStr1, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic)
+        If Not rs.EOF Then
+            Dim x
+            x = rs("qt").Value
+            If ConvertToDouble(x) > 0 Then report.txtConsertos.Text = rs("Qt").Value
+        End If
+        rs.Close()
+
+    End Sub
+
 
 End Class

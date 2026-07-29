@@ -843,6 +843,17 @@ Partial Public Class frmEstoque
     End Sub
 
 
+    Private Sub txt_pFund_TextChanged(sender As Object, e As EventArgs) Handles txt_pFund.TextChanged
+        Call botoes()
+
+    End Sub
+
+    Private Sub cbLocal_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbLocal.SelectedIndexChanged
+        Call botoes()
+
+    End Sub
+
+
     'Private Sub LayoutView1_ValidateRow(sender As Object, e As ValidateRowEventArgs) Handles LayoutView1.ValidateRow
     '    LayoutView1.SetRowCellValue(LayoutView1.FocusedRowHandle, "TotalValor", LayoutView1.GetRowCellValue(0, "OuroQtde") + LayoutView1.GetRowCellValue(0, "PerdaQtde") + LayoutView1.GetRowCellValue(0, "PrataQtde") + LayoutView1.GetRowCellValue(0, "PlatinaQtde") + LayoutView1.GetRowCellValue(0, "PaladiumQtde") + LayoutView1.GetRowCellValue(0, "SistemaQtde") - LayoutView1.GetRowCellValue(0, "OuroV") - LayoutView1.GetRowCellValue(0, "PrataV"))
     '    CalculaCusto()

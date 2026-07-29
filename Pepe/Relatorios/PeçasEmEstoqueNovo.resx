@@ -118,20 +118,91 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CustomSqlQuery1.Sql" xml:space="preserve">
-    <value>SELECT        dbo.[1TabPeças].Família, dbo.[1TabPeças].PrVenda, dbo.[1TabPeças].Modêlo AS Ficha, dbo.[1TabPeças].DataReg, dbo.[1TabPeças].Obs, dbo.METAIS.OuroQtde, dbo.METAIS.PrataQtde, ISNULL(dbo.PEENBase.DiamantesCT, 0) 
-                         + ISNULL(dbo.PEENBase.RubisCT, 0) + ISNULL(dbo.PEENBase.SafirasCT, 0) + ISNULL(dbo.PEENBase.EsmeraldasCT, 0) + ISNULL(dbo.PEENBase.PedrasCT, 00) + ISNULL(dbo.PEENBase.BrasCT, 0) 
-                         + ISNULL(dbo.PEENBase.PerolasCT, 0) + ISNULL(dbo.PEENBase.Diamantes2CT, 0) AS Outros, ISNULL(dbo.[1TabPeças].MOExt, 0) + ISNULL(dbo.[1TabPeças].MOInt, 0) AS MO, dbo.[1TabPeças].Oficina, dbo.[1TabPeças].Custo, 
-                         dbo.VENDAS.DataVenda, dbo.[1TabPeças].Vendida
-FROM            dbo.VENDAS RIGHT OUTER JOIN
-                         dbo.[VENDAS DET] ON dbo.VENDAS.Id = dbo.[VENDAS DET].Venda RIGHT OUTER JOIN
-                         dbo.[1TabPeças] LEFT OUTER JOIN
-                         dbo.METAIS ON dbo.[1TabPeças].IDPeça = dbo.METAIS.Id INNER JOIN
-                         dbo.PEENBase ON dbo.[1TabPeças].IDPeça = dbo.PEENBase.IDPeça AND dbo.[1TabPeças].IDPeça = dbo.PEENBase.IDPeça ON dbo.[VENDAS DET].Peça = dbo.[1TabPeças].IDPeça
-WHERE        (dbo.[1TabPeças].Modêlo IS NOT NULL) AND (dbo.[1TabPeças].DataReg &lt;= @dt) AND (dbo.VENDAS.DataVenda IS NULL) AND (dbo.[1TabPeças].Vendida = 0 OR
-                         dbo.[1TabPeças].Vendida IS NULL) AND (ISNULL(dbo.[1TabPeças].Saida, 0) = 0) OR
-                         (dbo.[1TabPeças].Modêlo IS NOT NULL) AND (dbo.[1TabPeças].DataReg &lt;= @dt) AND (dbo.VENDAS.DataVenda &gt; @dt) AND (dbo.[1TabPeças].Vendida = 1) AND (ISNULL(dbo.[1TabPeças].Saida, 0) = 0)</value>
+    <value>SELECT
+    dbo.[1TabPeças].Família,
+    dbo.[1TabPeças].PrVenda,
+    dbo.[1TabPeças].Modêlo AS Ficha,
+    dbo.[1TabPeças].DataReg,
+    dbo.[1TabPeças].Classe as Tipo,
+    dbo.[1TabPeças].Obs,
+    -- Novo campo calculado Obs2
+    LTRIM(RTRIM(
+        REPLACE(
+        REPLACE(
+        REPLACE(
+        REPLACE(
+        REPLACE(
+        REPLACE(
+        REPLACE(
+	  REPLACE(
+	  REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+REPLACE(
+        REPLACE(dbo.[1TabPeças].Obs, 'AN -', ''),
+'AN-', ''),
+'AN', ''),
+               'BR -', ''),
+'BR-', ''),
+'BR', ''),
+               'GAR -', ''),
+'GAR', ''),
+'GAR-', ''),
+               'PEN -', ''),
+		   'PEN-', ''),
+		   'PEN', ''),
+               'PUL -', ''),
+'PUL-', ''),
+'PUL', ''),
+               'BOU -', ''),
+               'ALI -', ''),
+'ALI-', ''),
+'ALI', ''),
+               'OUT -', '')
+    )) AS Obs2,
+    dbo.METAIS.OuroQtde,
+    dbo.METAIS.PrataQtde,
+    ISNULL(dbo.PEENBase.DiamantesCT, 0) 
+      + ISNULL(dbo.PEENBase.RubisCT, 0) 
+      + ISNULL(dbo.PEENBase.SafirasCT, 0) 
+      + ISNULL(dbo.PEENBase.EsmeraldasCT, 0) 
+      + ISNULL(dbo.PEENBase.PedrasCT, 0) 
+      + ISNULL(dbo.PEENBase.BrasCT, 0) 
+      + ISNULL(dbo.PEENBase.PerolasCT, 0) 
+      + ISNULL(dbo.PEENBase.Diamantes2CT, 0) AS Outros,
+    ISNULL(dbo.[1TabPeças].MOExt, 0) + ISNULL(dbo.[1TabPeças].MOInt, 0) AS MO,
+    dbo.[1TabPeças].Oficina,
+    dbo.[1TabPeças].Custo, 
+    dbo.VENDAS.DataVenda,
+    dbo.[1TabPeças].Vendida
+FROM dbo.VENDAS
+RIGHT OUTER JOIN dbo.[VENDAS DET] ON dbo.VENDAS.Id = dbo.[VENDAS DET].Venda
+RIGHT OUTER JOIN dbo.[1TabPeças]
+    LEFT OUTER JOIN dbo.METAIS ON dbo.[1TabPeças].IDPeça = dbo.METAIS.Id
+    INNER JOIN dbo.PEENBase ON dbo.[1TabPeças].IDPeça = dbo.PEENBase.IDPeça
+        AND dbo.[1TabPeças].IDPeça = dbo.PEENBase.IDPeça
+    ON dbo.[VENDAS DET].Peça = dbo.[1TabPeças].IDPeça
+WHERE 
+    (dbo.[1TabPeças].Modêlo IS NOT NULL) 
+    AND (dbo.[1TabPeças].DataReg &lt;= @dt) 
+    AND (dbo.VENDAS.DataVenda IS NULL) 
+    AND (dbo.[1TabPeças].Vendida = 0 OR dbo.[1TabPeças].Vendida IS NULL) 
+    AND (ISNULL(dbo.[1TabPeças].Saida, 0) = 0)
+    OR
+    (dbo.[1TabPeças].Modêlo IS NOT NULL) 
+    AND (dbo.[1TabPeças].DataReg &lt;= @dt) 
+    AND (dbo.VENDAS.DataVenda &gt; @dt) 
+    AND (dbo.[1TabPeças].Vendida = 1) 
+    AND (ISNULL(dbo.[1TabPeças].Saida, 0) = 0);</value>
   </data>
   <data name="SqlDataSource1.ResultSchemaSerializable" xml:space="preserve">
-    <value>PERhdGFTZXQgTmFtZT0iU3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9IlF1ZXJ5Ij48RmllbGQgTmFtZT0iRmFtw61saWEiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iUHJWZW5kYSIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iRmljaGEiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iRGF0YVJlZyIgVHlwZT0iRGF0ZVRpbWUiIC8+PEZpZWxkIE5hbWU9Ik9icyIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJPdXJvUXRkZSIgVHlwZT0iRG91YmxlIiAvPjxGaWVsZCBOYW1lPSJQcmF0YVF0ZGUiIFR5cGU9IkRvdWJsZSIgLz48RmllbGQgTmFtZT0iT3V0cm9zIiBUeXBlPSJEb3VibGUiIC8+PEZpZWxkIE5hbWU9Ik1PIiBUeXBlPSJEb3VibGUiIC8+PEZpZWxkIE5hbWU9Ik9maWNpbmEiIFR5cGU9IkRvdWJsZSIgLz48RmllbGQgTmFtZT0iQ3VzdG8iIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9IkRhdGFWZW5kYSIgVHlwZT0iRGF0ZVRpbWUiIC8+PEZpZWxkIE5hbWU9IlZlbmRpZGEiIFR5cGU9IkJvb2xlYW4iIC8+PC9WaWV3PjwvRGF0YVNldD4=</value>
+    <value>PERhdGFTZXQgTmFtZT0iU3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9IlF1ZXJ5Ij48RmllbGQgTmFtZT0iRmFtw61saWEiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iUHJWZW5kYSIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iRmljaGEiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iRGF0YVJlZyIgVHlwZT0iRGF0ZVRpbWUiIC8+PEZpZWxkIE5hbWU9IlRpcG8iIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iT2JzIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9Ik9iczIiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iT3Vyb1F0ZGUiIFR5cGU9IkRvdWJsZSIgLz48RmllbGQgTmFtZT0iUHJhdGFRdGRlIiBUeXBlPSJEb3VibGUiIC8+PEZpZWxkIE5hbWU9Ik91dHJvcyIgVHlwZT0iRG91YmxlIiAvPjxGaWVsZCBOYW1lPSJNTyIgVHlwZT0iRG91YmxlIiAvPjxGaWVsZCBOYW1lPSJPZmljaW5hIiBUeXBlPSJEb3VibGUiIC8+PEZpZWxkIE5hbWU9IkN1c3RvIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSJEYXRhVmVuZGEiIFR5cGU9IkRhdGVUaW1lIiAvPjxGaWVsZCBOYW1lPSJWZW5kaWRhIiBUeXBlPSJCb29sZWFuIiAvPjwvVmlldz48L0RhdGFTZXQ+</value>
   </data>
 </root>

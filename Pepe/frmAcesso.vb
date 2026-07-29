@@ -70,6 +70,9 @@ Public Class frmAcesso
                 'End Try
                 'desabilitar acima
 
+                'valDolar = DLookUp("ValDolar", "Cotação", "", 0)
+                'valOuro = DLookUp("ValOuro", "Cotação", "", 0)
+
                 frmDevPrincipal.Show()
             End If
 

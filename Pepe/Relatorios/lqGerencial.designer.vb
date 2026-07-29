@@ -49,6 +49,12 @@ Partial Public Class lqGerencialDataContext
     End Sub
   Partial Private Sub DeleteClientes(instance As Clientes)
     End Sub
+  Partial Private Sub InsertCotação(instance As Cotação)
+    End Sub
+  Partial Private Sub UpdateCotação(instance As Cotação)
+    End Sub
+  Partial Private Sub DeleteCotação(instance As Cotação)
+    End Sub
   #End Region
 	
 	Public Sub New()
@@ -106,27 +112,9 @@ Partial Public Class lqGerencialDataContext
 		End Get
 	End Property
 	
-	Public ReadOnly Property VI_CC() As System.Data.Linq.Table(Of VI_CC)
-		Get
-			Return Me.GetTable(Of VI_CC)
-		End Get
-	End Property
-	
 	Public ReadOnly Property VI_VENDIDAS() As System.Data.Linq.Table(Of VI_VENDIDAS)
 		Get
 			Return Me.GetTable(Of VI_VENDIDAS)
-		End Get
-	End Property
-	
-	Public ReadOnly Property VI_CONSERTOS() As System.Data.Linq.Table(Of VI_CONSERTOS)
-		Get
-			Return Me.GetTable(Of VI_CONSERTOS)
-		End Get
-	End Property
-	
-	Public ReadOnly Property VI_VENDAS() As System.Data.Linq.Table(Of VI_VENDAS)
-		Get
-			Return Me.GetTable(Of VI_VENDAS)
 		End Get
 	End Property
 	
@@ -139,6 +127,66 @@ Partial Public Class lqGerencialDataContext
 	Public ReadOnly Property VI_SAIDAS() As System.Data.Linq.Table(Of VI_SAIDAS)
 		Get
 			Return Me.GetTable(Of VI_SAIDAS)
+		End Get
+	End Property
+	
+	Public ReadOnly Property VI_METAIS_VENDAS() As System.Data.Linq.Table(Of VI_METAIS_VENDAS)
+		Get
+			Return Me.GetTable(Of VI_METAIS_VENDAS)
+		End Get
+	End Property
+	
+	Public ReadOnly Property VI_PEÇAS_VENDAS() As System.Data.Linq.Table(Of VI_PEÇAS_VENDAS)
+		Get
+			Return Me.GetTable(Of VI_PEÇAS_VENDAS)
+		End Get
+	End Property
+	
+	Public ReadOnly Property Cotação() As System.Data.Linq.Table(Of Cotação)
+		Get
+			Return Me.GetTable(Of Cotação)
+		End Get
+	End Property
+	
+	Public ReadOnly Property CCNovoGer() As System.Data.Linq.Table(Of CCNovoGer)
+		Get
+			Return Me.GetTable(Of CCNovoGer)
+		End Get
+	End Property
+	
+	Public ReadOnly Property VI_VENDAS() As System.Data.Linq.Table(Of VI_VENDAS)
+		Get
+			Return Me.GetTable(Of VI_VENDAS)
+		End Get
+	End Property
+	
+	Public ReadOnly Property VI_CONSERTOS() As System.Data.Linq.Table(Of VI_CONSERTOS)
+		Get
+			Return Me.GetTable(Of VI_CONSERTOS)
+		End Get
+	End Property
+	
+	Public ReadOnly Property VI_CC() As System.Data.Linq.Table(Of VI_CC)
+		Get
+			Return Me.GetTable(Of VI_CC)
+		End Get
+	End Property
+	
+	Public ReadOnly Property VI_CC2() As System.Data.Linq.Table(Of VI_CC2)
+		Get
+			Return Me.GetTable(Of VI_CC2)
+		End Get
+	End Property
+	
+	Public ReadOnly Property VI_GER_CRED() As System.Data.Linq.Table(Of VI_GER_CRED)
+		Get
+			Return Me.GetTable(Of VI_GER_CRED)
+		End Get
+	End Property
+	
+	Public ReadOnly Property VI_GER_DEB() As System.Data.Linq.Table(Of VI_GER_DEB)
+		Get
+			Return Me.GetTable(Of VI_GER_DEB)
 		End Get
 	End Property
 End Class
@@ -1504,6 +1552,1257 @@ Partial Public Class Clientes
 	End Sub
 End Class
 
+<Global.System.Data.Linq.Mapping.TableAttribute(Name:="dbo.VI_VENDIDAS")>  _
+Partial Public Class VI_VENDIDAS
+	
+	Private _Peça As System.Nullable(Of Integer)
+	
+	Private _Custo As System.Nullable(Of Decimal)
+	
+	Private _DataVenda As System.Nullable(Of Date)
+	
+	Private _ValorVenda As System.Nullable(Of Decimal)
+	
+	Public Sub New()
+		MyBase.New
+	End Sub
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Peça", DbType:="Int")>  _
+	Public Property Peça() As System.Nullable(Of Integer)
+		Get
+			Return Me._Peça
+		End Get
+		Set
+			If (Me._Peça.Equals(value) = false) Then
+				Me._Peça = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Custo", DbType:="Money")>  _
+	Public Property Custo() As System.Nullable(Of Decimal)
+		Get
+			Return Me._Custo
+		End Get
+		Set
+			If (Me._Custo.Equals(value) = false) Then
+				Me._Custo = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_DataVenda", DbType:="DateTime2")>  _
+	Public Property DataVenda() As System.Nullable(Of Date)
+		Get
+			Return Me._DataVenda
+		End Get
+		Set
+			If (Me._DataVenda.Equals(value) = false) Then
+				Me._DataVenda = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_ValorVenda", DbType:="Money")>  _
+	Public Property ValorVenda() As System.Nullable(Of Decimal)
+		Get
+			Return Me._ValorVenda
+		End Get
+		Set
+			If (Me._ValorVenda.Equals(value) = false) Then
+				Me._ValorVenda = value
+			End If
+		End Set
+	End Property
+End Class
+
+<Global.System.Data.Linq.Mapping.TableAttribute(Name:="dbo.VI_W")>  _
+Partial Public Class VI_W
+	
+	Private _Id As Integer
+	
+	Private _DataVenda As System.Nullable(Of Date)
+	
+	Private _ValorVenda As System.Nullable(Of Double)
+	
+	Public Sub New()
+		MyBase.New
+	End Sub
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Id", DbType:="Int NOT NULL")>  _
+	Public Property Id() As Integer
+		Get
+			Return Me._Id
+		End Get
+		Set
+			If ((Me._Id = value)  _
+						= false) Then
+				Me._Id = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_DataVenda", DbType:="DateTime2")>  _
+	Public Property DataVenda() As System.Nullable(Of Date)
+		Get
+			Return Me._DataVenda
+		End Get
+		Set
+			If (Me._DataVenda.Equals(value) = false) Then
+				Me._DataVenda = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_ValorVenda", DbType:="Float")>  _
+	Public Property ValorVenda() As System.Nullable(Of Double)
+		Get
+			Return Me._ValorVenda
+		End Get
+		Set
+			If (Me._ValorVenda.Equals(value) = false) Then
+				Me._ValorVenda = value
+			End If
+		End Set
+	End Property
+End Class
+
+<Global.System.Data.Linq.Mapping.TableAttribute(Name:="dbo.VI_SAIDAS")>  _
+Partial Public Class VI_SAIDAS
+	
+	Private _DataSaida As System.Nullable(Of Date)
+	
+	Private _Ficha As String
+	
+	Private _Custo As System.Nullable(Of Decimal)
+	
+	Private _ValorSaida As System.Nullable(Of Decimal)
+	
+	Private _Motivo As String
+	
+	Private _Observações As String
+	
+	Public Sub New()
+		MyBase.New
+	End Sub
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_DataSaida", DbType:="Date")>  _
+	Public Property DataSaida() As System.Nullable(Of Date)
+		Get
+			Return Me._DataSaida
+		End Get
+		Set
+			If (Me._DataSaida.Equals(value) = false) Then
+				Me._DataSaida = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Ficha", DbType:="NVarChar(35)")>  _
+	Public Property Ficha() As String
+		Get
+			Return Me._Ficha
+		End Get
+		Set
+			If (String.Equals(Me._Ficha, value) = false) Then
+				Me._Ficha = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Custo", DbType:="Money")>  _
+	Public Property Custo() As System.Nullable(Of Decimal)
+		Get
+			Return Me._Custo
+		End Get
+		Set
+			If (Me._Custo.Equals(value) = false) Then
+				Me._Custo = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_ValorSaida", DbType:="Money")>  _
+	Public Property ValorSaida() As System.Nullable(Of Decimal)
+		Get
+			Return Me._ValorSaida
+		End Get
+		Set
+			If (Me._ValorSaida.Equals(value) = false) Then
+				Me._ValorSaida = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Motivo", DbType:="NVarChar(50)")>  _
+	Public Property Motivo() As String
+		Get
+			Return Me._Motivo
+		End Get
+		Set
+			If (String.Equals(Me._Motivo, value) = false) Then
+				Me._Motivo = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Observações", DbType:="NVarChar(350)")>  _
+	Public Property Observações() As String
+		Get
+			Return Me._Observações
+		End Get
+		Set
+			If (String.Equals(Me._Observações, value) = false) Then
+				Me._Observações = value
+			End If
+		End Set
+	End Property
+End Class
+
+<Global.System.Data.Linq.Mapping.TableAttribute(Name:="dbo.VI_METAIS_VENDAS")>  _
+Partial Public Class VI_METAIS_VENDAS
+	
+	Private _Id As Integer
+	
+	Private _DataReg As System.Nullable(Of Date)
+	
+	Private _OuroQtde As System.Nullable(Of Double)
+	
+	Private _OuroV As System.Nullable(Of Double)
+	
+	Private _Origem As String
+	
+	Private _Família As String
+	
+	Private _OT As System.Nullable(Of Double)
+	
+	Private _OV As System.Nullable(Of Double)
+	
+	Private _DataVenda As System.Nullable(Of Date)
+	
+	Private _ValorVenda As System.Nullable(Of Double)
+	
+	Public Sub New()
+		MyBase.New
+	End Sub
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Id", DbType:="Int NOT NULL")>  _
+	Public Property Id() As Integer
+		Get
+			Return Me._Id
+		End Get
+		Set
+			If ((Me._Id = value)  _
+						= false) Then
+				Me._Id = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_DataReg", DbType:="Date")>  _
+	Public Property DataReg() As System.Nullable(Of Date)
+		Get
+			Return Me._DataReg
+		End Get
+		Set
+			If (Me._DataReg.Equals(value) = false) Then
+				Me._DataReg = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_OuroQtde", DbType:="Float")>  _
+	Public Property OuroQtde() As System.Nullable(Of Double)
+		Get
+			Return Me._OuroQtde
+		End Get
+		Set
+			If (Me._OuroQtde.Equals(value) = false) Then
+				Me._OuroQtde = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_OuroV", DbType:="Float")>  _
+	Public Property OuroV() As System.Nullable(Of Double)
+		Get
+			Return Me._OuroV
+		End Get
+		Set
+			If (Me._OuroV.Equals(value) = false) Then
+				Me._OuroV = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Origem", DbType:="NVarChar(10)")>  _
+	Public Property Origem() As String
+		Get
+			Return Me._Origem
+		End Get
+		Set
+			If (String.Equals(Me._Origem, value) = false) Then
+				Me._Origem = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Família", DbType:="NVarChar(12)")>  _
+	Public Property Família() As String
+		Get
+			Return Me._Família
+		End Get
+		Set
+			If (String.Equals(Me._Família, value) = false) Then
+				Me._Família = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_OT", DbType:="Float")>  _
+	Public Property OT() As System.Nullable(Of Double)
+		Get
+			Return Me._OT
+		End Get
+		Set
+			If (Me._OT.Equals(value) = false) Then
+				Me._OT = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_OV", DbType:="Float")>  _
+	Public Property OV() As System.Nullable(Of Double)
+		Get
+			Return Me._OV
+		End Get
+		Set
+			If (Me._OV.Equals(value) = false) Then
+				Me._OV = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_DataVenda", DbType:="DateTime2")>  _
+	Public Property DataVenda() As System.Nullable(Of Date)
+		Get
+			Return Me._DataVenda
+		End Get
+		Set
+			If (Me._DataVenda.Equals(value) = false) Then
+				Me._DataVenda = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_ValorVenda", DbType:="Float")>  _
+	Public Property ValorVenda() As System.Nullable(Of Double)
+		Get
+			Return Me._ValorVenda
+		End Get
+		Set
+			If (Me._ValorVenda.Equals(value) = false) Then
+				Me._ValorVenda = value
+			End If
+		End Set
+	End Property
+End Class
+
+<Global.System.Data.Linq.Mapping.TableAttribute(Name:="dbo.VI_PEÇAS_VENDAS")>  _
+Partial Public Class VI_PEÇAS_VENDAS
+	
+	Private _IDPeça As Integer
+	
+	Private _Custo As System.Nullable(Of Decimal)
+	
+	Private _DataReg As System.Nullable(Of Date)
+	
+	Private _Origem As String
+	
+	Private _MOExt As System.Nullable(Of Double)
+	
+	Private _MOInt As System.Nullable(Of Double)
+	
+	Private _MO As Double
+	
+	Private _DataVenda As System.Nullable(Of Date)
+	
+	Private _Outras As Double
+	
+	Public Sub New()
+		MyBase.New
+	End Sub
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_IDPeça", DbType:="Int NOT NULL")>  _
+	Public Property IDPeça() As Integer
+		Get
+			Return Me._IDPeça
+		End Get
+		Set
+			If ((Me._IDPeça = value)  _
+						= false) Then
+				Me._IDPeça = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Custo", DbType:="Money")>  _
+	Public Property Custo() As System.Nullable(Of Decimal)
+		Get
+			Return Me._Custo
+		End Get
+		Set
+			If (Me._Custo.Equals(value) = false) Then
+				Me._Custo = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_DataReg", DbType:="Date")>  _
+	Public Property DataReg() As System.Nullable(Of Date)
+		Get
+			Return Me._DataReg
+		End Get
+		Set
+			If (Me._DataReg.Equals(value) = false) Then
+				Me._DataReg = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Origem", DbType:="NVarChar(10)")>  _
+	Public Property Origem() As String
+		Get
+			Return Me._Origem
+		End Get
+		Set
+			If (String.Equals(Me._Origem, value) = false) Then
+				Me._Origem = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_MOExt", DbType:="Float")>  _
+	Public Property MOExt() As System.Nullable(Of Double)
+		Get
+			Return Me._MOExt
+		End Get
+		Set
+			If (Me._MOExt.Equals(value) = false) Then
+				Me._MOExt = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_MOInt", DbType:="Float")>  _
+	Public Property MOInt() As System.Nullable(Of Double)
+		Get
+			Return Me._MOInt
+		End Get
+		Set
+			If (Me._MOInt.Equals(value) = false) Then
+				Me._MOInt = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_MO", DbType:="Float NOT NULL")>  _
+	Public Property MO() As Double
+		Get
+			Return Me._MO
+		End Get
+		Set
+			If ((Me._MO = value)  _
+						= false) Then
+				Me._MO = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_DataVenda", DbType:="DateTime2")>  _
+	Public Property DataVenda() As System.Nullable(Of Date)
+		Get
+			Return Me._DataVenda
+		End Get
+		Set
+			If (Me._DataVenda.Equals(value) = false) Then
+				Me._DataVenda = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Outras", DbType:="Float NOT NULL")>  _
+	Public Property Outras() As Double
+		Get
+			Return Me._Outras
+		End Get
+		Set
+			If ((Me._Outras = value)  _
+						= false) Then
+				Me._Outras = value
+			End If
+		End Set
+	End Property
+End Class
+
+<Global.System.Data.Linq.Mapping.TableAttribute(Name:="dbo.Cotação")>  _
+Partial Public Class Cotação
+	Implements System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	
+	Private Shared emptyChangingEventArgs As PropertyChangingEventArgs = New PropertyChangingEventArgs(String.Empty)
+	
+	Private _ValDolar As Decimal
+	
+	Private _ValOuro As System.Nullable(Of Decimal)
+	
+	Private _DataCot As System.Nullable(Of Date)
+	
+	Private _Id As Integer
+	
+    #Region "Extensibility Method Definitions"
+    Partial Private Sub OnLoaded()
+    End Sub
+    Partial Private Sub OnValidate(action As System.Data.Linq.ChangeAction)
+    End Sub
+    Partial Private Sub OnCreated()
+    End Sub
+    Partial Private Sub OnValDolarChanging(value As Decimal)
+    End Sub
+    Partial Private Sub OnValDolarChanged()
+    End Sub
+    Partial Private Sub OnValOuroChanging(value As System.Nullable(Of Decimal))
+    End Sub
+    Partial Private Sub OnValOuroChanged()
+    End Sub
+    Partial Private Sub OnDataCotChanging(value As System.Nullable(Of Date))
+    End Sub
+    Partial Private Sub OnDataCotChanged()
+    End Sub
+    Partial Private Sub OnIdChanging(value As Integer)
+    End Sub
+    Partial Private Sub OnIdChanged()
+    End Sub
+    #End Region
+	
+	Public Sub New()
+		MyBase.New
+		OnCreated
+	End Sub
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_ValDolar", DbType:="Money NOT NULL")>  _
+	Public Property ValDolar() As Decimal
+		Get
+			Return Me._ValDolar
+		End Get
+		Set
+			If ((Me._ValDolar = value)  _
+						= false) Then
+				Me.OnValDolarChanging(value)
+				Me.SendPropertyChanging
+				Me._ValDolar = value
+				Me.SendPropertyChanged("ValDolar")
+				Me.OnValDolarChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_ValOuro", DbType:="Money")>  _
+	Public Property ValOuro() As System.Nullable(Of Decimal)
+		Get
+			Return Me._ValOuro
+		End Get
+		Set
+			If (Me._ValOuro.Equals(value) = false) Then
+				Me.OnValOuroChanging(value)
+				Me.SendPropertyChanging
+				Me._ValOuro = value
+				Me.SendPropertyChanged("ValOuro")
+				Me.OnValOuroChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_DataCot", DbType:="Date")>  _
+	Public Property DataCot() As System.Nullable(Of Date)
+		Get
+			Return Me._DataCot
+		End Get
+		Set
+			If (Me._DataCot.Equals(value) = false) Then
+				Me.OnDataCotChanging(value)
+				Me.SendPropertyChanging
+				Me._DataCot = value
+				Me.SendPropertyChanged("DataCot")
+				Me.OnDataCotChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Id", AutoSync:=AutoSync.OnInsert, DbType:="Int NOT NULL IDENTITY", IsPrimaryKey:=true, IsDbGenerated:=true)>  _
+	Public Property Id() As Integer
+		Get
+			Return Me._Id
+		End Get
+		Set
+			If ((Me._Id = value)  _
+						= false) Then
+				Me.OnIdChanging(value)
+				Me.SendPropertyChanging
+				Me._Id = value
+				Me.SendPropertyChanged("Id")
+				Me.OnIdChanged
+			End If
+		End Set
+	End Property
+	
+	Public Event PropertyChanging As PropertyChangingEventHandler Implements System.ComponentModel.INotifyPropertyChanging.PropertyChanging
+	
+	Public Event PropertyChanged As PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+	
+	Protected Overridable Sub SendPropertyChanging()
+		If ((Me.PropertyChangingEvent Is Nothing)  _
+					= false) Then
+			RaiseEvent PropertyChanging(Me, emptyChangingEventArgs)
+		End If
+	End Sub
+	
+	Protected Overridable Sub SendPropertyChanged(ByVal propertyName As [String])
+		If ((Me.PropertyChangedEvent Is Nothing)  _
+					= false) Then
+			RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(propertyName))
+		End If
+	End Sub
+End Class
+
+<Global.System.Data.Linq.Mapping.TableAttribute(Name:="dbo.CCNovoGer")>  _
+Partial Public Class CCNovoGer
+	
+	Private _Cliente As String
+	
+	Private _D As System.Nullable(Of Date)
+	
+	Private _Anterior As Double
+	
+	Private _Saldo As System.Nullable(Of Double)
+	
+	Public Sub New()
+		MyBase.New
+	End Sub
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Cliente", DbType:="NVarChar(75)")>  _
+	Public Property Cliente() As String
+		Get
+			Return Me._Cliente
+		End Get
+		Set
+			If (String.Equals(Me._Cliente, value) = false) Then
+				Me._Cliente = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_D", DbType:="DateTime2")>  _
+	Public Property D() As System.Nullable(Of Date)
+		Get
+			Return Me._D
+		End Get
+		Set
+			If (Me._D.Equals(value) = false) Then
+				Me._D = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Anterior", DbType:="Float NOT NULL")>  _
+	Public Property Anterior() As Double
+		Get
+			Return Me._Anterior
+		End Get
+		Set
+			If ((Me._Anterior = value)  _
+						= false) Then
+				Me._Anterior = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Saldo", DbType:="Float")>  _
+	Public Property Saldo() As System.Nullable(Of Double)
+		Get
+			Return Me._Saldo
+		End Get
+		Set
+			If (Me._Saldo.Equals(value) = false) Then
+				Me._Saldo = value
+			End If
+		End Set
+	End Property
+End Class
+
+<Global.System.Data.Linq.Mapping.TableAttribute(Name:="dbo.VI_VENDAS")>  _
+Partial Public Class VI_VENDAS
+	
+	Private _Id As Integer
+	
+	Private _DataVenda As System.Nullable(Of Date)
+	
+	Private _Real As System.Nullable(Of Double)
+	
+	Private _Ouro As System.Nullable(Of Double)
+	
+	Private _Dolar As System.Nullable(Of Single)
+	
+	Private _ValorTransf As System.Nullable(Of Decimal)
+	
+	Private _CCDeb As System.Nullable(Of Double)
+	
+	Private _Comissão As System.Nullable(Of Double)
+	
+	Private _ValorFinal As System.Nullable(Of Double)
+	
+	Private _V As String
+	
+	Private _Deb As System.Nullable(Of Double)
+	
+	Private _valCC As System.Nullable(Of Double)
+	
+	Private _CCCred As System.Nullable(Of Double)
+	
+	Private _Cartão As System.Nullable(Of Double)
+	
+	Private _Cartão2 As System.Nullable(Of Double)
+	
+	Private _FormaCartão As String
+	
+	Private _FormaCartão2 As String
+	
+	Private _CartãoVista As System.Nullable(Of Double)
+	
+	Private _CartãoVista2 As System.Nullable(Of Double)
+	
+	Private _CartãoParc As System.Nullable(Of Double)
+	
+	Private _CartãoParc2 As System.Nullable(Of Double)
+	
+	Private _TotalCartãoVista As System.Nullable(Of Double)
+	
+	Private _TotalCartãoParc As System.Nullable(Of Double)
+	
+	Public Sub New()
+		MyBase.New
+	End Sub
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Id", AutoSync:=AutoSync.Always, DbType:="Int NOT NULL IDENTITY", IsDbGenerated:=true)>  _
+	Public Property Id() As Integer
+		Get
+			Return Me._Id
+		End Get
+		Set
+			If ((Me._Id = value)  _
+						= false) Then
+				Me._Id = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_DataVenda", DbType:="DateTime2")>  _
+	Public Property DataVenda() As System.Nullable(Of Date)
+		Get
+			Return Me._DataVenda
+		End Get
+		Set
+			If (Me._DataVenda.Equals(value) = false) Then
+				Me._DataVenda = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Real", DbType:="Float")>  _
+	Public Property Real() As System.Nullable(Of Double)
+		Get
+			Return Me._Real
+		End Get
+		Set
+			If (Me._Real.Equals(value) = false) Then
+				Me._Real = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Ouro", DbType:="Float")>  _
+	Public Property Ouro() As System.Nullable(Of Double)
+		Get
+			Return Me._Ouro
+		End Get
+		Set
+			If (Me._Ouro.Equals(value) = false) Then
+				Me._Ouro = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Dolar", DbType:="Real")>  _
+	Public Property Dolar() As System.Nullable(Of Single)
+		Get
+			Return Me._Dolar
+		End Get
+		Set
+			If (Me._Dolar.Equals(value) = false) Then
+				Me._Dolar = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_ValorTransf", DbType:="Money")>  _
+	Public Property ValorTransf() As System.Nullable(Of Decimal)
+		Get
+			Return Me._ValorTransf
+		End Get
+		Set
+			If (Me._ValorTransf.Equals(value) = false) Then
+				Me._ValorTransf = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_CCDeb", DbType:="Float")>  _
+	Public Property CCDeb() As System.Nullable(Of Double)
+		Get
+			Return Me._CCDeb
+		End Get
+		Set
+			If (Me._CCDeb.Equals(value) = false) Then
+				Me._CCDeb = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Comissão", DbType:="Float")>  _
+	Public Property Comissão() As System.Nullable(Of Double)
+		Get
+			Return Me._Comissão
+		End Get
+		Set
+			If (Me._Comissão.Equals(value) = false) Then
+				Me._Comissão = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_ValorFinal", DbType:="Float")>  _
+	Public Property ValorFinal() As System.Nullable(Of Double)
+		Get
+			Return Me._ValorFinal
+		End Get
+		Set
+			If (Me._ValorFinal.Equals(value) = false) Then
+				Me._ValorFinal = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_V", DbType:="NVarChar(20)")>  _
+	Public Property V() As String
+		Get
+			Return Me._V
+		End Get
+		Set
+			If (String.Equals(Me._V, value) = false) Then
+				Me._V = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Deb", DbType:="Float")>  _
+	Public Property Deb() As System.Nullable(Of Double)
+		Get
+			Return Me._Deb
+		End Get
+		Set
+			If (Me._Deb.Equals(value) = false) Then
+				Me._Deb = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_valCC", DbType:="Float")>  _
+	Public Property valCC() As System.Nullable(Of Double)
+		Get
+			Return Me._valCC
+		End Get
+		Set
+			If (Me._valCC.Equals(value) = false) Then
+				Me._valCC = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_CCCred", DbType:="Float")>  _
+	Public Property CCCred() As System.Nullable(Of Double)
+		Get
+			Return Me._CCCred
+		End Get
+		Set
+			If (Me._CCCred.Equals(value) = false) Then
+				Me._CCCred = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Cartão", DbType:="Float")>  _
+	Public Property Cartão() As System.Nullable(Of Double)
+		Get
+			Return Me._Cartão
+		End Get
+		Set
+			If (Me._Cartão.Equals(value) = false) Then
+				Me._Cartão = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Cartão2", DbType:="Float")>  _
+	Public Property Cartão2() As System.Nullable(Of Double)
+		Get
+			Return Me._Cartão2
+		End Get
+		Set
+			If (Me._Cartão2.Equals(value) = false) Then
+				Me._Cartão2 = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_FormaCartão", DbType:="NVarChar(15)")>  _
+	Public Property FormaCartão() As String
+		Get
+			Return Me._FormaCartão
+		End Get
+		Set
+			If (String.Equals(Me._FormaCartão, value) = false) Then
+				Me._FormaCartão = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_FormaCartão2", DbType:="NVarChar(15)")>  _
+	Public Property FormaCartão2() As String
+		Get
+			Return Me._FormaCartão2
+		End Get
+		Set
+			If (String.Equals(Me._FormaCartão2, value) = false) Then
+				Me._FormaCartão2 = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_CartãoVista", DbType:="Float")>  _
+	Public Property CartãoVista() As System.Nullable(Of Double)
+		Get
+			Return Me._CartãoVista
+		End Get
+		Set
+			If (Me._CartãoVista.Equals(value) = false) Then
+				Me._CartãoVista = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_CartãoVista2", DbType:="Float")>  _
+	Public Property CartãoVista2() As System.Nullable(Of Double)
+		Get
+			Return Me._CartãoVista2
+		End Get
+		Set
+			If (Me._CartãoVista2.Equals(value) = false) Then
+				Me._CartãoVista2 = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_CartãoParc", DbType:="Float")>  _
+	Public Property CartãoParc() As System.Nullable(Of Double)
+		Get
+			Return Me._CartãoParc
+		End Get
+		Set
+			If (Me._CartãoParc.Equals(value) = false) Then
+				Me._CartãoParc = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_CartãoParc2", DbType:="Float")>  _
+	Public Property CartãoParc2() As System.Nullable(Of Double)
+		Get
+			Return Me._CartãoParc2
+		End Get
+		Set
+			If (Me._CartãoParc2.Equals(value) = false) Then
+				Me._CartãoParc2 = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_TotalCartãoVista", DbType:="Float")>  _
+	Public Property TotalCartãoVista() As System.Nullable(Of Double)
+		Get
+			Return Me._TotalCartãoVista
+		End Get
+		Set
+			If (Me._TotalCartãoVista.Equals(value) = false) Then
+				Me._TotalCartãoVista = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_TotalCartãoParc", DbType:="Float")>  _
+	Public Property TotalCartãoParc() As System.Nullable(Of Double)
+		Get
+			Return Me._TotalCartãoParc
+		End Get
+		Set
+			If (Me._TotalCartãoParc.Equals(value) = false) Then
+				Me._TotalCartãoParc = value
+			End If
+		End Set
+	End Property
+End Class
+
+<Global.System.Data.Linq.Mapping.TableAttribute(Name:="dbo.VI_CONSERTOS")>  _
+Partial Public Class VI_CONSERTOS
+	
+	Private _Tot As System.Nullable(Of Double)
+	
+	Private _DT As System.Nullable(Of Date)
+	
+	Private _Comis As System.Nullable(Of Double)
+	
+	Private _ID As Integer
+	
+	Private _Custo As System.Nullable(Of Double)
+	
+	Private _Real As System.Nullable(Of Double)
+	
+	Private _Ouro As System.Nullable(Of Double)
+	
+	Private _Dolar As System.Nullable(Of Single)
+	
+	Private _Debito As System.Nullable(Of Double)
+	
+	Private _ValorTransfC As System.Nullable(Of Decimal)
+	
+	Private _CCDeb As System.Nullable(Of Double)
+	
+	Private _CCCred As System.Nullable(Of Double)
+	
+	Private _Cartão As System.Nullable(Of Double)
+	
+	Private _FormaCartão As String
+	
+	Private _CredVista As System.Nullable(Of Double)
+	
+	Private _CredParc As System.Nullable(Of Double)
+	
+	Public Sub New()
+		MyBase.New
+	End Sub
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Tot", DbType:="Float")>  _
+	Public Property Tot() As System.Nullable(Of Double)
+		Get
+			Return Me._Tot
+		End Get
+		Set
+			If (Me._Tot.Equals(value) = false) Then
+				Me._Tot = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_DT", DbType:="DateTime2")>  _
+	Public Property DT() As System.Nullable(Of Date)
+		Get
+			Return Me._DT
+		End Get
+		Set
+			If (Me._DT.Equals(value) = false) Then
+				Me._DT = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Comis", DbType:="Float")>  _
+	Public Property Comis() As System.Nullable(Of Double)
+		Get
+			Return Me._Comis
+		End Get
+		Set
+			If (Me._Comis.Equals(value) = false) Then
+				Me._Comis = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_ID", AutoSync:=AutoSync.Always, DbType:="Int NOT NULL IDENTITY", IsDbGenerated:=true)>  _
+	Public Property ID() As Integer
+		Get
+			Return Me._ID
+		End Get
+		Set
+			If ((Me._ID = value)  _
+						= false) Then
+				Me._ID = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Custo", DbType:="Float")>  _
+	Public Property Custo() As System.Nullable(Of Double)
+		Get
+			Return Me._Custo
+		End Get
+		Set
+			If (Me._Custo.Equals(value) = false) Then
+				Me._Custo = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Real", DbType:="Float")>  _
+	Public Property Real() As System.Nullable(Of Double)
+		Get
+			Return Me._Real
+		End Get
+		Set
+			If (Me._Real.Equals(value) = false) Then
+				Me._Real = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Ouro", DbType:="Float")>  _
+	Public Property Ouro() As System.Nullable(Of Double)
+		Get
+			Return Me._Ouro
+		End Get
+		Set
+			If (Me._Ouro.Equals(value) = false) Then
+				Me._Ouro = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Dolar", DbType:="Real")>  _
+	Public Property Dolar() As System.Nullable(Of Single)
+		Get
+			Return Me._Dolar
+		End Get
+		Set
+			If (Me._Dolar.Equals(value) = false) Then
+				Me._Dolar = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Debito", DbType:="Float")>  _
+	Public Property Debito() As System.Nullable(Of Double)
+		Get
+			Return Me._Debito
+		End Get
+		Set
+			If (Me._Debito.Equals(value) = false) Then
+				Me._Debito = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_ValorTransfC", DbType:="Money")>  _
+	Public Property ValorTransfC() As System.Nullable(Of Decimal)
+		Get
+			Return Me._ValorTransfC
+		End Get
+		Set
+			If (Me._ValorTransfC.Equals(value) = false) Then
+				Me._ValorTransfC = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_CCDeb", DbType:="Float")>  _
+	Public Property CCDeb() As System.Nullable(Of Double)
+		Get
+			Return Me._CCDeb
+		End Get
+		Set
+			If (Me._CCDeb.Equals(value) = false) Then
+				Me._CCDeb = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_CCCred", DbType:="Float")>  _
+	Public Property CCCred() As System.Nullable(Of Double)
+		Get
+			Return Me._CCCred
+		End Get
+		Set
+			If (Me._CCCred.Equals(value) = false) Then
+				Me._CCCred = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Cartão", DbType:="Float")>  _
+	Public Property Cartão() As System.Nullable(Of Double)
+		Get
+			Return Me._Cartão
+		End Get
+		Set
+			If (Me._Cartão.Equals(value) = false) Then
+				Me._Cartão = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_FormaCartão", DbType:="NVarChar(15)")>  _
+	Public Property FormaCartão() As String
+		Get
+			Return Me._FormaCartão
+		End Get
+		Set
+			If (String.Equals(Me._FormaCartão, value) = false) Then
+				Me._FormaCartão = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_CredVista", DbType:="Float")>  _
+	Public Property CredVista() As System.Nullable(Of Double)
+		Get
+			Return Me._CredVista
+		End Get
+		Set
+			If (Me._CredVista.Equals(value) = false) Then
+				Me._CredVista = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_CredParc", DbType:="Float")>  _
+	Public Property CredParc() As System.Nullable(Of Double)
+		Get
+			Return Me._CredParc
+		End Get
+		Set
+			If (Me._CredParc.Equals(value) = false) Then
+				Me._CredParc = value
+			End If
+		End Set
+	End Property
+End Class
+
 <Global.System.Data.Linq.Mapping.TableAttribute(Name:="dbo.VI_CC")>  _
 Partial Public Class VI_CC
 	
@@ -1564,6 +2863,18 @@ Partial Public Class VI_CC
 	Private _ValorTransf As System.Nullable(Of Decimal)
 	
 	Private _BancoTransf As String
+	
+	Private _Obs As String
+	
+	Private _Saldo As System.Nullable(Of Decimal)
+	
+	Private _Aut As String
+	
+	Private _AutDeb As String
+	
+	Private _CredVista As System.Nullable(Of Double)
+	
+	Private _CredParc As System.Nullable(Of Double)
 	
 	Public Sub New()
 		MyBase.New
@@ -1882,7 +3193,7 @@ Partial Public Class VI_CC
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_SSMA_TimeStamp", AutoSync:=AutoSync.Always, DbType:="rowversion", IsDbGenerated:=true, IsVersion:=true, UpdateCheck:=UpdateCheck.Never)>  _
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_SSMA_TimeStamp", AutoSync:=AutoSync.Always, DbType:="rowversion NOT NULL", CanBeNull:=false, IsDbGenerated:=true, IsVersion:=true, UpdateCheck:=UpdateCheck.Never)>  _
 	Public Property SSMA_TimeStamp() As System.Data.Linq.Binary
 		Get
 			Return Me._SSMA_TimeStamp
@@ -1917,550 +3228,281 @@ Partial Public Class VI_CC
 			End If
 		End Set
 	End Property
-End Class
-
-<Global.System.Data.Linq.Mapping.TableAttribute(Name:="dbo.VI_VENDIDAS")>  _
-Partial Public Class VI_VENDIDAS
 	
-	Private _Peça As System.Nullable(Of Integer)
-	
-	Private _Custo As System.Nullable(Of Decimal)
-	
-	Private _DataVenda As System.Nullable(Of Date)
-	
-	Private _ValorVenda As System.Nullable(Of Decimal)
-	
-	Public Sub New()
-		MyBase.New
-	End Sub
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Peça", DbType:="Int")>  _
-	Public Property Peça() As System.Nullable(Of Integer)
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Obs", DbType:="NVarChar(250)", UpdateCheck:=UpdateCheck.Never)>  _
+	Public Property Obs() As String
 		Get
-			Return Me._Peça
+			Return Me._Obs
 		End Get
 		Set
-			If (Me._Peça.Equals(value) = false) Then
-				Me._Peça = value
+			If (String.Equals(Me._Obs, value) = false) Then
+				Me._Obs = value
 			End If
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Custo", DbType:="Money")>  _
-	Public Property Custo() As System.Nullable(Of Decimal)
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Saldo", DbType:="Money", UpdateCheck:=UpdateCheck.Never)>  _
+	Public Property Saldo() As System.Nullable(Of Decimal)
 		Get
-			Return Me._Custo
+			Return Me._Saldo
 		End Get
 		Set
-			If (Me._Custo.Equals(value) = false) Then
-				Me._Custo = value
+			If (Me._Saldo.Equals(value) = false) Then
+				Me._Saldo = value
 			End If
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_DataVenda", DbType:="DateTime2")>  _
-	Public Property DataVenda() As System.Nullable(Of Date)
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Aut", DbType:="NVarChar(10)", UpdateCheck:=UpdateCheck.Never)>  _
+	Public Property Aut() As String
 		Get
-			Return Me._DataVenda
+			Return Me._Aut
 		End Get
 		Set
-			If (Me._DataVenda.Equals(value) = false) Then
-				Me._DataVenda = value
+			If (String.Equals(Me._Aut, value) = false) Then
+				Me._Aut = value
 			End If
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_ValorVenda", DbType:="Money")>  _
-	Public Property ValorVenda() As System.Nullable(Of Decimal)
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_AutDeb", DbType:="NVarChar(10)", UpdateCheck:=UpdateCheck.Never)>  _
+	Public Property AutDeb() As String
 		Get
-			Return Me._ValorVenda
+			Return Me._AutDeb
 		End Get
 		Set
-			If (Me._ValorVenda.Equals(value) = false) Then
-				Me._ValorVenda = value
-			End If
-		End Set
-	End Property
-End Class
-
-<Global.System.Data.Linq.Mapping.TableAttribute(Name:="dbo.VI_CONSERTOS")>  _
-Partial Public Class VI_CONSERTOS
-	
-	Private _Tot As System.Nullable(Of Double)
-	
-	Private _DT As System.Nullable(Of Date)
-	
-	Private _Comis As System.Nullable(Of Double)
-	
-	Private _ID As Integer
-	
-	Private _Custo As System.Nullable(Of Double)
-	
-	Private _Real As System.Nullable(Of Double)
-	
-	Private _Ouro As System.Nullable(Of Double)
-	
-	Private _Dolar As System.Nullable(Of Single)
-	
-	Private _Debito As System.Nullable(Of Double)
-	
-	Private _ValorTransfC As System.Nullable(Of Decimal)
-	
-	Private _CCDeb As System.Nullable(Of Double)
-	
-	Public Sub New()
-		MyBase.New
-	End Sub
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Tot", DbType:="Float")>  _
-	Public Property Tot() As System.Nullable(Of Double)
-		Get
-			Return Me._Tot
-		End Get
-		Set
-			If (Me._Tot.Equals(value) = false) Then
-				Me._Tot = value
+			If (String.Equals(Me._AutDeb, value) = false) Then
+				Me._AutDeb = value
 			End If
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_DT", DbType:="DateTime2")>  _
-	Public Property DT() As System.Nullable(Of Date)
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_CredVista", DbType:="Float", UpdateCheck:=UpdateCheck.Never)>  _
+	Public Property CredVista() As System.Nullable(Of Double)
 		Get
-			Return Me._DT
+			Return Me._CredVista
 		End Get
 		Set
-			If (Me._DT.Equals(value) = false) Then
-				Me._DT = value
+			If (Me._CredVista.Equals(value) = false) Then
+				Me._CredVista = value
 			End If
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Comis", DbType:="Float")>  _
-	Public Property Comis() As System.Nullable(Of Double)
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_CredParc", DbType:="Float", UpdateCheck:=UpdateCheck.Never)>  _
+	Public Property CredParc() As System.Nullable(Of Double)
 		Get
-			Return Me._Comis
+			Return Me._CredParc
 		End Get
 		Set
-			If (Me._Comis.Equals(value) = false) Then
-				Me._Comis = value
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_ID", AutoSync:=AutoSync.Always, DbType:="Int NOT NULL IDENTITY", IsDbGenerated:=true)>  _
-	Public Property ID() As Integer
-		Get
-			Return Me._ID
-		End Get
-		Set
-			If ((Me._ID = value)  _
-						= false) Then
-				Me._ID = value
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Custo", DbType:="Float")>  _
-	Public Property Custo() As System.Nullable(Of Double)
-		Get
-			Return Me._Custo
-		End Get
-		Set
-			If (Me._Custo.Equals(value) = false) Then
-				Me._Custo = value
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Real", DbType:="Float")>  _
-	Public Property Real() As System.Nullable(Of Double)
-		Get
-			Return Me._Real
-		End Get
-		Set
-			If (Me._Real.Equals(value) = false) Then
-				Me._Real = value
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Ouro", DbType:="Float")>  _
-	Public Property Ouro() As System.Nullable(Of Double)
-		Get
-			Return Me._Ouro
-		End Get
-		Set
-			If (Me._Ouro.Equals(value) = false) Then
-				Me._Ouro = value
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Dolar", DbType:="Real")>  _
-	Public Property Dolar() As System.Nullable(Of Single)
-		Get
-			Return Me._Dolar
-		End Get
-		Set
-			If (Me._Dolar.Equals(value) = false) Then
-				Me._Dolar = value
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Debito", DbType:="Float")>  _
-	Public Property Debito() As System.Nullable(Of Double)
-		Get
-			Return Me._Debito
-		End Get
-		Set
-			If (Me._Debito.Equals(value) = false) Then
-				Me._Debito = value
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_ValorTransfC", DbType:="Money")>  _
-	Public Property ValorTransfC() As System.Nullable(Of Decimal)
-		Get
-			Return Me._ValorTransfC
-		End Get
-		Set
-			If (Me._ValorTransfC.Equals(value) = false) Then
-				Me._ValorTransfC = value
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_CCDeb", DbType:="Float")>  _
-	Public Property CCDeb() As System.Nullable(Of Double)
-		Get
-			Return Me._CCDeb
-		End Get
-		Set
-			If (Me._CCDeb.Equals(value) = false) Then
-				Me._CCDeb = value
+			If (Me._CredParc.Equals(value) = false) Then
+				Me._CredParc = value
 			End If
 		End Set
 	End Property
 End Class
 
-<Global.System.Data.Linq.Mapping.TableAttribute(Name:="dbo.VI_VENDAS")>  _
-Partial Public Class VI_VENDAS
+<Global.System.Data.Linq.Mapping.TableAttribute(Name:="dbo.VI_CC2")>  _
+Partial Public Class VI_CC2
 	
-	Private _Id As Integer
+	Private _VValor As System.Nullable(Of Double)
 	
-	Private _DataVenda As System.Nullable(Of Date)
+	Private _Pagto As System.Nullable(Of Date)
 	
-	Private _Real As System.Nullable(Of Double)
+	Private _Parcela As String
 	
-	Private _Ouro As System.Nullable(Of Double)
-	
-	Private _Dolar As System.Nullable(Of Single)
-	
-	Private _ValorTransf As System.Nullable(Of Decimal)
-	
-	Private _CCDeb As System.Nullable(Of Double)
-	
-	Private _Comissão As System.Nullable(Of Double)
-	
-	Private _ValorFinal As System.Nullable(Of Double)
-	
-	Private _V As String
-	
-	Private _Deb As System.Nullable(Of Double)
-	
-	Private _valCC As System.Nullable(Of Double)
+	Private _CondPag As String
 	
 	Public Sub New()
 		MyBase.New
 	End Sub
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Id", AutoSync:=AutoSync.Always, DbType:="Int NOT NULL IDENTITY", IsDbGenerated:=true)>  _
-	Public Property Id() As Integer
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_VValor", DbType:="Float")>  _
+	Public Property VValor() As System.Nullable(Of Double)
 		Get
-			Return Me._Id
+			Return Me._VValor
 		End Get
 		Set
-			If ((Me._Id = value)  _
-						= false) Then
-				Me._Id = value
+			If (Me._VValor.Equals(value) = false) Then
+				Me._VValor = value
 			End If
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_DataVenda", DbType:="DateTime2")>  _
-	Public Property DataVenda() As System.Nullable(Of Date)
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Pagto", DbType:="DateTime2")>  _
+	Public Property Pagto() As System.Nullable(Of Date)
 		Get
-			Return Me._DataVenda
+			Return Me._Pagto
 		End Get
 		Set
-			If (Me._DataVenda.Equals(value) = false) Then
-				Me._DataVenda = value
+			If (Me._Pagto.Equals(value) = false) Then
+				Me._Pagto = value
 			End If
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Real", DbType:="Float")>  _
-	Public Property Real() As System.Nullable(Of Double)
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Parcela", DbType:="NVarChar(5)")>  _
+	Public Property Parcela() As String
 		Get
-			Return Me._Real
+			Return Me._Parcela
 		End Get
 		Set
-			If (Me._Real.Equals(value) = false) Then
-				Me._Real = value
+			If (String.Equals(Me._Parcela, value) = false) Then
+				Me._Parcela = value
 			End If
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Ouro", DbType:="Float")>  _
-	Public Property Ouro() As System.Nullable(Of Double)
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_CondPag", DbType:="VarChar(9) NOT NULL", CanBeNull:=false)>  _
+	Public Property CondPag() As String
 		Get
-			Return Me._Ouro
+			Return Me._CondPag
 		End Get
 		Set
-			If (Me._Ouro.Equals(value) = false) Then
-				Me._Ouro = value
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Dolar", DbType:="Real")>  _
-	Public Property Dolar() As System.Nullable(Of Single)
-		Get
-			Return Me._Dolar
-		End Get
-		Set
-			If (Me._Dolar.Equals(value) = false) Then
-				Me._Dolar = value
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_ValorTransf", DbType:="Money")>  _
-	Public Property ValorTransf() As System.Nullable(Of Decimal)
-		Get
-			Return Me._ValorTransf
-		End Get
-		Set
-			If (Me._ValorTransf.Equals(value) = false) Then
-				Me._ValorTransf = value
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_CCDeb", DbType:="Float")>  _
-	Public Property CCDeb() As System.Nullable(Of Double)
-		Get
-			Return Me._CCDeb
-		End Get
-		Set
-			If (Me._CCDeb.Equals(value) = false) Then
-				Me._CCDeb = value
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Comissão", DbType:="Float")>  _
-	Public Property Comissão() As System.Nullable(Of Double)
-		Get
-			Return Me._Comissão
-		End Get
-		Set
-			If (Me._Comissão.Equals(value) = false) Then
-				Me._Comissão = value
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_ValorFinal", DbType:="Float")>  _
-	Public Property ValorFinal() As System.Nullable(Of Double)
-		Get
-			Return Me._ValorFinal
-		End Get
-		Set
-			If (Me._ValorFinal.Equals(value) = false) Then
-				Me._ValorFinal = value
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_V", DbType:="NVarChar(20)")>  _
-	Public Property V() As String
-		Get
-			Return Me._V
-		End Get
-		Set
-			If (String.Equals(Me._V, value) = false) Then
-				Me._V = value
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Deb", DbType:="Float")>  _
-	Public Property Deb() As System.Nullable(Of Double)
-		Get
-			Return Me._Deb
-		End Get
-		Set
-			If (Me._Deb.Equals(value) = false) Then
-				Me._Deb = value
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_valCC", DbType:="Float")>  _
-	Public Property valCC() As System.Nullable(Of Double)
-		Get
-			Return Me._valCC
-		End Get
-		Set
-			If (Me._valCC.Equals(value) = false) Then
-				Me._valCC = value
+			If (String.Equals(Me._CondPag, value) = false) Then
+				Me._CondPag = value
 			End If
 		End Set
 	End Property
 End Class
 
-<Global.System.Data.Linq.Mapping.TableAttribute(Name:="dbo.VI_W")>  _
-Partial Public Class VI_W
+<Global.System.Data.Linq.Mapping.TableAttribute(Name:="dbo.VI_GER_CRED")>  _
+Partial Public Class VI_GER_CRED
 	
-	Private _Id As Integer
+	Private _VValor As System.Nullable(Of Double)
 	
-	Private _DataVenda As System.Nullable(Of Date)
+	Private _Pagto As System.Nullable(Of Date)
 	
-	Private _ValorVenda As System.Nullable(Of Double)
+	Private _Parcela As String
+	
+	Private _CondPag As String
+	
+	Private _NomeCartão As String
 	
 	Public Sub New()
 		MyBase.New
 	End Sub
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Id", DbType:="Int NOT NULL")>  _
-	Public Property Id() As Integer
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_VValor", DbType:="Float")>  _
+	Public Property VValor() As System.Nullable(Of Double)
 		Get
-			Return Me._Id
+			Return Me._VValor
 		End Get
 		Set
-			If ((Me._Id = value)  _
-						= false) Then
-				Me._Id = value
+			If (Me._VValor.Equals(value) = false) Then
+				Me._VValor = value
 			End If
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_DataVenda", DbType:="DateTime2")>  _
-	Public Property DataVenda() As System.Nullable(Of Date)
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Pagto", DbType:="DateTime2")>  _
+	Public Property Pagto() As System.Nullable(Of Date)
 		Get
-			Return Me._DataVenda
+			Return Me._Pagto
 		End Get
 		Set
-			If (Me._DataVenda.Equals(value) = false) Then
-				Me._DataVenda = value
+			If (Me._Pagto.Equals(value) = false) Then
+				Me._Pagto = value
 			End If
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_ValorVenda", DbType:="Float")>  _
-	Public Property ValorVenda() As System.Nullable(Of Double)
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Parcela", DbType:="NVarChar(5)")>  _
+	Public Property Parcela() As String
 		Get
-			Return Me._ValorVenda
+			Return Me._Parcela
 		End Get
 		Set
-			If (Me._ValorVenda.Equals(value) = false) Then
-				Me._ValorVenda = value
+			If (String.Equals(Me._Parcela, value) = false) Then
+				Me._Parcela = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_CondPag", DbType:="VarChar(9) NOT NULL", CanBeNull:=false)>  _
+	Public Property CondPag() As String
+		Get
+			Return Me._CondPag
+		End Get
+		Set
+			If (String.Equals(Me._CondPag, value) = false) Then
+				Me._CondPag = value
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_NomeCartão", DbType:="NVarChar(15)")>  _
+	Public Property NomeCartão() As String
+		Get
+			Return Me._NomeCartão
+		End Get
+		Set
+			If (String.Equals(Me._NomeCartão, value) = false) Then
+				Me._NomeCartão = value
 			End If
 		End Set
 	End Property
 End Class
 
-<Global.System.Data.Linq.Mapping.TableAttribute(Name:="dbo.VI_SAIDAS")>  _
-Partial Public Class VI_SAIDAS
+<Global.System.Data.Linq.Mapping.TableAttribute(Name:="dbo.VI_GER_DEB")>  _
+Partial Public Class VI_GER_DEB
 	
-	Private _DataSaida As System.Nullable(Of Date)
+	Private _Pagto As System.Nullable(Of Date)
 	
-	Private _Ficha As String
+	Private _Parcela As String
 	
-	Private _Custo As System.Nullable(Of Decimal)
+	Private _VValor As System.Nullable(Of Double)
 	
-	Private _ValorSaida As System.Nullable(Of Decimal)
-	
-	Private _Motivo As String
-	
-	Private _Observações As String
+	Private _NomeCartão As String
 	
 	Public Sub New()
 		MyBase.New
 	End Sub
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_DataSaida", DbType:="Date")>  _
-	Public Property DataSaida() As System.Nullable(Of Date)
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Pagto", DbType:="DateTime2")>  _
+	Public Property Pagto() As System.Nullable(Of Date)
 		Get
-			Return Me._DataSaida
+			Return Me._Pagto
 		End Get
 		Set
-			If (Me._DataSaida.Equals(value) = false) Then
-				Me._DataSaida = value
+			If (Me._Pagto.Equals(value) = false) Then
+				Me._Pagto = value
 			End If
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Ficha", DbType:="NVarChar(35)")>  _
-	Public Property Ficha() As String
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Parcela", DbType:="NVarChar(5)")>  _
+	Public Property Parcela() As String
 		Get
-			Return Me._Ficha
+			Return Me._Parcela
 		End Get
 		Set
-			If (String.Equals(Me._Ficha, value) = false) Then
-				Me._Ficha = value
+			If (String.Equals(Me._Parcela, value) = false) Then
+				Me._Parcela = value
 			End If
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Custo", DbType:="Money")>  _
-	Public Property Custo() As System.Nullable(Of Decimal)
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_VValor", DbType:="Float")>  _
+	Public Property VValor() As System.Nullable(Of Double)
 		Get
-			Return Me._Custo
+			Return Me._VValor
 		End Get
 		Set
-			If (Me._Custo.Equals(value) = false) Then
-				Me._Custo = value
+			If (Me._VValor.Equals(value) = false) Then
+				Me._VValor = value
 			End If
 		End Set
 	End Property
 	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_ValorSaida", DbType:="Money")>  _
-	Public Property ValorSaida() As System.Nullable(Of Decimal)
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_NomeCartão", DbType:="NVarChar(15)")>  _
+	Public Property NomeCartão() As String
 		Get
-			Return Me._ValorSaida
+			Return Me._NomeCartão
 		End Get
 		Set
-			If (Me._ValorSaida.Equals(value) = false) Then
-				Me._ValorSaida = value
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Motivo", DbType:="NVarChar(50)")>  _
-	Public Property Motivo() As String
-		Get
-			Return Me._Motivo
-		End Get
-		Set
-			If (String.Equals(Me._Motivo, value) = false) Then
-				Me._Motivo = value
-			End If
-		End Set
-	End Property
-	
-	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Observações", DbType:="NVarChar(350)")>  _
-	Public Property Observações() As String
-		Get
-			Return Me._Observações
-		End Get
-		Set
-			If (String.Equals(Me._Observações, value) = false) Then
-				Me._Observações = value
+			If (String.Equals(Me._NomeCartão, value) = false) Then
+				Me._NomeCartão = value
 			End If
 		End Set
 	End Property

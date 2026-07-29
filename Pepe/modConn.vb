@@ -1,4 +1,5 @@
 ﻿Imports System.Configuration
+Imports System.Data.SqlClient
 Imports System.Management
 Imports DevExpress.XtraEditors
 
@@ -69,7 +70,19 @@ ErrHandler:
         Resume ExitHere
 
     End Function
+    Public Function fGetAdoConnection2() As SqlConnection
+        Dim cnn As SqlConnection
 
+        Try
+            cnn = New SqlConnection("Server=DESKTOP-9UNO97E\SQLEXPRESS;Database=BDTorras;User Id=sa;Password=oowa2015;")
+            cnn.Open()
+            Return cnn
+        Catch ex As Exception
+            MessageBox.Show(ex.Message & vbCrLf & ex.StackTrace, "Sql_Bas_Connection-fGetAdoConnection", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return Nothing
+        End Try
+
+    End Function
     Private Sub teste()
         Dim oConf As Configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None)
         'Dim conn As System.Configuration.ConfigurationSection

@@ -40,12 +40,14 @@
         Dim DataFabricLabel As System.Windows.Forms.Label
         Dim PrVendaLabel As System.Windows.Forms.Label
         Dim Label1 As System.Windows.Forms.Label
+        Dim Label2 As System.Windows.Forms.Label
+        Dim LocalLabel As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmEstoque))
-        Dim EditorButtonImageOptions2 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.ribbonControl1 = New DevExpress.XtraBars.Ribbon.RibbonControl()
         Me.SkinRibbonGalleryBarItem1 = New DevExpress.XtraBars.SkinRibbonGalleryBarItem()
         Me.SkinRibbonGalleryBarItem2 = New DevExpress.XtraBars.SkinRibbonGalleryBarItem()
@@ -72,9 +74,10 @@
         Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.grpFechar = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
-        Me.VoltaCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.cbLocal = New DevExpress.XtraEditors.ComboBoxEdit()
         Me._1TabPeçasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DsNovoEstoque = New Pepe.dsNovoEstoque()
+        Me.VoltaCheckEdit = New DevExpress.XtraEditors.CheckEdit()
         Me.DataFabricDateEdit = New DevExpress.XtraEditors.DateEdit()
         Me.RadioGroup1 = New DevExpress.XtraEditors.RadioGroup()
         Me.OficialCheckEdit = New DevExpress.XtraEditors.CheckEdit()
@@ -236,6 +239,7 @@
         Me.PictureEditPeça = New DevExpress.XtraEditors.PictureEdit()
         Me.XtraOpenFileDialogFoto = New DevExpress.XtraEditors.XtraOpenFileDialog(Me.components)
         Me.SizeModeSpinEdit = New DevExpress.XtraEditors.SpinEdit()
+        Me.txt_pFund = New DevExpress.XtraEditors.TextEdit()
         ClasseLabel = New System.Windows.Forms.Label()
         ModêloLabel = New System.Windows.Forms.Label()
         DataRegLabel = New System.Windows.Forms.Label()
@@ -253,19 +257,22 @@
         DataFabricLabel = New System.Windows.Forms.Label()
         PrVendaLabel = New System.Windows.Forms.Label()
         Label1 = New System.Windows.Forms.Label()
+        Label2 = New System.Windows.Forms.Label()
+        LocalLabel = New System.Windows.Forms.Label()
         CType(Me.ribbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
-        CType(Me.VoltaCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cbLocal.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me._1TabPeçasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsNovoEstoque, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataFabricDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VoltaCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataFabricDateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataFabricDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadioGroup1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.OficialCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.OrigemComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataRegDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataRegDateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataRegDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ModêloTextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ClasseComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ObsTextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -365,6 +372,7 @@
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureEditPeça.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SizeModeSpinEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txt_pFund.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ClasseLabel
@@ -480,7 +488,7 @@
         MadeiraLabel.Name = "MadeiraLabel"
         MadeiraLabel.Size = New System.Drawing.Size(94, 15)
         MadeiraLabel.TabIndex = 20
-        MadeiraLabel.Text = "Madeira"
+        MadeiraLabel.Text = "Fundição"
         MadeiraLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'CouroLabel
@@ -546,11 +554,32 @@
         Label1.Text = "V"
         Label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
+        'Label2
+        '
+        Label2.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Label2.ForeColor = System.Drawing.Color.Black
+        Label2.Location = New System.Drawing.Point(205, 417)
+        Label2.Name = "Label2"
+        Label2.Size = New System.Drawing.Size(42, 18)
+        Label2.TabIndex = 42
+        Label2.Text = "Peso"
+        Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'LocalLabel
+        '
+        LocalLabel.AutoSize = True
+        LocalLabel.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        LocalLabel.Location = New System.Drawing.Point(2, 161)
+        LocalLabel.Name = "LocalLabel"
+        LocalLabel.Size = New System.Drawing.Size(68, 15)
+        LocalLabel.TabIndex = 30
+        LocalLabel.Text = "Localização"
+        '
         'ribbonControl1
         '
         Me.ribbonControl1.AllowMinimizeRibbon = False
         Me.ribbonControl1.ExpandCollapseItem.Id = 0
-        Me.ribbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.ribbonControl1.ExpandCollapseItem, Me.ribbonControl1.SearchEditItem, Me.SkinRibbonGalleryBarItem1, Me.SkinRibbonGalleryBarItem2, Me.btnFechar, Me.btnNovo, Me.btnSalvar, Me.btnUndo, Me.BarButtonItem1, Me.btnCompras, Me.btnPeçasCompradas, Me.btnEstornar, Me.btnDel, Me.BarButtonItem2, Me.btnComprador, Me.btnVoltar, Me.btnFoto, Me.btnSelFoto, Me.btnDelFoto, Me.btnSalvarComo})
+        Me.ribbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.ribbonControl1.ExpandCollapseItem, Me.SkinRibbonGalleryBarItem1, Me.SkinRibbonGalleryBarItem2, Me.btnFechar, Me.btnNovo, Me.btnSalvar, Me.btnUndo, Me.BarButtonItem1, Me.btnCompras, Me.btnPeçasCompradas, Me.btnEstornar, Me.btnDel, Me.BarButtonItem2, Me.btnComprador, Me.btnVoltar, Me.btnFoto, Me.btnSelFoto, Me.btnDelFoto, Me.btnSalvarComo})
         Me.ribbonControl1.Location = New System.Drawing.Point(0, 0)
         Me.ribbonControl1.MaxItemId = 19
         Me.ribbonControl1.Name = "ribbonControl1"
@@ -749,6 +778,8 @@
         '
         'PanelControl1
         '
+        Me.PanelControl1.Controls.Add(Me.cbLocal)
+        Me.PanelControl1.Controls.Add(LocalLabel)
         Me.PanelControl1.Controls.Add(Label1)
         Me.PanelControl1.Controls.Add(Me.VoltaCheckEdit)
         Me.PanelControl1.Controls.Add(DataFabricLabel)
@@ -770,8 +801,33 @@
         Me.PanelControl1.Controls.Add(Me.VendidaCheckEdit)
         Me.PanelControl1.Location = New System.Drawing.Point(482, 161)
         Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(375, 181)
+        Me.PanelControl1.Size = New System.Drawing.Size(375, 190)
         Me.PanelControl1.TabIndex = 0
+        '
+        'cbLocal
+        '
+        Me.cbLocal.DataBindings.Add(New System.Windows.Forms.Binding("EditValue", Me._1TabPeçasBindingSource, "Local", True))
+        Me.cbLocal.Location = New System.Drawing.Point(69, 156)
+        Me.cbLocal.MenuManager = Me.ribbonControl1
+        Me.cbLocal.Name = "cbLocal"
+        Me.cbLocal.Properties.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbLocal.Properties.Appearance.Options.UseFont = True
+        Me.cbLocal.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D
+        Me.cbLocal.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.cbLocal.Properties.DropDownRows = 3
+        Me.cbLocal.Properties.Items.AddRange(New Object() {"", "Ext", "Int"})
+        Me.cbLocal.Size = New System.Drawing.Size(61, 24)
+        Me.cbLocal.TabIndex = 6
+        '
+        '_1TabPeçasBindingSource
+        '
+        Me._1TabPeçasBindingSource.DataMember = "1TabPeças"
+        Me._1TabPeçasBindingSource.DataSource = Me.DsNovoEstoque
+        '
+        'DsNovoEstoque
+        '
+        Me.DsNovoEstoque.DataSetName = "dsNovoEstoque"
+        Me.DsNovoEstoque.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'VoltaCheckEdit
         '
@@ -784,16 +840,6 @@
         Me.VoltaCheckEdit.Properties.Caption = ""
         Me.VoltaCheckEdit.Size = New System.Drawing.Size(18, 20)
         Me.VoltaCheckEdit.TabIndex = 30
-        '
-        '_1TabPeçasBindingSource
-        '
-        Me._1TabPeçasBindingSource.DataMember = "1TabPeças"
-        Me._1TabPeçasBindingSource.DataSource = Me.DsNovoEstoque
-        '
-        'DsNovoEstoque
-        '
-        Me.DsNovoEstoque.DataSetName = "dsNovoEstoque"
-        Me.DsNovoEstoque.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'DataFabricDateEdit
         '
@@ -907,12 +953,12 @@
         Me.ObsTextEdit.Location = New System.Drawing.Point(69, 91)
         Me.ObsTextEdit.MenuManager = Me.ribbonControl1
         Me.ObsTextEdit.Name = "ObsTextEdit"
-        Me.ObsTextEdit.Properties.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ObsTextEdit.Properties.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ObsTextEdit.Properties.Appearance.Options.UseFont = True
         Me.ObsTextEdit.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D
         Me.ObsTextEdit.Properties.LinesCount = 2
         Me.ObsTextEdit.Properties.ScrollBars = System.Windows.Forms.ScrollBars.None
-        Me.ObsTextEdit.Size = New System.Drawing.Size(293, 76)
+        Me.ObsTextEdit.Size = New System.Drawing.Size(293, 61)
         Me.ObsTextEdit.TabIndex = 5
         '
         'IDPeçaTextEdit
@@ -2384,7 +2430,7 @@
         '
         'MadeiraTextEdit
         '
-        Me.MadeiraTextEdit.DataBindings.Add(New System.Windows.Forms.Binding("EditValue", Me._1TabPeçasBindingSource, "Madeira", True))
+        Me.MadeiraTextEdit.DataBindings.Add(New System.Windows.Forms.Binding("EditValue", Me._1TabPeçasBindingSource, "vFund", True))
         Me.MadeiraTextEdit.Location = New System.Drawing.Point(112, 436)
         Me.MadeiraTextEdit.MenuManager = Me.ribbonControl1
         Me.MadeiraTextEdit.Name = "MadeiraTextEdit"
@@ -2397,8 +2443,8 @@
         Me.MadeiraTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.MadeiraTextEdit.Properties.EditFormat.FormatString = "{0:#,###0.00;-#,###0.00}"
         Me.MadeiraTextEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.MadeiraTextEdit.Properties.Mask.EditMask = "n2"
-        Me.MadeiraTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
+        Me.MadeiraTextEdit.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
+        Me.MadeiraTextEdit.Properties.MaskSettings.Set("mask", "n2")
         Me.MadeiraTextEdit.Size = New System.Drawing.Size(79, 26)
         Me.MadeiraTextEdit.TabIndex = 4
         '
@@ -2484,7 +2530,7 @@
         Me.PrVendaSpinEdit.Properties.Appearance.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.PrVendaSpinEdit.Properties.Appearance.Options.UseFont = True
         Me.PrVendaSpinEdit.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D
-        Me.PrVendaSpinEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, True, False, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        Me.PrVendaSpinEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, True, False, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.PrVendaSpinEdit.Properties.DisplayFormat.FormatString = "{0:#,###0.00;-#,###0.00}"
         Me.PrVendaSpinEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.PrVendaSpinEdit.Properties.EditFormat.FormatString = "{0:#,###0.00;-#,###0.00}"
@@ -2766,11 +2812,33 @@
         Me.SizeModeSpinEdit.TabIndex = 39
         Me.SizeModeSpinEdit.TabStop = False
         '
+        'txt_pFund
+        '
+        Me.txt_pFund.DataBindings.Add(New System.Windows.Forms.Binding("EditValue", Me._1TabPeçasBindingSource, "pFund", True))
+        Me.txt_pFund.Location = New System.Drawing.Point(191, 436)
+        Me.txt_pFund.MenuManager = Me.ribbonControl1
+        Me.txt_pFund.Name = "txt_pFund"
+        Me.txt_pFund.Properties.Appearance.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_pFund.Properties.Appearance.Options.UseFont = True
+        Me.txt_pFund.Properties.Appearance.Options.UseTextOptions = True
+        Me.txt_pFund.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.txt_pFund.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D
+        Me.txt_pFund.Properties.DisplayFormat.FormatString = "{0:#,###0.00;-#,###0.00}"
+        Me.txt_pFund.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txt_pFund.Properties.EditFormat.FormatString = "{0:#,###0.00;-#,###0.00}"
+        Me.txt_pFund.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txt_pFund.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
+        Me.txt_pFund.Properties.MaskSettings.Set("mask", "n2")
+        Me.txt_pFund.Size = New System.Drawing.Size(51, 26)
+        Me.txt_pFund.TabIndex = 5
+        '
         'frmEstoque
         '
         Me.AllowFormGlass = DevExpress.Utils.DefaultBoolean.[True]
         Me.AutoScroll = True
         Me.ClientSize = New System.Drawing.Size(1352, 722)
+        Me.Controls.Add(Label2)
+        Me.Controls.Add(Me.txt_pFund)
         Me.Controls.Add(Me.SizeModeSpinEdit)
         Me.Controls.Add(Me.PictureEditPeça)
         Me.Controls.Add(Me.SimpleButton)
@@ -2813,9 +2881,10 @@
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl1.ResumeLayout(False)
         Me.PanelControl1.PerformLayout()
-        CType(Me.VoltaCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cbLocal.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me._1TabPeçasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsNovoEstoque, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VoltaCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataFabricDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataFabricDateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadioGroup1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2922,6 +2991,7 @@
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureEditPeça.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SizeModeSpinEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txt_pFund.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -3121,4 +3191,6 @@
     Friend WithEvents XtraOpenFileDialogFoto As DevExpress.XtraEditors.XtraOpenFileDialog
     Friend WithEvents SizeModeSpinEdit As DevExpress.XtraEditors.SpinEdit
     Friend WithEvents btnSalvarComo As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents txt_pFund As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents cbLocal As DevExpress.XtraEditors.ComboBoxEdit
 End Class

@@ -86,6 +86,7 @@ Partial Class frmDevPrincipal
         Me.BarButtonItem3 = New DevExpress.XtraBars.BarButtonItem()
         Me.btnRec = New DevExpress.XtraBars.BarButtonItem()
         Me.btnDolar = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnCota = New DevExpress.XtraBars.BarButtonItem()
         Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RibbonPageGroup5 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
@@ -113,9 +114,9 @@ Partial Class frmDevPrincipal
         Me.RibbonControl.AllowMinimizeRibbon = False
         Me.RibbonControl.ApplicationCaption = "PEPE TORRAS DESIGN"
         Me.RibbonControl.ExpandCollapseItem.Id = 0
-        Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl.ExpandCollapseItem, Me.SkinRibbonGalleryBarItem1, Me.btnEstoque, Me.btnVendas, Me.btnCartao, Me.btnCheques, Me.SkinRibbonGalleryBarItem2, Me.SkinRibbonGalleryBarItem3, Me.BarButtonItem1, Me.btnRptVendas, Me.BarButtonItem7, Me.btnRpt4, Me.btnSair, Me.btnClientes, Me.btnConsertos, Me.btnTelefones, Me.btnRptCartão, Me.btnRptChequesPre, Me.btnRptConsertos, Me.btnRptCC, Me.btnRptVendidas, Me.btnRptReg, Me.btnRptCusto, Me.btnRptCliSCompras, Me.btnRptComprasPorCliente, Me.btnRptBalanço, Me.btnRptGerencial, Me.BarButtonItem24, Me.btnRptCartoesAReceber, Me.btnRptGeralClientes, Me.btnReajuste, Me.btnPeçasEmEstoqueNovo, Me.btnRptTabPreços, Me.btnPeçasEmEstoque, Me.btnTrocarUsu, Me.btnInconsist, Me.ckAvisos, Me.btnClientesCad, Me.BarStaticItem1, Me.btnMP, Me.btnCC, Me.btnSai, Me.btnSaidas, Me.btnGetnet, Me.BarButtonItem2, Me.BarButtonItem3, Me.btnRec, Me.btnDolar})
+        Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl.ExpandCollapseItem, Me.SkinRibbonGalleryBarItem1, Me.btnEstoque, Me.btnVendas, Me.btnCartao, Me.btnCheques, Me.SkinRibbonGalleryBarItem2, Me.SkinRibbonGalleryBarItem3, Me.BarButtonItem1, Me.btnRptVendas, Me.BarButtonItem7, Me.btnRpt4, Me.btnSair, Me.btnClientes, Me.btnConsertos, Me.btnTelefones, Me.btnRptCartão, Me.btnRptChequesPre, Me.btnRptConsertos, Me.btnRptCC, Me.btnRptVendidas, Me.btnRptReg, Me.btnRptCusto, Me.btnRptCliSCompras, Me.btnRptComprasPorCliente, Me.btnRptBalanço, Me.btnRptGerencial, Me.BarButtonItem24, Me.btnRptCartoesAReceber, Me.btnRptGeralClientes, Me.btnReajuste, Me.btnPeçasEmEstoqueNovo, Me.btnRptTabPreços, Me.btnPeçasEmEstoque, Me.btnTrocarUsu, Me.btnInconsist, Me.ckAvisos, Me.btnClientesCad, Me.BarStaticItem1, Me.btnMP, Me.btnCC, Me.btnSai, Me.btnSaidas, Me.btnGetnet, Me.BarButtonItem2, Me.BarButtonItem3, Me.btnRec, Me.btnDolar, Me.btnCota})
         Me.RibbonControl.Location = New System.Drawing.Point(0, 0)
-        Me.RibbonControl.MaxItemId = 57
+        Me.RibbonControl.MaxItemId = 58
         Me.RibbonControl.Name = "RibbonControl"
         Me.RibbonControl.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage2, Me.RibbonPage1, Me.RibbonPage3, Me.RibbonPage4, Me.SKINS})
         Me.RibbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013
@@ -485,7 +486,7 @@ Partial Class frmDevPrincipal
         '
         'BarStaticItem1
         '
-        Me.BarStaticItem1.Caption = "5.7.4"
+        Me.BarStaticItem1.Caption = "5.9.7"
         Me.BarStaticItem1.Id = 45
         Me.BarStaticItem1.Name = "BarStaticItem1"
         '
@@ -561,6 +562,14 @@ Partial Class frmDevPrincipal
         Me.btnDolar.Name = "btnDolar"
         Me.btnDolar.Visibility = DevExpress.XtraBars.BarItemVisibility.OnlyInCustomizing
         '
+        'btnCota
+        '
+        Me.btnCota.Caption = "Cotação Dólar e Ouro"
+        Me.btnCota.Id = 57
+        Me.btnCota.ImageOptions.Image = CType(resources.GetObject("btnCota.ImageOptions.Image"), System.Drawing.Image)
+        Me.btnCota.ImageOptions.LargeImage = CType(resources.GetObject("btnCota.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.btnCota.Name = "btnCota"
+        '
         'RibbonPage2
         '
         Me.RibbonPage2.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup5, Me.RibbonPageGroup2, Me.RibbonPageGroup8})
@@ -592,6 +601,7 @@ Partial Class frmDevPrincipal
         Me.RibbonPageGroup8.ItemLinks.Add(Me.btnCheques, True)
         Me.RibbonPageGroup8.ItemLinks.Add(Me.btnCC)
         Me.RibbonPageGroup8.ItemLinks.Add(Me.btnDolar, True)
+        Me.RibbonPageGroup8.ItemLinks.Add(Me.btnCota)
         Me.RibbonPageGroup8.Name = "RibbonPageGroup8"
         Me.RibbonPageGroup8.Text = "FINANCEIRO"
         '
@@ -816,4 +826,5 @@ Partial Class frmDevPrincipal
     Friend WithEvents BarButtonItem3 As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btnRec As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btnDolar As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnCota As DevExpress.XtraBars.BarButtonItem
 End Class

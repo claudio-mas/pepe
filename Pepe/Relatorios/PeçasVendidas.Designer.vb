@@ -109,8 +109,7 @@ Partial Public Class PeçasVendidas
         QueryParameter2.Name = "dt2"
         QueryParameter2.Type = GetType(Date)
         QueryParameter2.ValueInfo = "2021-09-30"
-        CustomSqlQuery1.Parameters.Add(QueryParameter1)
-        CustomSqlQuery1.Parameters.Add(QueryParameter2)
+        CustomSqlQuery1.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter1, QueryParameter2})
         CustomSqlQuery1.Sql = resources.GetString("CustomSqlQuery1.Sql")
         Me.SqlDataSource.Queries.AddRange(New DevExpress.DataAccess.Sql.SqlQuery() {CustomSqlQuery1})
         Me.SqlDataSource.ResultSchemaSerializable = resources.GetString("SqlDataSource.ResultSchemaSerializable")
@@ -1072,14 +1071,14 @@ Partial Public Class PeçasVendidas
         Me.DataSource = Me.SqlDataSource
         Me.Dpi = 254.0!
         Me.Font = New DevExpress.Drawing.DXFont("Arial", 9.75!)
-        Me.Margins = New DevExpress.Drawing.DXMargins(61, 50, 50, 74)
+        Me.Margins = New DevExpress.Drawing.DXMargins(61.0!, 50.0!, 50.0!, 74.0!)
         Me.PageHeight = 2970
         Me.PageWidth = 2100
         Me.PaperKind = DevExpress.Drawing.Printing.DXPaperKind.A4
         Me.ReportUnit = DevExpress.XtraReports.UI.ReportUnit.TenthsOfAMillimeter
         Me.SnapGridSize = 25.0!
         Me.StyleSheet.AddRange(New DevExpress.XtraReports.UI.XRControlStyle() {Me.Title, Me.GroupCaption1, Me.GroupData1, Me.DetailCaption1, Me.DetailData1, Me.GroupFooterBackground3, Me.DetailData3_Odd, Me.TotalCaption1, Me.TotalData1, Me.TotalBackground1, Me.GrandTotalCaption1, Me.GrandTotalData1, Me.GrandTotalBackground1, Me.PageInfo})
-        Me.Version = "21.1"
+        Me.Version = "23.2"
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
 
     End Sub

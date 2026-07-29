@@ -117,11 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="SqlDataSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="CustomSqlQuery1.Sql" xml:space="preserve">
-    <value>SELECT        dbo.[1TabPeças].Origem, dbo.VENDAS.DataVenda, dbo.[VENDAS DET].ValorVenda, dbo.[VENDAS DET].Peça, CASE WHEN [Oficial] = 1 THEN 'W' ELSE '' END AS w, dbo.[1TabPeças].Modêlo, dbo.VENDAS.Id, 
+    <value>SELECT        dbo.[1TabPeças].Origem, dbo.VENDAS.DataVenda, dbo.[VENDAS DET].PrVenda AS ValorVenda, dbo.[VENDAS DET].Peça, CASE WHEN [Oficial] = 1 THEN 'W' ELSE '' END AS w, dbo.[1TabPeças].Modêlo, dbo.VENDAS.Id, 
                          dbo.[1TabPeças].Custo, dbo.[1TabPeças].DataIn, CASE WHEN [Família] = 'Ou' THEN [TotalQtde] ELSE [OuroQtde] END AS OV, CASE WHEN [Família] = 'Ou' THEN [TotalvALOR] ELSE [OuroV] END AS OP, 
                          dbo.[1TabPeças].DataFabric, dbo.[1TabPeças].DataReg, Format(dbo.VENDAS.DataVenda, 'mmyyyy') AS mesDV, Format(dbo.[1TabPeças].DataReg, 'mmyyyy') AS mesDF, dbo.[1TabPeças].Classe, 
                          ISNULL(dbo.[1TabPeças].MOExt, 0) + ISNULL(dbo.[1TabPeças].MOInt, 0) AS MO

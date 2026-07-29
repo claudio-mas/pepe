@@ -776,6 +776,16 @@ Partial Public Class dsVendas
         
         Private columnAut2 As Global.System.Data.DataColumn
         
+        Private columnFormaCartão3 As Global.System.Data.DataColumn
+        
+        Private columnNomeCartão3 As Global.System.Data.DataColumn
+        
+        Private columnCartãoCC3 As Global.System.Data.DataColumn
+        
+        Private columnAut3 As Global.System.Data.DataColumn
+        
+        Private columnCartão3 As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -1324,6 +1334,46 @@ Partial Public Class dsVendas
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property FormaCartão3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFormaCartão3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property NomeCartão3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNomeCartão3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property CartãoCC3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCartãoCC3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property Aut3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAut3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property Cartão3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCartão3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1423,9 +1473,14 @@ Partial Public Class dsVendas
                     ByVal CartãoCC2 As Boolean,  _
                     ByVal Aut As String,  _
                     ByVal AutDeb As String,  _
-                    ByVal Aut2 As String) As VENDASRow
+                    ByVal Aut2 As String,  _
+                    ByVal FormaCartão3 As String,  _
+                    ByVal NomeCartão3 As String,  _
+                    ByVal CartãoCC3 As Boolean,  _
+                    ByVal Aut3 As String,  _
+                    ByVal Cartão3 As Double) As VENDASRow
             Dim rowVENDASRow As VENDASRow = CType(Me.NewRow,VENDASRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, Venda, IDCliente, DataVenda, Tipo, Vendedora, Real, Ouro, Dolar, Cheque, DC, Pré1, PosPré1, DP1, Pré2, PosPré2, DP2, Pré3, PosPré3, DP3, Pré4, PosPré4, DP4, Pré5, PosPré5, DP5, Cartão, ContaCorrente, CCCheque, CredDeb, ValorVenda, Comissão, Desconto, ValorFinal, Destino, FormaCartão, Conserto, NomeCartão, CCDeb, Troca, Credito, SEMCADASTRO, ChequeCC, CartãoCC, DolarCC, CashCC, OuroCC, FormaCheque, Banco, SSMA_TimeStamp, Peças, MD, ValorTransf, BancoTransf, Excluir, Deb, NomeCDeb, Cartão2, FormaCartão2, NomeCartão2, CartãoCC2, Aut, AutDeb, Aut2}
+            Dim columnValuesArray() As Object = New Object() {Nothing, Venda, IDCliente, DataVenda, Tipo, Vendedora, Real, Ouro, Dolar, Cheque, DC, Pré1, PosPré1, DP1, Pré2, PosPré2, DP2, Pré3, PosPré3, DP3, Pré4, PosPré4, DP4, Pré5, PosPré5, DP5, Cartão, ContaCorrente, CCCheque, CredDeb, ValorVenda, Comissão, Desconto, ValorFinal, Destino, FormaCartão, Conserto, NomeCartão, CCDeb, Troca, Credito, SEMCADASTRO, ChequeCC, CartãoCC, DolarCC, CashCC, OuroCC, FormaCheque, Banco, SSMA_TimeStamp, Peças, MD, ValorTransf, BancoTransf, Excluir, Deb, NomeCDeb, Cartão2, FormaCartão2, NomeCartão2, CartãoCC2, Aut, AutDeb, Aut2, FormaCartão3, NomeCartão3, CartãoCC3, Aut3, Cartão3}
             rowVENDASRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowVENDASRow)
             Return rowVENDASRow
@@ -1518,6 +1573,11 @@ Partial Public Class dsVendas
             Me.columnAut = MyBase.Columns("Aut")
             Me.columnAutDeb = MyBase.Columns("AutDeb")
             Me.columnAut2 = MyBase.Columns("Aut2")
+            Me.columnFormaCartão3 = MyBase.Columns("FormaCartão3")
+            Me.columnNomeCartão3 = MyBase.Columns("NomeCartão3")
+            Me.columnCartãoCC3 = MyBase.Columns("CartãoCC3")
+            Me.columnAut3 = MyBase.Columns("Aut3")
+            Me.columnCartão3 = MyBase.Columns("Cartão3")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1651,6 +1711,16 @@ Partial Public Class dsVendas
             MyBase.Columns.Add(Me.columnAutDeb)
             Me.columnAut2 = New Global.System.Data.DataColumn("Aut2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnAut2)
+            Me.columnFormaCartão3 = New Global.System.Data.DataColumn("FormaCartão3", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFormaCartão3)
+            Me.columnNomeCartão3 = New Global.System.Data.DataColumn("NomeCartão3", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNomeCartão3)
+            Me.columnCartãoCC3 = New Global.System.Data.DataColumn("CartãoCC3", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCartãoCC3)
+            Me.columnAut3 = New Global.System.Data.DataColumn("Aut3", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAut3)
+            Me.columnCartão3 = New Global.System.Data.DataColumn("Cartão3", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCartão3)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnId}, true))
             Me.columnId.AutoIncrement = true
             Me.columnId.AutoIncrementSeed = -1
@@ -1682,6 +1752,9 @@ Partial Public Class dsVendas
             Me.columnAut.MaxLength = 10
             Me.columnAutDeb.MaxLength = 10
             Me.columnAut2.MaxLength = 10
+            Me.columnFormaCartão3.MaxLength = 15
+            Me.columnNomeCartão3.MaxLength = 15
+            Me.columnAut3.MaxLength = 10
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7153,6 +7226,81 @@ Partial Public Class dsVendas
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property FormaCartão3() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableVENDAS.FormaCartão3Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("O valor da coluna 'FormaCartão3' na tabela 'VENDAS' é DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVENDAS.FormaCartão3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property NomeCartão3() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableVENDAS.NomeCartão3Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("O valor da coluna 'NomeCartão3' na tabela 'VENDAS' é DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVENDAS.NomeCartão3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property CartãoCC3() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableVENDAS.CartãoCC3Column),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("O valor da coluna 'CartãoCC3' na tabela 'VENDAS' é DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVENDAS.CartãoCC3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property Aut3() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableVENDAS.Aut3Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("O valor da coluna 'Aut3' na tabela 'VENDAS' é DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVENDAS.Aut3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property Cartão3() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableVENDAS.Cartão3Column),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("O valor da coluna 'Cartão3' na tabela 'VENDAS' é DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVENDAS.Cartão3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsVendaNull() As Boolean
             Return Me.IsNull(Me.tableVENDAS.VendaColumn)
         End Function
@@ -7905,6 +8053,66 @@ Partial Public Class dsVendas
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetAut2Null()
             Me(Me.tableVENDAS.Aut2Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsFormaCartão3Null() As Boolean
+            Return Me.IsNull(Me.tableVENDAS.FormaCartão3Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetFormaCartão3Null()
+            Me(Me.tableVENDAS.FormaCartão3Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsNomeCartão3Null() As Boolean
+            Return Me.IsNull(Me.tableVENDAS.NomeCartão3Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetNomeCartão3Null()
+            Me(Me.tableVENDAS.NomeCartão3Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsCartãoCC3Null() As Boolean
+            Return Me.IsNull(Me.tableVENDAS.CartãoCC3Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetCartãoCC3Null()
+            Me(Me.tableVENDAS.CartãoCC3Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsAut3Null() As Boolean
+            Return Me.IsNull(Me.tableVENDAS.Aut3Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetAut3Null()
+            Me(Me.tableVENDAS.Aut3Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsCartão3Null() As Boolean
+            Return Me.IsNull(Me.tableVENDAS.Cartão3Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetCartão3Null()
+            Me(Me.tableVENDAS.Cartão3Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -12125,6 +12333,11 @@ Namespace dsVendasTableAdapters
             tableMapping.ColumnMappings.Add("Aut", "Aut")
             tableMapping.ColumnMappings.Add("AutDeb", "AutDeb")
             tableMapping.ColumnMappings.Add("Aut2", "Aut2")
+            tableMapping.ColumnMappings.Add("FormaCartão3", "FormaCartão3")
+            tableMapping.ColumnMappings.Add("NomeCartão3", "NomeCartão3")
+            tableMapping.ColumnMappings.Add("CartãoCC3", "CartãoCC3")
+            tableMapping.ColumnMappings.Add("Aut3", "Aut3")
+            tableMapping.ColumnMappings.Add("Cartão3", "Cartão3")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -12145,22 +12358,24 @@ Namespace dsVendasTableAdapters
                 ", [CCDeb], [Troca], [Credito], [SEMCADASTRO], [ChequeCC], [CartãoCC], [DolarCC],"& _ 
                 " [CashCC], [OuroCC], [FormaCheque], [Banco], [Peças], [MD], [ValorTransf], [Banc"& _ 
                 "oTransf], [Excluir], [Deb], [NomeCDeb], [Cartão2], [FormaCartão2], [NomeCartão2]"& _ 
-                ", [CartãoCC2], [Aut], [AutDeb], [Aut2]) VALUES (@Venda, @IDCliente, @DataVenda, "& _ 
-                "@Tipo, @Vendedora, @Real, @Ouro, @Dolar, @Cheque, @DC, @Pré1, @PosPré1, @DP1, @P"& _ 
-                "ré2, @PosPré2, @DP2, @Pré3, @PosPré3, @DP3, @Pré4, @PosPré4, @DP4, @Pré5, @PosPr"& _ 
-                "é5, @DP5, @Cartão, @ContaCorrente, @CCCheque, @CredDeb, @ValorVenda, @Comissão, "& _ 
-                "@Desconto, @ValorFinal, @Destino, @FormaCartão, @Conserto, @NomeCartão, @CCDeb, "& _ 
-                "@Troca, @Credito, @SEMCADASTRO, @ChequeCC, @CartãoCC, @DolarCC, @CashCC, @OuroCC"& _ 
-                ", @FormaCheque, @Banco, @Peças, @MD, @ValorTransf, @BancoTransf, @Excluir, @Deb,"& _ 
-                " @NomeCDeb, @Cartão2, @FormaCartão2, @NomeCartão2, @CartãoCC2, @Aut, @AutDeb, @A"& _ 
-                "ut2);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id, Venda, IDCliente, DataVenda, Tipo, Vendedora, Real, Ouro, Dola"& _ 
-                "r, Cheque, DC, Pré1, PosPré1, DP1, Pré2, PosPré2, DP2, Pré3, PosPré3, DP3, Pré4,"& _ 
-                " PosPré4, DP4, Pré5, PosPré5, DP5, Cartão, ContaCorrente, CCCheque, CredDeb, Val"& _ 
-                "orVenda, Comissão, Desconto, ValorFinal, Destino, FormaCartão, Conserto, NomeCar"& _ 
-                "tão, CCDeb, Troca, Credito, SEMCADASTRO, ChequeCC, CartãoCC, DolarCC, CashCC, Ou"& _ 
-                "roCC, FormaCheque, Banco, SSMA_TimeStamp, Peças, MD, ValorTransf, BancoTransf, E"& _ 
-                "xcluir, Deb, NomeCDeb, Cartão2, FormaCartão2, NomeCartão2, CartãoCC2, Aut, AutDe"& _ 
-                "b, Aut2 FROM VENDAS WHERE (Id = SCOPE_IDENTITY())"
+                ", [CartãoCC2], [Aut], [AutDeb], [Aut2], [Cartão3], [FormaCartão3], [NomeCartão3]"& _ 
+                ", [CartãoCC3], [Aut3]) VALUES (@Venda, @IDCliente, @DataVenda, @Tipo, @Vendedora"& _ 
+                ", @Real, @Ouro, @Dolar, @Cheque, @DC, @Pré1, @PosPré1, @DP1, @Pré2, @PosPré2, @D"& _ 
+                "P2, @Pré3, @PosPré3, @DP3, @Pré4, @PosPré4, @DP4, @Pré5, @PosPré5, @DP5, @Cartão"& _ 
+                ", @ContaCorrente, @CCCheque, @CredDeb, @ValorVenda, @Comissão, @Desconto, @Valor"& _ 
+                "Final, @Destino, @FormaCartão, @Conserto, @NomeCartão, @CCDeb, @Troca, @Credito,"& _ 
+                " @SEMCADASTRO, @ChequeCC, @CartãoCC, @DolarCC, @CashCC, @OuroCC, @FormaCheque, @"& _ 
+                "Banco, @Peças, @MD, @ValorTransf, @BancoTransf, @Excluir, @Deb, @NomeCDeb, @Cart"& _ 
+                "ão2, @FormaCartão2, @NomeCartão2, @CartãoCC2, @Aut, @AutDeb, @Aut2, @Cartão3, @F"& _ 
+                "ormaCartão3, @NomeCartão3, @CartãoCC3, @Aut3);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id, Venda, IDCliente, Dat"& _ 
+                "aVenda, Tipo, Vendedora, Real, Ouro, Dolar, Cheque, DC, Pré1, PosPré1, DP1, Pré2"& _ 
+                ", PosPré2, DP2, Pré3, PosPré3, DP3, Pré4, PosPré4, DP4, Pré5, PosPré5, DP5, Cart"& _ 
+                "ão, ContaCorrente, CCCheque, CredDeb, ValorVenda, Comissão, Desconto, ValorFinal"& _ 
+                ", Destino, FormaCartão, Conserto, NomeCartão, CCDeb, Troca, Credito, SEMCADASTRO"& _ 
+                ", ChequeCC, CartãoCC, DolarCC, CashCC, OuroCC, FormaCheque, Banco, SSMA_TimeStam"& _ 
+                "p, Peças, MD, ValorTransf, BancoTransf, Excluir, Deb, NomeCDeb, Cartão2, FormaCa"& _ 
+                "rtão2, NomeCartão2, CartãoCC2, Aut, AutDeb, Aut2, Cartão3, FormaCartão3, NomeCar"& _ 
+                "tão3, CartãoCC3, Aut3 FROM VENDAS WHERE (Id = SCOPE_IDENTITY())"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Venda", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Venda", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IDCliente", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IDCliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -12224,6 +12439,11 @@ Namespace dsVendasTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Aut", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Aut", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AutDeb", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AutDeb", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Aut2", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Aut2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cartão3", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cartão3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FormaCartão3", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FormaCartão3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NomeCartão3", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NomeCartão3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CartãoCC3", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CartãoCC3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Aut3", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Aut3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [VENDAS] SET [Venda] = @Venda, [IDCliente] = @IDCliente, [DataVenda] = @Da"& _ 
@@ -12242,16 +12462,19 @@ Namespace dsVendasTableAdapters
                 "ças, [MD] = @MD, [ValorTransf] = @ValorTransf, [BancoTransf] = @BancoTransf, [Ex"& _ 
                 "cluir] = @Excluir, [Deb] = @Deb, [NomeCDeb] = @NomeCDeb, [Cartão2] = @Cartão2, ["& _ 
                 "FormaCartão2] = @FormaCartão2, [NomeCartão2] = @NomeCartão2, [CartãoCC2] = @Cart"& _ 
-                "ãoCC2, [Aut] = @Aut, [AutDeb] = @AutDeb, [Aut2] = @Aut2 WHERE (([Id] = @Original"& _ 
-                "_Id) AND ((@IsNull_SSMA_TimeStamp = 1 AND [SSMA_TimeStamp] IS NULL) OR ([SSMA_Ti"& _ 
-                "meStamp] = @Original_SSMA_TimeStamp)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id, Venda, IDCliente, DataVenda,"& _ 
-                " Tipo, Vendedora, Real, Ouro, Dolar, Cheque, DC, Pré1, PosPré1, DP1, Pré2, PosPr"& _ 
-                "é2, DP2, Pré3, PosPré3, DP3, Pré4, PosPré4, DP4, Pré5, PosPré5, DP5, Cartão, Con"& _ 
-                "taCorrente, CCCheque, CredDeb, ValorVenda, Comissão, Desconto, ValorFinal, Desti"& _ 
-                "no, FormaCartão, Conserto, NomeCartão, CCDeb, Troca, Credito, SEMCADASTRO, Chequ"& _ 
-                "eCC, CartãoCC, DolarCC, CashCC, OuroCC, FormaCheque, Banco, SSMA_TimeStamp, Peça"& _ 
-                "s, MD, ValorTransf, BancoTransf, Excluir, Deb, NomeCDeb, Cartão2, FormaCartão2, "& _ 
-                "NomeCartão2, CartãoCC2, Aut, AutDeb, Aut2 FROM VENDAS WHERE (Id = @Id)"
+                "ãoCC2, [Aut] = @Aut, [AutDeb] = @AutDeb, [Aut2] = @Aut2, [Cartão3] = @Cartão3, ["& _ 
+                "FormaCartão3] = @FormaCartão3, [NomeCartão3] = @NomeCartão3, [CartãoCC3] = @Cart"& _ 
+                "ãoCC3, [Aut3] = @Aut3 WHERE (([Id] = @Original_Id) AND ((@IsNull_SSMA_TimeStamp "& _ 
+                "= 1 AND [SSMA_TimeStamp] IS NULL) OR ([SSMA_TimeStamp] = @Original_SSMA_TimeStam"& _ 
+                "p)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Id, Venda, IDCliente, DataVenda, Tipo, Vendedora, Real, Ouro, Dola"& _ 
+                "r, Cheque, DC, Pré1, PosPré1, DP1, Pré2, PosPré2, DP2, Pré3, PosPré3, DP3, Pré4,"& _ 
+                " PosPré4, DP4, Pré5, PosPré5, DP5, Cartão, ContaCorrente, CCCheque, CredDeb, Val"& _ 
+                "orVenda, Comissão, Desconto, ValorFinal, Destino, FormaCartão, Conserto, NomeCar"& _ 
+                "tão, CCDeb, Troca, Credito, SEMCADASTRO, ChequeCC, CartãoCC, DolarCC, CashCC, Ou"& _ 
+                "roCC, FormaCheque, Banco, SSMA_TimeStamp, Peças, MD, ValorTransf, BancoTransf, E"& _ 
+                "xcluir, Deb, NomeCDeb, Cartão2, FormaCartão2, NomeCartão2, CartãoCC2, Aut, AutDe"& _ 
+                "b, Aut2, Cartão3, FormaCartão3, NomeCartão3, CartãoCC3, Aut3 FROM VENDAS WHERE ("& _ 
+                "Id = @Id)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Venda", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Venda", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IDCliente", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IDCliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -12315,6 +12538,11 @@ Namespace dsVendasTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Aut", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Aut", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AutDeb", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AutDeb", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Aut2", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Aut2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cartão3", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cartão3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FormaCartão3", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FormaCartão3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NomeCartão3", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NomeCartão3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CartãoCC3", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CartãoCC3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Aut3", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Aut3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SSMA_TimeStamp", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SSMA_TimeStamp", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SSMA_TimeStamp", Global.System.Data.SqlDbType.Timestamp, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SSMA_TimeStamp", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -12341,8 +12569,8 @@ Namespace dsVendasTableAdapters
                 "aCartão, Conserto, NomeCartão, CCDeb, Troca, Credito, SEMCADASTRO, ChequeCC, Car"& _ 
                 "tãoCC, DolarCC, CashCC, OuroCC, FormaCheque, Banco, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         S"& _ 
                 "SMA_TimeStamp, Peças, MD, ValorTransf, BancoTransf, Excluir, Deb, NomeCDeb, Cart"& _ 
-                "ão2, FormaCartão2, NomeCartão2, CartãoCC2, Aut, AutDeb, Aut2"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            VE"& _ 
-                "NDAS"
+                "ão2, FormaCartão2, NomeCartão2, CartãoCC2, Aut, AutDeb, Aut2, Cartão3, FormaCart"& _ 
+                "ão3, NomeCartão3, CartãoCC3, Aut3"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            VENDAS"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -12492,7 +12720,12 @@ Namespace dsVendasTableAdapters
                     ByVal CartãoCC2 As Global.System.Nullable(Of Boolean),  _
                     ByVal Aut As String,  _
                     ByVal AutDeb As String,  _
-                    ByVal Aut2 As String) As Integer
+                    ByVal Aut2 As String,  _
+                    ByVal Cartão3 As Global.System.Nullable(Of Double),  _
+                    ByVal FormaCartão3 As String,  _
+                    ByVal NomeCartão3 As String,  _
+                    ByVal CartãoCC3 As Global.System.Nullable(Of Boolean),  _
+                    ByVal Aut3 As String) As Integer
             If (Venda Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -12803,6 +13036,31 @@ Namespace dsVendasTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(61).Value = CType(Aut2,String)
             End If
+            If (Cartão3.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(62).Value = CType(Cartão3.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(62).Value = Global.System.DBNull.Value
+            End If
+            If (FormaCartão3 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(63).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(63).Value = CType(FormaCartão3,String)
+            End If
+            If (NomeCartão3 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(64).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(64).Value = CType(NomeCartão3,String)
+            End If
+            If (CartãoCC3.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(65).Value = CType(CartãoCC3.Value,Boolean)
+            Else
+                Me.Adapter.InsertCommand.Parameters(65).Value = Global.System.DBNull.Value
+            End If
+            If (Aut3 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(66).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(66).Value = CType(Aut3,String)
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -12885,6 +13143,11 @@ Namespace dsVendasTableAdapters
                     ByVal Aut As String,  _
                     ByVal AutDeb As String,  _
                     ByVal Aut2 As String,  _
+                    ByVal Cartão3 As Global.System.Nullable(Of Double),  _
+                    ByVal FormaCartão3 As String,  _
+                    ByVal NomeCartão3 As String,  _
+                    ByVal CartãoCC3 As Global.System.Nullable(Of Boolean),  _
+                    ByVal Aut3 As String,  _
                     ByVal Original_Id As Integer,  _
                     ByVal Original_SSMA_TimeStamp() As Byte,  _
                     ByVal Id As Integer) As Integer
@@ -13198,15 +13461,40 @@ Namespace dsVendasTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(61).Value = CType(Aut2,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(62).Value = CType(Original_Id,Integer)
-            If (Original_SSMA_TimeStamp Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(63).Value = CType(1,Object)
+            If (Cartão3.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(62).Value = CType(Cartão3.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(62).Value = Global.System.DBNull.Value
+            End If
+            If (FormaCartão3 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(63).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(63).Value = CType(FormaCartão3,String)
+            End If
+            If (NomeCartão3 Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(64).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(63).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(64).Value = CType(Original_SSMA_TimeStamp,Byte())
+                Me.Adapter.UpdateCommand.Parameters(64).Value = CType(NomeCartão3,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(65).Value = CType(Id,Integer)
+            If (CartãoCC3.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(CartãoCC3.Value,Boolean)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(65).Value = Global.System.DBNull.Value
+            End If
+            If (Aut3 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(66).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(Aut3,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(67).Value = CType(Original_Id,Integer)
+            If (Original_SSMA_TimeStamp Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(68).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(69).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(68).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(69).Value = CType(Original_SSMA_TimeStamp,Byte())
+            End If
+            Me.Adapter.UpdateCommand.Parameters(70).Value = CType(Id,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -13289,9 +13577,14 @@ Namespace dsVendasTableAdapters
                     ByVal Aut As String,  _
                     ByVal AutDeb As String,  _
                     ByVal Aut2 As String,  _
+                    ByVal Cartão3 As Global.System.Nullable(Of Double),  _
+                    ByVal FormaCartão3 As String,  _
+                    ByVal NomeCartão3 As String,  _
+                    ByVal CartãoCC3 As Global.System.Nullable(Of Boolean),  _
+                    ByVal Aut3 As String,  _
                     ByVal Original_Id As Integer,  _
                     ByVal Original_SSMA_TimeStamp() As Byte) As Integer
-            Return Me.Update(Venda, IDCliente, DataVenda, Tipo, Vendedora, Real, Ouro, Dolar, Cheque, DC, Pré1, PosPré1, DP1, Pré2, PosPré2, DP2, Pré3, PosPré3, DP3, Pré4, PosPré4, DP4, Pré5, PosPré5, DP5, Cartão, ContaCorrente, CCCheque, CredDeb, ValorVenda, Comissão, Desconto, ValorFinal, Destino, FormaCartão, Conserto, NomeCartão, CCDeb, Troca, Credito, SEMCADASTRO, ChequeCC, CartãoCC, DolarCC, CashCC, OuroCC, FormaCheque, Banco, Peças, MD, ValorTransf, BancoTransf, Excluir, Deb, NomeCDeb, Cartão2, FormaCartão2, NomeCartão2, CartãoCC2, Aut, AutDeb, Aut2, Original_Id, Original_SSMA_TimeStamp, Original_Id)
+            Return Me.Update(Venda, IDCliente, DataVenda, Tipo, Vendedora, Real, Ouro, Dolar, Cheque, DC, Pré1, PosPré1, DP1, Pré2, PosPré2, DP2, Pré3, PosPré3, DP3, Pré4, PosPré4, DP4, Pré5, PosPré5, DP5, Cartão, ContaCorrente, CCCheque, CredDeb, ValorVenda, Comissão, Desconto, ValorFinal, Destino, FormaCartão, Conserto, NomeCartão, CCDeb, Troca, Credito, SEMCADASTRO, ChequeCC, CartãoCC, DolarCC, CashCC, OuroCC, FormaCheque, Banco, Peças, MD, ValorTransf, BancoTransf, Excluir, Deb, NomeCDeb, Cartão2, FormaCartão2, NomeCartão2, CartãoCC2, Aut, AutDeb, Aut2, Cartão3, FormaCartão3, NomeCartão3, CartãoCC3, Aut3, Original_Id, Original_SSMA_TimeStamp, Original_Id)
         End Function
     End Class
     

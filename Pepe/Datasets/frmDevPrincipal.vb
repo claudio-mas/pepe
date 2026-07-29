@@ -422,4 +422,9 @@ Partial Public Class frmDevPrincipal
         frmOuro.ShowDialog()
 
     End Sub
+
+    Private Sub btnCota_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnCota.ItemClick
+        frmCota.ShowDialog()
+
+    End Sub
 End Class

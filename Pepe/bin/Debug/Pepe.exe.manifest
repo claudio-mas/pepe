@@ -4,7 +4,7 @@
   <description asmv2:iconFile="Sirea-Princess-Jewellery-Necklace.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="Pepe" version="1.1.0.1" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="Pepe" version="1.1.2.6" language="neutral" processorArchitecture="msil" />
     <commandLine file="Pepe.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="adodb.dll" size="120752">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="adodb.dll" size="120632">
       <assemblyIdentity name="ADODB" version="7.0.3300.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>eOq4WvgXaYM+ydnaigIb3IEQ2eE04wDx6675T2Bo714=</dsig:DigestValue>
+        <dsig:DigestValue>dY3W2RGMUAWeKK9ni6ymMtPUYJ8nfjdAMCT2TmjFV28=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -751,14 +751,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EnvDTE.dll" size="255928">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EnvDTE.dll" size="256056">
       <assemblyIdentity name="EnvDTE" version="8.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ap4yvWobTGnSjKFbsk597qpUqfd9loBFqCphEWRRtbQ=</dsig:DigestValue>
+        <dsig:DigestValue>eDKi/NkVZrJF1fLaxIGf0bsObNmy6g8Y8Zr++/3hCwI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -811,14 +811,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Pepe.exe" size="6642688">
-      <assemblyIdentity name="Pepe" version="1.1.0.1" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Pepe.exe" size="6727168">
+      <assemblyIdentity name="Pepe" version="1.1.2.6" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Mr60+uOE/wp8YhS5+yn/smAEN2dwFpuwu5ZyWdZDaLo=</dsig:DigestValue>
+        <dsig:DigestValue>ZYCrOyYqW3f/OSnNpd5EfOrNrNgloocqx+NXH2ZBIkY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -930,13 +930,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Pepe.exe.config" size="2467">
+  <file name="Pepe.exe.config" size="2470">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>KRt3+z2QT1cdDQqRHWdrefUJXyHnvUM7cPX/h1SRY3s=</dsig:DigestValue>
+      <dsig:DigestValue>Mkd/hSd1d7qNRWVg1CIeBjU5TEafuEcm6vpasPxyEn0=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Sirea-Princess-Jewellery-Necklace.ico" size="220087">

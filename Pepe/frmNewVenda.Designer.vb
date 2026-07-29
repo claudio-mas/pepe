@@ -53,6 +53,7 @@
         Dim Label21 As System.Windows.Forms.Label
         Dim Label22 As System.Windows.Forms.Label
         Dim Label23 As System.Windows.Forms.Label
+        Dim Label5 As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmNewVenda))
         Dim SuperToolTip1 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
         Dim ToolTipItem1 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
@@ -158,6 +159,12 @@
         Me.txtBancoTransf = New DevExpress.XtraEditors.TextEdit()
         Me.txtCCDeb = New DevExpress.XtraEditors.TextEdit()
         Me.GroupControlCARTAO = New DevExpress.XtraEditors.GroupControl()
+        Me.txtAut3 = New DevExpress.XtraEditors.TextEdit()
+        Me.txtCCCartao3 = New DevExpress.XtraEditors.CheckEdit()
+        Me.txtValorCartao3 = New DevExpress.XtraEditors.TextEdit()
+        Me.txtFormaCartao3 = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.txtNomeCartao3 = New DevExpress.XtraEditors.LookUpEdit()
+        Me.CartõesCredBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.txtAut2 = New DevExpress.XtraEditors.TextEdit()
         Me.txtAUTDeb = New DevExpress.XtraEditors.TextEdit()
         Me.txtAUT = New DevExpress.XtraEditors.TextEdit()
@@ -165,7 +172,6 @@
         Me.txtValorCartao2 = New DevExpress.XtraEditors.TextEdit()
         Me.txtFormaCartao2 = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.txtNomeCartao2 = New DevExpress.XtraEditors.LookUpEdit()
-        Me.CartõesCredBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.txtNomeCDeb = New DevExpress.XtraEditors.LookUpEdit()
         Me.CartõesDebBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.txtDeb = New DevExpress.XtraEditors.TextEdit()
@@ -253,6 +259,7 @@
         Label21 = New System.Windows.Forms.Label()
         Label22 = New System.Windows.Forms.Label()
         Label23 = New System.Windows.Forms.Label()
+        Label5 = New System.Windows.Forms.Label()
         CType(Me.ribbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XtraTabControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.XtraTabControl1.SuspendLayout()
@@ -294,6 +301,12 @@
         CType(Me.txtCCDeb.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControlCARTAO, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControlCARTAO.SuspendLayout()
+        CType(Me.txtAut3.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtCCCartao3.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtValorCartao3.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtFormaCartao3.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtNomeCartao3.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CartõesCredBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtAut2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtAUTDeb.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtAUT.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -301,7 +314,6 @@
         CType(Me.txtValorCartao2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtFormaCartao2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtNomeCartao2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CartõesCredBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtNomeCDeb.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CartõesDebBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtDeb.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -558,7 +570,7 @@
         'Label16
         '
         Label16.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Label16.Location = New System.Drawing.Point(330, 117)
+        Label16.Location = New System.Drawing.Point(330, 139)
         Label16.Name = "Label16"
         Label16.Size = New System.Drawing.Size(42, 17)
         Label16.TabIndex = 35
@@ -568,7 +580,7 @@
         'Label18
         '
         Label18.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Label18.Location = New System.Drawing.Point(29, 119)
+        Label18.Location = New System.Drawing.Point(29, 141)
         Label18.Name = "Label18"
         Label18.Size = New System.Drawing.Size(95, 17)
         Label18.TabIndex = 37
@@ -629,12 +641,22 @@
         'Label23
         '
         Label23.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Label23.Location = New System.Drawing.Point(478, 115)
+        Label23.Location = New System.Drawing.Point(478, 137)
         Label23.Name = "Label23"
         Label23.Size = New System.Drawing.Size(71, 17)
         Label23.TabIndex = 46
         Label23.Text = "AUT. Déb."
         Label23.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label5
+        '
+        Label5.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Label5.Location = New System.Drawing.Point(91, 104)
+        Label5.Name = "Label5"
+        Label5.Size = New System.Drawing.Size(32, 18)
+        Label5.TabIndex = 52
+        Label5.Text = "3"
+        Label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'ribbonControl1
         '
@@ -866,6 +888,7 @@
         'DsVendas
         '
         Me.DsVendas.DataSetName = "dsVendas"
+        Me.DsVendas.EnforceConstraints = False
         Me.DsVendas.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'txtDesconto
@@ -1012,6 +1035,7 @@
         'DsVendas1
         '
         Me.DsVendas1.DataSetName = "dsVendas"
+        Me.DsVendas1.EnforceConstraints = False
         Me.DsVendas1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'colValorVenda
@@ -1442,6 +1466,12 @@
         Me.GroupControlCARTAO.AppearanceCaption.Options.UseForeColor = True
         Me.GroupControlCARTAO.AppearanceCaption.Options.UseTextOptions = True
         Me.GroupControlCARTAO.AppearanceCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.GroupControlCARTAO.Controls.Add(Me.txtAut3)
+        Me.GroupControlCARTAO.Controls.Add(Label5)
+        Me.GroupControlCARTAO.Controls.Add(Me.txtCCCartao3)
+        Me.GroupControlCARTAO.Controls.Add(Me.txtValorCartao3)
+        Me.GroupControlCARTAO.Controls.Add(Me.txtFormaCartao3)
+        Me.GroupControlCARTAO.Controls.Add(Me.txtNomeCartao3)
         Me.GroupControlCARTAO.Controls.Add(Me.txtAut2)
         Me.GroupControlCARTAO.Controls.Add(Label23)
         Me.GroupControlCARTAO.Controls.Add(Me.txtAUTDeb)
@@ -1472,11 +1502,99 @@
         ToolTipItem3.Text = "Exclui dados do cartão"
         SuperToolTip3.Items.Add(ToolTipItem3)
         Me.GroupControlCARTAO.CustomHeaderButtons.AddRange(New DevExpress.XtraEditors.ButtonPanel.IBaseButton() {New DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("", True, ButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, True, SuperToolTip3, True, False, True, Nothing, -1)})
-        Me.GroupControlCARTAO.Location = New System.Drawing.Point(659, 21)
+        Me.GroupControlCARTAO.Location = New System.Drawing.Point(659, 8)
         Me.GroupControlCARTAO.Name = "GroupControlCARTAO"
-        Me.GroupControlCARTAO.Size = New System.Drawing.Size(653, 387)
+        Me.GroupControlCARTAO.Size = New System.Drawing.Size(653, 410)
         Me.GroupControlCARTAO.TabIndex = 26
         Me.GroupControlCARTAO.Text = "CARTÃO"
+        '
+        'txtAut3
+        '
+        Me.txtAut3.DataBindings.Add(New System.Windows.Forms.Binding("EditValue", Me.VENDASBindingSource, "Aut3", True))
+        Me.txtAut3.Location = New System.Drawing.Point(553, 100)
+        Me.txtAut3.MenuManager = Me.ribbonControl1
+        Me.txtAut3.Name = "txtAut3"
+        Me.txtAut3.Properties.Appearance.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAut3.Properties.Appearance.Options.UseFont = True
+        Me.txtAut3.Properties.Appearance.Options.UseTextOptions = True
+        Me.txtAut3.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.txtAut3.Properties.BeepOnError = True
+        Me.txtAut3.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple
+        Me.txtAut3.Properties.UseMaskAsDisplayFormat = True
+        Me.txtAut3.Size = New System.Drawing.Size(85, 24)
+        Me.txtAut3.TabIndex = 50
+        '
+        'txtCCCartao3
+        '
+        Me.txtCCCartao3.DataBindings.Add(New System.Windows.Forms.Binding("EditValue", Me.VENDASBindingSource, "CartãoCC3", True))
+        Me.txtCCCartao3.Location = New System.Drawing.Point(518, 101)
+        Me.txtCCCartao3.MenuManager = Me.ribbonControl1
+        Me.txtCCCartao3.Name = "txtCCCartao3"
+        Me.txtCCCartao3.Properties.Appearance.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCCCartao3.Properties.Appearance.Options.UseFont = True
+        Me.txtCCCartao3.Properties.Caption = ""
+        Me.txtCCCartao3.Size = New System.Drawing.Size(29, 20)
+        Me.txtCCCartao3.TabIndex = 51
+        Me.txtCCCartao3.TabStop = False
+        '
+        'txtValorCartao3
+        '
+        Me.txtValorCartao3.DataBindings.Add(New System.Windows.Forms.Binding("EditValue", Me.VENDASBindingSource, "Cartão3", True))
+        Me.txtValorCartao3.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
+        Me.txtValorCartao3.Location = New System.Drawing.Point(442, 100)
+        Me.txtValorCartao3.MenuManager = Me.ribbonControl1
+        Me.txtValorCartao3.Name = "txtValorCartao3"
+        Me.txtValorCartao3.Properties.Appearance.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtValorCartao3.Properties.Appearance.Options.UseFont = True
+        Me.txtValorCartao3.Properties.Appearance.Options.UseTextOptions = True
+        Me.txtValorCartao3.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.txtValorCartao3.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple
+        Me.txtValorCartao3.Properties.DisplayFormat.FormatString = "{0:#,###0.00;-#,###0.00}"
+        Me.txtValorCartao3.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtValorCartao3.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Buffered
+        Me.txtValorCartao3.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
+        Me.txtValorCartao3.Properties.MaskSettings.Set("mask", "n")
+        Me.txtValorCartao3.Size = New System.Drawing.Size(68, 24)
+        Me.txtValorCartao3.TabIndex = 49
+        '
+        'txtFormaCartao3
+        '
+        Me.txtFormaCartao3.DataBindings.Add(New System.Windows.Forms.Binding("EditValue", Me.VENDASBindingSource, "FormaCartão3", True))
+        Me.txtFormaCartao3.Location = New System.Drawing.Point(298, 101)
+        Me.txtFormaCartao3.MenuManager = Me.ribbonControl1
+        Me.txtFormaCartao3.Name = "txtFormaCartao3"
+        Me.txtFormaCartao3.Properties.Appearance.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFormaCartao3.Properties.Appearance.Options.UseFont = True
+        Me.txtFormaCartao3.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple
+        Me.txtFormaCartao3.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.txtFormaCartao3.Properties.DropDownRows = 10
+        Me.txtFormaCartao3.Properties.Items.AddRange(New Object() {"A vista", "2x", "3x", "4x", "5x", "6x", "7x", "8x", "9x", "10x"})
+        Me.txtFormaCartao3.Size = New System.Drawing.Size(98, 24)
+        Me.txtFormaCartao3.TabIndex = 48
+        '
+        'txtNomeCartao3
+        '
+        Me.txtNomeCartao3.DataBindings.Add(New System.Windows.Forms.Binding("EditValue", Me.VENDASBindingSource, "NomeCartão3", True))
+        Me.txtNomeCartao3.Location = New System.Drawing.Point(127, 101)
+        Me.txtNomeCartao3.MenuManager = Me.ribbonControl1
+        Me.txtNomeCartao3.Name = "txtNomeCartao3"
+        Me.txtNomeCartao3.Properties.Appearance.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtNomeCartao3.Properties.Appearance.Options.UseFont = True
+        Me.txtNomeCartao3.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple
+        Me.txtNomeCartao3.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.txtNomeCartao3.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Ncartao", "Cartão", 20, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.[Default], DevExpress.Data.ColumnSortOrder.Ascending, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Perc", "Perc", 20, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.[Default], DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
+        Me.txtNomeCartao3.Properties.DataSource = Me.CartõesCredBindingSource
+        Me.txtNomeCartao3.Properties.DisplayMember = "Ncartao"
+        Me.txtNomeCartao3.Properties.DropDownRows = 16
+        Me.txtNomeCartao3.Properties.NullText = ""
+        Me.txtNomeCartao3.Properties.ValueMember = "Ncartao"
+        Me.txtNomeCartao3.Size = New System.Drawing.Size(119, 24)
+        Me.txtNomeCartao3.TabIndex = 47
+        '
+        'CartõesCredBindingSource
+        '
+        Me.CartõesCredBindingSource.DataMember = "CartõesCred"
+        Me.CartõesCredBindingSource.DataSource = Me.DsVendas1
         '
         'txtAut2
         '
@@ -1497,7 +1615,7 @@
         'txtAUTDeb
         '
         Me.txtAUTDeb.DataBindings.Add(New System.Windows.Forms.Binding("EditValue", Me.VENDASBindingSource, "AutDeb", True))
-        Me.txtAUTDeb.Location = New System.Drawing.Point(553, 113)
+        Me.txtAUTDeb.Location = New System.Drawing.Point(553, 135)
         Me.txtAUTDeb.MenuManager = Me.ribbonControl1
         Me.txtAUTDeb.Name = "txtAUTDeb"
         Me.txtAUTDeb.Properties.Appearance.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -1593,15 +1711,10 @@
         Me.txtNomeCartao2.Size = New System.Drawing.Size(119, 24)
         Me.txtNomeCartao2.TabIndex = 4
         '
-        'CartõesCredBindingSource
-        '
-        Me.CartõesCredBindingSource.DataMember = "CartõesCred"
-        Me.CartõesCredBindingSource.DataSource = Me.DsVendas1
-        '
         'txtNomeCDeb
         '
         Me.txtNomeCDeb.DataBindings.Add(New System.Windows.Forms.Binding("EditValue", Me.VENDASBindingSource, "NomeCDeb", True))
-        Me.txtNomeCDeb.Location = New System.Drawing.Point(126, 113)
+        Me.txtNomeCDeb.Location = New System.Drawing.Point(126, 135)
         Me.txtNomeCDeb.MenuManager = Me.ribbonControl1
         Me.txtNomeCDeb.Name = "txtNomeCDeb"
         Me.txtNomeCDeb.Properties.Appearance.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -1626,7 +1739,7 @@
         '
         Me.txtDeb.DataBindings.Add(New System.Windows.Forms.Binding("EditValue", Me.VENDASBindingSource, "Deb", True))
         Me.txtDeb.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
-        Me.txtDeb.Location = New System.Drawing.Point(374, 112)
+        Me.txtDeb.Location = New System.Drawing.Point(374, 134)
         Me.txtDeb.MenuManager = Me.ribbonControl1
         Me.txtDeb.Name = "txtDeb"
         Me.txtDeb.Properties.Appearance.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -1648,7 +1761,7 @@
         'Vencto_CartãoGridControl
         '
         Me.Vencto_CartãoGridControl.DataSource = Me.VENDASVenctoCartãoBindingSource
-        Me.Vencto_CartãoGridControl.Location = New System.Drawing.Point(127, 147)
+        Me.Vencto_CartãoGridControl.Location = New System.Drawing.Point(127, 169)
         Me.Vencto_CartãoGridControl.MainView = Me.GridView3
         Me.Vencto_CartãoGridControl.MenuManager = Me.ribbonControl1
         Me.Vencto_CartãoGridControl.Name = "Vencto_CartãoGridControl"
@@ -2328,6 +2441,12 @@
         CType(Me.txtCCDeb.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControlCARTAO, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControlCARTAO.ResumeLayout(False)
+        CType(Me.txtAut3.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtCCCartao3.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtValorCartao3.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtFormaCartao3.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtNomeCartao3.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CartõesCredBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtAut2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtAUTDeb.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtAUT.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2335,7 +2454,6 @@
         CType(Me.txtValorCartao2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtFormaCartao2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtNomeCartao2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CartõesCredBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtNomeCDeb.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CartõesDebBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtDeb.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2505,4 +2623,9 @@
     Friend WithEvents txtAUTDeb As DevExpress.XtraEditors.TextEdit
     Friend WithEvents txtAut2 As DevExpress.XtraEditors.TextEdit
     Friend WithEvents btnCC2 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents txtAut3 As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents txtCCCartao3 As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents txtValorCartao3 As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents txtFormaCartao3 As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents txtNomeCartao3 As DevExpress.XtraEditors.LookUpEdit
 End Class

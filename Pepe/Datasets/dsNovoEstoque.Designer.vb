@@ -543,6 +543,12 @@ Partial Public Class dsNovoEstoque
         
         Private columnSizeMode As Global.System.Data.DataColumn
         
+        Private columnvFund As Global.System.Data.DataColumn
+        
+        Private columnpFund As Global.System.Data.DataColumn
+        
+        Private columnLocal As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -1019,6 +1025,30 @@ Partial Public Class dsNovoEstoque
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property vFundColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnvFund
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property pFundColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnpFund
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property LocalColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLocal
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1109,9 +1139,12 @@ Partial Public Class dsNovoEstoque
                     ByVal PrVenda As Decimal,  _
                     ByVal Volta As Boolean,  _
                     ByVal Foto() As Byte,  _
-                    ByVal SizeMode As Integer) As _1TabPeçasRow
+                    ByVal SizeMode As Integer,  _
+                    ByVal vFund As Decimal,  _
+                    ByVal pFund As Double,  _
+                    ByVal Local As String) As _1TabPeçasRow
             Dim row_1TabPeçasRow As _1TabPeçasRow = CType(Me.NewRow,_1TabPeçasRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, IDCliente, Num, Classe, Modêlo, Descrição, Oficial, Família, Quant, Origem, DataIn, Custo, Dólar, Posição, Vendida, DataVenda, Tipo, Vendedora, Valor, Comissão, Com2, Real, DólarVenda, Cheque, Pré, PosiçãoPré, Cartão, ContaCorrente, Desconto, A_Receber, _Pré_2, PosPré2, _Pré_3, PosPré3, Conserto, PC, PCQtde, Espécie, MOExt, MOInt, Custo2, Oficina, DataReg, Desenho, Madeira, Couro, Cravação, Outras, Obs, SSMA_TimeStamp, DataFabric, PrVenda, Volta, Foto, SizeMode}
+            Dim columnValuesArray() As Object = New Object() {Nothing, IDCliente, Num, Classe, Modêlo, Descrição, Oficial, Família, Quant, Origem, DataIn, Custo, Dólar, Posição, Vendida, DataVenda, Tipo, Vendedora, Valor, Comissão, Com2, Real, DólarVenda, Cheque, Pré, PosiçãoPré, Cartão, ContaCorrente, Desconto, A_Receber, _Pré_2, PosPré2, _Pré_3, PosPré3, Conserto, PC, PCQtde, Espécie, MOExt, MOInt, Custo2, Oficina, DataReg, Desenho, Madeira, Couro, Cravação, Outras, Obs, SSMA_TimeStamp, DataFabric, PrVenda, Volta, Foto, SizeMode, vFund, pFund, Local}
             row_1TabPeçasRow.ItemArray = columnValuesArray
             Me.Rows.Add(row_1TabPeçasRow)
             Return row_1TabPeçasRow
@@ -1195,6 +1228,9 @@ Partial Public Class dsNovoEstoque
             Me.columnVolta = MyBase.Columns("Volta")
             Me.columnFoto = MyBase.Columns("Foto")
             Me.columnSizeMode = MyBase.Columns("SizeMode")
+            Me.columnvFund = MyBase.Columns("vFund")
+            Me.columnpFund = MyBase.Columns("pFund")
+            Me.columnLocal = MyBase.Columns("Local")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1314,6 +1350,12 @@ Partial Public Class dsNovoEstoque
             MyBase.Columns.Add(Me.columnFoto)
             Me.columnSizeMode = New Global.System.Data.DataColumn("SizeMode", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnSizeMode)
+            Me.columnvFund = New Global.System.Data.DataColumn("vFund", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnvFund)
+            Me.columnpFund = New Global.System.Data.DataColumn("pFund", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnpFund)
+            Me.columnLocal = New Global.System.Data.DataColumn("Local", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLocal)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnIDPeça}, true))
             Me.columnIDPeça.AutoIncrement = true
             Me.columnIDPeça.AutoIncrementSeed = -1
@@ -1335,6 +1377,7 @@ Partial Public Class dsNovoEstoque
             Me.columnDesenho.MaxLength = 50
             Me.columnObs.MaxLength = 250
             Me.columnSSMA_TimeStamp.ReadOnly = true
+            Me.columnLocal.MaxLength = 3
             Me.ExtendedProperties.Add("Generator_TableVarName", "table1TabPeças")
             Me.ExtendedProperties.Add("Generator_UserTableName", "1TabPeças")
         End Sub
@@ -4097,6 +4140,51 @@ Partial Public Class dsNovoEstoque
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property vFund() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.table1TabPeças.vFundColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("O valor da coluna 'vFund' na tabela '1TabPeças' é DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.table1TabPeças.vFundColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property pFund() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.table1TabPeças.pFundColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("O valor da coluna 'pFund' na tabela '1TabPeças' é DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.table1TabPeças.pFundColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property Local() As String
+            Get
+                Try 
+                    Return CType(Me(Me.table1TabPeças.LocalColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("O valor da coluna 'Local' na tabela '1TabPeças' é DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.table1TabPeças.LocalColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsIDClienteNull() As Boolean
             Return Me.IsNull(Me.table1TabPeças.IDClienteColumn)
         End Function
@@ -4741,6 +4829,42 @@ Partial Public Class dsNovoEstoque
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetSizeModeNull()
             Me(Me.table1TabPeças.SizeModeColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsvFundNull() As Boolean
+            Return Me.IsNull(Me.table1TabPeças.vFundColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetvFundNull()
+            Me(Me.table1TabPeças.vFundColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IspFundNull() As Boolean
+            Return Me.IsNull(Me.table1TabPeças.pFundColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetpFundNull()
+            Me(Me.table1TabPeças.pFundColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsLocalNull() As Boolean
+            Return Me.IsNull(Me.table1TabPeças.LocalColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetLocalNull()
+            Me(Me.table1TabPeças.LocalColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6690,6 +6814,9 @@ Namespace dsNovoEstoqueTableAdapters
             tableMapping.ColumnMappings.Add("Volta", "Volta")
             tableMapping.ColumnMappings.Add("Foto", "Foto")
             tableMapping.ColumnMappings.Add("SizeMode", "SizeMode")
+            tableMapping.ColumnMappings.Add("vFund", "vFund")
+            tableMapping.ColumnMappings.Add("pFund", "pFund")
+            tableMapping.ColumnMappings.Add("Local", "Local")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -6706,21 +6833,22 @@ Namespace dsNovoEstoqueTableAdapters
                 "DólarVenda], [Cheque], [Pré], [PosiçãoPré], [Cartão], [ContaCorrente], [Desconto"& _ 
                 "], [A Receber], [Pré-2], [PosPré2], [Pré-3], [PosPré3], [Conserto], [PC], [PCQtd"& _ 
                 "e], [Espécie], [MOExt], [MOInt], [Custo2], [Oficina], [DataReg], [Desenho], [Mad"& _ 
-                "eira], [Couro], [Cravação], [Outras], [Obs], [DataFabric], [PrVenda], [Volta], ["& _ 
-                "Foto], [SizeMode]) VALUES (@IDCliente, @Num, @Classe, @Modêlo, @Descrição, @Ofic"& _ 
-                "ial, @Família, @Quant, @Origem, @DataIn, @Custo, @Dólar, @Posição, @Vendida, @Da"& _ 
-                "taVenda, @Tipo, @Vendedora, @Valor, @Comissão, @Com2, @Real, @DólarVenda, @Chequ"& _ 
-                "e, @Pré, @PosiçãoPré, @Cartão, @ContaCorrente, @Desconto, @A_Receber, @p1, @PosP"& _ 
-                "ré2, @p4, @PosPré3, @Conserto, @PC, @PCQtde, @Espécie, @MOExt, @MOInt, @Custo2, "& _ 
-                "@Oficina, @DataReg, @Desenho, @Madeira, @Couro, @Cravação, @Outras, @Obs, @DataF"& _ 
-                "abric, @PrVenda, @Volta, @Foto, @SizeMode);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT IDPeça, IDCliente, Num, Clas"& _ 
-                "se, Modêlo, Descrição, Oficial, Família, Quant, Origem, DataIn, Custo, Dólar, Po"& _ 
-                "sição, Vendida, DataVenda, Tipo, Vendedora, Valor, Comissão, Com2, Real, DólarVe"& _ 
-                "nda, Cheque, Pré, PosiçãoPré, Cartão, ContaCorrente, Desconto, [A Receber], [Pré"& _ 
-                "-2], PosPré2, [Pré-3], PosPré3, Conserto, PC, PCQtde, Espécie, MOExt, MOInt, Cus"& _ 
-                "to2, Oficina, DataReg, Desenho, Madeira, Couro, Cravação, Outras, Obs, SSMA_Time"& _ 
-                "Stamp, DataFabric, PrVenda, Volta, Foto, SizeMode FROM [1TabPeças] WHERE (IDPeça"& _ 
-                " = SCOPE_IDENTITY())"
+                "eira], [Couro], [Cravação], [Outras], [Obs], [vFund], [pFund], [DataFabric], [Pr"& _ 
+                "Venda], [Volta], [Foto], [SizeMode], [Local]) VALUES (@IDCliente, @Num, @Classe,"& _ 
+                " @Modêlo, @Descrição, @Oficial, @Família, @Quant, @Origem, @DataIn, @Custo, @Dól"& _ 
+                "ar, @Posição, @Vendida, @DataVenda, @Tipo, @Vendedora, @Valor, @Comissão, @Com2,"& _ 
+                " @Real, @DólarVenda, @Cheque, @Pré, @PosiçãoPré, @Cartão, @ContaCorrente, @Desco"& _ 
+                "nto, @A_Receber, @p1, @PosPré2, @p4, @PosPré3, @Conserto, @PC, @PCQtde, @Espécie"& _ 
+                ", @MOExt, @MOInt, @Custo2, @Oficina, @DataReg, @Desenho, @Madeira, @Couro, @Crav"& _ 
+                "ação, @Outras, @Obs, @vFund, @pFund, @DataFabric, @PrVenda, @Volta, @Foto, @Size"& _ 
+                "Mode, @Local);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT IDPeça, IDCliente, Num, Classe, Modêlo, Descrição, Oficia"& _ 
+                "l, Família, Quant, Origem, DataIn, Custo, Dólar, Posição, Vendida, DataVenda, Ti"& _ 
+                "po, Vendedora, Valor, Comissão, Com2, Real, DólarVenda, Cheque, Pré, PosiçãoPré,"& _ 
+                " Cartão, ContaCorrente, Desconto, [A Receber], [Pré-2], PosPré2, [Pré-3], PosPré"& _ 
+                "3, Conserto, PC, PCQtde, Espécie, MOExt, MOInt, Custo2, Oficina, DataReg, Desenh"& _ 
+                "o, Madeira, Couro, Cravação, Outras, Obs, vFund, pFund, SSMA_TimeStamp, DataFabr"& _ 
+                "ic, PrVenda, Volta, Foto, SizeMode, Local FROM [1TabPeças] WHERE (IDPeça = SCOPE"& _ 
+                "_IDENTITY())"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IDCliente", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IDCliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Num", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Num", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -6763,18 +6891,21 @@ Namespace dsNovoEstoqueTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MOInt", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MOInt", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Custo2", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Custo2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Oficina", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Oficina", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DataReg", Global.System.Data.SqlDbType.DateTime2, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DataReg", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DataReg", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DataReg", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Desenho", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Desenho", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Madeira", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Madeira", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Couro", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Couro", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cravação", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cravação", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Outras", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Outras", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Obs", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Obs", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@vFund", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "vFund", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@pFund", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "pFund", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DataFabric", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DataFabric", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PrVenda", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PrVenda", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Volta", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Volta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Foto", Global.System.Data.SqlDbType.Image, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Foto", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SizeMode", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SizeMode", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Local", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Local", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [1TabPeças] SET [IDCliente] = @IDCliente, [Num] = @Num, [Classe] = @Classe"& _ 
@@ -6789,16 +6920,17 @@ Namespace dsNovoEstoqueTableAdapters
                 "[Conserto] = @Conserto, [PC] = @PC, [PCQtde] = @PCQtde, [Espécie] = @Espécie, [M"& _ 
                 "OExt] = @MOExt, [MOInt] = @MOInt, [Custo2] = @Custo2, [Oficina] = @Oficina, [Dat"& _ 
                 "aReg] = @DataReg, [Desenho] = @Desenho, [Madeira] = @Madeira, [Couro] = @Couro, "& _ 
-                "[Cravação] = @Cravação, [Outras] = @Outras, [Obs] = @Obs, [DataFabric] = @DataFa"& _ 
-                "bric, [PrVenda] = @PrVenda, [Volta] = @Volta, [Foto] = @Foto, [SizeMode] = @Size"& _ 
-                "Mode WHERE (([IDPeça] = @Original_IDPeça) AND ([SSMA_TimeStamp] = @Original_SSMA"& _ 
-                "_TimeStamp));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT IDPeça, IDCliente, Num, Classe, Modêlo, Descrição, Oficial"& _ 
-                ", Família, Quant, Origem, DataIn, Custo, Dólar, Posição, Vendida, DataVenda, Tip"& _ 
-                "o, Vendedora, Valor, Comissão, Com2, Real, DólarVenda, Cheque, Pré, PosiçãoPré, "& _ 
-                "Cartão, ContaCorrente, Desconto, [A Receber], [Pré-2], PosPré2, [Pré-3], PosPré3"& _ 
-                ", Conserto, PC, PCQtde, Espécie, MOExt, MOInt, Custo2, Oficina, DataReg, Desenho"& _ 
-                ", Madeira, Couro, Cravação, Outras, Obs, SSMA_TimeStamp, DataFabric, PrVenda, Vo"& _ 
-                "lta, Foto, SizeMode FROM [1TabPeças] WHERE (IDPeça = @IDPeça)"
+                "[Cravação] = @Cravação, [Outras] = @Outras, [Obs] = @Obs, [vFund] = @vFund, [pFu"& _ 
+                "nd] = @pFund, [DataFabric] = @DataFabric, [PrVenda] = @PrVenda, [Volta] = @Volta"& _ 
+                ", [Foto] = @Foto, [SizeMode] = @SizeMode, [Local] = @Local WHERE (([IDPeça] = @O"& _ 
+                "riginal_IDPeça) AND ([SSMA_TimeStamp] = @Original_SSMA_TimeStamp));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT IDPe"& _ 
+                "ça, IDCliente, Num, Classe, Modêlo, Descrição, Oficial, Família, Quant, Origem, "& _ 
+                "DataIn, Custo, Dólar, Posição, Vendida, DataVenda, Tipo, Vendedora, Valor, Comis"& _ 
+                "são, Com2, Real, DólarVenda, Cheque, Pré, PosiçãoPré, Cartão, ContaCorrente, Des"& _ 
+                "conto, [A Receber], [Pré-2], PosPré2, [Pré-3], PosPré3, Conserto, PC, PCQtde, Es"& _ 
+                "pécie, MOExt, MOInt, Custo2, Oficina, DataReg, Desenho, Madeira, Couro, Cravação"& _ 
+                ", Outras, Obs, vFund, pFund, SSMA_TimeStamp, DataFabric, PrVenda, Volta, Foto, S"& _ 
+                "izeMode, Local FROM [1TabPeças] WHERE (IDPeça = @IDPeça)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IDCliente", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IDCliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Num", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Num", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -6841,18 +6973,21 @@ Namespace dsNovoEstoqueTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MOInt", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MOInt", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Custo2", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Custo2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Oficina", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Oficina", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DataReg", Global.System.Data.SqlDbType.DateTime2, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DataReg", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DataReg", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DataReg", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Desenho", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Desenho", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Madeira", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Madeira", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Couro", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Couro", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cravação", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Cravação", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Outras", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Outras", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Obs", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Obs", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@vFund", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "vFund", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@pFund", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "pFund", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DataFabric", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DataFabric", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PrVenda", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PrVenda", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Volta", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Volta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Foto", Global.System.Data.SqlDbType.Image, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Foto", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SizeMode", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SizeMode", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Local", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Local", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_IDPeça", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IDPeça", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SSMA_TimeStamp", Global.System.Data.SqlDbType.Timestamp, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SSMA_TimeStamp", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IDPeça", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "IDPeça", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -6876,9 +7011,9 @@ Namespace dsNovoEstoqueTableAdapters
                 "ora, Valor, Comissão, Com2, Real, DólarVenda, Cheque, Pré, PosiçãoPré, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"       "& _ 
                 "                  Cartão, ContaCorrente, Desconto, [A Receber], [Pré-2], PosPré2"& _ 
                 ", [Pré-3], PosPré3, Conserto, PC, PCQtde, Espécie, MOExt, MOInt, Custo2, Oficina"& _ 
-                ", DataReg, Desenho, Madeira, Couro, Cravação, Outras, Obs, SSMA_TimeStamp, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"   "& _ 
-                "                      DataFabric, PrVenda, Volta, Foto, SizeMode"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM          "& _ 
-                "  [1TabPeças]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (IDPeça = @IdPeca)"
+                ", DataReg, Desenho, Madeira, Couro, Cravação, Outras, Obs, vFund, pFund, SSMA_Ti"& _ 
+                "meStamp, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         DataFabric, PrVenda, Volta, Foto, SizeMode, "& _ 
+                "Local"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            [1TabPeças]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (IDPeça = @IdPeca)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IdPeca", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "IDPeça", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -7016,11 +7151,14 @@ Namespace dsNovoEstoqueTableAdapters
                     ByVal Cravação As Global.System.Nullable(Of Double),  _
                     ByVal Outras As Global.System.Nullable(Of Double),  _
                     ByVal Obs As String,  _
+                    ByVal vFund As Global.System.Nullable(Of Decimal),  _
+                    ByVal pFund As Global.System.Nullable(Of Double),  _
                     ByVal DataFabric As Global.System.Nullable(Of Date),  _
                     ByVal PrVenda As Global.System.Nullable(Of Decimal),  _
                     ByVal Volta As Global.System.Nullable(Of Boolean),  _
                     ByVal Foto() As Byte,  _
-                    ByVal SizeMode As Global.System.Nullable(Of Integer)) As Integer
+                    ByVal SizeMode As Global.System.Nullable(Of Integer),  _
+                    ByVal Local As String) As Integer
             If (IDCliente Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -7261,30 +7399,45 @@ Namespace dsNovoEstoqueTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(47).Value = CType(Obs,String)
             End If
-            If (DataFabric.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(48).Value = CType(DataFabric.Value,Date)
+            If (vFund.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(48).Value = CType(vFund.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(48).Value = Global.System.DBNull.Value
             End If
-            If (PrVenda.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(49).Value = CType(PrVenda.Value,Decimal)
+            If (pFund.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(49).Value = CType(pFund.Value,Double)
             Else
                 Me.Adapter.InsertCommand.Parameters(49).Value = Global.System.DBNull.Value
             End If
-            If (Volta.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(50).Value = CType(Volta.Value,Boolean)
+            If (DataFabric.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(50).Value = CType(DataFabric.Value,Date)
             Else
                 Me.Adapter.InsertCommand.Parameters(50).Value = Global.System.DBNull.Value
             End If
-            If (Foto Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(51).Value = Global.System.DBNull.Value
+            If (PrVenda.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(51).Value = CType(PrVenda.Value,Decimal)
             Else
-                Me.Adapter.InsertCommand.Parameters(51).Value = CType(Foto,Byte())
+                Me.Adapter.InsertCommand.Parameters(51).Value = Global.System.DBNull.Value
             End If
-            If (SizeMode.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(52).Value = CType(SizeMode.Value,Integer)
+            If (Volta.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(52).Value = CType(Volta.Value,Boolean)
             Else
                 Me.Adapter.InsertCommand.Parameters(52).Value = Global.System.DBNull.Value
+            End If
+            If (Foto Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(53).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(53).Value = CType(Foto,Byte())
+            End If
+            If (SizeMode.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(54).Value = CType(SizeMode.Value,Integer)
+            Else
+                Me.Adapter.InsertCommand.Parameters(54).Value = Global.System.DBNull.Value
+            End If
+            If (Local Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(55).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(55).Value = CType(Local,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -7354,11 +7507,14 @@ Namespace dsNovoEstoqueTableAdapters
                     ByVal Cravação As Global.System.Nullable(Of Double),  _
                     ByVal Outras As Global.System.Nullable(Of Double),  _
                     ByVal Obs As String,  _
+                    ByVal vFund As Global.System.Nullable(Of Decimal),  _
+                    ByVal pFund As Global.System.Nullable(Of Double),  _
                     ByVal DataFabric As Global.System.Nullable(Of Date),  _
                     ByVal PrVenda As Global.System.Nullable(Of Decimal),  _
                     ByVal Volta As Global.System.Nullable(Of Boolean),  _
                     ByVal Foto() As Byte,  _
                     ByVal SizeMode As Global.System.Nullable(Of Integer),  _
+                    ByVal Local As String,  _
                     ByVal Original_IDPeça As Integer,  _
                     ByVal Original_SSMA_TimeStamp() As Byte,  _
                     ByVal IDPeça As Integer) As Integer
@@ -7602,38 +7758,53 @@ Namespace dsNovoEstoqueTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(47).Value = CType(Obs,String)
             End If
-            If (DataFabric.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(DataFabric.Value,Date)
+            If (vFund.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(vFund.Value,Decimal)
             Else
                 Me.Adapter.UpdateCommand.Parameters(48).Value = Global.System.DBNull.Value
             End If
-            If (PrVenda.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(PrVenda.Value,Decimal)
+            If (pFund.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(pFund.Value,Double)
             Else
                 Me.Adapter.UpdateCommand.Parameters(49).Value = Global.System.DBNull.Value
             End If
-            If (Volta.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(Volta.Value,Boolean)
+            If (DataFabric.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(DataFabric.Value,Date)
             Else
                 Me.Adapter.UpdateCommand.Parameters(50).Value = Global.System.DBNull.Value
             End If
-            If (Foto Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(51).Value = Global.System.DBNull.Value
+            If (PrVenda.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(PrVenda.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(Foto,Byte())
+                Me.Adapter.UpdateCommand.Parameters(51).Value = Global.System.DBNull.Value
             End If
-            If (SizeMode.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(SizeMode.Value,Integer)
+            If (Volta.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(Volta.Value,Boolean)
             Else
                 Me.Adapter.UpdateCommand.Parameters(52).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(53).Value = CType(Original_IDPeça,Integer)
+            If (Foto Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(53).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(Foto,Byte())
+            End If
+            If (SizeMode.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(SizeMode.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(54).Value = Global.System.DBNull.Value
+            End If
+            If (Local Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(55).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(Local,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(56).Value = CType(Original_IDPeça,Integer)
             If (Original_SSMA_TimeStamp Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_SSMA_TimeStamp")
             Else
-                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(Original_SSMA_TimeStamp,Byte())
+                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(Original_SSMA_TimeStamp,Byte())
             End If
-            Me.Adapter.UpdateCommand.Parameters(55).Value = CType(IDPeça,Integer)
+            Me.Adapter.UpdateCommand.Parameters(58).Value = CType(IDPeça,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -7702,14 +7873,17 @@ Namespace dsNovoEstoqueTableAdapters
                     ByVal Cravação As Global.System.Nullable(Of Double),  _
                     ByVal Outras As Global.System.Nullable(Of Double),  _
                     ByVal Obs As String,  _
+                    ByVal vFund As Global.System.Nullable(Of Decimal),  _
+                    ByVal pFund As Global.System.Nullable(Of Double),  _
                     ByVal DataFabric As Global.System.Nullable(Of Date),  _
                     ByVal PrVenda As Global.System.Nullable(Of Decimal),  _
                     ByVal Volta As Global.System.Nullable(Of Boolean),  _
                     ByVal Foto() As Byte,  _
                     ByVal SizeMode As Global.System.Nullable(Of Integer),  _
+                    ByVal Local As String,  _
                     ByVal Original_IDPeça As Integer,  _
                     ByVal Original_SSMA_TimeStamp() As Byte) As Integer
-            Return Me.Update(IDCliente, Num, Classe, Modêlo, Descrição, Oficial, Família, Quant, Origem, DataIn, Custo, Dólar, Posição, Vendida, DataVenda, Tipo, Vendedora, Valor, Comissão, Com2, Real, DólarVenda, Cheque, Pré, PosiçãoPré, Cartão, ContaCorrente, Desconto, A_Receber, p1, PosPré2, p4, PosPré3, Conserto, PC, PCQtde, Espécie, MOExt, MOInt, Custo2, Oficina, DataReg, Desenho, Madeira, Couro, Cravação, Outras, Obs, DataFabric, PrVenda, Volta, Foto, SizeMode, Original_IDPeça, Original_SSMA_TimeStamp, Original_IDPeça)
+            Return Me.Update(IDCliente, Num, Classe, Modêlo, Descrição, Oficial, Família, Quant, Origem, DataIn, Custo, Dólar, Posição, Vendida, DataVenda, Tipo, Vendedora, Valor, Comissão, Com2, Real, DólarVenda, Cheque, Pré, PosiçãoPré, Cartão, ContaCorrente, Desconto, A_Receber, p1, PosPré2, p4, PosPré3, Conserto, PC, PCQtde, Espécie, MOExt, MOInt, Custo2, Oficina, DataReg, Desenho, Madeira, Couro, Cravação, Outras, Obs, vFund, pFund, DataFabric, PrVenda, Volta, Foto, SizeMode, Local, Original_IDPeça, Original_SSMA_TimeStamp, Original_IDPeça)
         End Function
     End Class
     

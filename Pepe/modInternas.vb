@@ -1,4 +1,6 @@
-﻿Module modInternas
+﻿Imports System.Globalization
+
+Module modInternas
     Public var1 As Double = 0
     Public var2 As Double = 0
     Public varData As String = ""
@@ -6,6 +8,8 @@
     Public varIdCon As Integer = 0
     Public NomeForm As String = ""
     Public varNew As Boolean = False
+    Public valDolar As Double = 0
+    Public valOuro As Double = 0
 
     Public Function ConvertToDouble(ByRef value) As Double
 
@@ -86,6 +90,74 @@
             End If
         Next
         Return False
+    End Function
+
+    Public Function ConvertToSafeDouble(valor As Object) As Double
+        If valor Is Nothing Then Return 0
+
+        Dim strValor As String = valor.ToString().Trim()
+
+        ' Tenta converter usando a cultura padrão do sistema
+        Dim resultado As Double
+        If Double.TryParse(strValor, NumberStyles.Any, CultureInfo.CurrentCulture, resultado) Then
+            Return resultado
+        End If
+
+        ' Tenta converter usando a cultura invariante (usa ponto como separador decimal)
+        If Double.TryParse(strValor, NumberStyles.Any, CultureInfo.InvariantCulture, resultado) Then
+            Return resultado
+        End If
+
+        ' Como último recurso, tenta converter substituindo vírgulas por pontos
+        strValor = strValor.Replace(",", ".")
+        If Double.TryParse(strValor, NumberStyles.Any, CultureInfo.InvariantCulture, resultado) Then
+            Return resultado
+        End If
+
+        ' Valor inválido
+        Return 0
+    End Function
+
+    Public Function FormatSafeNumber(valor As Double) As String
+        Return valor.ToString("N2", CultureInfo.CreateSpecificCulture("pt-BR"))
+    End Function
+
+    Public Function ConvertToSafeDate(valor As Object, Optional dataPadrao As Date = Nothing) As Date
+        If valor Is Nothing Then Return dataPadrao
+
+        Dim strValor As String = valor.ToString().Trim()
+
+        If strValor = "" Then Return dataPadrao
+
+        Dim dataConvertida As Date
+
+        ' 1. Tenta converter usando a cultura atual do sistema
+        If Date.TryParse(strValor, CultureInfo.CurrentCulture, DateTimeStyles.None, dataConvertida) Then
+            Return dataConvertida
+        End If
+
+        ' 2. Tenta converter usando a cultura invariante (en-US)
+        If Date.TryParse(strValor, CultureInfo.InvariantCulture, DateTimeStyles.None, dataConvertida) Then
+            Return dataConvertida
+        End If
+
+        ' 3. Tenta converter com formatos explícitos mais comuns (pt-BR e ISO)
+        Dim formatos() As String = {
+            "dd/MM/yyyy",
+            "d/M/yyyy",
+            "yyyy-MM-dd",
+            "yyyy/MM/dd",
+            "dd-MM-yyyy"
+        }
+
+        For Each formato In formatos
+            If Date.TryParseExact(strValor, formato, CultureInfo.InvariantCulture, DateTimeStyles.None, dataConvertida) Then
+                Return dataConvertida
+            End If
+        Next
+
+        ' 4. Falha na conversão: retorna data padrão
+        Return dataPadrao
     End Function
 
 End Module

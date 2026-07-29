@@ -176,6 +176,10 @@ Partial Public Class Vendas
         Me.XrLabel11 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel14 = New DevExpress.XtraReports.UI.XRLabel()
         Me.CabeçalhoDoGrupo1 = New DevExpress.XtraReports.UI.GroupHeaderBand()
+        Me.XrLabel19 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel20 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.txtVendas = New DevExpress.XtraReports.UI.XRLabel()
+        Me.txtTicket = New DevExpress.XtraReports.UI.XRLabel()
         CType(Me.DsGeral1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
@@ -362,7 +366,7 @@ Partial Public Class Vendas
         'RodapéDoRelatório
         '
         Me.RodapéDoRelatório.BackColor = System.Drawing.Color.Transparent
-        Me.RodapéDoRelatório.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel18, Me.txtTC, Me.XrSubreport2, Me.XrLabel13, Me.XrLabel12, Me.XrLabel8, Me.XrLabel7, Me.TV, Me.Texto48, Me.Texto50, Me.Rótulo66, Me.Linha67, Me.TC, Me.Texto106, Me.Rótulo111, Me.Rótulo112, Me.Rótulo117, Me.Linha119, Me.Rótulo120, Me.Rótulo122, Me.Rótulo124, Me.Rótulo129, Me.L, Me.Texto155, Me.Texto156, Me.Texto159, Me.Texto165})
+        Me.RodapéDoRelatório.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel19, Me.XrLabel20, Me.txtVendas, Me.txtTicket, Me.XrLabel18, Me.txtTC, Me.XrSubreport2, Me.XrLabel13, Me.XrLabel12, Me.XrLabel8, Me.XrLabel7, Me.TV, Me.Texto48, Me.Texto50, Me.Rótulo66, Me.Linha67, Me.TC, Me.Texto106, Me.Rótulo111, Me.Rótulo112, Me.Rótulo117, Me.Linha119, Me.Rótulo120, Me.Rótulo122, Me.Rótulo124, Me.Rótulo129, Me.L, Me.Texto155, Me.Texto156, Me.Texto159, Me.Texto165})
         Me.RodapéDoRelatório.HeightF = 241.4997!
         Me.RodapéDoRelatório.Name = "RodapéDoRelatório"
         '
@@ -1955,6 +1959,70 @@ Partial Public Class Vendas
         Me.CabeçalhoDoGrupo1.Level = 1
         Me.CabeçalhoDoGrupo1.Name = "CabeçalhoDoGrupo1"
         '
+        'XrLabel19
+        '
+        Me.XrLabel19.BackColor = System.Drawing.Color.Transparent
+        Me.XrLabel19.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel19.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLabel19.BorderWidth = 1.0!
+        Me.XrLabel19.CanGrow = False
+        Me.XrLabel19.Font = New DevExpress.Drawing.DXFont("Arial", 10.0!, DevExpress.Drawing.DXFontStyle.Bold)
+        Me.XrLabel19.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel19.LocationFloat = New DevExpress.Utils.PointFloat(5.000003!, 75.95828!)
+        Me.XrLabel19.Name = "XrLabel19"
+        Me.XrLabel19.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+        Me.XrLabel19.SizeF = New System.Drawing.SizeF(99.91667!, 17.04169!)
+        Me.XrLabel19.Text = "Op. Vendas:"
+        Me.XrLabel19.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
+        '
+        'XrLabel20
+        '
+        Me.XrLabel20.BackColor = System.Drawing.Color.Transparent
+        Me.XrLabel20.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel20.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLabel20.BorderWidth = 1.0!
+        Me.XrLabel20.CanGrow = False
+        Me.XrLabel20.Font = New DevExpress.Drawing.DXFont("Arial", 10.0!, DevExpress.Drawing.DXFontStyle.Bold)
+        Me.XrLabel20.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel20.LocationFloat = New DevExpress.Utils.PointFloat(5.000003!, 94.00002!)
+        Me.XrLabel20.Name = "XrLabel20"
+        Me.XrLabel20.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+        Me.XrLabel20.SizeF = New System.Drawing.SizeF(99.91667!, 17.04168!)
+        Me.XrLabel20.Text = "Ticket Médio:"
+        Me.XrLabel20.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
+        '
+        'txtVendas
+        '
+        Me.txtVendas.BackColor = System.Drawing.Color.Transparent
+        Me.txtVendas.BorderColor = System.Drawing.Color.Black
+        Me.txtVendas.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.txtVendas.BorderWidth = 1.0!
+        Me.txtVendas.CanGrow = False
+        Me.txtVendas.Font = New DevExpress.Drawing.DXFont("Arial", 10.0!, DevExpress.Drawing.DXFontStyle.Bold)
+        Me.txtVendas.ForeColor = System.Drawing.Color.Black
+        Me.txtVendas.LocationFloat = New DevExpress.Utils.PointFloat(104.9167!, 75.95836!)
+        Me.txtVendas.Name = "txtVendas"
+        Me.txtVendas.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+        Me.txtVendas.SizeF = New System.Drawing.SizeF(127.0!, 17.04168!)
+        Me.txtVendas.Text = "0"
+        Me.txtVendas.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
+        '
+        'txtTicket
+        '
+        Me.txtTicket.BackColor = System.Drawing.Color.Transparent
+        Me.txtTicket.BorderColor = System.Drawing.Color.Black
+        Me.txtTicket.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.txtTicket.BorderWidth = 1.0!
+        Me.txtTicket.CanGrow = False
+        Me.txtTicket.Font = New DevExpress.Drawing.DXFont("Arial", 10.0!, DevExpress.Drawing.DXFontStyle.Bold)
+        Me.txtTicket.ForeColor = System.Drawing.Color.Black
+        Me.txtTicket.LocationFloat = New DevExpress.Utils.PointFloat(104.9167!, 94.00004!)
+        Me.txtTicket.Name = "txtTicket"
+        Me.txtTicket.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+        Me.txtTicket.SizeF = New System.Drawing.SizeF(127.0!, 17.04168!)
+        Me.txtTicket.Text = "0,00"
+        Me.txtTicket.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
+        '
         'Vendas
         '
         Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.Detalhe, Me.CabeçalhoDoRelatório, Me.RodapéDoRelatório, Me.CabeçalhoDaPágina, Me.RodapéDaPágina, Me.CabeçalhoDoGrupo1, Me.RodapéDoGrupo3, Me.CabeçalhoDoGrupo0, Me.RodapéDoGrupo0, Me.TopMarginBand1, Me.BottomMarginBand1})
@@ -2092,4 +2160,8 @@ Partial Public Class Vendas
     Friend WithEvents XrSubreport2 As DevExpress.XtraReports.UI.XRSubreport
     Friend WithEvents txtTC As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel18 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel19 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel20 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents txtVendas As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents txtTicket As DevExpress.XtraReports.UI.XRLabel
 End Class

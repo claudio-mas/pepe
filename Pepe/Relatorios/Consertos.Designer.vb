@@ -30,6 +30,7 @@ Partial Public Class Consertos
         Dim QueryParameter1 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
         Dim QueryParameter2 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Consertos))
+        Dim XrWatermark1 As DevExpress.XtraReports.UI.XRWatermark = New DevExpress.XtraReports.UI.XRWatermark()
         Me.Detalhe = New DevExpress.XtraReports.UI.DetailBand()
         Me.XrLabel4 = New DevExpress.XtraReports.UI.XRLabel()
         Me.Vencto = New DevExpress.XtraReports.UI.XRLabel()
@@ -62,6 +63,10 @@ Partial Public Class Consertos
         Me.SqlDataSource = New DevExpress.DataAccess.Sql.SqlDataSource(Me.components)
         Me.TopMarginBand1 = New DevExpress.XtraReports.UI.TopMarginBand()
         Me.BottomMarginBand1 = New DevExpress.XtraReports.UI.BottomMarginBand()
+        Me.XrLabel5 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel6 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.txtConsertos = New DevExpress.XtraReports.UI.XRLabel()
+        Me.txtTicket = New DevExpress.XtraReports.UI.XRLabel()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
         'Detalhe
@@ -182,8 +187,8 @@ Partial Public Class Consertos
         'RodapéDoRelatório
         '
         Me.RodapéDoRelatório.BackColor = System.Drawing.Color.Transparent
-        Me.RodapéDoRelatório.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.Texto20, Me.Rótulo21, Me.Texto26, Me.Linha27, Me.Texto30})
-        Me.RodapéDoRelatório.HeightF = 27.0!
+        Me.RodapéDoRelatório.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.txtTicket, Me.txtConsertos, Me.XrLabel6, Me.XrLabel5, Me.Texto20, Me.Rótulo21, Me.Texto26, Me.Linha27, Me.Texto30})
+        Me.RodapéDoRelatório.HeightF = 104.5416!
         Me.RodapéDoRelatório.Name = "RodapéDoRelatório"
         '
         'Texto20
@@ -487,16 +492,82 @@ Partial Public Class Consertos
         Me.BottomMarginBand1.HeightF = 7.708359!
         Me.BottomMarginBand1.Name = "BottomMarginBand1"
         '
+        'XrLabel5
+        '
+        Me.XrLabel5.BackColor = System.Drawing.Color.Transparent
+        Me.XrLabel5.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel5.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLabel5.BorderWidth = 1.0!
+        Me.XrLabel5.CanGrow = False
+        Me.XrLabel5.Font = New DevExpress.Drawing.DXFont("Arial", 10.0!, DevExpress.Drawing.DXFontStyle.Bold)
+        Me.XrLabel5.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel5.LocationFloat = New DevExpress.Utils.PointFloat(5.000003!, 66.70824!)
+        Me.XrLabel5.Name = "XrLabel5"
+        Me.XrLabel5.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+        Me.XrLabel5.SizeF = New System.Drawing.SizeF(111.375!, 17.04169!)
+        Me.XrLabel5.Text = "Op. Consertos:"
+        Me.XrLabel5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
+        '
+        'XrLabel6
+        '
+        Me.XrLabel6.BackColor = System.Drawing.Color.Transparent
+        Me.XrLabel6.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel6.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLabel6.BorderWidth = 1.0!
+        Me.XrLabel6.CanGrow = False
+        Me.XrLabel6.Font = New DevExpress.Drawing.DXFont("Arial", 10.0!, DevExpress.Drawing.DXFontStyle.Bold)
+        Me.XrLabel6.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel6.LocationFloat = New DevExpress.Utils.PointFloat(5.000003!, 84.74995!)
+        Me.XrLabel6.Name = "XrLabel6"
+        Me.XrLabel6.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+        Me.XrLabel6.SizeF = New System.Drawing.SizeF(111.375!, 17.04168!)
+        Me.XrLabel6.Text = "Ticket Médio:"
+        Me.XrLabel6.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
+        '
+        'txtConsertos
+        '
+        Me.txtConsertos.BackColor = System.Drawing.Color.Transparent
+        Me.txtConsertos.BorderColor = System.Drawing.Color.Black
+        Me.txtConsertos.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.txtConsertos.BorderWidth = 1.0!
+        Me.txtConsertos.CanGrow = False
+        Me.txtConsertos.Font = New DevExpress.Drawing.DXFont("Arial", 10.0!, DevExpress.Drawing.DXFontStyle.Bold)
+        Me.txtConsertos.ForeColor = System.Drawing.Color.Black
+        Me.txtConsertos.LocationFloat = New DevExpress.Utils.PointFloat(116.375!, 66.70828!)
+        Me.txtConsertos.Name = "txtConsertos"
+        Me.txtConsertos.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+        Me.txtConsertos.SizeF = New System.Drawing.SizeF(127.0!, 17.04168!)
+        Me.txtConsertos.Text = "0"
+        Me.txtConsertos.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
+        '
+        'txtTicket
+        '
+        Me.txtTicket.BackColor = System.Drawing.Color.Transparent
+        Me.txtTicket.BorderColor = System.Drawing.Color.Black
+        Me.txtTicket.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.txtTicket.BorderWidth = 1.0!
+        Me.txtTicket.CanGrow = False
+        Me.txtTicket.Font = New DevExpress.Drawing.DXFont("Arial", 10.0!, DevExpress.Drawing.DXFontStyle.Bold)
+        Me.txtTicket.ForeColor = System.Drawing.Color.Black
+        Me.txtTicket.LocationFloat = New DevExpress.Utils.PointFloat(116.375!, 84.74996!)
+        Me.txtTicket.Name = "txtTicket"
+        Me.txtTicket.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+        Me.txtTicket.SizeF = New System.Drawing.SizeF(127.0!, 17.04168!)
+        Me.txtTicket.Text = "0,00"
+        Me.txtTicket.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
+        '
         'Consertos
         '
         Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.Detalhe, Me.CabeçalhoDoRelatório, Me.RodapéDoRelatório, Me.CabeçalhoDaPágina, Me.RodapéDaPágina, Me.TopMarginBand1, Me.BottomMarginBand1})
         Me.ComponentStorage.AddRange(New System.ComponentModel.IComponent() {Me.SqlDataSource})
         Me.DataMember = "Query"
         Me.DataSource = Me.SqlDataSource
-        Me.Margins = New DevExpress.Drawing.DXMargins(118, 196, 29, 8)
+        Me.Margins = New DevExpress.Drawing.DXMargins(118.0!, 196.0!, 29.0!, 7.708359!)
         Me.PageWidth = 1100
         Me.PaperKind = DevExpress.Drawing.Printing.DXPaperKind.Custom
-        Me.Version = "21.2"
+        Me.Version = "23.2"
+        XrWatermark1.Id = "Watermark1"
+        Me.Watermarks.Add(XrWatermark1)
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
 
     End Sub
@@ -533,4 +604,8 @@ Partial Public Class Consertos
     Friend WithEvents XrPageInfo As DevExpress.XtraReports.UI.XRPageInfo
     Friend WithEvents XrLabel4 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel3 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents txtTicket As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents txtConsertos As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel6 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel5 As DevExpress.XtraReports.UI.XRLabel
 End Class

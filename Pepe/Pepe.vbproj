@@ -366,6 +366,12 @@
     <Compile Include="Financeiro\frmGetnetDG.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmCota.Designer.vb">
+      <DependentUpon>frmCota.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCota.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmInconsist.Designer.vb">
       <DependentUpon>frmInconsist.vb</DependentUpon>
     </Compile>
@@ -1122,6 +1128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Financeiro\frmGetnetDG.resx">
       <DependentUpon>frmGetnetDG.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCota.resx">
+      <DependentUpon>frmCota.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInconsist.resx">
       <DependentUpon>frmInconsist.vb</DependentUpon>

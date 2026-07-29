@@ -754,6 +754,7 @@ Partial Public Class frmNewVenda
             dia1 = Format(Me.txtDataVenda.EditValue, "dd")
             dia = Verifica_dia(dia1, mes)
             data = dia & "/" & Format(mes, "00") & "/" & Format(ano, "00")
+            'data = CStr(ano) & "/" & Format(mes, "00") & "/" & dia
             Do While Not IsDate(data)
                 dia -= 1
                 data = dia & "/" & Format(mes, "00") & "/" & Format(ano, "00")
@@ -806,6 +807,42 @@ Partial Public Class frmNewVenda
                 fExecutarText("INSERT INTO [dbo].[Vencto Cartão] ([Parcela], [Vencto], [VValor], [Venda], [NomeCartão]) VALUES ('" & CStr(i) & "/" & j & "', '" & data & "', " & Replace(parcela, ",", ".") & ", " & Me.IdTextEdit.Text & ", '" & Me.txtNomeCartao2.Text & "');")
 
             Next i
+
+            If Not (IsDBNull(Me.txtValorCartao3.EditValue) Or Me.txtFormaCartao3.Text = "" Or Me.txtNomeCartao3.Text = "") Then
+                mes = Format(Me.txtDataVenda.EditValue, "MM")
+                ano = Format(Me.txtDataVenda.EditValue, "yy")
+
+                If txtFormaCartao3.Text = "A vista" Then
+                    j = 1
+                Else
+                    j = Val(txtFormaCartao3.Text)
+                End If
+
+                For i = 1 To j
+                    mes = mes + 1
+                    If mes > 12 Then
+                        mes = 1
+                        ano = ano + 1
+                    End If
+                    dia1 = Format(Me.txtDataVenda.EditValue, "dd")
+                    dia = Verifica_dia(dia1, mes)
+                    data = dia & "/" & Format(mes, "00") & "/" & Format(ano, "00")
+                    Do While Not IsDate(data)
+                        dia -= 1
+                        data = dia & "/" & Format(mes, "00") & "/" & Format(ano, "00")
+                    Loop
+                    dia = Verifica_dia(dia1, mes)
+
+                    parcela = (CDbl(txtValorCartao3.Text) - (CDbl(txtValorCartao3.Text)) * txtNomeCartao3.GetColumnValue("Perc") / 100) / j
+
+                    If IsDBNull(Me.txtValorCartao3.EditValue) Or Me.txtFormaCartao3.Text = "" Or Me.txtNomeCartao3.Text = "" Then
+                        Exit Sub
+                    End If
+
+                    fExecutarText("INSERT INTO [dbo].[Vencto Cartão] ([Parcela], [Vencto], [VValor], [Venda], [NomeCartão]) VALUES ('" & CStr(i) & "/" & j & "', '" & data & "', " & Replace(parcela, ",", ".") & ", " & Me.IdTextEdit.Text & ", '" & Me.txtNomeCartao3.Text & "');")
+
+                Next i
+            End If
         End If
 
         'Me.Vencto_CartãoTableAdapter.Fill(Me.DsCliente.Vencto_Cartão)
@@ -1198,6 +1235,45 @@ Partial Public Class frmNewVenda
     Private Sub btnCC2_Click(sender As Object, e As EventArgs) Handles btnCC2.Click
         varIdCliente = Me.LookUpEdit1.GetColumnValue("IDCliente")
         frmVendaCC.ShowDialog()
+
+    End Sub
+
+    Private Sub txtValorCartao2_EditValueChanged(sender As Object, e As EventArgs) Handles txtValorCartao2.EditValueChanged
+        On Error Resume Next
+
+        botoes2()
+
+    End Sub
+
+    Private Sub txtValorCartao3_EditValueChanged(sender As Object, e As EventArgs) Handles txtValorCartao3.EditValueChanged
+        On Error Resume Next
+
+        botoes2()
+
+    End Sub
+
+    Private Sub txtNomeCartao3_TextChanged(sender As Object, e As EventArgs) Handles txtNomeCartao3.TextChanged
+        On Error Resume Next
+
+        botoes2()
+
+    End Sub
+
+    Private Sub txtFormaCartao3_SelectedValueChanged(sender As Object, e As EventArgs) Handles txtFormaCartao3.SelectedValueChanged
+        On Error Resume Next
+
+        botoes2()
+
+    End Sub
+
+    Private Sub txtCCCartao3_CheckedChanged(sender As Object, e As EventArgs) Handles txtCCCartao3.CheckedChanged
+        On Error Resume Next
+
+        botoes()
+    End Sub
+
+    Private Sub txtAut3_EditValueChanged(sender As Object, e As EventArgs) Handles txtAut3.EditValueChanged
+        Call botoes()
 
     End Sub
 End Class

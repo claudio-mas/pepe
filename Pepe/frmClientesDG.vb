@@ -25,12 +25,17 @@ Partial Public Class frmClientesDG
 
     Private Sub frmClientesDG_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
         'fExecutarText("Update Clientes Set Imp = 0 where Imp = 1 Or Imp is NULL")
-
-        Me.Validate()
-        ClientesBindingSource1.EndEdit()
-        ClientesTableAdapter1.Update(DsNovo)
-
-        frmDevPrincipal.Visible = True
+        ' incluir tratamento de erro
+        Try
+            Me.Validate()
+            ClientesBindingSource1.EndEdit()
+            ClientesTableAdapter1.Update(DsNovo)
+        Catch ex As Exception
+            'MsgBox(ex.Message)
+            'e.Cancel = True
+        Finally
+            frmDevPrincipal.Visible = True
+        End Try
 
     End Sub
 

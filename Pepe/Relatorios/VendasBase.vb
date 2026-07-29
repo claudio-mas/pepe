@@ -29,6 +29,27 @@ Public Class VendasBase
 
         report.txtPeriodo.Tag = "0"
 
+        '---
+        Dim formattedDt1 As Date = Me.txtData1.EditValue
+        Dim formattedDt2 As Date = Me.txtData2.EditValue
+
+        Dim d1 As String = formattedDt1.ToString("yyyy/MM/dd")
+        Dim d2 As String = formattedDt2.ToString("yyyy/MM/dd")
+
+        Dim rs As New ADODB.Recordset()
+        Dim cnStr1 As String = strAdoConnection()
+        Dim strSQL As String = ""
+
+        strSQL = "select count(Id) as qt, SUM(ValorFinal) AS vval from Vendas where (DataVenda between '" & d1 & "' And '" & d2 & "')"
+        rs.Open(strSQL, cnStr1, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic)
+        If Not rs.EOF Then
+            Dim x
+            x = rs("vval").Value
+            If ConvertToDouble(x) > 0 Then report.txtVendas.Text = rs("Qt").Value : report.txtTicket.Text = FormatNumber(rs("vval").Value / rs("Qt").Value, 2)
+        End If
+        rs.Close()
+        '---
+
         Try
             Dim dc As New lqGerencialDataContext
 

@@ -48,11 +48,11 @@ Partial Class frmGetnet
         'SpreadsheetControl
         '
         Me.SpreadsheetControl.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SpreadsheetControl.Location = New System.Drawing.Point(0, 124)
+        Me.SpreadsheetControl.Location = New System.Drawing.Point(0, 144)
         Me.SpreadsheetControl.MenuManager = Me.RibbonControl1
         Me.SpreadsheetControl.Name = "SpreadsheetControl"
         Me.SpreadsheetControl.ReadOnly = True
-        Me.SpreadsheetControl.Size = New System.Drawing.Size(1340, 570)
+        Me.SpreadsheetControl.Size = New System.Drawing.Size(1340, 550)
         Me.SpreadsheetControl.TabIndex = 0
         '
         'RibbonControl1
@@ -60,7 +60,7 @@ Partial Class frmGetnet
         Me.RibbonControl1.AllowMinimizeRibbon = False
         Me.RibbonControl1.AutoHideEmptyItems = True
         Me.RibbonControl1.ExpandCollapseItem.Id = 0
-        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.SpreadsheetCommandBarButtonItem1, Me.SpreadsheetCommandBarButtonItem2, Me.SpreadsheetCommandBarButtonItem3, Me.SpreadsheetCommandBarButtonItem4, Me.SpreadsheetCommandBarButtonItem5, Me.SpreadsheetCommandBarButtonItem6, Me.SpreadsheetCommandBarButtonItem7, Me.SpreadsheetCommandBarButtonItem8, Me.SpreadsheetCommandBarButtonItem9, Me.SpreadsheetCommandBarButtonItem10, Me.SpreadsheetCommandBarButtonItem11, Me.btnImp, Me.btnFechar})
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.SpreadsheetCommandBarButtonItem1, Me.SpreadsheetCommandBarButtonItem2, Me.SpreadsheetCommandBarButtonItem3, Me.SpreadsheetCommandBarButtonItem4, Me.SpreadsheetCommandBarButtonItem5, Me.SpreadsheetCommandBarButtonItem6, Me.SpreadsheetCommandBarButtonItem7, Me.SpreadsheetCommandBarButtonItem8, Me.SpreadsheetCommandBarButtonItem9, Me.SpreadsheetCommandBarButtonItem10, Me.SpreadsheetCommandBarButtonItem11, Me.btnImp, Me.btnFechar})
         Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
         Me.RibbonControl1.MaxItemId = 14
         Me.RibbonControl1.Name = "RibbonControl1"
@@ -68,7 +68,7 @@ Partial Class frmGetnet
         Me.RibbonControl1.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.[False]
         Me.RibbonControl1.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide
         Me.RibbonControl1.ShowToolbarCustomizeItem = False
-        Me.RibbonControl1.Size = New System.Drawing.Size(1340, 124)
+        Me.RibbonControl1.Size = New System.Drawing.Size(1340, 144)
         Me.RibbonControl1.Toolbar.ShowCustomizeItem = False
         '
         'SpreadsheetCommandBarButtonItem1
