@@ -145,11 +145,6 @@ Public Class GerencialNovoDados
         Public Property Qt As Integer
     End Class
 
-    Private Class RowForma
-        Public Property Forma As String
-        Public Property Total As Double?
-    End Class
-
     Private Class RowSaidas
         Public Property Qt As Integer
         Public Property TotCusto As Double?
@@ -383,7 +378,7 @@ Public Class GerencialNovoDados
             "SELECT CASE WHEN Origem = 'F.P.' THEN 'FP_' + Familia ELSE 'FF' END AS Familia, " &
             "       COUNT(*) AS Qtd, SUM(GramasOuro) AS GramasOuro, SUM(GramasPrata) AS GramasPrata, " &
             "       SUM(Custo) AS Custo, SUM(ValorMetal) AS ValorMetal, SUM(MO) AS MO, " &
-            "       0 AS Outras, 0 AS PrecoVenda " &
+            "       CAST(0 AS float) AS Outras, CAST(0 AS float) AS PrecoVenda " &
             "FROM   dbo.VW_RG2_PECAS_REG WHERE DataReg >= {0} AND DataReg <= {1} " &
             "GROUP BY CASE WHEN Origem = 'F.P.' THEN 'FP_' + Familia ELSE 'FF' END"
 
@@ -407,7 +402,8 @@ Public Class GerencialNovoDados
     Private Shared Sub CarregarEstoque(dc As lqGerencialDataContext, r As Dados)
         Const SQL As String =
             "SELECT Familia, COUNT(*) AS Qtd, SUM(GramasOuro) AS GramasOuro, SUM(GramasPrata) AS GramasPrata, " &
-            "       SUM(Custo) AS Custo, 0 AS ValorMetal, 0 AS MO, 0 AS Outras, SUM(PrVenda) AS PrecoVenda " &
+            "       SUM(Custo) AS Custo, CAST(0 AS float) AS ValorMetal, CAST(0 AS float) AS MO, " &
+            "       CAST(0 AS float) AS Outras, SUM(PrVenda) AS PrecoVenda " &
             "FROM   dbo.VW_RG2_ESTOQUE GROUP BY Familia"
 
         For Each linha In dc.ExecuteQuery(Of RowMetal)(SQL)
@@ -423,8 +419,11 @@ Public Class GerencialNovoDados
     Private Shared Sub CarregarSaidas(dc As lqGerencialDataContext, dt1 As Date, dt2 As Date, r As Dados)
         ' Mesma consulta de GerencialBase.vb:293, mas parametrizada em vez de
         ' concatenada, e sem passar por ADODB.
+        ' CAST para float: Saidas.Custo e ValorSaida são money, e o materializador do
+        ' LINQ to SQL não converte Decimal para uma propriedade Double.
         Const SQL As String =
-            "SELECT COUNT(Id) AS Qt, SUM(Custo) AS TotCusto, SUM(ValorSaida) AS TotValor " &
+            "SELECT COUNT(Id) AS Qt, CAST(SUM(Custo) AS float) AS TotCusto, " &
+            "       CAST(SUM(ValorSaida) AS float) AS TotValor " &
             "FROM dbo.Saidas WHERE DataSaida >= {0} AND DataSaida <= {1}"
 
         Dim linha = dc.ExecuteQuery(Of RowSaidas)(SQL, dt1, dt2).FirstOrDefault()
@@ -452,24 +451,70 @@ Public Class GerencialNovoDados
     ''' são os da tabela de entradas, à esquerda.
     ''' </summary>
     Private Shared Sub CarregarFormasPagto(dc As lqGerencialDataContext, dt1 As Date, dt2 As Date, r As Dados)
-        Dim vendas = dc.ExecuteQuery(Of RowForma)(
-            "EXEC dbo.USP_Gerencial_Cartoes {0}, {1}", dt1, dt2).ToList()
-        Dim consertos = dc.ExecuteQuery(Of RowForma)(
-            "EXEC dbo.USP_Gerencial_Consertos {0}, {1}", dt1, dt2).ToList()
+        Dim vendas = LerProcFormas(dc, "dbo.USP_Gerencial_Cartoes", dt1, dt2)
+        Dim consertos = LerProcFormas(dc, "dbo.USP_Gerencial_Consertos", dt1, dt2)
 
         ' Ordem: a que a proc de vendas devolveu; o que só existe em consertos vai ao fim.
         For Each v In vendas
-            r.FormasPagto.Add(New FormaPagto() With {.Forma = v.Forma, .Vendas = D(v.Total)})
+            r.FormasPagto.Add(New FormaPagto() With {.Forma = v.Key, .Vendas = v.Value})
         Next
         For Each c In consertos
-            Dim existente = r.FormasPagto.FirstOrDefault(Function(x) x.Forma = c.Forma)
+            Dim existente = r.FormasPagto.FirstOrDefault(Function(x) x.Forma = c.Key)
             If existente Is Nothing Then
-                r.FormasPagto.Add(New FormaPagto() With {.Forma = c.Forma, .Consertos = D(c.Total)})
+                r.FormasPagto.Add(New FormaPagto() With {.Forma = c.Key, .Consertos = c.Value})
             Else
-                existente.Consertos = D(c.Total)
+                existente.Consertos = c.Value
             End If
         Next
     End Sub
+
+    ''' <summary>
+    ''' Lê uma das procs de formas de pagamento por DataReader, e não por ExecuteQuery.
+    ''' As procs somam colunas cujos tipos não controlamos (Cheque, Cartão, CCDeb...),
+    ''' então o tipo de "Total" pode vir money ou float conforme a coluna — e o
+    ''' materializador do LINQ to SQL falha se o tipo não bater exatamente com o da
+    ''' propriedade. Convert.ToDouble aceita os dois.
+    ''' </summary>
+    Private Shared Function LerProcFormas(dc As lqGerencialDataContext, proc As String,
+                                          dt1 As Date, dt2 As Date) As List(Of KeyValuePair(Of String, Double))
+        Dim saida As New List(Of KeyValuePair(Of String, Double))()
+        Dim cn = dc.Connection
+        Dim abriu As Boolean = False
+
+        Try
+            If cn.State <> ConnectionState.Open Then
+                cn.Open()
+                abriu = True
+            End If
+
+            Using cmd = cn.CreateCommand()
+                cmd.CommandType = CommandType.StoredProcedure
+                cmd.CommandText = proc
+
+                Dim p1 = cmd.CreateParameter()
+                p1.ParameterName = "@dt1" : p1.Value = dt1.Date
+                cmd.Parameters.Add(p1)
+
+                Dim p2 = cmd.CreateParameter()
+                p2.ParameterName = "@dt2" : p2.Value = dt2.Date
+                cmd.Parameters.Add(p2)
+
+                Using rd = cmd.ExecuteReader()
+                    Dim iForma = rd.GetOrdinal("Forma")
+                    Dim iTotal = rd.GetOrdinal("Total")
+                    While rd.Read()
+                        If rd.IsDBNull(iForma) Then Continue While
+                        Dim valor As Double = If(rd.IsDBNull(iTotal), 0.0R, Convert.ToDouble(rd.GetValue(iTotal)))
+                        saida.Add(New KeyValuePair(Of String, Double)(rd.GetString(iForma), valor))
+                    End While
+                End Using
+            End Using
+        Finally
+            If abriu AndAlso cn.State = ConnectionState.Open Then cn.Close()
+        End Try
+
+        Return saida
+    End Function
 
 #End Region
 
