@@ -350,6 +350,11 @@ Partial Public Class frmDevPrincipal
 
     End Sub
 
+    Private Sub btnRptGerencialNovo_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnRptGerencialNovo.ItemClick
+        GerencialNovoBase.Show()
+
+    End Sub
+
     Private Sub btnInconsist_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnInconsist.ItemClick
         frmInconsist.Show()
 

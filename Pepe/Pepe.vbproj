@@ -871,6 +871,10 @@
     <Compile Include="Relatorios\GerencialNovoSubFormas.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Relatorios\GerencialNovoDados.vb" />
+    <Compile Include="Relatorios\GerencialNovoBase.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Relatorios\PegasRegSubAg.Designer.vb">
       <DependentUpon>PegasRegSubAg.vb</DependentUpon>
     </Compile>

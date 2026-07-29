@@ -408,7 +408,10 @@ Public Class GerencialNovo
         Cabecalho(y, COL_E, LAR_E, "Tkt médio")
         y += ALT_LINHA
 
-        Rotulo(y, COL_A, LAR_A, "Loja")
+        ' "Loja (não encomenda)" e não só "Loja": existe uma vendedora chamada "Loja"
+        ' em VENDAS.Vendedora (é de lá que sai VI_VENDAS.V), e são coisas diferentes.
+        ' Aqui o eixo é a peça ser encomenda (1TabPeças.Oficial) ou não.
+        Rotulo(y, COL_A, LAR_A, "Loja (não encomenda)")
         lblVdLojaOper = Celula(y, COL_B, LAR_B, FMT_N0)
         lblVdLojaVal = Celula(y, COL_C, LAR_C, FMT_N2)
         lblVdLojaPct = Celula(y, COL_D, LAR_D, FMT_PCT)

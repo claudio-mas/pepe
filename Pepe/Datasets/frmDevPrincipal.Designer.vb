@@ -65,6 +65,7 @@ Partial Class frmDevPrincipal
         Me.btnRptComprasPorCliente = New DevExpress.XtraBars.BarButtonItem()
         Me.btnRptBalanço = New DevExpress.XtraBars.BarButtonItem()
         Me.btnRptGerencial = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnRptGerencialNovo = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem24 = New DevExpress.XtraBars.BarButtonItem()
         Me.btnRptCartoesAReceber = New DevExpress.XtraBars.BarButtonItem()
         Me.btnRptGeralClientes = New DevExpress.XtraBars.BarButtonItem()
@@ -114,7 +115,7 @@ Partial Class frmDevPrincipal
         Me.RibbonControl.AllowMinimizeRibbon = False
         Me.RibbonControl.ApplicationCaption = "PEPE TORRAS DESIGN"
         Me.RibbonControl.ExpandCollapseItem.Id = 0
-        Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl.ExpandCollapseItem, Me.SkinRibbonGalleryBarItem1, Me.btnEstoque, Me.btnVendas, Me.btnCartao, Me.btnCheques, Me.SkinRibbonGalleryBarItem2, Me.SkinRibbonGalleryBarItem3, Me.BarButtonItem1, Me.btnRptVendas, Me.BarButtonItem7, Me.btnRpt4, Me.btnSair, Me.btnClientes, Me.btnConsertos, Me.btnTelefones, Me.btnRptCartão, Me.btnRptChequesPre, Me.btnRptConsertos, Me.btnRptCC, Me.btnRptVendidas, Me.btnRptReg, Me.btnRptCusto, Me.btnRptCliSCompras, Me.btnRptComprasPorCliente, Me.btnRptBalanço, Me.btnRptGerencial, Me.BarButtonItem24, Me.btnRptCartoesAReceber, Me.btnRptGeralClientes, Me.btnReajuste, Me.btnPeçasEmEstoqueNovo, Me.btnRptTabPreços, Me.btnPeçasEmEstoque, Me.btnTrocarUsu, Me.btnInconsist, Me.ckAvisos, Me.btnClientesCad, Me.BarStaticItem1, Me.btnMP, Me.btnCC, Me.btnSai, Me.btnSaidas, Me.btnGetnet, Me.BarButtonItem2, Me.BarButtonItem3, Me.btnRec, Me.btnDolar, Me.btnCota})
+        Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl.ExpandCollapseItem, Me.SkinRibbonGalleryBarItem1, Me.btnEstoque, Me.btnVendas, Me.btnCartao, Me.btnCheques, Me.SkinRibbonGalleryBarItem2, Me.SkinRibbonGalleryBarItem3, Me.BarButtonItem1, Me.btnRptVendas, Me.BarButtonItem7, Me.btnRpt4, Me.btnSair, Me.btnClientes, Me.btnConsertos, Me.btnTelefones, Me.btnRptCartão, Me.btnRptChequesPre, Me.btnRptConsertos, Me.btnRptCC, Me.btnRptVendidas, Me.btnRptReg, Me.btnRptCusto, Me.btnRptCliSCompras, Me.btnRptComprasPorCliente, Me.btnRptBalanço, Me.btnRptGerencial, Me.btnRptGerencialNovo, Me.BarButtonItem24, Me.btnRptCartoesAReceber, Me.btnRptGeralClientes, Me.btnReajuste, Me.btnPeçasEmEstoqueNovo, Me.btnRptTabPreços, Me.btnPeçasEmEstoque, Me.btnTrocarUsu, Me.btnInconsist, Me.ckAvisos, Me.btnClientesCad, Me.BarStaticItem1, Me.btnMP, Me.btnCC, Me.btnSai, Me.btnSaidas, Me.btnGetnet, Me.BarButtonItem2, Me.BarButtonItem3, Me.btnRec, Me.btnDolar, Me.btnCota})
         Me.RibbonControl.Location = New System.Drawing.Point(0, 0)
         Me.RibbonControl.MaxItemId = 58
         Me.RibbonControl.Name = "RibbonControl"
@@ -382,6 +383,15 @@ Partial Class frmDevPrincipal
         Me.btnRptGerencial.Name = "btnRptGerencial"
         Me.btnRptGerencial.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText
         '
+        'btnRptGerencialNovo
+        '
+        ' Sem ImageOptions de propósito: as imagens vêm de chaves no frmDevPrincipal.resx
+        ' (binário, 174 KB), e criar chaves novas lá exigiria abrir o form no designer.
+        Me.btnRptGerencialNovo.Caption = "Relatório gerencial (novo)"
+        Me.btnRptGerencialNovo.Id = 58
+        Me.btnRptGerencialNovo.Name = "btnRptGerencialNovo"
+        Me.btnRptGerencialNovo.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText
+        '
         'BarButtonItem24
         '
         Me.BarButtonItem24.Caption = "Cheques pré"
@@ -648,6 +658,7 @@ Partial Class frmDevPrincipal
         Me.RibbonPageGroup7.ItemLinks.Add(Me.btnPeçasEmEstoqueNovo)
         Me.RibbonPageGroup7.ItemLinks.Add(Me.btnRptBalanço, True)
         Me.RibbonPageGroup7.ItemLinks.Add(Me.btnRptGerencial)
+        Me.RibbonPageGroup7.ItemLinks.Add(Me.btnRptGerencialNovo)
         Me.RibbonPageGroup7.ItemLinks.Add(Me.btnRptChequesPre)
         Me.RibbonPageGroup7.ItemLinks.Add(Me.btnRptCartoesAReceber, True)
         Me.RibbonPageGroup7.ItemLinks.Add(Me.btnRptGeralClientes)
@@ -799,6 +810,7 @@ Partial Class frmDevPrincipal
     Friend WithEvents btnRptComprasPorCliente As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btnRptBalanço As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btnRptGerencial As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btnRptGerencialNovo As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents BarButtonItem24 As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btnRptCartoesAReceber As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btnRptGeralClientes As DevExpress.XtraBars.BarButtonItem
