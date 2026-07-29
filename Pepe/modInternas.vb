@@ -10,6 +10,8 @@ Module modInternas
     Public varNew As Boolean = False
     Public valDolar As Double = 0
     Public valOuro As Double = 0
+    ' R$ por grama de prata 925, valor final (sem fator de teor).
+    Public valPrata As Double = 0
 
     Public Function ConvertToDouble(ByRef value) As Double
 

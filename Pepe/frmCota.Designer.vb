@@ -24,16 +24,20 @@ Partial Class frmCota
     Private Sub InitializeComponent()
         Dim Label2 As System.Windows.Forms.Label
         Dim Label1 As System.Windows.Forms.Label
+        Dim Label3 As System.Windows.Forms.Label
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.OK_Button = New System.Windows.Forms.Button()
         Me.Cancel_Button = New System.Windows.Forms.Button()
         Me.txtDolar = New DevExpress.XtraEditors.TextEdit()
         Me.txtOuro = New DevExpress.XtraEditors.TextEdit()
+        Me.txtPrata = New DevExpress.XtraEditors.TextEdit()
         Label2 = New System.Windows.Forms.Label()
         Label1 = New System.Windows.Forms.Label()
+        Label3 = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.txtDolar.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtOuro.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtPrata.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label2
@@ -55,7 +59,7 @@ Partial Class frmCota
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.OK_Button, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.Cancel_Button, 1, 0)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(144, 136)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(144, 166)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
@@ -138,11 +142,45 @@ Partial Class frmCota
         Label1.Text = "Ouro"
         Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'txtPrata
+        '
+        Me.txtPrata.EditValue = ""
+        Me.txtPrata.Location = New System.Drawing.Point(170, 107)
+        Me.txtPrata.Name = "txtPrata"
+        Me.txtPrata.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPrata.Properties.Appearance.Options.UseFont = True
+        Me.txtPrata.Properties.Appearance.Options.UseTextOptions = True
+        Me.txtPrata.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.txtPrata.Properties.AutoHeight = False
+        Me.txtPrata.Properties.BeepOnError = True
+        Me.txtPrata.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D
+        Me.txtPrata.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtPrata.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Buffered
+        Me.txtPrata.Properties.MaskSettings.Set("mask", "n")
+        Me.txtPrata.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
+        Me.txtPrata.Properties.MaskSettings.Set("autoHideDecimalSeparator", Nothing)
+        Me.txtPrata.Properties.UseMaskAsDisplayFormat = True
+        Me.txtPrata.Size = New System.Drawing.Size(95, 22)
+        Me.txtPrata.TabIndex = 38
+        '
+        'Label3
+        '
+        Label3.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Label3.ForeColor = System.Drawing.Color.White
+        Label3.Location = New System.Drawing.Point(98, 112)
+        Label3.Name = "Label3"
+        Label3.Size = New System.Drawing.Size(66, 13)
+        Label3.TabIndex = 39
+        Label3.Text = "Prata 925"
+        Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'frmCota
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(435, 177)
+        Me.ClientSize = New System.Drawing.Size(435, 207)
+        Me.Controls.Add(Label3)
+        Me.Controls.Add(Me.txtPrata)
         Me.Controls.Add(Label1)
         Me.Controls.Add(Me.txtOuro)
         Me.Controls.Add(Label2)
@@ -160,6 +198,7 @@ Partial Class frmCota
         Me.TableLayoutPanel1.ResumeLayout(False)
         CType(Me.txtDolar.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtOuro.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtPrata.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -168,4 +207,5 @@ Partial Class frmCota
     Friend WithEvents Cancel_Button As System.Windows.Forms.Button
     Friend WithEvents txtDolar As DevExpress.XtraEditors.TextEdit
     Friend WithEvents txtOuro As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents txtPrata As DevExpress.XtraEditors.TextEdit
 End Class
