@@ -31,6 +31,14 @@ Partial Class frmCota
         Me.txtDolar = New DevExpress.XtraEditors.TextEdit()
         Me.txtOuro = New DevExpress.XtraEditors.TextEdit()
         Me.txtPrata = New DevExpress.XtraEditors.TextEdit()
+        Me.grdCotacoes = New DevExpress.XtraGrid.GridControl()
+        Me.bsCotacao = New System.Windows.Forms.BindingSource()
+        Me.gvCotacoes = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colId = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colValDolar = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colValOuro = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colValPrata = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colDataCot = New DevExpress.XtraGrid.Columns.GridColumn()
         Label2 = New System.Windows.Forms.Label()
         Label1 = New System.Windows.Forms.Label()
         Label3 = New System.Windows.Forms.Label()
@@ -38,6 +46,9 @@ Partial Class frmCota
         CType(Me.txtDolar.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtOuro.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPrata.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdCotacoes, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.bsCotacao, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.gvCotacoes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label2
@@ -59,7 +70,7 @@ Partial Class frmCota
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.OK_Button, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.Cancel_Button, 1, 0)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(144, 166)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(144, 361)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
@@ -174,11 +185,86 @@ Partial Class frmCota
         Label3.Text = "Prata 925"
         Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'grdCotacoes
+        '
+        Me.grdCotacoes.DataSource = Me.bsCotacao
+        Me.grdCotacoes.Location = New System.Drawing.Point(12, 139)
+        Me.grdCotacoes.MainView = Me.gvCotacoes
+        Me.grdCotacoes.Name = "grdCotacoes"
+        Me.grdCotacoes.Size = New System.Drawing.Size(411, 210)
+        Me.grdCotacoes.TabIndex = 40
+        Me.grdCotacoes.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.gvCotacoes})
+        '
+        'gvCotacoes
+        '
+        Me.gvCotacoes.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colId, Me.colValDolar, Me.colValOuro, Me.colValPrata, Me.colDataCot})
+        Me.gvCotacoes.GridControl = Me.grdCotacoes
+        Me.gvCotacoes.Name = "gvCotacoes"
+        Me.gvCotacoes.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False
+        Me.gvCotacoes.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False
+        Me.gvCotacoes.OptionsCustomization.AllowGroup = False
+        Me.gvCotacoes.OptionsView.ShowGroupPanel = False
+        '
+        'colId
+        '
+        Me.colId.Caption = "Id"
+        Me.colId.FieldName = "Id"
+        Me.colId.Name = "colId"
+        Me.colId.OptionsColumn.AllowEdit = False
+        Me.colId.Visible = True
+        Me.colId.VisibleIndex = 0
+        Me.colId.Width = 40
+        '
+        'colValDolar
+        '
+        Me.colValDolar.Caption = "Dólar"
+        Me.colValDolar.DisplayFormat.FormatString = "n2"
+        Me.colValDolar.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.colValDolar.FieldName = "ValDolar"
+        Me.colValDolar.Name = "colValDolar"
+        Me.colValDolar.Visible = True
+        Me.colValDolar.VisibleIndex = 1
+        Me.colValDolar.Width = 90
+        '
+        'colValOuro
+        '
+        Me.colValOuro.Caption = "Ouro"
+        Me.colValOuro.DisplayFormat.FormatString = "n2"
+        Me.colValOuro.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.colValOuro.FieldName = "ValOuro"
+        Me.colValOuro.Name = "colValOuro"
+        Me.colValOuro.Visible = True
+        Me.colValOuro.VisibleIndex = 2
+        Me.colValOuro.Width = 90
+        '
+        'colValPrata
+        '
+        Me.colValPrata.Caption = "Prata 925"
+        Me.colValPrata.DisplayFormat.FormatString = "n2"
+        Me.colValPrata.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.colValPrata.FieldName = "ValPrata"
+        Me.colValPrata.Name = "colValPrata"
+        Me.colValPrata.Visible = True
+        Me.colValPrata.VisibleIndex = 3
+        Me.colValPrata.Width = 90
+        '
+        'colDataCot
+        '
+        Me.colDataCot.Caption = "Data"
+        Me.colDataCot.DisplayFormat.FormatString = "d"
+        Me.colDataCot.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.colDataCot.FieldName = "DataCot"
+        Me.colDataCot.Name = "colDataCot"
+        Me.colDataCot.Visible = True
+        Me.colDataCot.VisibleIndex = 4
+        Me.colDataCot.Width = 95
+        '
         'frmCota
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(435, 207)
+        Me.ClientSize = New System.Drawing.Size(435, 402)
+        Me.Controls.Add(Me.grdCotacoes)
         Me.Controls.Add(Label3)
         Me.Controls.Add(Me.txtPrata)
         Me.Controls.Add(Label1)
@@ -199,6 +285,9 @@ Partial Class frmCota
         CType(Me.txtDolar.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtOuro.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPrata.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdCotacoes, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.bsCotacao, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.gvCotacoes, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -208,4 +297,12 @@ Partial Class frmCota
     Friend WithEvents txtDolar As DevExpress.XtraEditors.TextEdit
     Friend WithEvents txtOuro As DevExpress.XtraEditors.TextEdit
     Friend WithEvents txtPrata As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents grdCotacoes As DevExpress.XtraGrid.GridControl
+    Friend WithEvents gvCotacoes As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents bsCotacao As System.Windows.Forms.BindingSource
+    Friend WithEvents colId As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colValDolar As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colValOuro As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colValPrata As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colDataCot As DevExpress.XtraGrid.Columns.GridColumn
 End Class

@@ -3,6 +3,30 @@ Imports System.Windows.Forms
 
 Public Class frmCota
 
+    Private cnnCotacao As SqlConnection
+    Private daCotacao As SqlDataAdapter
+    Private cbCotacao As SqlCommandBuilder
+    Private dtCotacao As New DataTable("Cotacao")
+
+    Private Sub CarregarCotacoes()
+        If cnnCotacao Is Nothing Then
+            cnnCotacao = fGetAdoConnection2()
+            If cnnCotacao Is Nothing Then Exit Sub
+
+            Dim sql As String = "SELECT Id, ValDolar, ValOuro, ValPrata, DataCot " &
+                                 "FROM dbo.[Cotação] ORDER BY DataCot DESC, Id DESC"
+            daCotacao = New SqlDataAdapter(sql, cnnCotacao)
+            cbCotacao = New SqlCommandBuilder(daCotacao)
+        End If
+
+        dtCotacao.Rows.Clear()
+        daCotacao.Fill(dtCotacao)
+
+        If bsCotacao.DataSource Is Nothing Then
+            bsCotacao.DataSource = dtCotacao
+        End If
+    End Sub
+
     Private Sub OK_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK_Button.Click
 
         'Atualiza a cotação do Dolar, do Ouro e da Prata
@@ -29,6 +53,11 @@ Public Class frmCota
         'Dim cmd As New SqlClient.SqlCommand(sql, cnn)
         'cmd.ExecuteNonQuery()
 
+        'Garante que qualquer edição pendente na grid seja commitada, então recarrega o histórico
+        Me.Validate()
+        bsCotacao.EndEdit()
+        CarregarCotacoes()
+
         Me.txtDolar.Text = ""
         Me.txtOuro.Text = ""
         Me.txtPrata.Text = ""
@@ -47,9 +76,40 @@ Public Class frmCota
     End Sub
 
     Private Sub frmCota_Load(sender As Object, e As EventArgs) Handles Me.Load
-        Me.txtDolar.EditValue = valDolar
-        Me.txtOuro.EditValue = valOuro
-        Me.txtPrata.EditValue = valPrata
+        CarregarCotacoes()
 
+        If dtCotacao.Rows.Count > 0 Then
+            'Linha 0 é a mais recente por causa do ORDER BY DataCot DESC, Id DESC
+            Dim rUltima As DataRow = dtCotacao.Rows(0)
+            Me.txtDolar.EditValue = rUltima("ValDolar")
+            Me.txtOuro.EditValue = If(IsDBNull(rUltima("ValOuro")), CDec(0), rUltima("ValOuro"))
+            Me.txtPrata.EditValue = If(IsDBNull(rUltima("ValPrata")), CDec(0), rUltima("ValPrata"))
+        End If
+
+    End Sub
+
+    Private Sub gvCotacoes_RowUpdated(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowObjectEventArgs) Handles gvCotacoes.RowUpdated
+        If daCotacao Is Nothing Then Exit Sub
+        Try
+            daCotacao.Update(dtCotacao)
+        Catch ex As Exception
+            dtCotacao.RejectChanges()
+            DevExpress.XtraEditors.XtraMessageBox.Show("Não foi possível salvar a alteração na cotação: " & ex.Message, "Cotação", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub frmCota_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+        Try
+            Me.Validate()
+            bsCotacao.EndEdit()
+            If daCotacao IsNot Nothing Then daCotacao.Update(dtCotacao)
+        Catch
+            'já reportado por gvCotacoes_RowUpdated
+        Finally
+            If cnnCotacao IsNot Nothing Then
+                cnnCotacao.Close()
+                cnnCotacao.Dispose()
+            End If
+        End Try
     End Sub
 End Class
