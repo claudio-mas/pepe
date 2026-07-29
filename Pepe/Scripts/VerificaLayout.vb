@@ -15,7 +15,7 @@ Module VerificaLayout
 
         Try
             Dim r As New Pepe.GerencialNovo()
-            r.MontarLayout(comBoutique)
+            r.MontarLayout(comBoutique, 7)   ' 7 = todas as formas de pagamento
             r.CreateDocument()
 
             Console.WriteLine("PaperKind    : {0}", r.PaperKind)

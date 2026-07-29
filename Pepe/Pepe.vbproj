@@ -868,9 +868,6 @@
     <Compile Include="Relatorios\GerencialNovo.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Relatorios\GerencialNovoSubFormas.vb">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Relatorios\GerencialNovoDados.vb" />
     <Compile Include="Relatorios\GerencialNovoBase.vb">
       <SubType>Form</SubType>

@@ -50,7 +50,7 @@ Public Class GerencialNovoBase
         End Try
 
         Dim rpt As New GerencialNovo()
-        rpt.MontarLayout(d.TemBoutique)
+        rpt.MontarLayout(d.TemBoutique, d.FormasPagto.Count)
 
         rpt.lblPeriodo.Text = "Período: " & txtData1.Text & " a " & txtData2.Text
 
@@ -63,10 +63,6 @@ Public Class GerencialNovoBase
         PreencherPecasRegistradas(rpt, d)
         PreencherSaidasEClientes(rpt, d)
         PreencherEstoque(rpt, d)
-
-        Dim wrapper As New GerencialNovoSubFormas()
-        wrapper.Preencher(Me.txtData1.EditValue, Me.txtData2.EditValue)
-        rpt.subFormas.ReportSource = wrapper
 
         ' Mesma sequência de GerencialBase.vb:691-693, que é a que funciona:
         ' DocumentSource antes de CreateDocument.
@@ -139,6 +135,15 @@ Public Class GerencialNovoBase
         V(rpt.lblCCDebitos, d.CC.Debitos)
         V(rpt.lblCCCreditos, d.CC.Creditos)
         V(rpt.lblCCSaldo, d.CC.Saldo)
+
+        ' A tabela foi montada com uma linha por forma, então os índices casam.
+        For i = 0 To Math.Min(rpt.FormasPagto.Count, d.FormasPagto.Count) - 1
+            Dim celulas = rpt.FormasPagto(i)
+            Dim forma = d.FormasPagto(i)
+            celulas(0).Text = forma.Forma
+            V(celulas(1), forma.Vendas)
+            V(celulas(2), forma.Consertos)
+        Next
     End Sub
 
     Private Shared Sub PreencherVendas(rpt As GerencialNovo, d As GerencialNovoDados.Dados)

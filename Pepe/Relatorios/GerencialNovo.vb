@@ -45,8 +45,10 @@ Public Class GerencialNovo
     Private Const S2A_PCT As Single = 520.0F : Private Const S2A_LAR_PCT As Single = 130.0F
     Private Const S2B_ROT As Single = 690.0F : Private Const S2B_LAR_ROT As Single = 270.0F
     Private Const S2B_VAL As Single = 960.0F : Private Const S2B_LAR_VAL As Single = 160.0F
-    ' Largura imposta por GerencialSubFormas1/2: 2100 - 8 - 1323 = 769.
-    Friend Const S2C_SUB As Single = 1131.0F : Friend Const S2C_LAR_SUB As Single = 769.0F
+    ' Bloco C: tabela de formas de pagamento, nos 769 restantes (1131 a 1900).
+    Private Const S2C_ROT As Single = 1131.0F : Private Const S2C_LAR_ROT As Single = 300.0F
+    Private Const S2C_VEN As Single = 1431.0F : Private Const S2C_LAR_VEN As Single = 235.0F
+    Private Const S2C_CON As Single = 1666.0F : Private Const S2C_LAR_CON As Single = 234.0F
 
     ' Alturas. Com ALT_LINHA=45/GAP=30 o relatório soma 2780 e estoura os 2750
     ' disponíveis assim que a linha "Boutique" aparece; 42/25 deixa 146 de folga.
@@ -89,7 +91,8 @@ Public Class GerencialNovo
     Friend lblPctCheques, lblPctCartDeb, lblPctCredVista, lblPctCredParc As XRLabel
     Friend lblPctCash, lblPctTransf, lblPctTotal As XRLabel
     Friend lblCCDebitos, lblCCCreditos, lblCCSaldo As XRLabel
-    Friend subFormas As XRSubreport
+    ''' <summary>Uma entrada por forma de pagamento: rótulo, valor em vendas, valor em consertos.</summary>
+    Friend FormasPagto As New List(Of XRLabel())()
 
     ' 3. Vendas
     Friend lblVdLojaOper, lblVdLojaVal, lblVdLojaPct, lblVdLojaTkt As XRLabel
@@ -137,6 +140,7 @@ Public Class GerencialNovo
     ''' <summary>Banda que está recebendo os controles no momento da montagem.</summary>
     Private _banda As Band
     Private _mostrarBoutique As Boolean
+    Private _qtdFormasPagto As Integer
 
     Public Sub New()
         ConfigurarPagina()
@@ -167,8 +171,13 @@ Public Class GerencialNovo
     ''' Inclui a linha "Boutique" nas seções 6, 7 e 10. Peças com Família fora de
     ''' {Ou, Ag} caem nessa linha; sem ela, Au + Ag não fecha com o TOTAL.
     ''' </param>
-    Public Sub MontarLayout(mostrarBoutique As Boolean)
+    ''' <param name="qtdFormasPagto">
+    ''' Quantas linhas reservar na tabela de formas de pagamento. As procs filtram
+    ''' Total &gt; 0, então o número varia por período.
+    ''' </param>
+    Public Sub MontarLayout(mostrarBoutique As Boolean, qtdFormasPagto As Integer)
         _mostrarBoutique = mostrarBoutique
+        _qtdFormasPagto = qtdFormasPagto
 
         Dim topo As New TopMarginBand() With {.Dpi = 254.0F, .HeightF = MARGEM_VER, .Name = "TopMargin"}
         Dim rodape As New BottomMarginBand() With {.Dpi = 254.0F, .HeightF = MARGEM_VER, .Name = "BottomMargin"}
@@ -383,18 +392,28 @@ Public Class GerencialNovo
         lblCCSaldo = Celula(yB, S2B_VAL, S2B_LAR_VAL, FMT_N2, negrito:=True)
         yB += ALT_LINHA
 
-        ' --- Bloco C: formas de pagamento (subrelatórios) -----------------------
-        ' Altura dinâmica: o wrapper empilha cartões e consertos em bandas próprias,
-        ' então cresce para baixo sem sobrepor nada.
-        subFormas = New XRSubreport() With {
-            .Dpi = 254.0F,
-            .Name = "subFormas",
-            .LocationFloat = New PointFloat(S2C_SUB, yTopo),
-            .SizeF = New SizeF(S2C_LAR_SUB, yFimA - yTopo)
-        }
-        _banda.Controls.Add(subFormas)
+        ' --- Bloco C: formas de pagamento ---------------------------------------
+        ' Tabela própria em vez dos subrelatórios GerencialSubFormas1/2: as duas
+        ' stored procedures devolvem o MESMO conjunto de formas, então uma tabela com
+        ' duas colunas de valor mostra a mesma informação em metade da altura.
+        ' Empilhados, os dois subrelatórios somam 910 (2 cabeçalhos + 14 linhas de 50)
+        ' contra os 336 disponíveis aqui — jogariam o relatório para uma segunda página.
+        Dim yC As Single = yTopo
+        ' Mesmo rótulo dos subrelatórios originais, e cabe nos 300 da coluna.
+        Cabecalho(yC, S2C_ROT, S2C_LAR_ROT, "Forma de pagto.", TextAlignment.MiddleLeft)
+        Cabecalho(yC, S2C_VEN, S2C_LAR_VEN, "Vendas")
+        Cabecalho(yC, S2C_CON, S2C_LAR_CON, "Consertos")
+        yC += ALT_LINHA
 
-        Return Math.Max(yFimA, yB) + GAP
+        For i = 1 To _qtdFormasPagto
+            Dim rot = Rotulo(yC, S2C_ROT, S2C_LAR_ROT, String.Empty)
+            Dim ven = Celula(yC, S2C_VEN, S2C_LAR_VEN, FMT_N2)
+            Dim con = Celula(yC, S2C_CON, S2C_LAR_CON, FMT_N2)
+            FormasPagto.Add(New XRLabel() {rot, ven, con})
+            yC += ALT_LINHA
+        Next
+
+        Return Math.Max(Math.Max(yFimA, yB), yC) + GAP
     End Function
 
     Private Function MontarSecao3Vendas(y As Single) As Single

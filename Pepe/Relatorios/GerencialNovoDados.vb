@@ -88,6 +88,13 @@ Public Class GerencialNovoDados
         Public Custo, Valor As Double
     End Class
 
+    ''' <summary>Uma forma de pagamento, com o valor em vendas e em consertos.</summary>
+    Public Class FormaPagto
+        Public Forma As String
+        Public Vendas As Double
+        Public Consertos As Double
+    End Class
+
     Public Class Dados
         Public Cot As New Cotacao()
         Public Ent As New Entradas()
@@ -101,6 +108,7 @@ Public Class GerencialNovoDados
         Public PecasRegFf As New LinhaMetal()
         Public Estoque As New List(Of LinhaMetal)()
         Public Sai As New Saidas()
+        Public FormasPagto As New List(Of FormaPagto)()
         Public ClientesCadastrados As Integer
         Public TemBoutique As Boolean
     End Class
@@ -137,6 +145,11 @@ Public Class GerencialNovoDados
         Public Property Qt As Integer
     End Class
 
+    Private Class RowForma
+        Public Property Forma As String
+        Public Property Total As Double?
+    End Class
+
     Private Class RowSaidas
         Public Property Qt As Integer
         Public Property TotCusto As Double?
@@ -169,6 +182,7 @@ Public Class GerencialNovoDados
         CarregarSaidas(dc, dt1, dt2, r)
         CarregarClientes(dc, dt1, dt2, r)
         CarregarEstoque(dc, r)
+        CarregarFormasPagto(dc, dt1, dt2, r)
 
         Return r
     End Function
@@ -424,6 +438,37 @@ Public Class GerencialNovoDados
         r.ClientesCadastrados = (From t In dc.GetTable(Of Clientes)()
                                  Where t.DataCad >= dt1 AndAlso t.DataCad <= dt2
                                  Select t.IDCliente).Count()
+    End Sub
+
+    ''' <summary>
+    ''' Formas de pagamento das mesmas duas stored procedures que alimentam os
+    ''' subrelatórios do relatório antigo (USP_Gerencial_Cartoes e
+    ''' USP_Gerencial_Consertos). Aqui as duas são combinadas numa lista só, com uma
+    ''' coluna de valor para cada origem — ambas devolvem o mesmo conjunto de formas
+    ''' (Cheque, Cartão, Cash, Ouro, Dolar, Déb. C/C, Transf. Bancária), e uma tabela
+    ''' de duas colunas ocupa metade da altura de dois blocos empilhados.
+    '''
+    ''' A coluna Percentual devolvida pelas procs é ignorada: os percentuais úteis aqui
+    ''' são os da tabela de entradas, à esquerda.
+    ''' </summary>
+    Private Shared Sub CarregarFormasPagto(dc As lqGerencialDataContext, dt1 As Date, dt2 As Date, r As Dados)
+        Dim vendas = dc.ExecuteQuery(Of RowForma)(
+            "EXEC dbo.USP_Gerencial_Cartoes {0}, {1}", dt1, dt2).ToList()
+        Dim consertos = dc.ExecuteQuery(Of RowForma)(
+            "EXEC dbo.USP_Gerencial_Consertos {0}, {1}", dt1, dt2).ToList()
+
+        ' Ordem: a que a proc de vendas devolveu; o que só existe em consertos vai ao fim.
+        For Each v In vendas
+            r.FormasPagto.Add(New FormaPagto() With {.Forma = v.Forma, .Vendas = D(v.Total)})
+        Next
+        For Each c In consertos
+            Dim existente = r.FormasPagto.FirstOrDefault(Function(x) x.Forma = c.Forma)
+            If existente Is Nothing Then
+                r.FormasPagto.Add(New FormaPagto() With {.Forma = c.Forma, .Consertos = D(c.Total)})
+            Else
+                existente.Consertos = D(c.Total)
+            End If
+        Next
     End Sub
 
 #End Region

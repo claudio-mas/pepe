@@ -106,6 +106,13 @@ GO
    porque Custo = TotalValor + MOExt + MOInt + Cravacao + pedras + Oficina +
    Madeira + Couro + Outras (frmEstoque.vb:504-526): a coluna crua e so uma das
    parcelas, a derivada e o resto todo.
+   DIVERGENCIA CONSCIENTE: VI_PECAS_VENDAS.Outras (usada pelo relatorio antigo) e a
+   coluna crua, entao la "Custo <> Metal + MO + Outros". Aqui fecha por construcao.
+
+   NAO se usa VI_METAIS/VI_METAIS_VENDAS aqui, e de proposito: naquelas views,
+       CASE WHEN Familia = 'Ou' THEN TotalValor ELSE OuroV END AS OV
+   devolve REAIS para peca de ouro e GRAMAS para as demais, na mesma coluna.
+   Estas views leem METAIS direto, onde a unidade de cada coluna e sempre a mesma.
    --------------------------------------------------------------------------- */
 IF OBJECT_ID('dbo.VW_RG2_PECAS_VENDIDAS', 'V') IS NOT NULL
     DROP VIEW dbo.VW_RG2_PECAS_VENDIDAS;
@@ -195,13 +202,21 @@ SELECT
     CAST(ISNULL(m.PrataQtde, 0) - ISNULL(m.PrataV, 0) AS float)  AS GramasPrata
 FROM       dbo.[1TabPeças]   p
 LEFT  JOIN dbo.METAIS        m ON m.Id       = p.[IDPeça]
-INNER JOIN dbo.PEENBase      b ON b.[IDPeça] = p.[IDPeça]
 LEFT  JOIN dbo.[VENDAS DET]  d ON d.[Peça]   = p.[IDPeça]
 LEFT  JOIN dbo.VENDAS        v ON v.Id       = d.Venda
 WHERE  v.DataVenda IS NULL
   AND  (p.Vendida = 0 OR p.Vendida IS NULL)
   AND  p.[Modêlo] IS NOT NULL
   AND  ISNULL(p.Saida, 0) = 0;
+-- O INNER JOIN dbo.PEENBase do EmEstoque.txt foi OMITIDO de proposito.
+-- PEENBase e "SELECT ... FROM PEDRAS RIGHT JOIN [1TabPecas] WHERE Modelo IS NOT NULL",
+-- ou seja: todas as pecas com Modelo preenchido, com ou sem pedras. Esse filtro ja
+-- esta explicito no WHERE acima, entao o join so acrescenta risco -- se PEDRAS tiver
+-- mais de uma linha por peca, ele DUPLICA a peca no total.
+-- Se o COUNT desta view divergir do Qtd do relatorio antigo, a causa mais provavel e
+-- exatamente essa duplicacao, e quem esta inflado e o antigo. Conferir com:
+--     SELECT COUNT(*) FROM dbo.PEDRAS;
+--     SELECT COUNT(DISTINCT Id) FROM dbo.PEDRAS;
 GO
 
 
