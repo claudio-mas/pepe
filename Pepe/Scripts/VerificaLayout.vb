@@ -16,6 +16,12 @@ Module VerificaLayout
         Try
             Dim r As New Pepe.GerencialNovo()
             r.MontarLayout(comBoutique, 7)   ' 7 = todas as formas de pagamento
+
+            ' Preenche TODAS as células com o maior valor plausível ANTES de medir.
+            ' Sem isto o teste de corte roda sobre rótulos vazios e não detecta nada --
+            ' foi assim que "104.964,09" e "2.628.496,24" passaram truncados.
+            PreencherPiorCaso(r)
+
             r.CreateDocument()
 
             Console.WriteLine("PaperKind    : {0}", r.PaperKind)
@@ -103,5 +109,37 @@ Module VerificaLayout
             Return 1
         End Try
     End Function
+
+    ''' <summary>
+    ''' Escreve em cada rótulo com TextFormatString o maior valor que aquele formato
+    ''' pode produzir na prática, para o teste de corte medir o pior caso real.
+    ''' </summary>
+    Private Sub PreencherPiorCaso(r As DevExpress.XtraReports.UI.XtraReport)
+        For Each b As DevExpress.XtraReports.UI.Band In r.Bands
+            For Each c As DevExpress.XtraReports.UI.XRControl In b.Controls
+                Dim lbl = TryCast(c, DevExpress.XtraReports.UI.XRLabel)
+                If lbl Is Nothing OrElse String.IsNullOrEmpty(lbl.TextFormatString) Then Continue For
+
+                ' Tetos calibrados pelo que o relatório produz de fato, com folga de
+                ' uma ordem de grandeza. Testar tudo com 9.999.999,99 acusaria 51 falsos
+                ' positivos: gramas nunca passam de milhares, e valores de fluxo mensal
+                ' ficam na casa das centenas de milhares.
+                Dim fmt = lbl.TextFormatString
+                Dim valor As Double
+                If fmt.Contains("p2") Then
+                    valor = 1.0R                  ' 100,00%
+                ElseIf fmt.Contains("n0") Then
+                    valor = 99999.0R              ' 99.999 peças
+                ElseIf fmt.Contains("x") Then
+                    valor = 999.99R               ' 999,99x de markup
+                ElseIf fmt.Contains(" g") Then
+                    valor = 99999.99R             ' 99.999,99 g
+                Else
+                    valor = 999999.99R            ' 999.999,99
+                End If
+                lbl.Text = String.Format(fmt, valor)
+            Next
+        Next
+    End Sub
 
 End Module

@@ -29,22 +29,31 @@ Public Class GerencialNovo
     Friend Const ALTURA_UTIL As Single = 2970.0F - 2.0F * MARGEM_VER    ' 2810
 
     ' Grade principal de 9 colunas — soma exatamente LARGURA_UTIL.
-    Private Const COL_A As Single = 0.0F : Private Const LAR_A As Single = 560.0F   ' rótulo da linha
-    Private Const COL_B As Single = 560.0F : Private Const LAR_B As Single = 140.0F   ' Qtd. / Oper.
-    Private Const COL_C As Single = 700.0F : Private Const LAR_C As Single = 190.0F   ' Valor / Custo
-    Private Const COL_D As Single = 890.0F : Private Const LAR_D As Single = 160.0F   ' % Part. / Metal (g)
-    Private Const COL_E As Single = 1050.0F : Private Const LAR_E As Single = 180.0F  ' Tkt Médio / valor metal
-    Private Const COL_F As Single = 1230.0F : Private Const LAR_F As Single = 170.0F  ' M.O. / Valor
-    Private Const COL_G As Single = 1400.0F : Private Const LAR_G As Single = 160.0F  ' Outros / M.O.
-    Private Const COL_H As Single = 1560.0F : Private Const LAR_H As Single = 190.0F  ' Preço Venda / Custo-M.O.
-    Private Const COL_I As Single = 1750.0F : Private Const LAR_I As Single = 150.0F  ' Markup
+    ' As colunas de dinheiro foram alargadas à custa da coluna A depois que valores
+    ' reais truncaram: "2.628.496,24" precisa de ~216 e não cabia nos 180 originais.
+    Private Const COL_A As Single = 0.0F : Private Const LAR_A As Single = 420.0F   ' rótulo da linha
+    Private Const COL_B As Single = 420.0F : Private Const LAR_B As Single = 130.0F   ' Qtd. / Oper.
+    Private Const COL_C As Single = 550.0F : Private Const LAR_C As Single = 210.0F   ' Valor / Custo
+    Private Const COL_D As Single = 760.0F : Private Const LAR_D As Single = 190.0F   ' % Part. / Metal (g)
+    Private Const COL_E As Single = 950.0F : Private Const LAR_E As Single = 200.0F   ' Tkt Médio / valor metal
+    Private Const COL_F As Single = 1150.0F : Private Const LAR_F As Single = 190.0F  ' M.O. / Valor
+    Private Const COL_G As Single = 1340.0F : Private Const LAR_G As Single = 180.0F  ' Outros / M.O.
+    Private Const COL_H As Single = 1520.0F : Private Const LAR_H As Single = 210.0F  ' Preço Venda / Custo-M.O.
+    Private Const COL_I As Single = 1730.0F : Private Const LAR_I As Single = 170.0F  ' Markup
+
+    ' Seção 10 tem só 5 colunas e valores grandes (estoque consolidado), então usa
+    ' larguras próprias em vez da grade de 9.
+    Private Const S10_QTD As Single = 420.0F : Private Const S10_LAR_QTD As Single = 130.0F
+    Private Const S10_PESO As Single = 550.0F : Private Const S10_LAR_PESO As Single = 210.0F
+    Private Const S10_CUSTO As Single = 760.0F : Private Const S10_LAR_CUSTO As Single = 230.0F
+    Private Const S10_VENDA As Single = 990.0F : Private Const S10_LAR_VENDA As Single = 260.0F
 
     ' Seção 2 usa grade própria: três blocos lado a lado.
-    Private Const S2A_ROT As Single = 0.0F : Private Const S2A_LAR_ROT As Single = 350.0F
-    Private Const S2A_VAL As Single = 350.0F : Private Const S2A_LAR_VAL As Single = 170.0F
-    Private Const S2A_PCT As Single = 520.0F : Private Const S2A_LAR_PCT As Single = 130.0F
-    Private Const S2B_ROT As Single = 690.0F : Private Const S2B_LAR_ROT As Single = 270.0F
-    Private Const S2B_VAL As Single = 960.0F : Private Const S2B_LAR_VAL As Single = 160.0F
+    Private Const S2A_ROT As Single = 0.0F : Private Const S2A_LAR_ROT As Single = 320.0F
+    Private Const S2A_VAL As Single = 320.0F : Private Const S2A_LAR_VAL As Single = 180.0F
+    Private Const S2A_PCT As Single = 500.0F : Private Const S2A_LAR_PCT As Single = 150.0F
+    Private Const S2B_ROT As Single = 670.0F : Private Const S2B_LAR_ROT As Single = 260.0F
+    Private Const S2B_VAL As Single = 930.0F : Private Const S2B_LAR_VAL As Single = 190.0F
     ' Bloco C: tabela de formas de pagamento, nos 769 restantes (1131 a 1900).
     Private Const S2C_ROT As Single = 1131.0F : Private Const S2C_LAR_ROT As Single = 300.0F
     Private Const S2C_VEN As Single = 1431.0F : Private Const S2C_LAR_VEN As Single = 235.0F
@@ -332,7 +341,7 @@ Public Class GerencialNovo
         Dim yTopo As Single = y
 
         ' --- Bloco A: formas de recebimento -------------------------------------
-        Cabecalho(y, S2A_ROT, S2A_LAR_ROT, "Forma de recebimento", TextAlignment.MiddleLeft)
+        Cabecalho(y, S2A_ROT, S2A_LAR_ROT, "Forma de receb.", TextAlignment.MiddleLeft)
         Cabecalho(y, S2A_VAL, S2A_LAR_VAL, "Valor")
         Cabecalho(y, S2A_PCT, S2A_LAR_PCT, "% Part.")
         y += ALT_LINHA
@@ -368,7 +377,7 @@ Public Class GerencialNovo
         lblPctTransf = Celula(y, S2A_PCT, S2A_LAR_PCT, FMT_PCT)
         y += ALT_LINHA
 
-        Rotulo(y, S2A_ROT, S2A_LAR_ROT, "TOTAL DE ENTRADAS", negrito:=True)
+        Rotulo(y, S2A_ROT, S2A_LAR_ROT, "TOTAL ENTRADAS", negrito:=True)
         lblEntTotal = Celula(y, S2A_VAL, S2A_LAR_VAL, FMT_N2, negrito:=True)
         lblPctTotal = Celula(y, S2A_PCT, S2A_LAR_PCT, FMT_PCT, negrito:=True)
         Dim yFimA As Single = y + ALT_LINHA
@@ -496,7 +505,7 @@ Public Class GerencialNovo
         lblCsTkt = Celula(y, COL_E, LAR_E, FMT_N2)
         y += ALT_LINHA + GAP_CURTO
 
-        Rotulo(y, COL_A, LAR_A, "TOTAL VENDAS + CONSERTOS", negrito:=True)
+        Rotulo(y, COL_A, LAR_A + LAR_B, "TOTAL VENDAS + CONSERTOS", negrito:=True)
         lblTotVendasConsertos = Celula(y, COL_C, LAR_C, FMT_N2, negrito:=True)
         FundoTotal(y)
 
@@ -679,40 +688,40 @@ Public Class GerencialNovo
         y += ALT_FAIXA
 
         Cabecalho(y, COL_A, LAR_A, "Metal", TextAlignment.MiddleLeft)
-        Cabecalho(y, COL_B, LAR_B, "Qtd.")
-        Cabecalho(y, COL_C, LAR_C, "Peso (g)")
-        Cabecalho(y, COL_D, LAR_D, "Custo")
-        Cabecalho(y, COL_E, LAR_E, "Venda")
+        Cabecalho(y, S10_QTD, S10_LAR_QTD, "Qtd.")
+        Cabecalho(y, S10_PESO, S10_LAR_PESO, "Peso (g)")
+        Cabecalho(y, S10_CUSTO, S10_LAR_CUSTO, "Custo")
+        Cabecalho(y, S10_VENDA, S10_LAR_VENDA, "Venda")
         y += ALT_LINHA
 
         Rotulo(y, COL_A, LAR_A, "Ouro (Au)")
-        lblEstAuQtd = Celula(y, COL_B, LAR_B, FMT_N0)
-        lblEstAuPeso = Celula(y, COL_C, LAR_C, FMT_N2)
-        lblEstAuCusto = Celula(y, COL_D, LAR_D, FMT_N2)
-        lblEstAuVenda = Celula(y, COL_E, LAR_E, FMT_N2)
+        lblEstAuQtd = Celula(y, S10_QTD, S10_LAR_QTD, FMT_N0)
+        lblEstAuPeso = Celula(y, S10_PESO, S10_LAR_PESO, FMT_N2)
+        lblEstAuCusto = Celula(y, S10_CUSTO, S10_LAR_CUSTO, FMT_N2)
+        lblEstAuVenda = Celula(y, S10_VENDA, S10_LAR_VENDA, FMT_N2)
         y += ALT_LINHA
 
         Rotulo(y, COL_A, LAR_A, "Prata (Ag)")
-        lblEstAgQtd = Celula(y, COL_B, LAR_B, FMT_N0)
-        lblEstAgPeso = Celula(y, COL_C, LAR_C, FMT_N2)
-        lblEstAgCusto = Celula(y, COL_D, LAR_D, FMT_N2)
-        lblEstAgVenda = Celula(y, COL_E, LAR_E, FMT_N2)
+        lblEstAgQtd = Celula(y, S10_QTD, S10_LAR_QTD, FMT_N0)
+        lblEstAgPeso = Celula(y, S10_PESO, S10_LAR_PESO, FMT_N2)
+        lblEstAgCusto = Celula(y, S10_CUSTO, S10_LAR_CUSTO, FMT_N2)
+        lblEstAgVenda = Celula(y, S10_VENDA, S10_LAR_VENDA, FMT_N2)
         y += ALT_LINHA
 
         If _mostrarBoutique Then
             Rotulo(y, COL_A, LAR_A, "Boutique")
-            lblEstBouQtd = Celula(y, COL_B, LAR_B, FMT_N0)
-            lblEstBouPeso = Celula(y, COL_C, LAR_C, FMT_N2)
-            lblEstBouCusto = Celula(y, COL_D, LAR_D, FMT_N2)
-            lblEstBouVenda = Celula(y, COL_E, LAR_E, FMT_N2)
+            lblEstBouQtd = Celula(y, S10_QTD, S10_LAR_QTD, FMT_N0)
+            lblEstBouPeso = Celula(y, S10_PESO, S10_LAR_PESO, FMT_N2)
+            lblEstBouCusto = Celula(y, S10_CUSTO, S10_LAR_CUSTO, FMT_N2)
+            lblEstBouVenda = Celula(y, S10_VENDA, S10_LAR_VENDA, FMT_N2)
             y += ALT_LINHA
         End If
 
         Rotulo(y, COL_A, LAR_A, "TOTAL", negrito:=True)
-        lblEstTotQtd = Celula(y, COL_B, LAR_B, FMT_N0, negrito:=True)
-        lblEstTotPeso = Celula(y, COL_C, LAR_C, FMT_N2, negrito:=True)
-        lblEstTotCusto = Celula(y, COL_D, LAR_D, FMT_N2, negrito:=True)
-        lblEstTotVenda = Celula(y, COL_E, LAR_E, FMT_N2, negrito:=True)
+        lblEstTotQtd = Celula(y, S10_QTD, S10_LAR_QTD, FMT_N0, negrito:=True)
+        lblEstTotPeso = Celula(y, S10_PESO, S10_LAR_PESO, FMT_N2, negrito:=True)
+        lblEstTotCusto = Celula(y, S10_CUSTO, S10_LAR_CUSTO, FMT_N2, negrito:=True)
+        lblEstTotVenda = Celula(y, S10_VENDA, S10_LAR_VENDA, FMT_N2, negrito:=True)
         FundoTotal(y)
 
         Return y + ALT_LINHA
