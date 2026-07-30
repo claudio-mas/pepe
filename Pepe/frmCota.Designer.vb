@@ -66,7 +66,7 @@ Partial Class frmCota
         Label2.Size = New System.Drawing.Size(52, 13)
         Label2.TabIndex = 35
         Label2.Text = "Dólar"
-        Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label1
         '
@@ -77,7 +77,7 @@ Partial Class frmCota
         Label1.Size = New System.Drawing.Size(52, 13)
         Label1.TabIndex = 37
         Label1.Text = "Ouro"
-        Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label3
         '
@@ -88,7 +88,7 @@ Partial Class frmCota
         Me.Label3.Size = New System.Drawing.Size(66, 13)
         Me.Label3.TabIndex = 39
         Me.Label3.Text = "Prata 925"
-        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label4
         '
@@ -99,7 +99,7 @@ Partial Class frmCota
         Me.Label4.Size = New System.Drawing.Size(52, 13)
         Me.Label4.TabIndex = 41
         Me.Label4.Text = "Data"
-        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'TableLayoutPanel1
         '
@@ -108,7 +108,7 @@ Partial Class frmCota
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.Cancel_Button, 1, 0)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(101, 391)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(104, 391)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))

@@ -44,6 +44,7 @@ Public Class frmCota
             End If
         End Using
 
+        If MsgBox("Confirma a cotação?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Cotação") = MsgBoxResult.No Then Exit Sub
         'Atualiza a cotação do Dolar, do Ouro e da Prata
         valDolar = Me.txtDolar.EditValue
         valOuro = Me.txtOuro.EditValue
