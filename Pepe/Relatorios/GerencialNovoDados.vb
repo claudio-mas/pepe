@@ -165,6 +165,7 @@ Public Class GerencialNovoDados
     Public Shared Function Carregar(dt1 As Date, dt2 As Date) As Dados
         Dim r As New Dados()
         Dim dc As New lqGerencialDataContext()
+        dc.CommandTimeout = 0 ' sem limite, mesma convenção de modConn.vb (fExecutarText/fExecutarSP)
 
         CarregarCotacao(dc, dt2, r)
         CarregarEntradas(dc, dt1, dt2, r)
@@ -490,6 +491,7 @@ Public Class GerencialNovoDados
             Using cmd = cn.CreateCommand()
                 cmd.CommandType = CommandType.StoredProcedure
                 cmd.CommandText = proc
+                cmd.CommandTimeout = 0
 
                 Dim p1 = cmd.CreateParameter()
                 p1.ParameterName = "@dt1" : p1.Value = dt1.Date
