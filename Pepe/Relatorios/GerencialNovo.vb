@@ -60,11 +60,13 @@ Public Class GerencialNovo
     Private Const S2C_CON As Single = 1666.0F : Private Const S2C_LAR_CON As Single = 234.0F
 
     ' Alturas. Com ALT_LINHA=45/GAP=30 o relatório soma 2780 e estoura os 2750
-    ' disponíveis assim que a linha "Boutique" aparece; 42/25 deixa 146 de folga.
+    ' disponíveis assim que a linha "Boutique" aparece; 42/25 deixava 146 de folga.
+    ' Depois que a seção 5 passou de 3 para 5 linhas (+84), a folga caiu para 62 e o
+    ' GAP foi de 25 para 20 — são 10 espaços entre seções, então recupera 50.
     Private Const ALT_TITULO As Single = 70.0F
     Private Const ALT_FAIXA As Single = 50.0F
     Private Const ALT_LINHA As Single = 42.0F
-    Private Const GAP As Single = 25.0F
+    Private Const GAP As Single = 20.0F
     Private Const GAP_CURTO As Single = 20.0F
 
     ' Fontes
@@ -81,6 +83,13 @@ Public Class GerencialNovo
     ' Formatos
     Private Const FMT_N0 As String = "{0:n0}"
     Private Const FMT_N2 As String = "{0:n2}"
+    ' Dinheiro sem centavos: num relatório de conferência os centavos só poluem. Só
+    ' sobrou FMT_N2 onde o valor NÃO é dinheiro somado — as cotações da seção 1 (preço
+    ' unitário) e a coluna Peso (g) da seção 10.
+    ' "#,##0" e não "n0", que renderiza igual: Scripts\VerificaLayout.vb escolhe o valor
+    ' de pior caso olhando o TextFormatString, e precisa distinguir dinheiro (milhões)
+    ' de quantidade de peças (milhares).
+    Private Const FMT_DIN As String = "{0:#,##0}"
     Private Const FMT_PCT As String = "{0:p2}"
     Private Const FMT_GR As String = "{0:n2} g"
     Private Const FMT_MULT As String = "{0:n2}x"
@@ -117,7 +126,9 @@ Public Class GerencialNovo
     Friend lblTotVendasConsertos As XRLabel
 
     ' 5. Comissões
-    Friend lblComLoja, lblComOficina, lblComTotal As XRLabel
+    Friend lblComLojaAu, lblComLojaAg, lblComLojaBou, lblComLojaCons, lblComLojaTot As XRLabel
+    Friend lblComOfiVenda, lblComOfiEnc, lblComOfiCons, lblComOfiTot As XRLabel
+    Friend lblComTotal As XRLabel
 
     ' 6. Peças vendidas
     Friend lblPvAuQtd, lblPvAuCusto, lblPvAuGr, lblPvAuMetal, lblPvAuMO, lblPvAuOutros, lblPvAuVenda, lblPvAuMarkup As XRLabel
@@ -347,38 +358,38 @@ Public Class GerencialNovo
         y += ALT_LINHA
 
         Rotulo(y, S2A_ROT, S2A_LAR_ROT, "Cheques descontados")
-        lblEntCheques = Celula(y, S2A_VAL, S2A_LAR_VAL, FMT_N2)
+        lblEntCheques = Celula(y, S2A_VAL, S2A_LAR_VAL, FMT_DIN)
         lblPctCheques = Celula(y, S2A_PCT, S2A_LAR_PCT, FMT_PCT)
         y += ALT_LINHA
 
         Rotulo(y, S2A_ROT, S2A_LAR_ROT, "Cartões débito")
-        lblEntCartDeb = Celula(y, S2A_VAL, S2A_LAR_VAL, FMT_N2)
+        lblEntCartDeb = Celula(y, S2A_VAL, S2A_LAR_VAL, FMT_DIN)
         lblPctCartDeb = Celula(y, S2A_PCT, S2A_LAR_PCT, FMT_PCT)
         y += ALT_LINHA
 
         Rotulo(y, S2A_ROT, S2A_LAR_ROT, "Crédito à vista")
-        lblEntCredVista = Celula(y, S2A_VAL, S2A_LAR_VAL, FMT_N2)
+        lblEntCredVista = Celula(y, S2A_VAL, S2A_LAR_VAL, FMT_DIN)
         lblPctCredVista = Celula(y, S2A_PCT, S2A_LAR_PCT, FMT_PCT)
         y += ALT_LINHA
 
         Rotulo(y, S2A_ROT, S2A_LAR_ROT, "Crédito parcelado")
-        lblEntCredParc = Celula(y, S2A_VAL, S2A_LAR_VAL, FMT_N2)
+        lblEntCredParc = Celula(y, S2A_VAL, S2A_LAR_VAL, FMT_DIN)
         lblPctCredParc = Celula(y, S2A_PCT, S2A_LAR_PCT, FMT_PCT)
         y += ALT_LINHA
 
         Rotulo(y, S2A_ROT, S2A_LAR_ROT, "Dinheiro (cash)")
-        lblEntCash = Celula(y, S2A_VAL, S2A_LAR_VAL, FMT_N2)
+        lblEntCash = Celula(y, S2A_VAL, S2A_LAR_VAL, FMT_DIN)
         lblPctCash = Celula(y, S2A_PCT, S2A_LAR_PCT, FMT_PCT)
         y += ALT_LINHA
 
         ' Abreviado: "Transferências Bancárias" em Arial 8 mede ~37 mm e estoura os 36 mm da coluna.
         Rotulo(y, S2A_ROT, S2A_LAR_ROT, "Transferências banc.")
-        lblEntTransf = Celula(y, S2A_VAL, S2A_LAR_VAL, FMT_N2)
+        lblEntTransf = Celula(y, S2A_VAL, S2A_LAR_VAL, FMT_DIN)
         lblPctTransf = Celula(y, S2A_PCT, S2A_LAR_PCT, FMT_PCT)
         y += ALT_LINHA
 
         Rotulo(y, S2A_ROT, S2A_LAR_ROT, "TOTAL ENTRADAS", negrito:=True)
-        lblEntTotal = Celula(y, S2A_VAL, S2A_LAR_VAL, FMT_N2, negrito:=True)
+        lblEntTotal = Celula(y, S2A_VAL, S2A_LAR_VAL, FMT_DIN, negrito:=True)
         lblPctTotal = Celula(y, S2A_PCT, S2A_LAR_PCT, FMT_PCT, negrito:=True)
         Dim yFimA As Single = y + ALT_LINHA
 
@@ -389,16 +400,16 @@ Public Class GerencialNovo
         yB += ALT_LINHA
 
         Rotulo(yB, S2B_ROT, S2B_LAR_ROT, "Débitos C/C")
-        lblCCDebitos = Celula(yB, S2B_VAL, S2B_LAR_VAL, FMT_N2)
+        lblCCDebitos = Celula(yB, S2B_VAL, S2B_LAR_VAL, FMT_DIN)
         yB += ALT_LINHA
 
         Rotulo(yB, S2B_ROT, S2B_LAR_ROT, "Créditos C/C")
-        lblCCCreditos = Celula(yB, S2B_VAL, S2B_LAR_VAL, FMT_N2)
+        lblCCCreditos = Celula(yB, S2B_VAL, S2B_LAR_VAL, FMT_DIN)
         yB += ALT_LINHA
 
         ' "SALDO LÍQUIDO C/C" em negrito mede ~27,5 mm e não cabe nos 27 da coluna.
         Rotulo(yB, S2B_ROT, S2B_LAR_ROT, "SALDO LÍQUIDO", negrito:=True)
-        lblCCSaldo = Celula(yB, S2B_VAL, S2B_LAR_VAL, FMT_N2, negrito:=True)
+        lblCCSaldo = Celula(yB, S2B_VAL, S2B_LAR_VAL, FMT_DIN, negrito:=True)
         yB += ALT_LINHA
 
         ' --- Bloco C: formas de pagamento ---------------------------------------
@@ -416,8 +427,8 @@ Public Class GerencialNovo
 
         For i = 1 To _qtdFormasPagto
             Dim rot = Rotulo(yC, S2C_ROT, S2C_LAR_ROT, String.Empty)
-            Dim ven = Celula(yC, S2C_VEN, S2C_LAR_VEN, FMT_N2)
-            Dim con = Celula(yC, S2C_CON, S2C_LAR_CON, FMT_N2)
+            Dim ven = Celula(yC, S2C_VEN, S2C_LAR_VEN, FMT_DIN)
+            Dim con = Celula(yC, S2C_CON, S2C_LAR_CON, FMT_DIN)
             FormasPagto.Add(New XRLabel() {rot, ven, con})
             yC += ALT_LINHA
         Next
@@ -441,47 +452,49 @@ Public Class GerencialNovo
         ' Aqui o eixo é a peça ser encomenda (1TabPeças.Oficial) ou não.
         Rotulo(y, COL_A, LAR_A, "Loja (não encomenda)")
         lblVdLojaOper = Celula(y, COL_B, LAR_B, FMT_N0)
-        lblVdLojaVal = Celula(y, COL_C, LAR_C, FMT_N2)
-        lblVdLojaPct = Celula(y, COL_D, LAR_D, FMT_PCT)
-        lblVdLojaTkt = Celula(y, COL_E, LAR_E, FMT_N2)
+        lblVdLojaVal = Celula(y, COL_C, LAR_C, FMT_DIN)
+        ' Negrito: este % é sobre o TOTAL, enquanto o das linhas-filhas logo abaixo é
+        ' sobre o pai. Sem o destaque os quatro números parecem comparáveis e não são.
+        lblVdLojaPct = Celula(y, COL_D, LAR_D, FMT_PCT, negrito:=True)
+        lblVdLojaTkt = Celula(y, COL_E, LAR_E, FMT_DIN)
         y += ALT_LINHA
 
         Rotulo(y, COL_A, LAR_A, "Ouro (Au)", recuo:=80.0F)
         lblVdLojaAuOper = Celula(y, COL_B, LAR_B, FMT_N0)
-        lblVdLojaAuVal = Celula(y, COL_C, LAR_C, FMT_N2)
+        lblVdLojaAuVal = Celula(y, COL_C, LAR_C, FMT_DIN)
         lblVdLojaAuPct = Celula(y, COL_D, LAR_D, FMT_PCT)
         y += ALT_LINHA
 
         Rotulo(y, COL_A, LAR_A, "Prata (Ag)", recuo:=80.0F)
         lblVdLojaAgOper = Celula(y, COL_B, LAR_B, FMT_N0)
-        lblVdLojaAgVal = Celula(y, COL_C, LAR_C, FMT_N2)
+        lblVdLojaAgVal = Celula(y, COL_C, LAR_C, FMT_DIN)
         lblVdLojaAgPct = Celula(y, COL_D, LAR_D, FMT_PCT)
         y += ALT_LINHA
 
         Rotulo(y, COL_A, LAR_A, "Encomendas")
         lblVdEncOper = Celula(y, COL_B, LAR_B, FMT_N0)
-        lblVdEncVal = Celula(y, COL_C, LAR_C, FMT_N2)
-        lblVdEncPct = Celula(y, COL_D, LAR_D, FMT_PCT)
-        lblVdEncTkt = Celula(y, COL_E, LAR_E, FMT_N2)
+        lblVdEncVal = Celula(y, COL_C, LAR_C, FMT_DIN)
+        lblVdEncPct = Celula(y, COL_D, LAR_D, FMT_PCT, negrito:=True)   ' idem lblVdLojaPct
+        lblVdEncTkt = Celula(y, COL_E, LAR_E, FMT_DIN)
         y += ALT_LINHA
 
         Rotulo(y, COL_A, LAR_A, "Ouro (Au)", recuo:=80.0F)
         lblVdEncAuOper = Celula(y, COL_B, LAR_B, FMT_N0)
-        lblVdEncAuVal = Celula(y, COL_C, LAR_C, FMT_N2)
+        lblVdEncAuVal = Celula(y, COL_C, LAR_C, FMT_DIN)
         lblVdEncAuPct = Celula(y, COL_D, LAR_D, FMT_PCT)
         y += ALT_LINHA
 
         Rotulo(y, COL_A, LAR_A, "Prata (Ag)", recuo:=80.0F)
         lblVdEncAgOper = Celula(y, COL_B, LAR_B, FMT_N0)
-        lblVdEncAgVal = Celula(y, COL_C, LAR_C, FMT_N2)
+        lblVdEncAgVal = Celula(y, COL_C, LAR_C, FMT_DIN)
         lblVdEncAgPct = Celula(y, COL_D, LAR_D, FMT_PCT)
         y += ALT_LINHA
 
         Rotulo(y, COL_A, LAR_A, "TOTAL", negrito:=True)
         lblVdTotOper = Celula(y, COL_B, LAR_B, FMT_N0, negrito:=True)
-        lblVdTotVal = Celula(y, COL_C, LAR_C, FMT_N2, negrito:=True)
+        lblVdTotVal = Celula(y, COL_C, LAR_C, FMT_DIN, negrito:=True)
         lblVdTotPct = Celula(y, COL_D, LAR_D, FMT_PCT, negrito:=True)
-        lblVdTotTkt = Celula(y, COL_E, LAR_E, FMT_N2, negrito:=True)
+        lblVdTotTkt = Celula(y, COL_E, LAR_E, FMT_DIN, negrito:=True)
         FundoTotal(y)
 
         Return y + ALT_LINHA + GAP
@@ -500,32 +513,62 @@ Public Class GerencialNovo
 
         Rotulo(y, COL_A, LAR_A, "Consertos")
         lblCsOper = Celula(y, COL_B, LAR_B, FMT_N0)
-        lblCsVal = Celula(y, COL_C, LAR_C, FMT_N2)
-        lblCsCusto = Celula(y, COL_D, LAR_D, FMT_N2)
-        lblCsTkt = Celula(y, COL_E, LAR_E, FMT_N2)
+        lblCsVal = Celula(y, COL_C, LAR_C, FMT_DIN)
+        lblCsCusto = Celula(y, COL_D, LAR_D, FMT_DIN)
+        lblCsTkt = Celula(y, COL_E, LAR_E, FMT_DIN)
         y += ALT_LINHA + GAP_CURTO
 
         Rotulo(y, COL_A, LAR_A + LAR_B, "TOTAL VENDAS + CONSERTOS", negrito:=True)
-        lblTotVendasConsertos = Celula(y, COL_C, LAR_C, FMT_N2, negrito:=True)
+        lblTotVendasConsertos = Celula(y, COL_C, LAR_C, FMT_DIN, negrito:=True)
         FundoTotal(y)
 
         Return y + ALT_LINHA + GAP
     End Function
 
+    ''' <summary>
+    ''' Dois blocos com cabeçalhos DIFERENTES: a comissão da loja se reparte por família
+    ''' da peça, a da oficina por canal. Por isso há duas linhas de cabeçalho e não uma —
+    ''' um cabeçalho comum teria de escrever "Au / Venda" em cima da mesma coluna.
+    '''
+    ''' Os três TOTAIS ficam todos em COL_G, um debaixo do outro, que é o que torna
+    ''' visível que o de baixo é a soma dos dois de cima.
+    ''' </summary>
     Private Function MontarSecao5Comissoes(y As Single) As Single
         Faixa(y, "5. COMISSÕES")
         y += ALT_FAIXA
 
+        Cabecalho(y, COL_A, LAR_A, String.Empty, TextAlignment.MiddleLeft)
+        Cabecalho(y, COL_C, LAR_C, "Ouro (Au)")
+        Cabecalho(y, COL_D, LAR_D, "Prata (Ag)")
+        If _mostrarBoutique Then Cabecalho(y, COL_E, LAR_E, "Boutique")
+        Cabecalho(y, COL_F, LAR_F, "Consertos")
+        Cabecalho(y, COL_G, LAR_G, "TOTAL")
+        y += ALT_LINHA
+
         Rotulo(y, COL_A, LAR_A, "Loja")
-        lblComLoja = Celula(y, COL_C, LAR_C, FMT_N2)
+        lblComLojaAu = Celula(y, COL_C, LAR_C, FMT_DIN)
+        lblComLojaAg = Celula(y, COL_D, LAR_D, FMT_DIN)
+        If _mostrarBoutique Then lblComLojaBou = Celula(y, COL_E, LAR_E, FMT_DIN)
+        lblComLojaCons = Celula(y, COL_F, LAR_F, FMT_DIN)
+        lblComLojaTot = Celula(y, COL_G, LAR_G, FMT_DIN, negrito:=True)
+        y += ALT_LINHA
+
+        Cabecalho(y, COL_A, LAR_A, String.Empty, TextAlignment.MiddleLeft)
+        Cabecalho(y, COL_C, LAR_C, "Venda")
+        Cabecalho(y, COL_D, LAR_D, "Encomenda")
+        Cabecalho(y, COL_F, LAR_F, "Consertos")
+        Cabecalho(y, COL_G, LAR_G, "TOTAL")
         y += ALT_LINHA
 
         Rotulo(y, COL_A, LAR_A, "Oficina")
-        lblComOficina = Celula(y, COL_C, LAR_C, FMT_N2)
+        lblComOfiVenda = Celula(y, COL_C, LAR_C, FMT_DIN)
+        lblComOfiEnc = Celula(y, COL_D, LAR_D, FMT_DIN)
+        lblComOfiCons = Celula(y, COL_F, LAR_F, FMT_DIN)
+        lblComOfiTot = Celula(y, COL_G, LAR_G, FMT_DIN, negrito:=True)
         y += ALT_LINHA
 
         Rotulo(y, COL_A, LAR_A, "TOTAL COMISSÕES", negrito:=True)
-        lblComTotal = Celula(y, COL_C, LAR_C, FMT_N2, negrito:=True)
+        lblComTotal = Celula(y, COL_G, LAR_G, FMT_DIN, negrito:=True)
         FundoTotal(y)
 
         Return y + ALT_LINHA + GAP
@@ -549,47 +592,47 @@ Public Class GerencialNovo
 
         Rotulo(y, COL_A, LAR_A, "Ouro 18K (Au)")
         lblPvAuQtd = Celula(y, COL_B, LAR_B, FMT_N0)
-        lblPvAuCusto = Celula(y, COL_C, LAR_C, FMT_N2)
+        lblPvAuCusto = Celula(y, COL_C, LAR_C, FMT_DIN)
         lblPvAuGr = Celula(y, COL_D, LAR_D, FMT_GR)
-        lblPvAuMetal = Celula(y, COL_E, LAR_E, FMT_N2)
-        lblPvAuMO = Celula(y, COL_F, LAR_F, FMT_N2)
-        lblPvAuOutros = Celula(y, COL_G, LAR_G, FMT_N2)
-        lblPvAuVenda = Celula(y, COL_H, LAR_H, FMT_N2)
+        lblPvAuMetal = Celula(y, COL_E, LAR_E, FMT_DIN)
+        lblPvAuMO = Celula(y, COL_F, LAR_F, FMT_DIN)
+        lblPvAuOutros = Celula(y, COL_G, LAR_G, FMT_DIN)
+        lblPvAuVenda = Celula(y, COL_H, LAR_H, FMT_DIN)
         lblPvAuMarkup = Celula(y, COL_I, LAR_I, FMT_MULT)
         y += ALT_LINHA
 
         Rotulo(y, COL_A, LAR_A, "Prata 925 (Ag)")
         lblPvAgQtd = Celula(y, COL_B, LAR_B, FMT_N0)
-        lblPvAgCusto = Celula(y, COL_C, LAR_C, FMT_N2)
+        lblPvAgCusto = Celula(y, COL_C, LAR_C, FMT_DIN)
         lblPvAgGr = Celula(y, COL_D, LAR_D, FMT_GR)
-        lblPvAgMetal = Celula(y, COL_E, LAR_E, FMT_N2)
-        lblPvAgMO = Celula(y, COL_F, LAR_F, FMT_N2)
-        lblPvAgOutros = Celula(y, COL_G, LAR_G, FMT_N2)
-        lblPvAgVenda = Celula(y, COL_H, LAR_H, FMT_N2)
+        lblPvAgMetal = Celula(y, COL_E, LAR_E, FMT_DIN)
+        lblPvAgMO = Celula(y, COL_F, LAR_F, FMT_DIN)
+        lblPvAgOutros = Celula(y, COL_G, LAR_G, FMT_DIN)
+        lblPvAgVenda = Celula(y, COL_H, LAR_H, FMT_DIN)
         lblPvAgMarkup = Celula(y, COL_I, LAR_I, FMT_MULT)
         y += ALT_LINHA
 
         If _mostrarBoutique Then
             Rotulo(y, COL_A, LAR_A, "Boutique")
             lblPvBouQtd = Celula(y, COL_B, LAR_B, FMT_N0)
-            lblPvBouCusto = Celula(y, COL_C, LAR_C, FMT_N2)
+            lblPvBouCusto = Celula(y, COL_C, LAR_C, FMT_DIN)
             lblPvBouGr = Celula(y, COL_D, LAR_D, FMT_GR)
-            lblPvBouMetal = Celula(y, COL_E, LAR_E, FMT_N2)
-            lblPvBouMO = Celula(y, COL_F, LAR_F, FMT_N2)
-            lblPvBouOutros = Celula(y, COL_G, LAR_G, FMT_N2)
-            lblPvBouVenda = Celula(y, COL_H, LAR_H, FMT_N2)
+            lblPvBouMetal = Celula(y, COL_E, LAR_E, FMT_DIN)
+            lblPvBouMO = Celula(y, COL_F, LAR_F, FMT_DIN)
+            lblPvBouOutros = Celula(y, COL_G, LAR_G, FMT_DIN)
+            lblPvBouVenda = Celula(y, COL_H, LAR_H, FMT_DIN)
             lblPvBouMarkup = Celula(y, COL_I, LAR_I, FMT_MULT)
             y += ALT_LINHA
         End If
 
         Rotulo(y, COL_A, LAR_A, "TOTAL PEÇAS VENDIDAS", negrito:=True)
         lblPvTotQtd = Celula(y, COL_B, LAR_B, FMT_N0, negrito:=True)
-        lblPvTotCusto = Celula(y, COL_C, LAR_C, FMT_N2, negrito:=True)
+        lblPvTotCusto = Celula(y, COL_C, LAR_C, FMT_DIN, negrito:=True)
         lblPvTotGr = Celula(y, COL_D, LAR_D, FMT_GR, negrito:=True)
-        lblPvTotMetal = Celula(y, COL_E, LAR_E, FMT_N2, negrito:=True)
-        lblPvTotMO = Celula(y, COL_F, LAR_F, FMT_N2, negrito:=True)
-        lblPvTotOutros = Celula(y, COL_G, LAR_G, FMT_N2, negrito:=True)
-        lblPvTotVenda = Celula(y, COL_H, LAR_H, FMT_N2, negrito:=True)
+        lblPvTotMetal = Celula(y, COL_E, LAR_E, FMT_DIN, negrito:=True)
+        lblPvTotMO = Celula(y, COL_F, LAR_F, FMT_DIN, negrito:=True)
+        lblPvTotOutros = Celula(y, COL_G, LAR_G, FMT_DIN, negrito:=True)
+        lblPvTotVenda = Celula(y, COL_H, LAR_H, FMT_DIN, negrito:=True)
         lblPvTotMarkup = Celula(y, COL_I, LAR_I, FMT_MULT, negrito:=True)
         FundoTotal(y)
 
@@ -611,42 +654,42 @@ Public Class GerencialNovo
 
         Rotulo(y, COL_A, LAR_A, "F.P. Ouro")
         lblPrFpAuQtd = Celula(y, COL_B, LAR_B, FMT_N0)
-        lblPrFpAuCusto = Celula(y, COL_C, LAR_C, FMT_N2)
+        lblPrFpAuCusto = Celula(y, COL_C, LAR_C, FMT_DIN)
         lblPrFpAuGr = Celula(y, COL_D, LAR_D, FMT_GR)
-        lblPrFpAuMetal = Celula(y, COL_E, LAR_E, FMT_N2)
-        lblPrFpAuValor = Celula(y, COL_F, LAR_F, FMT_N2)
-        lblPrFpAuMO = Celula(y, COL_G, LAR_G, FMT_N2)
-        lblPrFpAuLiq = Celula(y, COL_H, LAR_H, FMT_N2)
+        lblPrFpAuMetal = Celula(y, COL_E, LAR_E, FMT_DIN)
+        lblPrFpAuValor = Celula(y, COL_F, LAR_F, FMT_DIN)
+        lblPrFpAuMO = Celula(y, COL_G, LAR_G, FMT_DIN)
+        lblPrFpAuLiq = Celula(y, COL_H, LAR_H, FMT_DIN)
         y += ALT_LINHA
 
         Rotulo(y, COL_A, LAR_A, "F.P. Prata")
         lblPrFpAgQtd = Celula(y, COL_B, LAR_B, FMT_N0)
-        lblPrFpAgCusto = Celula(y, COL_C, LAR_C, FMT_N2)
+        lblPrFpAgCusto = Celula(y, COL_C, LAR_C, FMT_DIN)
         lblPrFpAgGr = Celula(y, COL_D, LAR_D, FMT_GR)
-        lblPrFpAgMetal = Celula(y, COL_E, LAR_E, FMT_N2)
-        lblPrFpAgValor = Celula(y, COL_F, LAR_F, FMT_N2)
-        lblPrFpAgMO = Celula(y, COL_G, LAR_G, FMT_N2)
-        lblPrFpAgLiq = Celula(y, COL_H, LAR_H, FMT_N2)
+        lblPrFpAgMetal = Celula(y, COL_E, LAR_E, FMT_DIN)
+        lblPrFpAgValor = Celula(y, COL_F, LAR_F, FMT_DIN)
+        lblPrFpAgMO = Celula(y, COL_G, LAR_G, FMT_DIN)
+        lblPrFpAgLiq = Celula(y, COL_H, LAR_H, FMT_DIN)
         y += ALT_LINHA
 
         Rotulo(y, COL_A, LAR_A, "F.F.")
         lblPrFfQtd = Celula(y, COL_B, LAR_B, FMT_N0)
-        lblPrFfCusto = Celula(y, COL_C, LAR_C, FMT_N2)
+        lblPrFfCusto = Celula(y, COL_C, LAR_C, FMT_DIN)
         lblPrFfGr = Celula(y, COL_D, LAR_D, FMT_GR)
-        lblPrFfMetal = Celula(y, COL_E, LAR_E, FMT_N2)
-        lblPrFfValor = Celula(y, COL_F, LAR_F, FMT_N2)
-        lblPrFfMO = Celula(y, COL_G, LAR_G, FMT_N2)
-        lblPrFfLiq = Celula(y, COL_H, LAR_H, FMT_N2)
+        lblPrFfMetal = Celula(y, COL_E, LAR_E, FMT_DIN)
+        lblPrFfValor = Celula(y, COL_F, LAR_F, FMT_DIN)
+        lblPrFfMO = Celula(y, COL_G, LAR_G, FMT_DIN)
+        lblPrFfLiq = Celula(y, COL_H, LAR_H, FMT_DIN)
         y += ALT_LINHA
 
         Rotulo(y, COL_A, LAR_A, "TOTAL REGISTRADAS", negrito:=True)
         lblPrTotQtd = Celula(y, COL_B, LAR_B, FMT_N0, negrito:=True)
-        lblPrTotCusto = Celula(y, COL_C, LAR_C, FMT_N2, negrito:=True)
+        lblPrTotCusto = Celula(y, COL_C, LAR_C, FMT_DIN, negrito:=True)
         lblPrTotGr = Celula(y, COL_D, LAR_D, FMT_GR, negrito:=True)
-        lblPrTotMetal = Celula(y, COL_E, LAR_E, FMT_N2, negrito:=True)
-        lblPrTotValor = Celula(y, COL_F, LAR_F, FMT_N2, negrito:=True)
-        lblPrTotMO = Celula(y, COL_G, LAR_G, FMT_N2, negrito:=True)
-        lblPrTotLiq = Celula(y, COL_H, LAR_H, FMT_N2, negrito:=True)
+        lblPrTotMetal = Celula(y, COL_E, LAR_E, FMT_DIN, negrito:=True)
+        lblPrTotValor = Celula(y, COL_F, LAR_F, FMT_DIN, negrito:=True)
+        lblPrTotMO = Celula(y, COL_G, LAR_G, FMT_DIN, negrito:=True)
+        lblPrTotLiq = Celula(y, COL_H, LAR_H, FMT_DIN, negrito:=True)
         FundoTotal(y)
 
         Return y + ALT_LINHA + GAP
@@ -664,8 +707,8 @@ Public Class GerencialNovo
 
         Rotulo(y, COL_A, LAR_A, "Saídas")
         lblSaiQtd = Celula(y, COL_B, LAR_B, FMT_N0)
-        lblSaiCusto = Celula(y, COL_C, LAR_C, FMT_N2)
-        lblSaiValor = Celula(y, COL_D, LAR_D, FMT_N2)
+        lblSaiCusto = Celula(y, COL_C, LAR_C, FMT_DIN)
+        lblSaiValor = Celula(y, COL_D, LAR_D, FMT_DIN)
 
         Return y + ALT_LINHA + GAP
     End Function
@@ -697,31 +740,31 @@ Public Class GerencialNovo
         Rotulo(y, COL_A, LAR_A, "Ouro (Au)")
         lblEstAuQtd = Celula(y, S10_QTD, S10_LAR_QTD, FMT_N0)
         lblEstAuPeso = Celula(y, S10_PESO, S10_LAR_PESO, FMT_N2)
-        lblEstAuCusto = Celula(y, S10_CUSTO, S10_LAR_CUSTO, FMT_N2)
-        lblEstAuVenda = Celula(y, S10_VENDA, S10_LAR_VENDA, FMT_N2)
+        lblEstAuCusto = Celula(y, S10_CUSTO, S10_LAR_CUSTO, FMT_DIN)
+        lblEstAuVenda = Celula(y, S10_VENDA, S10_LAR_VENDA, FMT_DIN)
         y += ALT_LINHA
 
         Rotulo(y, COL_A, LAR_A, "Prata (Ag)")
         lblEstAgQtd = Celula(y, S10_QTD, S10_LAR_QTD, FMT_N0)
         lblEstAgPeso = Celula(y, S10_PESO, S10_LAR_PESO, FMT_N2)
-        lblEstAgCusto = Celula(y, S10_CUSTO, S10_LAR_CUSTO, FMT_N2)
-        lblEstAgVenda = Celula(y, S10_VENDA, S10_LAR_VENDA, FMT_N2)
+        lblEstAgCusto = Celula(y, S10_CUSTO, S10_LAR_CUSTO, FMT_DIN)
+        lblEstAgVenda = Celula(y, S10_VENDA, S10_LAR_VENDA, FMT_DIN)
         y += ALT_LINHA
 
         If _mostrarBoutique Then
             Rotulo(y, COL_A, LAR_A, "Boutique")
             lblEstBouQtd = Celula(y, S10_QTD, S10_LAR_QTD, FMT_N0)
             lblEstBouPeso = Celula(y, S10_PESO, S10_LAR_PESO, FMT_N2)
-            lblEstBouCusto = Celula(y, S10_CUSTO, S10_LAR_CUSTO, FMT_N2)
-            lblEstBouVenda = Celula(y, S10_VENDA, S10_LAR_VENDA, FMT_N2)
+            lblEstBouCusto = Celula(y, S10_CUSTO, S10_LAR_CUSTO, FMT_DIN)
+            lblEstBouVenda = Celula(y, S10_VENDA, S10_LAR_VENDA, FMT_DIN)
             y += ALT_LINHA
         End If
 
         Rotulo(y, COL_A, LAR_A, "TOTAL", negrito:=True)
         lblEstTotQtd = Celula(y, S10_QTD, S10_LAR_QTD, FMT_N0, negrito:=True)
         lblEstTotPeso = Celula(y, S10_PESO, S10_LAR_PESO, FMT_N2, negrito:=True)
-        lblEstTotCusto = Celula(y, S10_CUSTO, S10_LAR_CUSTO, FMT_N2, negrito:=True)
-        lblEstTotVenda = Celula(y, S10_VENDA, S10_LAR_VENDA, FMT_N2, negrito:=True)
+        lblEstTotCusto = Celula(y, S10_CUSTO, S10_LAR_CUSTO, FMT_DIN, negrito:=True)
+        lblEstTotVenda = Celula(y, S10_VENDA, S10_LAR_VENDA, FMT_DIN, negrito:=True)
         FundoTotal(y)
 
         Return y + ALT_LINHA

@@ -189,9 +189,22 @@ Public Class GerencialNovoBase
         V(rpt.lblTotVendasConsertos, d.Vend.Total.Valor + d.Cons.Valor)
     End Sub
 
+    ''' <summary>
+    ''' lblComLojaBou só existe quando o layout foi montado com a coluna Boutique; o
+    ''' helper V() aceita Nothing, então não precisa de If aqui.
+    ''' </summary>
     Private Shared Sub PreencherComissoes(rpt As GerencialNovo, d As GerencialNovoDados.Dados)
-        V(rpt.lblComLoja, d.Com.Loja)
-        V(rpt.lblComOficina, d.Com.Oficina)
+        V(rpt.lblComLojaAu, d.Com.LojaAu)
+        V(rpt.lblComLojaAg, d.Com.LojaAg)
+        V(rpt.lblComLojaBou, d.Com.LojaBou)
+        V(rpt.lblComLojaCons, d.Com.LojaConsertos)
+        V(rpt.lblComLojaTot, d.Com.TotalLoja)
+
+        V(rpt.lblComOfiVenda, d.Com.OficinaVenda)
+        V(rpt.lblComOfiEnc, d.Com.OficinaEncomenda)
+        V(rpt.lblComOfiCons, d.Com.OficinaConsertos)
+        V(rpt.lblComOfiTot, d.Com.TotalOficina)
+
         V(rpt.lblComTotal, d.Com.Total)
     End Sub
 

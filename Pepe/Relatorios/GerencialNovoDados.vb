@@ -60,11 +60,35 @@ Public Class GerencialNovoDados
         Public Valor, Custo As Double
     End Class
 
+    ''' <summary>
+    ''' Duas naturezas distintas, e não duas fatias da mesma coisa: "Loja" é a comissão
+    ''' paga sobre o que foi vendido/consertado (1TabPeças e CONSERTOS têm o campo);
+    ''' "Oficina" é o que a bancada ganhou pelo trabalho — mão de obra INTERNA das peças
+    ''' vendidas e custo do conserto.
+    '''
+    ''' Por isso o TOTAL daqui é MAIOR que o txtCom do relatório antigo, que soma só as
+    ''' duas comissões (Loja.Total do jeito de baixo + LojaConsertos). Divergência
+    ''' intencional, não bug.
+    ''' </summary>
     Public Class Comissoes
-        Public Loja, Oficina As Double
+        Public LojaAu, LojaAg, LojaBou, LojaConsertos As Double
+        Public OficinaVenda, OficinaEncomenda, OficinaConsertos As Double
+
+        Public ReadOnly Property TotalLoja As Double
+            Get
+                Return LojaAu + LojaAg + LojaBou + LojaConsertos
+            End Get
+        End Property
+
+        Public ReadOnly Property TotalOficina As Double
+            Get
+                Return OficinaVenda + OficinaEncomenda + OficinaConsertos
+            End Get
+        End Property
+
         Public ReadOnly Property Total As Double
             Get
-                Return Loja + Oficina
+                Return TotalLoja + TotalOficina
             End Get
         End Property
     End Class
@@ -139,6 +163,11 @@ Public Class GerencialNovoDados
         Public Property MO As Double?
         Public Property Outras As Double?
         Public Property PrecoVenda As Double?
+    End Class
+
+    Private Class RowComissao
+        Public Property Chave As String
+        Public Property Valor As Double?
     End Class
 
     Private Class RowContagem
@@ -323,14 +352,48 @@ Public Class GerencialNovoDados
     End Sub
 
     ''' <summary>
-    ''' O relatório antigo soma as duas num rótulo só (txtCom, GerencialBase.vb:362-372).
-    ''' Aqui ficam separadas: oficina = consertos, loja = vendas.
+    ''' O relatório antigo soma tudo num rótulo só (txtCom, GerencialBase.vb:362-372).
+    ''' Aqui a comissão da loja é quebrada por família da peça e a da oficina por canal.
+    '''
+    ''' Lê [VENDAS DET] direto, e não VW_RG2_PECAS_VENDIDAS: aquela view faz LEFT JOIN
+    ''' METAIS, que não serve para nada aqui e ainda é um vetor de duplicação de linha —
+    ''' o que dobraria a comissão. O total desta consulta tem que bater com
+    ''' SUM(VI_VENDAS.Comissão), que é o que o relatório antigo usa.
+    '''
+    ''' DEPENDE DA ORDEM: usa r.Cons.Custo, então CarregarConsertos tem que rodar antes
+    ''' (é o que Carregar faz).
     ''' </summary>
     Private Shared Sub CarregarComissoes(dc As lqGerencialDataContext, dt1 As Date, dt2 As Date, r As Dados)
-        r.Com.Oficina = D((From t In dc.GetTable(Of VI_CONSERTOS)()
-                           Where t.DT >= dt1 AndAlso t.DT <= dt2 Select t.Comis).Sum())
-        r.Com.Loja = D((From t In dc.GetTable(Of VI_VENDAS)()
-                        Where t.DataVenda >= dt1 AndAlso t.DataVenda <= dt2 Select t.Comissão).Sum())
+        Const SQL As String =
+            "WITH b AS (SELECT CASE WHEN p.[Família] IN ('Ou','Ag') THEN p.[Família] ELSE 'Bou' END AS Familia, " &
+            "                  CASE WHEN ISNULL(p.Oficial, 0) = 1 THEN 'ENC' ELSE 'LOJA' END        AS Canal, " &
+            "                  CAST(ISNULL(d.[Comissão], 0) AS float) AS Comissao, " &
+            "                  CAST(ISNULL(p.MOInt, 0)      AS float) AS MOInt " &
+            "           FROM       dbo.[VENDAS DET] d " &
+            "           INNER JOIN dbo.VENDAS       v ON v.Id       = d.Venda " &
+            "           INNER JOIN dbo.[1TabPeças]  p ON p.[IDPeça] = d.[Peça] " &
+            "           WHERE v.DataVenda >= {0} AND v.DataVenda <= {1}) " &
+            "          SELECT 'LOJA_' + Familia AS Chave, SUM(Comissao) AS Valor FROM b GROUP BY Familia " &
+            "UNION ALL SELECT 'OFI_'  + Canal,            SUM(MOInt)             FROM b GROUP BY Canal"
+
+        For Each linha In dc.ExecuteQuery(Of RowComissao)(SQL, dt1, dt2)
+            Select Case linha.Chave
+                Case "LOJA_Ou" : r.Com.LojaAu = D(linha.Valor)
+                Case "LOJA_Ag" : r.Com.LojaAg = D(linha.Valor)
+                Case "LOJA_Bou" : r.Com.LojaBou = D(linha.Valor)
+                Case "OFI_LOJA" : r.Com.OficinaVenda = D(linha.Valor)
+                Case "OFI_ENC" : r.Com.OficinaEncomenda = D(linha.Valor)
+            End Select
+        Next
+
+        ' Peça de boutique com comissão sem a coluna Boutique visível esconderia o valor
+        ' e o TOTAL da linha Loja não fecharia com as parcelas mostradas.
+        If r.Com.LojaBou <> 0 Then r.TemBoutique = True
+
+        r.Com.LojaConsertos = D((From t In dc.GetTable(Of VI_CONSERTOS)()
+                                 Where t.DT >= dt1 AndAlso t.DT <= dt2 Select t.Comis).Sum())
+        ' Mesmo número da coluna "Custo" da seção 4: é o que a bancada recebeu pelo conserto.
+        r.Com.OficinaConsertos = r.Cons.Custo
     End Sub
 
 #End Region

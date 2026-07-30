@@ -128,6 +128,8 @@ Module VerificaLayout
                 Dim valor As Double
                 If fmt.Contains("p2") Then
                     valor = 1.0R                  ' 100,00%
+                ElseIf fmt.Contains("#,##0") Then
+                    valor = 9999999.0R            ' 9.999.999 -- dinheiro (FMT_DIN)
                 ElseIf fmt.Contains("n0") Then
                     valor = 99999.0R              ' 99.999 peças
                 ElseIf fmt.Contains("x") Then
