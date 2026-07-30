@@ -40,35 +40,44 @@ Public Class GerencialNovoBase
         Dim dt1 As Date = ConvertToSafeDate(txtData1.Text, Date.MinValue)
         Dim dt2 As Date = ConvertToSafeDate(txtData2.Text, Date.MaxValue)
 
-        Dim d As GerencialNovoDados.Dados
+        ' A carga e a montagem rodam na thread da UI, então a janela fica sem repintar
+        ' durante todo o processo. Sem o cursor de espera isso se lê como travamento,
+        ' não como "aguarde" — e a carga já chegou a demorar dezenas de segundos.
+        Dim cursorAnterior = Me.Cursor
+        Me.Cursor = Cursors.WaitCursor
         Try
-            d = GerencialNovoDados.Carregar(dt1, dt2)
-        Catch ex As Exception
-            MsgBox("Erro ao carregar os dados do relatório:" & vbCrLf & vbCrLf & ex.Message,
-                   MsgBoxStyle.Critical, "Relatório Gerencial")
-            Exit Sub
+            Dim d As GerencialNovoDados.Dados
+            Try
+                d = GerencialNovoDados.Carregar(dt1, dt2)
+            Catch ex As Exception
+                MsgBox("Erro ao carregar os dados do relatório:" & vbCrLf & vbCrLf & ex.Message,
+                       MsgBoxStyle.Critical, "Relatório Gerencial")
+                Exit Sub
+            End Try
+
+            Dim rpt As New GerencialNovo()
+            rpt.MontarLayout(d.TemBoutique, d.FormasPagto.Count)
+
+            rpt.lblPeriodo.Text = "Período: " & txtData1.Text & " a " & txtData2.Text
+
+            PreencherCotacoes(rpt, d)
+            PreencherEntradas(rpt, d)
+            PreencherVendas(rpt, d)
+            PreencherConsertos(rpt, d)
+            PreencherComissoes(rpt, d)
+            PreencherPecasVendidas(rpt, d)
+            PreencherPecasRegistradas(rpt, d)
+            PreencherSaidasEClientes(rpt, d)
+            PreencherEstoque(rpt, d)
+
+            ' Mesma sequência de GerencialBase.vb:691-693, que é a que funciona:
+            ' DocumentSource antes de CreateDocument.
+            Me.DocumentViewer1.DocumentSource = rpt
+            Me.DocumentViewer1.Visible = True
+            rpt.CreateDocument(False)
+        Finally
+            Me.Cursor = cursorAnterior
         End Try
-
-        Dim rpt As New GerencialNovo()
-        rpt.MontarLayout(d.TemBoutique, d.FormasPagto.Count)
-
-        rpt.lblPeriodo.Text = "Período: " & txtData1.Text & " a " & txtData2.Text
-
-        PreencherCotacoes(rpt, d)
-        PreencherEntradas(rpt, d)
-        PreencherVendas(rpt, d)
-        PreencherConsertos(rpt, d)
-        PreencherComissoes(rpt, d)
-        PreencherPecasVendidas(rpt, d)
-        PreencherPecasRegistradas(rpt, d)
-        PreencherSaidasEClientes(rpt, d)
-        PreencherEstoque(rpt, d)
-
-        ' Mesma sequência de GerencialBase.vb:691-693, que é a que funciona:
-        ' DocumentSource antes de CreateDocument.
-        Me.DocumentViewer1.DocumentSource = rpt
-        Me.DocumentViewer1.Visible = True
-        rpt.CreateDocument(False)
     End Sub
 
 #Region "Helpers de preenchimento"

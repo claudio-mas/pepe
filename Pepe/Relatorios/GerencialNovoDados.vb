@@ -190,24 +190,53 @@ Public Class GerencialNovoDados
         Return If(v.HasValue, CDbl(v.Value), 0.0R)
     End Function
 
-    ''' <summary>Carrega tudo o que o relatório precisa para o período informado.</summary>
+    ''' <summary>
+    ''' Teto de tempo por comando. NÃO é 0 (sem limite) como no resto do sistema
+    ''' (modConn.vb): aqui a carga roda na thread da UI, e sem limite um travamento no
+    ''' servidor congela a janela para sempre, sem mensagem e sem saída. 120s é folgado
+    ''' para uma carga que leva ~1s com o banco quente, e devolve um erro tratável.
+    ''' </summary>
+    Private Const TIMEOUT_SEG As Integer = 120
+
+    ''' <summary>
+    ''' Carrega tudo o que o relatório precisa para o período informado.
+    '''
+    ''' A conexão é aberta UMA vez para as ~26 consultas. Sem isso o LINQ to SQL abre e
+    ''' fecha por consulta, e como o BDTorras já esteve com AUTO_CLOSE ligado, cada
+    ''' fechamento desligava o banco: a consulta seguinte pagava reabertura, recovery e
+    ''' recompilação de plano. Medido, era a diferença entre 67s e 1s na primeira
+    ''' abertura do relatório. O AUTO_CLOSE foi desligado em 2026-07-30, mas manter uma
+    ''' conexão só continua certo — evita 25 handshakes e protege se alguém religar.
+    ''' </summary>
     Public Shared Function Carregar(dt1 As Date, dt2 As Date) As Dados
         Dim r As New Dados()
-        Dim dc As New lqGerencialDataContext()
-        dc.CommandTimeout = 0 ' sem limite, mesma convenção de modConn.vb (fExecutarText/fExecutarSP)
 
-        CarregarCotacao(dc, dt2, r)
-        CarregarEntradas(dc, dt1, dt2, r)
-        CarregarContaCorrente(dc, r)
-        CarregarVendas(dc, dt1, dt2, r)
-        CarregarConsertos(dc, dt1, dt2, r)
-        CarregarComissoes(dc, dt1, dt2, r)
-        CarregarPecasVendidas(dc, dt1, dt2, r)
-        CarregarPecasRegistradas(dc, dt1, dt2, r)
-        CarregarSaidas(dc, dt1, dt2, r)
-        CarregarClientes(dc, dt1, dt2, r)
-        CarregarEstoque(dc, r)
-        CarregarFormasPagto(dc, dt1, dt2, r)
+        Using dc As New lqGerencialDataContext()
+            dc.CommandTimeout = TIMEOUT_SEG
+
+            Dim abriu As Boolean = False
+            Try
+                If dc.Connection.State <> ConnectionState.Open Then
+                    dc.Connection.Open()
+                    abriu = True
+                End If
+
+                CarregarCotacao(dc, dt2, r)
+                CarregarEntradas(dc, dt1, dt2, r)
+                CarregarContaCorrente(dc, r)
+                CarregarVendas(dc, dt1, dt2, r)
+                CarregarConsertos(dc, dt1, dt2, r)
+                CarregarComissoes(dc, dt1, dt2, r)
+                CarregarPecasVendidas(dc, dt1, dt2, r)
+                CarregarPecasRegistradas(dc, dt1, dt2, r)
+                CarregarSaidas(dc, dt1, dt2, r)
+                CarregarClientes(dc, dt1, dt2, r)
+                CarregarEstoque(dc, r)
+                CarregarFormasPagto(dc, dt1, dt2, r)
+            Finally
+                If abriu AndAlso dc.Connection.State = ConnectionState.Open Then dc.Connection.Close()
+            End Try
+        End Using
 
         Return r
     End Function
@@ -554,7 +583,7 @@ Public Class GerencialNovoDados
             Using cmd = cn.CreateCommand()
                 cmd.CommandType = CommandType.StoredProcedure
                 cmd.CommandText = proc
-                cmd.CommandTimeout = 0
+                cmd.CommandTimeout = TIMEOUT_SEG
 
                 Dim p1 = cmd.CreateParameter()
                 p1.ParameterName = "@dt1" : p1.Value = dt1.Date
