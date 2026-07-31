@@ -314,6 +314,22 @@ Public Class GerencialNovo
     End Function
 
     ''' <summary>
+    ''' Deixa o valor invisível sem tirá-lo do relatório: pinta a fonte da cor do fundo. O
+    ''' rótulo continua existindo e sendo preenchido por GerencialNovoBase, então os cálculos
+    ''' que dependem dele seguem valendo e voltar a exibi-lo é só remover a chamada.
+    ''' </summary>
+    ''' <param name="corFundo">
+    ''' Fundo sobre o qual o rótulo assenta; branco se omitido. Precisa ser passado nas
+    ''' linhas de total, que têm faixa CorLinhaTotal atrás: ali fonte branca não some,
+    ''' fica só fraca.
+    ''' </param>
+    Private Shared Function Oculto(l As XRLabel, Optional corFundo As Color = Nothing) As XRLabel
+        l.ForeColor = If(corFundo.IsEmpty, Color.White, corFundo)
+        l.StylePriority.UseForeColor = False
+        Return l
+    End Function
+
+    ''' <summary>
     ''' Fundo cinza-claro atrás de uma linha de totais, na largura útil.
     ''' CHAMAR DEPOIS de criar os rótulos da linha: na coleção Controls o índice MENOR
     ''' é o que fica na frente, então esta faixa opaca precisa ser a última inserida,
@@ -549,7 +565,8 @@ Public Class GerencialNovo
     ''' um cabeçalho comum teria de escrever "Au / Venda" em cima da mesma coluna.
     '''
     ''' Os três TOTAIS ficam todos em COL_G, um debaixo do outro, que é o que torna
-    ''' visível que o de baixo é a soma dos dois de cima.
+    ''' visível que o de baixo é a soma dos dois de cima. Só o da loja aparece: a linha da
+    ''' oficina e o total geral são calculados normalmente, mas saem em fonte branca.
     ''' </summary>
     Private Function MontarSecao5Comissoes(y As Single) As Single
         Faixa(y, "5. COMISSÕES")
@@ -585,15 +602,18 @@ Public Class GerencialNovo
         Cabecalho(y, COL_G, LAR_G, "TOTAL")
         y += ALT_LINHA
 
+        ' Os valores da oficina e o total geral são calculados mas não exibidos: ficam em
+        ' fonte branca (ver Oculto). Os rótulos "Oficina" e "TOTAL COMISSÕES" continuam à
+        ' vista de propósito — o que sai da folha é só o número.
         Rotulo(y, COL_A, LAR_A, "Oficina")
-        lblComOfiVenda = Celula(y, COL_C, LAR_C, FMT_DIN)
-        lblComOfiEnc = Celula(y, COL_D, LAR_D, FMT_DIN)
-        lblComOfiCons = Celula(y, COL_F, LAR_F, FMT_DIN)
-        lblComOfiTot = Celula(y, COL_G, LAR_G, FMT_DIN, negrito:=True)
+        lblComOfiVenda = Oculto(Celula(y, COL_C, LAR_C, FMT_DIN))
+        lblComOfiEnc = Oculto(Celula(y, COL_D, LAR_D, FMT_DIN))
+        lblComOfiCons = Oculto(Celula(y, COL_F, LAR_F, FMT_DIN))
+        lblComOfiTot = Oculto(Celula(y, COL_G, LAR_G, FMT_DIN, negrito:=True))
         y += ALT_LINHA
 
         Rotulo(y, COL_A, LAR_A, "TOTAL COMISSÕES", negrito:=True)
-        lblComTotal = Celula(y, COL_G, LAR_G, FMT_DIN, negrito:=True)
+        lblComTotal = Oculto(Celula(y, COL_G, LAR_G, FMT_DIN, negrito:=True), CorLinhaTotal)
         FundoTotal(y)
 
         Return y + ALT_LINHA + GAP
