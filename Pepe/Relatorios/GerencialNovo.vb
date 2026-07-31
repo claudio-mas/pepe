@@ -296,7 +296,15 @@ Public Class GerencialNovo
         Return l
     End Function
 
-    ''' <summary>Cabeçalho de coluna: negrito, borda inferior.</summary>
+    ''' <summary>
+    ''' Cabeçalho de coluna: negrito, borda inferior.
+    '''
+    ''' O risco sob a linha de cabeçalho é a soma das bordas inferiores das células — não
+    ''' há um XRLine atravessando a largura. Logo, coluna SEM célula de cabeçalho vira um
+    ''' buraco visível no risco. Colunas intermediárias sem título precisam de uma célula
+    ''' com <c>String.Empty</c>; só o trecho à direita da última coluna é que fica sem
+    ''' risco de propósito. <c>Scripts\VerificaLayout.vb</c> confere isso na banda Detail.
+    ''' </summary>
     Private Function Cabecalho(y As Single, x As Single, largura As Single, texto As String,
                                Optional alinhamento As TextAlignment = TextAlignment.MiddleRight) As XRLabel
         Dim l = Novo(_banda, x, y, largura, ALT_LINHA, texto, FonteCabecalho, alinhamento)
@@ -547,10 +555,13 @@ Public Class GerencialNovo
         Faixa(y, "5. COMISSÕES")
         y += ALT_FAIXA
 
+        ' Colunas B e E não têm título aqui, mas ganham célula vazia assim mesmo: sem ela o
+        ' risco sob o cabeçalho fica com um vão (ver comentário em Cabecalho).
         Cabecalho(y, COL_A, LAR_A, String.Empty, TextAlignment.MiddleLeft)
+        Cabecalho(y, COL_B, LAR_B, String.Empty)
         Cabecalho(y, COL_C, LAR_C, "Ouro (Au)")
         Cabecalho(y, COL_D, LAR_D, "Prata (Ag)")
-        If _mostrarBoutique Then Cabecalho(y, COL_E, LAR_E, "Boutique")
+        Cabecalho(y, COL_E, LAR_E, If(_mostrarBoutique, "Boutique", String.Empty))
         Cabecalho(y, COL_F, LAR_F, "Consertos")
         Cabecalho(y, COL_G, LAR_G, "TOTAL")
         y += ALT_LINHA
@@ -563,9 +574,13 @@ Public Class GerencialNovo
         lblComLojaTot = Celula(y, COL_G, LAR_G, FMT_DIN, negrito:=True)
         y += ALT_LINHA
 
+        ' A oficina não tem coluna equivalente à Boutique, então COL_E fica vazia — mas com
+        ' célula, pelo mesmo motivo da linha de cabeçalho acima.
         Cabecalho(y, COL_A, LAR_A, String.Empty, TextAlignment.MiddleLeft)
+        Cabecalho(y, COL_B, LAR_B, String.Empty)
         Cabecalho(y, COL_C, LAR_C, "Venda")
         Cabecalho(y, COL_D, LAR_D, "Encomenda")
+        Cabecalho(y, COL_E, LAR_E, String.Empty)
         Cabecalho(y, COL_F, LAR_F, "Consertos")
         Cabecalho(y, COL_G, LAR_G, "TOTAL")
         y += ALT_LINHA

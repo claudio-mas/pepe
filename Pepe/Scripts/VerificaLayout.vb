@@ -83,6 +83,42 @@ Module VerificaLayout
             End Using
             Console.WriteLine("TEXTO CORTADO  : {0}", If(cortados = 0, "nenhum", cortados & " rotulo(s)"))
 
+            ' A linha sob o cabecalho de coluna e desenhada por celula (BorderSide.Bottom
+            ' em cada rotulo, nao um XRLine). Coluna sem celula = buraco visivel no risco.
+            ' Confere so a banda Detail: na ReportHeader a secao 2 tem TRES blocos lado a
+            ' lado, e o espaco entre eles e proposital.
+            Dim buracos As Integer = 0
+            For Each b As DevExpress.XtraReports.UI.Band In r.Bands
+                If b.Name <> "Detail" Then Continue For
+                ' Agrupa por linha (Y arredondado) os controles com borda inferior.
+                Dim porY As New Collections.Generic.SortedDictionary(Of Integer,
+                        Collections.Generic.List(Of DevExpress.XtraReports.UI.XRControl))()
+                For Each c As DevExpress.XtraReports.UI.XRControl In b.Controls
+                    If (c.Borders And DevExpress.XtraPrinting.BorderSide.Bottom) = 0 Then Continue For
+                    Dim chave As Integer = CInt(Math.Round(c.LocationF.Y))
+                    If Not porY.ContainsKey(chave) Then
+                        porY(chave) = New Collections.Generic.List(Of DevExpress.XtraReports.UI.XRControl)()
+                    End If
+                    porY(chave).Add(c)
+                Next
+                For Each par In porY
+                    Dim linha = par.Value
+                    linha.Sort(Function(x, z) x.LocationF.X.CompareTo(z.LocationF.X))
+                    For i = 1 To linha.Count - 1
+                        Dim fimAnterior As Single = linha(i - 1).LocationF.X + linha(i - 1).WidthF
+                        Dim inicio As Single = linha(i).LocationF.X
+                        If inicio > fimAnterior + 0.5F Then
+                            Console.WriteLine("  BURACO y={0,6:N0} entre x={1,6:N0} e x={2,6:N0} ({3:N0} de vao) '{4}' -> '{5}'",
+                                              par.Key, fimAnterior, inicio, inicio - fimAnterior,
+                                              CType(linha(i - 1), DevExpress.XtraReports.UI.XRLabel).Text,
+                                              CType(linha(i), DevExpress.XtraReports.UI.XRLabel).Text)
+                            buracos += 1
+                        End If
+                    Next
+                Next
+            Next
+            Console.WriteLine("LINHA CABECALHO: {0}", If(buracos = 0, "continua", buracos & " buraco(s)"))
+
             If args.Length > 0 AndAlso args(args.Length - 1) = "dump" Then
                 Console.WriteLine("")
                 Console.WriteLine("--- controles (banda | idx | y | x | w | h | canGrow | wordWrap | texto) ---")
