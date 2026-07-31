@@ -942,7 +942,7 @@
         Me.ClasseComboBoxEdit.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D
         Me.ClasseComboBoxEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.ClasseComboBoxEdit.Properties.DropDownRows = 12
-        Me.ClasseComboBoxEdit.Properties.Items.AddRange(New Object() {"AN", "BR", "GAR", "PEN", "PUL", "BOU", "ALI", "OUT"})
+        Me.ClasseComboBoxEdit.Properties.Items.AddRange(New Object() {"AN", "BR", "GAR", "PEN", "PUL", "ALI", "OUT"})
         Me.ClasseComboBoxEdit.Size = New System.Drawing.Size(101, 24)
         Me.ClasseComboBoxEdit.TabIndex = 0
         '
