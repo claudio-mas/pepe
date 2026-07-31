@@ -59,6 +59,14 @@ Public Class GerencialNovo
     Private Const S2C_VEN As Single = 1431.0F : Private Const S2C_LAR_VEN As Single = 235.0F
     Private Const S2C_CON As Single = 1666.0F : Private Const S2C_LAR_CON As Single = 234.0F
 
+    ' Seção 3 alarga "% Part." em 25% (190 -> 240) para acomodar o cabeçalho centralizado e a
+    ' mistura de alinhamentos (negrito à direita, filhas centralizadas). Grade própria porque
+    ' LAR_D é compartilhada com as seções 4 a 8. "Tkt médio" desloca 50 à direita em consequência;
+    ' a seção 4 fica onde está, então as duas colunas "Tkt médio" não alinham mais — aceito, porque
+    ' comprimir A/B/C aqui desalinharia "Oper." e "Valor" em seis seções.
+    Private Const S3_PCT As Single = 760.0F : Private Const S3_LAR_PCT As Single = 240.0F
+    Private Const S3_TKT As Single = 1000.0F : Private Const S3_LAR_TKT As Single = 200.0F
+
     ' Alturas. Com ALT_LINHA=45/GAP=30 o relatório soma 2780 e estoura os 2750
     ' disponíveis assim que a linha "Boutique" aparece; 42/25 deixava 146 de folga.
     ' Depois que a seção 5 passou de 3 para 5 linhas (+84), a folga caiu para 62 e o
@@ -278,11 +286,12 @@ Public Class GerencialNovo
         Return l
     End Function
 
-    ''' <summary>Célula numérica alinhada à direita, sem valor inicial.</summary>
+    ''' <summary>Célula numérica, sem valor inicial. Alinhada à direita por padrão.</summary>
     Private Function Celula(y As Single, x As Single, largura As Single, formato As String,
-                            Optional negrito As Boolean = False) As XRLabel
+                            Optional negrito As Boolean = False,
+                            Optional alinhamento As TextAlignment = TextAlignment.MiddleRight) As XRLabel
         Dim l = Novo(_banda, x, y, largura, ALT_LINHA, String.Empty,
-                     If(negrito, FonteTotal, FonteBase), TextAlignment.MiddleRight)
+                     If(negrito, FonteTotal, FonteBase), alinhamento)
         l.TextFormatString = formato
         Return l
     End Function
@@ -443,8 +452,8 @@ Public Class GerencialNovo
         Cabecalho(y, COL_A, LAR_A, "Vendas líquidas", TextAlignment.MiddleLeft)
         Cabecalho(y, COL_B, LAR_B, "Oper.")
         Cabecalho(y, COL_C, LAR_C, "Valor")
-        Cabecalho(y, COL_D, LAR_D, "% Part.")
-        Cabecalho(y, COL_E, LAR_E, "Tkt médio")
+        Cabecalho(y, S3_PCT, S3_LAR_PCT, "% Part.", TextAlignment.MiddleCenter)
+        Cabecalho(y, S3_TKT, S3_LAR_TKT, "Tkt médio")
         y += ALT_LINHA
 
         ' "Loja (não encomenda)" e não só "Loja": existe uma vendedora chamada "Loja"
@@ -453,48 +462,49 @@ Public Class GerencialNovo
         Rotulo(y, COL_A, LAR_A, "Loja (não encomenda)")
         lblVdLojaOper = Celula(y, COL_B, LAR_B, FMT_N0)
         lblVdLojaVal = Celula(y, COL_C, LAR_C, FMT_DIN)
-        ' Negrito: este % é sobre o TOTAL, enquanto o das linhas-filhas logo abaixo é
-        ' sobre o pai. Sem o destaque os quatro números parecem comparáveis e não são.
-        lblVdLojaPct = Celula(y, COL_D, LAR_D, FMT_PCT, negrito:=True)
-        lblVdLojaTkt = Celula(y, COL_E, LAR_E, FMT_DIN)
+        ' Negrito + alinhado à direita: este % é sobre o TOTAL, enquanto o das linhas-filhas
+        ' logo abaixo é sobre o pai e fica centralizado. Sem os dois destaques os quatro
+        ' números parecem comparáveis e não são.
+        lblVdLojaPct = Celula(y, S3_PCT, S3_LAR_PCT, FMT_PCT, negrito:=True)
+        lblVdLojaTkt = Celula(y, S3_TKT, S3_LAR_TKT, FMT_DIN)
         y += ALT_LINHA
 
         Rotulo(y, COL_A, LAR_A, "Ouro (Au)", recuo:=80.0F)
         lblVdLojaAuOper = Celula(y, COL_B, LAR_B, FMT_N0)
         lblVdLojaAuVal = Celula(y, COL_C, LAR_C, FMT_DIN)
-        lblVdLojaAuPct = Celula(y, COL_D, LAR_D, FMT_PCT)
+        lblVdLojaAuPct = Celula(y, S3_PCT, S3_LAR_PCT, FMT_PCT, alinhamento:=TextAlignment.MiddleCenter)
         y += ALT_LINHA
 
         Rotulo(y, COL_A, LAR_A, "Prata (Ag)", recuo:=80.0F)
         lblVdLojaAgOper = Celula(y, COL_B, LAR_B, FMT_N0)
         lblVdLojaAgVal = Celula(y, COL_C, LAR_C, FMT_DIN)
-        lblVdLojaAgPct = Celula(y, COL_D, LAR_D, FMT_PCT)
+        lblVdLojaAgPct = Celula(y, S3_PCT, S3_LAR_PCT, FMT_PCT, alinhamento:=TextAlignment.MiddleCenter)
         y += ALT_LINHA
 
         Rotulo(y, COL_A, LAR_A, "Encomendas")
         lblVdEncOper = Celula(y, COL_B, LAR_B, FMT_N0)
         lblVdEncVal = Celula(y, COL_C, LAR_C, FMT_DIN)
-        lblVdEncPct = Celula(y, COL_D, LAR_D, FMT_PCT, negrito:=True)   ' idem lblVdLojaPct
-        lblVdEncTkt = Celula(y, COL_E, LAR_E, FMT_DIN)
+        lblVdEncPct = Celula(y, S3_PCT, S3_LAR_PCT, FMT_PCT, negrito:=True)   ' idem lblVdLojaPct
+        lblVdEncTkt = Celula(y, S3_TKT, S3_LAR_TKT, FMT_DIN)
         y += ALT_LINHA
 
         Rotulo(y, COL_A, LAR_A, "Ouro (Au)", recuo:=80.0F)
         lblVdEncAuOper = Celula(y, COL_B, LAR_B, FMT_N0)
         lblVdEncAuVal = Celula(y, COL_C, LAR_C, FMT_DIN)
-        lblVdEncAuPct = Celula(y, COL_D, LAR_D, FMT_PCT)
+        lblVdEncAuPct = Celula(y, S3_PCT, S3_LAR_PCT, FMT_PCT, alinhamento:=TextAlignment.MiddleCenter)
         y += ALT_LINHA
 
         Rotulo(y, COL_A, LAR_A, "Prata (Ag)", recuo:=80.0F)
         lblVdEncAgOper = Celula(y, COL_B, LAR_B, FMT_N0)
         lblVdEncAgVal = Celula(y, COL_C, LAR_C, FMT_DIN)
-        lblVdEncAgPct = Celula(y, COL_D, LAR_D, FMT_PCT)
+        lblVdEncAgPct = Celula(y, S3_PCT, S3_LAR_PCT, FMT_PCT, alinhamento:=TextAlignment.MiddleCenter)
         y += ALT_LINHA
 
         Rotulo(y, COL_A, LAR_A, "TOTAL", negrito:=True)
         lblVdTotOper = Celula(y, COL_B, LAR_B, FMT_N0, negrito:=True)
         lblVdTotVal = Celula(y, COL_C, LAR_C, FMT_DIN, negrito:=True)
-        lblVdTotPct = Celula(y, COL_D, LAR_D, FMT_PCT, negrito:=True)
-        lblVdTotTkt = Celula(y, COL_E, LAR_E, FMT_DIN, negrito:=True)
+        lblVdTotPct = Celula(y, S3_PCT, S3_LAR_PCT, FMT_PCT, negrito:=True)
+        lblVdTotTkt = Celula(y, S3_TKT, S3_LAR_TKT, FMT_DIN, negrito:=True)
         FundoTotal(y)
 
         Return y + ALT_LINHA + GAP
