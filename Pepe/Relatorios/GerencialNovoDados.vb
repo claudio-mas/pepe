@@ -22,6 +22,9 @@ Public Class GerencialNovoDados
         Public OuroFino As Double
         Public Ouro18k As Double
         Public Prata As Double
+        ''' <summary>Data do registro de cotação efetivamente usado (pode ser anterior
+        ''' à data de referência pedida, se não houver lançamento nela).</summary>
+        Public DataCot As Date
     End Class
 
     Public Class Entradas
@@ -93,14 +96,25 @@ Public Class GerencialNovoDados
         End Property
     End Class
 
-    ''' <summary>Uma linha das seções 6, 7 e 10, por família de metal.</summary>
+    ''' <summary>
+    ''' Uma linha das seções 6, 7 e 10, por família de metal.
+    '''
+    ''' Nas seções 6 e 7, Custo/ValorMetal são sempre históricos (1TabPecas.Custo /
+    ''' METAIS.TotalValor) — decisão do usuário, 2026-08-06: o Gerencial deve bater com
+    ''' o Relatório de Peças Vendidas, que é histórico.
+    '''
+    ''' Na lista Estoque (seção 10) o significado de Custo MUDA: é custo de REPOSIÇÃO
+    ''' (metal ao preço de hoje), condicional peça a peça — ver CarregarEstoque. Mesma
+    ''' sobrecarga de significado por seção que Gramas já tem (ObtemGramas da família
+    ''' correspondente vs. soma das duas).
+    ''' </summary>
     Public Class LinhaMetal
         Public Familia As String
         Public Qtd As Integer
         Public Gramas As Double          ' peso do metal da propria familia
         Public GramasOuro As Double
         Public GramasPrata As Double
-        Public Custo As Double           ' 1TabPecas.Custo (historico)
+        Public Custo As Double           ' seções 6/7: histórico. Seção 10: reposição.
         Public ValorMetal As Double      ' METAIS.TotalValor (historico)
         Public MO As Double
         Public Outras As Double
@@ -121,6 +135,9 @@ Public Class GerencialNovoDados
 
     Public Class Dados
         Public Cot As New Cotacao()
+        ''' <summary>Cotação vigente HOJE (não a do fim do período) — só a seção 10 usa,
+        ''' porque "quanto vale o estoque" é sempre pergunta de hoje.</summary>
+        Public CotHoje As New Cotacao()
         Public Ent As New Entradas()
         Public CC As New MovimentoCC()
         Public Vend As New Vendas()
@@ -142,6 +159,7 @@ Public Class GerencialNovoDados
 #Region "POCOs de ExecuteQuery"
 
     Private Class RowCotacao
+        Public Property DataCot As Date
         Public Property ValDolar As Decimal?
         Public Property ValOuro As Decimal?
         Public Property ValPrata As Decimal?
@@ -221,7 +239,8 @@ Public Class GerencialNovoDados
                     abriu = True
                 End If
 
-                CarregarCotacao(dc, dt2, r)
+                CarregarCotacao(dc, dt2, r.Cot)
+                CarregarCotacao(dc, Date.Today, r.CotHoje)
                 CarregarEntradas(dc, dt1, dt2, r)
                 CarregarContaCorrente(dc, r)
                 CarregarVendas(dc, dt1, dt2, r)
@@ -231,7 +250,7 @@ Public Class GerencialNovoDados
                 CarregarPecasRegistradas(dc, dt1, dt2, r)
                 CarregarSaidas(dc, dt1, dt2, r)
                 CarregarClientes(dc, dt1, dt2, r)
-                CarregarEstoque(dc, r)
+                CarregarEstoque(dc, r.CotHoje, r)
                 CarregarFormasPagto(dc, dt1, dt2, r)
             Finally
                 If abriu AndAlso dc.Connection.State = ConnectionState.Open Then dc.Connection.Close()
@@ -248,23 +267,28 @@ Public Class GerencialNovoDados
     ''' lqGerencial.dbml não tem ValPrata — e o dbml não pode ser alterado, já que é
     ''' compartilhado com o relatório antigo.
     ''' Critério idêntico ao de GerencialBase.vb:51, inclusive o desempate por Id.
+    '''
+    ''' Recebe o alvo explicitamente (e não mais sempre r.Cot) porque agora há duas
+    ''' cotações no relatório: a do fim do período (seções 1, 7) e a de hoje (seção 10).
     ''' </summary>
-    Private Shared Sub CarregarCotacao(dc As lqGerencialDataContext, dt2 As Date, r As Dados)
+    Private Shared Sub CarregarCotacao(dc As lqGerencialDataContext, dtRef As Date, alvo As Cotacao)
         Const SQL As String =
-            "SELECT TOP 1 ValDolar, ValOuro, ValPrata FROM dbo.[Cotação] " &
+            "SELECT TOP 1 DataCot, ValDolar, ValOuro, ValPrata FROM dbo.[Cotação] " &
             "WHERE DataCot <= {0} ORDER BY DataCot DESC, Id DESC"
 
-        Dim linha = dc.ExecuteQuery(Of RowCotacao)(SQL, dt2).FirstOrDefault()
+        Dim linha = dc.ExecuteQuery(Of RowCotacao)(SQL, dtRef).FirstOrDefault()
         If linha Is Nothing Then
             ' Mesma degradação do relatório antigo, que assume 1 quando não há cotação.
-            r.Cot.Dolar = 1 : r.Cot.OuroFino = 1 : r.Cot.Ouro18k = 1 : r.Cot.Prata = 1
+            alvo.Dolar = 1 : alvo.OuroFino = 1 : alvo.Ouro18k = 1 : alvo.Prata = 1
+            alvo.DataCot = dtRef
             Return
         End If
 
-        r.Cot.Dolar = D(linha.ValDolar)
-        r.Cot.OuroFino = D(linha.ValOuro)
-        r.Cot.Ouro18k = r.Cot.OuroFino * 0.75R      ' igual a GerencialBase.vb:253
-        r.Cot.Prata = D(linha.ValPrata)
+        alvo.Dolar = D(linha.ValDolar)
+        alvo.OuroFino = D(linha.ValOuro)
+        alvo.Ouro18k = alvo.OuroFino * 0.75R      ' igual a GerencialBase.vb:253
+        alvo.Prata = D(linha.ValPrata)
+        alvo.DataCot = linha.DataCot
     End Sub
 
 #End Region
@@ -491,15 +515,25 @@ Public Class GerencialNovoDados
     ''' <summary>
     ''' Posição de estoque de HOJE — a view não tem filtro de data, igual ao
     ''' Resources\EmEstoque.txt que o relatório antigo usa. Não respeita dt1/dt2.
+    '''
+    ''' Custo de REPOSIÇÃO (decisão do usuário, 2026-08-06): metal ao preço de HOJE
+    ''' (cotHoje, não a cotação do período) + o que sobra do custo histórico depois de
+    ''' tirar o metal (Custo - ValorMetal). Peça sem ValorMetal cadastrado (comum em
+    ''' prata — ver VW_RG2_ESTOQUE/RG2_v2_up.sql) NÃO é reavaliada: fica pelo custo
+    ''' histórico puro, senão o metal — que nessas peças já está embutido no custo geral
+    ''' — seria somado de novo.
     ''' </summary>
-    Private Shared Sub CarregarEstoque(dc As lqGerencialDataContext, r As Dados)
+    Private Shared Sub CarregarEstoque(dc As lqGerencialDataContext, cotHoje As Cotacao, r As Dados)
         Const SQL As String =
             "SELECT Familia, COUNT(*) AS Qtd, SUM(GramasOuro) AS GramasOuro, SUM(GramasPrata) AS GramasPrata, " &
-            "       SUM(Custo) AS Custo, CAST(0 AS float) AS ValorMetal, CAST(0 AS float) AS MO, " &
-            "       CAST(0 AS float) AS Outras, SUM(PrVenda) AS PrecoVenda " &
+            "       SUM(CASE WHEN ValorMetal > 0 " &
+            "                THEN Custo - ValorMetal + GramasOuro * {0} + GramasPrata * {1} " &
+            "                ELSE Custo END) AS Custo, " &
+            "       CAST(0 AS float) AS ValorMetal, CAST(0 AS float) AS MO, CAST(0 AS float) AS Outras, " &
+            "       SUM(PrVenda) AS PrecoVenda " &
             "FROM   dbo.VW_RG2_ESTOQUE GROUP BY Familia"
 
-        For Each linha In dc.ExecuteQuery(Of RowMetal)(SQL)
+        For Each linha In dc.ExecuteQuery(Of RowMetal)(SQL, cotHoje.Ouro18k, cotHoje.Prata)
             r.Estoque.Add(Agrega(linha))
         Next
         If r.Estoque.Any(Function(x) x.Familia = "Bou") Then r.TemBoutique = True

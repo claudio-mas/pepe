@@ -229,48 +229,49 @@ Public Class GerencialNovoBase
         Dim bou = Familia(d.PecasVendidas, "Bou")
 
         LinhaPecaVendida(rpt.lblPvAuQtd, rpt.lblPvAuCusto, rpt.lblPvAuGr, rpt.lblPvAuMetal,
-                         rpt.lblPvAuMO, rpt.lblPvAuOutros, rpt.lblPvAuVenda, rpt.lblPvAuMarkup, au, d.Cot)
+                         rpt.lblPvAuMO, rpt.lblPvAuOutros, rpt.lblPvAuVenda, rpt.lblPvAuMarkup, au)
         LinhaPecaVendida(rpt.lblPvAgQtd, rpt.lblPvAgCusto, rpt.lblPvAgGr, rpt.lblPvAgMetal,
-                         rpt.lblPvAgMO, rpt.lblPvAgOutros, rpt.lblPvAgVenda, rpt.lblPvAgMarkup, ag, d.Cot)
+                         rpt.lblPvAgMO, rpt.lblPvAgOutros, rpt.lblPvAgVenda, rpt.lblPvAgMarkup, ag)
         If d.TemBoutique Then
             LinhaPecaVendida(rpt.lblPvBouQtd, rpt.lblPvBouCusto, rpt.lblPvBouGr, rpt.lblPvBouMetal,
-                             rpt.lblPvBouMO, rpt.lblPvBouOutros, rpt.lblPvBouVenda, rpt.lblPvBouMarkup, bou, d.Cot)
+                             rpt.lblPvBouMO, rpt.lblPvBouOutros, rpt.lblPvBouVenda, rpt.lblPvBouMarkup, bou)
         End If
 
         Dim tot As New GerencialNovoDados.LinhaMetal() With {
             .Qtd = au.Qtd + ag.Qtd + bou.Qtd,
             .GramasOuro = au.GramasOuro + ag.GramasOuro + bou.GramasOuro,
             .GramasPrata = au.GramasPrata + ag.GramasPrata + bou.GramasPrata,
+            .Custo = au.Custo + ag.Custo + bou.Custo,
+            .ValorMetal = au.ValorMetal + ag.ValorMetal + bou.ValorMetal,
             .MO = au.MO + ag.MO + bou.MO,
             .Outras = au.Outras + ag.Outras + bou.Outras,
             .PrecoVenda = au.PrecoVenda + ag.PrecoVenda + bou.PrecoVenda
         }
         tot.Gramas = tot.GramasOuro + tot.GramasPrata
         LinhaPecaVendida(rpt.lblPvTotQtd, rpt.lblPvTotCusto, rpt.lblPvTotGr, rpt.lblPvTotMetal,
-                         rpt.lblPvTotMO, rpt.lblPvTotOutros, rpt.lblPvTotVenda, rpt.lblPvTotMarkup, tot, d.Cot)
+                         rpt.lblPvTotMO, rpt.lblPvTotOutros, rpt.lblPvTotVenda, rpt.lblPvTotMarkup, tot)
     End Sub
 
     ''' <summary>
-    ''' "Custo total" aqui é custo de REPOSIÇÃO: metal a preço de hoje + M.O. + outros.
-    ''' Não é 1TabPeças.Custo (que traz o metal ao valor histórico) — é a fórmula da
-    ''' planilha, C = E + F + G. O markup sai sobre esse mesmo custo.
+    ''' "Custo total" aqui é HISTÓRICO (decisão do usuário, 2026-08-06): 1TabPeças.Custo
+    ''' e METAIS.TotalValor, os mesmos valores da ficha da peça — não mais o metal a
+    ''' preço de hoje. Bate com o Relatório de Peças Vendidas, que soma o mesmo
+    ''' 1TabPeças.Custo. Como Outras é derivada em VW_RG2_PECAS_VENDIDAS por
+    ''' Custo - ValorMetal - MO, a linha Custo = Metal + M.O. + Outros sempre fecha,
+    ''' mesmo em peça sem valor de metal cadastrado. O markup sai sobre esse custo.
     ''' </summary>
     Private Shared Sub LinhaPecaVendida(lQtd As XRLabel, lCusto As XRLabel, lGr As XRLabel,
                                         lMetal As XRLabel, lMO As XRLabel, lOutros As XRLabel,
                                         lVenda As XRLabel, lMarkup As XRLabel,
-                                        m As GerencialNovoDados.LinhaMetal,
-                                        cot As GerencialNovoDados.Cotacao)
-        Dim metal = ValorMetal(m, cot)
-        Dim custo = metal + m.MO + m.Outras
-
+                                        m As GerencialNovoDados.LinhaMetal)
         V(lQtd, m.Qtd)
-        V(lCusto, custo)
+        V(lCusto, m.Custo)
         V(lGr, m.Gramas)
-        V(lMetal, metal)
+        V(lMetal, m.ValorMetal)
         V(lMO, m.MO)
         V(lOutros, m.Outras)
         V(lVenda, m.PrecoVenda)
-        Raz(lMarkup, m.PrecoVenda, custo)
+        Raz(lMarkup, m.PrecoVenda, m.Custo)
     End Sub
 
     Private Shared Sub PreencherPecasRegistradas(rpt As GerencialNovo, d As GerencialNovoDados.Dados)
@@ -321,12 +322,15 @@ Public Class GerencialNovoBase
     End Sub
 
     ''' <summary>
-    ''' Aqui "Custo" é 1TabPeças.Custo e "Venda" é PrVenda — os valores reais do cadastro,
-    ''' e não o metal a preço de hoje. É o que faz o TOTAL bater com txtCustoFinal e
-    ''' txtPrVenda do relatório antigo.
+    ''' Aqui "Custo" é custo de REPOSIÇÃO (decisão do usuário, 2026-08-06): responde
+    ''' "quanto vale o estoque hoje", ao contrário das seções 6 e 7, que são históricas.
+    ''' "Venda" continua sendo PrVenda, o preço de tabela cadastrado — ver
+    ''' GerencialNovoDados.CarregarEstoque para a fórmula peça a peça. Por isso este
+    ''' TOTAL não bate mais com txtCustoFinal do relatório antigo (que é histórico).
     ''' </summary>
     Private Shared Sub PreencherEstoque(rpt As GerencialNovo, d As GerencialNovoDados.Dados)
-        rpt.lblEstTitulo.Text = "10. POSIÇÃO DE ESTOQUE EM " & Date.Today.ToString("dd/MM/yyyy") & " (não usa o período)"
+        rpt.lblEstTitulo.Text = "10. POSIÇÃO DE ESTOQUE EM " & Date.Today.ToString("dd/MM/yyyy") &
+            " — custo de reposição (cotação de " & d.CotHoje.DataCot.ToString("dd/MM/yyyy") & ")"
 
         Dim au = Familia(d.Estoque, "Ou")
         Dim ag = Familia(d.Estoque, "Ag")
