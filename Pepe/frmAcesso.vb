@@ -22,56 +22,57 @@ Public Class frmAcesso
                 Me.PasswordTextBox.Text = ""
                 Me.PasswordTextBox.Focus()
             Else
-                Dim rs As New ADODB.Recordset()
+                'Dim rs As New ADODB.Recordset()
 
-                Dim serv As String = "den1.mssql8.gear.host"
-                Dim db As String = "cake"
-                Dim us As String = "cake"
-                Dim pw As String = "cake@123"
-                '     Dim serv As String = "sql.bsite.net\MSSQL2016"
-                '     Dim db As String = "cmas_controle"
-                '     Dim us As String = "cmas_controle"
-                '     Dim pw As String = "golfe2"
+                'Dim serv As String = "den1.mssql8.gear.host"
+                'Dim db As String = "cake"
+                'Dim us As String = "cake"
+                'Dim pw As String = "cake@123"
+                ''     Dim serv As String = "sql.bsite.net\MSSQL2016"
+                ''     Dim db As String = "cmas_controle"
+                ''     Dim us As String = "cmas_controle"
+                ''     Dim pw As String = "oowa2015"
 
-                ' Provider varia por PC (mesmo critério de modConn.strAdoConnection): SQLOLEDB.1
-                ' é legado e nem toda máquina tem o provider OLE DB registrado.
-                Dim mboard As New ManagementObjectSearcher("select * from Win32_BaseBoard")
-                Dim MB_serial As String = ""
+                '' Provider varia por PC (mesmo critério de modConn.strAdoConnection): SQLOLEDB.1
+                '' é legado e nem toda máquina tem o provider OLE DB registrado.
+                'Dim mboard As New ManagementObjectSearcher("select * from Win32_BaseBoard")
+                'Dim MB_serial As String = ""
 
-                For Each mb In mboard.Get
-                    MB_serial = mb("SerialNumber")
-                Next
+                'For Each mb In mboard.Get
+                '    MB_serial = mb("SerialNumber")
+                'Next
 
-                Dim provider As String = If(MB_serial = "BSN12345678901234567", "MSOLEDBSQL", "SQLOLEDB.1")
+                'Dim provider As String = If(MB_serial = "BSN12345678901234567", "MSOLEDBSQL", "SQLOLEDB.1")
 
-                Dim cnStr As String = "Provider=" & provider & ";Data Source=" & serv & ";Initial Catalog=" & db _
-                & ";User ID=" & us & ";Password=" & pw & ";"
+                'Dim cnStr As String = "Provider=" & provider & ";Data Source=" & serv & ";Initial Catalog=" & db _
+                '& ";User ID=" & us & ";Password=" & pw & ";"
 
-                Dim strSQL As String = "Select Ok from Clientes Where Cliente = 'Paco'"
+                'Dim strSQL As String = "Select Ok from Clientes Where Cliente = 'Paco'"
 
-                Try
-                    rs.Open(strSQL, cnStr, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic)
+                'Try
+                '    rs.Open(strSQL, cnStr, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic)
 
-                    If rs("ok").Value = "1" Then
-                        rs.Close()
-                        Application.Exit()
-                    Else
-                        rs.Close()
-                        Me.Visible = False
-                        frmDevPrincipal.Show()
-                    End If
+                '    If rs("ok").Value = "1" Then
+                '        rs.Close()
+                '        Application.Exit()
+                '    Else
+                '        rs.Close()
+                '        Me.Visible = False
+                '        frmDevPrincipal.Show()
+                '    End If
 
 
-                Catch ex As Exception
-                    Application.Exit()
+                'Catch ex As Exception
+                '    MsgBox(ex.Message, MsgBoxStyle.Critical, "Erro de conexão com o banco de dados")
+                '    Application.Exit()
 
-                End Try
+                'End Try
                 'desabilitar acima
 
                 'valDolar = DLookUp("ValDolar", "Cotação", "", 0)
                 'valOuro = DLookUp("ValOuro", "Cotação", "", 0)
 
-                'frmDevPrincipal.Show()
+                frmDevPrincipal.Show()
             End If
 
         End If

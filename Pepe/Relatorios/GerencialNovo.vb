@@ -100,7 +100,7 @@ Public Class GerencialNovo
     Private Const FMT_DIN As String = "{0:#,##0}"
     Private Const FMT_PCT As String = "{0:p2}"
     Private Const FMT_GR As String = "{0:n2} g"
-    Private Const FMT_MULT As String = "{0:n2}x"
+    Private Const FMT_MULT As String = "{0:n2}"
 
 #End Region
 
@@ -630,9 +630,9 @@ Public Class GerencialNovo
         Cabecalho(y, COL_F, LAR_F, "M.O.")
         Cabecalho(y, COL_G, LAR_G, "Outros")
         Cabecalho(y, COL_H, LAR_H, "Pr. venda")
-        ' "Markup" e não "Margem": a fórmula da planilha é Venda / Custo, que é múltiplo
-        ' sobre o custo, não margem contábil.
-        Cabecalho(y, COL_I, LAR_I, "Markup")
+        ' "Margem" = Venda / Custo (não é margem contábil, é a mesma convenção da planilha
+        ' original do usuário — confirmado por print da planilha dele em 06/08/2026).
+        Cabecalho(y, COL_I, LAR_I, "Margem")
         y += ALT_LINHA
 
         Rotulo(y, COL_A, LAR_A, "Ouro 18K (Au)")

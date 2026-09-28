@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BDTorras" Class="lqGerencialDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-9UNO97E\SQLEXPRESS;Initial Catalog=BDTorras;Persist Security Info=True;User ID=sa;Encrypt=False" SettingsObjectName="Pepe.My.MySettings" SettingsPropertyName="Pepe_ConnString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost,1433;Initial Catalog=BDTorras;Persist Security Info=True;User ID=sa;Encrypt=False" SettingsObjectName="Pepe.My.MySettings" SettingsPropertyName="Pepe_ConnString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.[Vencto Cheques]" Member="Vencto_Cheques">
     <Type Name="Vencto_Cheques">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />

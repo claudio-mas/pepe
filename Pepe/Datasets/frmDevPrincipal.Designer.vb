@@ -376,7 +376,7 @@ Partial Class frmDevPrincipal
         '
         'btnRptGerencial
         '
-        Me.btnRptGerencial.Caption = "Relatório gerencial"
+        Me.btnRptGerencial.Caption = "Relatório gerencial old"
         Me.btnRptGerencial.Id = 33
         Me.btnRptGerencial.ImageOptions.Image = CType(resources.GetObject("btnRptGerencial.ImageOptions.Image"), System.Drawing.Image)
         Me.btnRptGerencial.ImageOptions.LargeImage = CType(resources.GetObject("btnRptGerencial.ImageOptions.LargeImage"), System.Drawing.Image)
@@ -385,10 +385,10 @@ Partial Class frmDevPrincipal
         '
         'btnRptGerencialNovo
         '
-        ' Sem ImageOptions de propósito: as imagens vêm de chaves no frmDevPrincipal.resx
-        ' (binário, 174 KB), e criar chaves novas lá exigiria abrir o form no designer.
-        Me.btnRptGerencialNovo.Caption = "Relatório gerencial (novo)"
+        Me.btnRptGerencialNovo.Caption = "Relatório gerencial"
         Me.btnRptGerencialNovo.Id = 58
+        Me.btnRptGerencialNovo.ImageOptions.Image = CType(resources.GetObject("btnRptGerencialNovo.ImageOptions.Image"), System.Drawing.Image)
+        Me.btnRptGerencialNovo.ImageOptions.LargeImage = CType(resources.GetObject("btnRptGerencialNovo.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.btnRptGerencialNovo.Name = "btnRptGerencialNovo"
         Me.btnRptGerencialNovo.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText
         '
@@ -496,7 +496,7 @@ Partial Class frmDevPrincipal
         '
         'BarStaticItem1
         '
-        Me.BarStaticItem1.Caption = "5.9.7"
+        Me.BarStaticItem1.Caption = "5.9.9"
         Me.BarStaticItem1.Id = 45
         Me.BarStaticItem1.Name = "BarStaticItem1"
         '
@@ -574,7 +574,7 @@ Partial Class frmDevPrincipal
         '
         'btnCota
         '
-        Me.btnCota.Caption = "Cotação Dólar e Ouro"
+        Me.btnCota.Caption = "Cotação Dólar, Ouro e Prata"
         Me.btnCota.Id = 57
         Me.btnCota.ImageOptions.Image = CType(resources.GetObject("btnCota.ImageOptions.Image"), System.Drawing.Image)
         Me.btnCota.ImageOptions.LargeImage = CType(resources.GetObject("btnCota.ImageOptions.LargeImage"), System.Drawing.Image)
