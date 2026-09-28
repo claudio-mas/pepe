@@ -6,7 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Sistema desktop de gestão para joalheria (clientes, vendas, consertos, estoque, conta corrente,
 cheques/cartões, relatórios). VB.NET / WinForms sobre .NET Framework 4.8, UI DevExpress v23.2,
-banco SQL Server (`BDTorras`). Aplicação single-tenant, distribuída por ClickOnce.
+banco SQL Server (`BDTorras`). Aplicação single-tenant, distribuída por ClickOnce em
+https://informas.com.br/pepe/ (ver "Publicação").
 
 ## Layout do repositório (importante)
 
@@ -61,6 +62,24 @@ cd C:\Sistema\Paco\Pepe\Pepe\bin\Debug
 gerados depois — `bin\Debug` é versionado. Aqui o `vbc` antigo serve porque o harness não usa
 interpolated strings; para o projeto inteiro, use o MSBuild do VS2022 (ver acima).
 
+## Publicação (ClickOnce)
+
+```powershell
+powershell -ExecutionPolicy Bypass -File Pepe\Scripts\Publicar-ClickOnce.ps1   # -SemEnvio só gera em publish\
+```
+
+O script compila Release x86 com um `app.config` **sem senha** (servidor `PEPETORRAS-PC\SQLEXPRESS`), publica em
+`publish\` (ignorado pelo git), envia via SSH (host `informas` no `~/.ssh/config`) para
+`/etc/icontainer/apps/openresty/openresty/www/pepe` (OpenResty em contêiner; location em
+`conf.d/users/locations/pepe.conf`, incluída no `main.conf`), mantém 2 versões no servidor, confere por HTTPS e avança
+o `ApplicationRevision`. Atualizações são obrigatórias (`MinimumRequiredVersion` = versão publicada).
+O target `BloquearSenhaNaPublicacao` do `.vbproj` barra qualquer publicação (inclusive pelo Visual Studio) cujo config
+tenha senha. Manifestos não são assinados (de propósito). O disco da VPS está apertado (~5 GB livres; ~250 MB por versão).
+
+O script se adapta à máquina: sem VS2022, usa o MSBuild do VS2019 com o Roslyn 64 bits do .NET SDK (o `vbc` 32 bits do
+VS2019 estoura memória); sem os assemblies de referência do .NET 4.8, usa o pacote NuGet
+`Microsoft.NETFramework.ReferenceAssemblies.net48` em `packages\`; sem DevExpress 23.2 instalado, usa `Pepe\bin\Debug`.
+
 ## Arquitetura
 
 ### Fluxo de inicialização
@@ -85,8 +104,11 @@ antes de abrir o form (ex.: `fExecutarSP("USP_Cheques")`).
 3. **LINQ to SQL** — `Relatorios\lqGerencial.dbml` → `lqGerencialDataContext`. Usado por
    `GerencialBase` e por `GerencialNovoDados`.
 
-Fonte única da conexão: `Pepe.My.MySettings.Pepe_ConnString` no `app.config`.
-(`fGetAdoConnection2` tem uma cópia hardcoded — legado, não use.)
+Fonte única da conexão: `Pepe.My.MySettings.Pepe_ConnString`. **Nunca** escreva string de conexão com senha
+no código. `modConexao.vb` decide a conexão no `Startup` (`ApplicationEvents.vb`): se existir
+`%ProgramData%\PepeTorrasDesign\conexao.dat` (criptografado com DPAPI, criado pela `frmConexao` na 1ª execução),
+aplica-o em memória ao `ConfigurationManager` e ao `My.Settings`; senão, usa o `app.config` se ele tiver senha
+(máquina de desenvolvimento); senão, abre a `frmConexao`. O `app.config` local tem senha e **não pode ser publicado**.
 Convenção do projeto: `CommandTimeout = 0` nas consultas de relatório.
 
 ### Relatórios (`Pepe\Relatorios\`)
