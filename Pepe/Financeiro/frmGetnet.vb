@@ -7,8 +7,7 @@ Imports DevExpress.XtraSpreadsheet
 Public Class frmGetnet
     Private Sub btnImp_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnImp.ItemClick
 
-        Dim connStr As String =
-        "Server=DESKTOP-9UNO97E\SQLEXPRESS;Database=BDTorras;User Id=sa;Password=oowa2015;"
+        Dim connStr As String = My.Settings.Pepe_ConnString   ' conexão central (ver modConexao)
 
         ImportarPlanilhaGetNet(SpreadsheetControl, connStr)
 

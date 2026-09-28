@@ -288,7 +288,7 @@
     <value>980, 17</value>
   </metadata>
   <data name="C1Report1.ReportDefinition" xml:space="preserve">
-    <value>&lt;!--Report *** Etiquetas ***--&gt;&lt;Report version="4.0.20203.457"&gt;&lt;Name&gt;Etiquetas&lt;/Name&gt;&lt;ReportInfo /&gt;&lt;DataSource&gt;&lt;ConnectionString&gt;Provider=SQLNCLI11;Persist Security Info=False;User ID=sa;Initial Catalog=BDTorras;Data Source=DESKTOP-9UNO97E\SQLEXPRESS;Initial File Name="";Server SPN="";PWD=oowa2015&lt;/ConnectionString&gt;&lt;RecordSource&gt;SELECT        TOP (100) PERCENT IDCliente, Nome AS NomeCli, Nome, Título, Nome AS NomeC, Endereço, Bairro, Cidade, Estado, CEP, Telefone, Fax, Imp, Cliente, Indicaçao, Aniv, Medidas, Saldo, ISNULL(Cliente, Nome) 
+    <value>&lt;!--Report *** Etiquetas ***--&gt;&lt;Report version="4.0.20203.457"&gt;&lt;Name&gt;Etiquetas&lt;/Name&gt;&lt;ReportInfo /&gt;&lt;DataSource&gt;&lt;ConnectionString&gt;Provider=SQLNCLI11;Persist Security Info=False;User ID=sa;Initial Catalog=BDTorras;Data Source=CLINICAMENTA\SQLEXPRESS;Initial File Name="";Server SPN="";&lt;/ConnectionString&gt;&lt;RecordSource&gt;SELECT        TOP (100) PERCENT IDCliente, Nome AS NomeCli, Nome, Título, Nome AS NomeC, Endereço, Bairro, Cidade, Estado, CEP, Telefone, Fax, Imp, Cliente, Indicaçao, Aniv, Medidas, Saldo, ISNULL(Cliente, Nome) 
                          AS M, Email
 FROM            dbo.Clientes
 WHERE        (Imp = 1) AND (ISNULL(Cliente, Nome) IS NOT NULL) 

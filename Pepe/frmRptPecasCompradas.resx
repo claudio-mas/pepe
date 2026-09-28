@@ -305,7 +305,7 @@
     <value>980, 17</value>
   </metadata>
   <data name="C1Report1.ReportDefinition" xml:space="preserve">
-    <value>&lt;!--Report *** VendasCliente ***--&gt;&lt;Report version="4.0.20152.74"&gt;&lt;Name&gt;VendasCliente&lt;/Name&gt;&lt;ReportInfo /&gt;&lt;DataSource&gt;&lt;ConnectionString&gt;Provider=SQLNCLI11;Persist Security Info=False;User ID=sa;Initial Catalog=BDTorras;Data Source=DESKTOP-9UNO97E\SQLEXPRESS;Initial File Name="";Server SPN="";PWD=oowa2015&lt;/ConnectionString&gt;&lt;RecordSource&gt;SELECT VENDAS.Venda, Clientes.IDCliente, isnull([Nome],'S/ Nome') AS N,
+    <value>&lt;!--Report *** VendasCliente ***--&gt;&lt;Report version="4.0.20152.74"&gt;&lt;Name&gt;VendasCliente&lt;/Name&gt;&lt;ReportInfo /&gt;&lt;DataSource&gt;&lt;ConnectionString&gt;Provider=SQLNCLI11;Persist Security Info=False;User ID=sa;Initial Catalog=BDTorras;Data Source=CLINICAMENTA\SQLEXPRESS;Initial File Name="";Server SPN="";&lt;/ConnectionString&gt;&lt;RecordSource&gt;SELECT VENDAS.Venda, Clientes.IDCliente, isnull([Nome],'S/ Nome') AS N,
 case when [Vendas].[Tipo] is null then Null else [Vendas].[Tipo] + ' / ' +
 case when [Vendas].[Tipo]='Externa' then [Vendas].[Vendedora] else
 case when [Vendas].[Vendedora]='P.T.' then 'P.T.' else 'Loja' end end end AS TP,

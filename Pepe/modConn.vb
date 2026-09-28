@@ -19,15 +19,9 @@ Module modConn
 
 
     Public Function strAdoConnection() As String
-        Dim settings As New ConnectionStringSettings    'Projeto/Adicionar Referência/System.Configuration
-        Dim info As String, serv As String, db As String, us As String, pw As String
-
-        settings = ConfigurationManager.ConnectionStrings("Pepe.My.MySettings.Pepe_ConnString")
-        info = settings.ConnectionString.ToString
-        serv = Mid$(info, 13, InStr(info, ";") - 13)
-        db = Mid$(info, InStr(info, "Initial Catalog=") + 16, InStr(info, ";Persist") - InStr(info, "Initial Catalog=") - 16)
-        us = Mid$(info, InStr(info, "User ID=") + 8, InStr(info, ";Password") - InStr(info, "User ID=") - 8)
-        pw = Microsoft.VisualBasic.Right(info, Len(info) - InStr(info, ";Password") - 9)
+        ' Conexão central (ver modConexao): lida do config, já com a conexão local aplicada no início do programa.
+        Dim b As New SqlConnectionStringBuilder(ConfigurationManager.ConnectionStrings(NOME_CONEXAO).ConnectionString)
+        Dim serv As String = b.DataSource, db As String = b.InitialCatalog, us As String = b.UserID, pw As String = b.Password
 
         Dim mboard As New ManagementObjectSearcher("select * from Win32_BaseBoard")
         Dim MB_serial As String = ""
@@ -74,7 +68,7 @@ ErrHandler:
         Dim cnn As SqlConnection
 
         Try
-            cnn = New SqlConnection("Server=DESKTOP-9UNO97E\SQLEXPRESS;Database=BDTorras;User Id=sa;Password=oowa2015;")
+            cnn = New SqlConnection(My.Settings.Pepe_ConnString)
             cnn.Open()
             Return cnn
         Catch ex As Exception

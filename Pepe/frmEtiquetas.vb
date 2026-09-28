@@ -14,6 +14,9 @@ Partial Public Class frmEtiquetas
     End Sub
 
     Private Sub frmEtiquetas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Conexão central (ver modConexao); a definição do relatório não guarda mais senha.
+        Me.C1Report1.DataSource.ConnectionString = strAdoConnection()
+        Me.C1PrintPreviewControl1.PreviewPane.Document = Me.C1Report1
 
         Me.C1PrintPreviewControl1.PreviewTextSearchPanel.Visible = False
 
