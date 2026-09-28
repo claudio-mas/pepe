@@ -1,0 +1,581 @@
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+Partial Public Class Cartão
+    Inherits DevExpress.XtraReports.UI.XtraReport
+
+    'XtraReport overrides dispose to clean up the component list.
+    <System.Diagnostics.DebuggerNonUserCode()> _
+    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+        If disposing AndAlso components IsNot Nothing Then
+            components.Dispose()
+        End If
+        MyBase.Dispose(disposing)
+    End Sub
+
+    'Required by the Designer
+    Private components As System.ComponentModel.IContainer
+
+    'NOTE: The following procedure is required by the Designer
+    'It can be modified using the Designer.  
+    'Do not modify it using the code editor.
+    <System.Diagnostics.DebuggerStepThrough()> _
+    Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
+        Dim XrSummary1 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
+        Dim XrSummary2 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
+        Dim XrSummary3 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
+        Dim XrSummary4 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
+        Dim XrSummary5 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
+        Dim CustomSqlQuery1 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
+        Dim QueryParameter1 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
+        Dim QueryParameter2 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Cartão))
+        Me.Detalhe = New DevExpress.XtraReports.UI.DetailBand()
+        Me.Vencto = New DevExpress.XtraReports.UI.XRLabel()
+        Me.VC = New DevExpress.XtraReports.UI.XRLabel()
+        Me.NomeCartão = New DevExpress.XtraReports.UI.XRLabel()
+        Me.Texto23 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.Texto25 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.Texto27 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.CabeçalhoDoRelatório = New DevExpress.XtraReports.UI.ReportHeaderBand()
+        Me.RodapéDoRelatório = New DevExpress.XtraReports.UI.ReportFooterBand()
+        Me.XrLine1 = New DevExpress.XtraReports.UI.XRLine()
+        Me.Texto28 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.Rótulo29 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.CabeçalhoDaPágina = New DevExpress.XtraReports.UI.PageHeaderBand()
+        Me.XrLabel1 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel2 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.Linha13 = New DevExpress.XtraReports.UI.XRLine()
+        Me.Linha15 = New DevExpress.XtraReports.UI.XRLine()
+        Me.Rótulo6 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.Linha9 = New DevExpress.XtraReports.UI.XRLine()
+        Me.Rótulo19 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.Rótulo22 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.Rótulo24 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.Rótulo26 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.Período = New DevExpress.XtraReports.UI.XRLabel()
+        Me.RodapéDaPágina = New DevExpress.XtraReports.UI.PageFooterBand()
+        Me.pageInfo1 = New DevExpress.XtraReports.UI.XRPageInfo()
+        Me.pageInfo2 = New DevExpress.XtraReports.UI.XRPageInfo()
+        Me.Linha17 = New DevExpress.XtraReports.UI.XRLine()
+        Me.Linha18 = New DevExpress.XtraReports.UI.XRLine()
+        Me.CabeçalhoDoGrupo0 = New DevExpress.XtraReports.UI.GroupHeaderBand()
+        Me.RodapéDoGrupo0 = New DevExpress.XtraReports.UI.GroupFooterBand()
+        Me.Texto20 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.Rótulo21 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.OleDbDataAdapter1 = New System.Data.OleDb.OleDbDataAdapter()
+        Me.SqlDataSource = New DevExpress.DataAccess.Sql.SqlDataSource(Me.components)
+        Me.TopMarginBand1 = New DevExpress.XtraReports.UI.TopMarginBand()
+        Me.BottomMarginBand1 = New DevExpress.XtraReports.UI.BottomMarginBand()
+        CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
+        '
+        'Detalhe
+        '
+        Me.Detalhe.BackColor = System.Drawing.Color.Transparent
+        Me.Detalhe.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.Vencto, Me.VC, Me.NomeCartão, Me.Texto23, Me.Texto25, Me.Texto27})
+        Me.Detalhe.HeightF = 23.0!
+        Me.Detalhe.Name = "Detalhe"
+        '
+        'Vencto
+        '
+        Me.Vencto.BackColor = System.Drawing.Color.Transparent
+        Me.Vencto.BorderColor = System.Drawing.Color.Black
+        Me.Vencto.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.Vencto.BorderWidth = 1.0!
+        Me.Vencto.CanGrow = False
+        Me.Vencto.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Vencto]")})
+        Me.Vencto.Font = New System.Drawing.Font("Arial", 10.0!)
+        Me.Vencto.LocationFloat = New DevExpress.Utils.PointFloat(586.0!, 0!)
+        Me.Vencto.Name = "Vencto"
+        Me.Vencto.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+        Me.Vencto.SizeF = New System.Drawing.SizeF(103.0!, 19.0!)
+        Me.Vencto.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
+        Me.Vencto.TextFormatString = "{0:dd/MM/yyyy}"
+        '
+        'VC
+        '
+        Me.VC.BackColor = System.Drawing.Color.Transparent
+        Me.VC.BorderColor = System.Drawing.Color.Black
+        Me.VC.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.VC.BorderWidth = 1.0!
+        Me.VC.CanGrow = False
+        Me.VC.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[VC]")})
+        Me.VC.Font = New System.Drawing.Font("Arial", 10.0!)
+        Me.VC.LocationFloat = New DevExpress.Utils.PointFloat(675.0!, 0!)
+        Me.VC.Name = "VC"
+        Me.VC.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+        Me.VC.SizeF = New System.Drawing.SizeF(101.0!, 19.0!)
+        Me.VC.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.VC.TextFormatString = "{0:n2}"
+        '
+        'NomeCartão
+        '
+        Me.NomeCartão.BackColor = System.Drawing.Color.Transparent
+        Me.NomeCartão.BorderColor = System.Drawing.Color.Black
+        Me.NomeCartão.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.NomeCartão.BorderWidth = 1.0!
+        Me.NomeCartão.CanGrow = False
+        Me.NomeCartão.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[NomeCartão]")})
+        Me.NomeCartão.Font = New System.Drawing.Font("Arial", 10.0!)
+        Me.NomeCartão.LocationFloat = New DevExpress.Utils.PointFloat(5.0!, 0!)
+        Me.NomeCartão.Name = "NomeCartão"
+        Me.NomeCartão.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+        Me.NomeCartão.SizeF = New System.Drawing.SizeF(161.0!, 19.0!)
+        XrSummary1.FormatString = "{0}"
+        Me.NomeCartão.Summary = XrSummary1
+        Me.NomeCartão.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
+        Me.NomeCartão.TextFormatString = "{0}"
+        '
+        'Texto23
+        '
+        Me.Texto23.BackColor = System.Drawing.Color.Transparent
+        Me.Texto23.BorderColor = System.Drawing.Color.Black
+        Me.Texto23.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.Texto23.BorderWidth = 1.0!
+        Me.Texto23.CanGrow = False
+        Me.Texto23.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[N]")})
+        Me.Texto23.Font = New System.Drawing.Font("Arial", 10.0!)
+        Me.Texto23.LocationFloat = New DevExpress.Utils.PointFloat(264.0!, 0!)
+        Me.Texto23.Name = "Texto23"
+        Me.Texto23.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+        Me.Texto23.SizeF = New System.Drawing.SizeF(248.0!, 19.0!)
+        XrSummary2.FormatString = "{0}"
+        Me.Texto23.Summary = XrSummary2
+        Me.Texto23.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
+        Me.Texto23.TextFormatString = "{0}"
+        '
+        'Texto25
+        '
+        Me.Texto25.BackColor = System.Drawing.Color.Transparent
+        Me.Texto25.BorderColor = System.Drawing.Color.Black
+        Me.Texto25.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.Texto25.BorderWidth = 1.0!
+        Me.Texto25.CanGrow = False
+        Me.Texto25.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DataVenda]")})
+        Me.Texto25.Font = New System.Drawing.Font("Arial", 10.0!)
+        Me.Texto25.LocationFloat = New DevExpress.Utils.PointFloat(166.0!, 0!)
+        Me.Texto25.Name = "Texto25"
+        Me.Texto25.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+        Me.Texto25.SizeF = New System.Drawing.SizeF(94.0!, 19.0!)
+        Me.Texto25.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
+        Me.Texto25.TextFormatString = "{0:dd/MM/yyyy}"
+        '
+        'Texto27
+        '
+        Me.Texto27.BackColor = System.Drawing.Color.Transparent
+        Me.Texto27.BorderColor = System.Drawing.Color.Black
+        Me.Texto27.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.Texto27.BorderWidth = 1.0!
+        Me.Texto27.CanGrow = False
+        Me.Texto27.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Parcela]")})
+        Me.Texto27.Font = New System.Drawing.Font("Arial", 10.0!)
+        Me.Texto27.LocationFloat = New DevExpress.Utils.PointFloat(515.0!, 0!)
+        Me.Texto27.Name = "Texto27"
+        Me.Texto27.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+        Me.Texto27.SizeF = New System.Drawing.SizeF(67.0!, 19.0!)
+        XrSummary3.FormatString = "{0}"
+        Me.Texto27.Summary = XrSummary3
+        Me.Texto27.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
+        Me.Texto27.TextFormatString = "{0}"
+        '
+        'CabeçalhoDoRelatório
+        '
+        Me.CabeçalhoDoRelatório.BackColor = System.Drawing.Color.Transparent
+        Me.CabeçalhoDoRelatório.HeightF = 0!
+        Me.CabeçalhoDoRelatório.Name = "CabeçalhoDoRelatório"
+        '
+        'RodapéDoRelatório
+        '
+        Me.RodapéDoRelatório.BackColor = System.Drawing.Color.Transparent
+        Me.RodapéDoRelatório.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLine1, Me.Texto28, Me.Rótulo29})
+        Me.RodapéDoRelatório.HeightF = 29.0!
+        Me.RodapéDoRelatório.Name = "RodapéDoRelatório"
+        '
+        'XrLine1
+        '
+        Me.XrLine1.BorderColor = System.Drawing.Color.Black
+        Me.XrLine1.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLine1.BorderWidth = 3.0!
+        Me.XrLine1.ForeColor = System.Drawing.Color.Black
+        Me.XrLine1.LineWidth = 3.0!
+        Me.XrLine1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 5.0!)
+        Me.XrLine1.Name = "XrLine1"
+        Me.XrLine1.SizeF = New System.Drawing.SizeF(778.0!, 3.0!)
+        '
+        'Texto28
+        '
+        Me.Texto28.BackColor = System.Drawing.Color.Transparent
+        Me.Texto28.BorderColor = System.Drawing.Color.Black
+        Me.Texto28.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.Texto28.BorderWidth = 1.0!
+        Me.Texto28.CanGrow = False
+        Me.Texto28.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "sumSum([VC])")})
+        Me.Texto28.Font = New System.Drawing.Font("Arial", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.Texto28.LocationFloat = New DevExpress.Utils.PointFloat(694.0!, 9.0!)
+        Me.Texto28.Name = "Texto28"
+        Me.Texto28.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+        Me.Texto28.SizeF = New System.Drawing.SizeF(82.0!, 19.0!)
+        XrSummary4.Running = DevExpress.XtraReports.UI.SummaryRunning.Report
+        Me.Texto28.Summary = XrSummary4
+        Me.Texto28.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.Texto28.TextFormatString = "{0:n2}"
+        '
+        'Rótulo29
+        '
+        Me.Rótulo29.BackColor = System.Drawing.Color.Transparent
+        Me.Rótulo29.BorderColor = System.Drawing.Color.Black
+        Me.Rótulo29.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.Rótulo29.BorderWidth = 1.0!
+        Me.Rótulo29.CanGrow = False
+        Me.Rótulo29.Font = New System.Drawing.Font("Arial", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.Rótulo29.ForeColor = System.Drawing.Color.Black
+        Me.Rótulo29.LocationFloat = New DevExpress.Utils.PointFloat(606.0!, 9.0!)
+        Me.Rótulo29.Name = "Rótulo29"
+        Me.Rótulo29.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+        Me.Rótulo29.SizeF = New System.Drawing.SizeF(87.0!, 20.0!)
+        Me.Rótulo29.Text = "Total Geral:"
+        Me.Rótulo29.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        '
+        'CabeçalhoDaPágina
+        '
+        Me.CabeçalhoDaPágina.BackColor = System.Drawing.Color.Transparent
+        Me.CabeçalhoDaPágina.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel1, Me.XrLabel2, Me.Linha13, Me.Linha15, Me.Rótulo6, Me.Linha9, Me.Rótulo19, Me.Rótulo22, Me.Rótulo24, Me.Rótulo26, Me.Período})
+        Me.CabeçalhoDaPágina.HeightF = 92.0!
+        Me.CabeçalhoDaPágina.Name = "CabeçalhoDaPágina"
+        '
+        'XrLabel1
+        '
+        Me.XrLabel1.BackColor = System.Drawing.Color.Transparent
+        Me.XrLabel1.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel1.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLabel1.BorderWidth = 1.0!
+        Me.XrLabel1.CanGrow = False
+        Me.XrLabel1.Font = New System.Drawing.Font("Arial", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel1.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(586.0!, 72.0!)
+        Me.XrLabel1.Name = "XrLabel1"
+        Me.XrLabel1.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+        Me.XrLabel1.SizeF = New System.Drawing.SizeF(103.0!, 16.0!)
+        Me.XrLabel1.Text = "Vencto."
+        Me.XrLabel1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
+        '
+        'XrLabel2
+        '
+        Me.XrLabel2.BackColor = System.Drawing.Color.Transparent
+        Me.XrLabel2.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel2.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLabel2.BorderWidth = 1.0!
+        Me.XrLabel2.CanGrow = False
+        Me.XrLabel2.Font = New System.Drawing.Font("Arial", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel2.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel2.LocationFloat = New DevExpress.Utils.PointFloat(689.0!, 72.0!)
+        Me.XrLabel2.Name = "XrLabel2"
+        Me.XrLabel2.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+        Me.XrLabel2.SizeF = New System.Drawing.SizeF(87.0!, 16.0!)
+        Me.XrLabel2.Text = "Valor"
+        Me.XrLabel2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        '
+        'Linha13
+        '
+        Me.Linha13.BorderColor = System.Drawing.Color.Black
+        Me.Linha13.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.Linha13.BorderWidth = 3.0!
+        Me.Linha13.ForeColor = System.Drawing.Color.Black
+        Me.Linha13.LineWidth = 3.0!
+        Me.Linha13.LocationFloat = New DevExpress.Utils.PointFloat(5.0!, 69.0!)
+        Me.Linha13.Name = "Linha13"
+        Me.Linha13.SizeF = New System.Drawing.SizeF(770.0!, 3.0!)
+        '
+        'Linha15
+        '
+        Me.Linha15.BorderColor = System.Drawing.Color.Black
+        Me.Linha15.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.Linha15.BorderWidth = 3.0!
+        Me.Linha15.ForeColor = System.Drawing.Color.Black
+        Me.Linha15.LineWidth = 3.0!
+        Me.Linha15.LocationFloat = New DevExpress.Utils.PointFloat(5.0!, 89.0!)
+        Me.Linha15.Name = "Linha15"
+        Me.Linha15.SizeF = New System.Drawing.SizeF(770.0!, 3.0!)
+        '
+        'Rótulo6
+        '
+        Me.Rótulo6.BackColor = System.Drawing.Color.White
+        Me.Rótulo6.BorderColor = System.Drawing.Color.Black
+        Me.Rótulo6.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.Rótulo6.BorderWidth = 1.0!
+        Me.Rótulo6.CanGrow = False
+        Me.Rótulo6.Font = New System.Drawing.Font("Arial", 18.0!, System.Drawing.FontStyle.Bold)
+        Me.Rótulo6.ForeColor = System.Drawing.Color.Black
+        Me.Rótulo6.LocationFloat = New DevExpress.Utils.PointFloat(4.0!, 5.0!)
+        Me.Rótulo6.Name = "Rótulo6"
+        Me.Rótulo6.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+        Me.Rótulo6.SizeF = New System.Drawing.SizeF(164.0!, 43.0!)
+        Me.Rótulo6.Text = "CARTÕES"
+        Me.Rótulo6.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
+        '
+        'Linha9
+        '
+        Me.Linha9.BorderColor = System.Drawing.Color.Black
+        Me.Linha9.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.Linha9.BorderWidth = 3.0!
+        Me.Linha9.ForeColor = System.Drawing.Color.Black
+        Me.Linha9.LineWidth = 3.0!
+        Me.Linha9.LocationFloat = New DevExpress.Utils.PointFloat(0!, 2.0!)
+        Me.Linha9.Name = "Linha9"
+        Me.Linha9.SizeF = New System.Drawing.SizeF(778.0!, 3.0!)
+        '
+        'Rótulo19
+        '
+        Me.Rótulo19.BackColor = System.Drawing.Color.Transparent
+        Me.Rótulo19.BorderColor = System.Drawing.Color.Black
+        Me.Rótulo19.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.Rótulo19.BorderWidth = 1.0!
+        Me.Rótulo19.CanGrow = False
+        Me.Rótulo19.Font = New System.Drawing.Font("Arial", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.Rótulo19.ForeColor = System.Drawing.Color.Black
+        Me.Rótulo19.LocationFloat = New DevExpress.Utils.PointFloat(5.0!, 72.0!)
+        Me.Rótulo19.Name = "Rótulo19"
+        Me.Rótulo19.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+        Me.Rótulo19.SizeF = New System.Drawing.SizeF(113.0!, 16.0!)
+        Me.Rótulo19.Text = "Bandeira"
+        Me.Rótulo19.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
+        '
+        'Rótulo22
+        '
+        Me.Rótulo22.BackColor = System.Drawing.Color.Transparent
+        Me.Rótulo22.BorderColor = System.Drawing.Color.Black
+        Me.Rótulo22.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.Rótulo22.BorderWidth = 1.0!
+        Me.Rótulo22.CanGrow = False
+        Me.Rótulo22.Font = New System.Drawing.Font("Arial", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.Rótulo22.ForeColor = System.Drawing.Color.Black
+        Me.Rótulo22.LocationFloat = New DevExpress.Utils.PointFloat(264.0!, 72.0!)
+        Me.Rótulo22.Name = "Rótulo22"
+        Me.Rótulo22.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+        Me.Rótulo22.SizeF = New System.Drawing.SizeF(127.0!, 16.0!)
+        Me.Rótulo22.Text = "Cliente"
+        Me.Rótulo22.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
+        '
+        'Rótulo24
+        '
+        Me.Rótulo24.BackColor = System.Drawing.Color.Transparent
+        Me.Rótulo24.BorderColor = System.Drawing.Color.Black
+        Me.Rótulo24.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.Rótulo24.BorderWidth = 1.0!
+        Me.Rótulo24.CanGrow = False
+        Me.Rótulo24.Font = New System.Drawing.Font("Arial", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.Rótulo24.ForeColor = System.Drawing.Color.Black
+        Me.Rótulo24.LocationFloat = New DevExpress.Utils.PointFloat(166.0!, 72.0!)
+        Me.Rótulo24.Name = "Rótulo24"
+        Me.Rótulo24.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+        Me.Rótulo24.SizeF = New System.Drawing.SizeF(92.0!, 16.0!)
+        Me.Rótulo24.Text = "Data Compra"
+        Me.Rótulo24.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
+        '
+        'Rótulo26
+        '
+        Me.Rótulo26.BackColor = System.Drawing.Color.Transparent
+        Me.Rótulo26.BorderColor = System.Drawing.Color.Black
+        Me.Rótulo26.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.Rótulo26.BorderWidth = 1.0!
+        Me.Rótulo26.CanGrow = False
+        Me.Rótulo26.Font = New System.Drawing.Font("Arial", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.Rótulo26.ForeColor = System.Drawing.Color.Black
+        Me.Rótulo26.LocationFloat = New DevExpress.Utils.PointFloat(515.0!, 72.0!)
+        Me.Rótulo26.Name = "Rótulo26"
+        Me.Rótulo26.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+        Me.Rótulo26.SizeF = New System.Drawing.SizeF(67.0!, 16.0!)
+        Me.Rótulo26.Text = "Parcela"
+        Me.Rótulo26.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
+        '
+        'Período
+        '
+        Me.Período.BackColor = System.Drawing.Color.Transparent
+        Me.Período.BorderColor = System.Drawing.Color.Black
+        Me.Período.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.Período.BorderWidth = 1.0!
+        Me.Período.CanGrow = False
+        Me.Período.Font = New System.Drawing.Font("Arial", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.Período.ForeColor = System.Drawing.Color.Black
+        Me.Período.LocationFloat = New DevExpress.Utils.PointFloat(215.0!, 11.0!)
+        Me.Período.Name = "Período"
+        Me.Período.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+        Me.Período.SizeF = New System.Drawing.SizeF(560.0!, 20.0!)
+        Me.Período.Text = "periodo"
+        Me.Período.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        '
+        'RodapéDaPágina
+        '
+        Me.RodapéDaPágina.BackColor = System.Drawing.Color.Transparent
+        Me.RodapéDaPágina.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.pageInfo1, Me.pageInfo2, Me.Linha17, Me.Linha18})
+        Me.RodapéDaPágina.HeightF = 27.83465!
+        Me.RodapéDaPágina.Name = "RodapéDaPágina"
+        '
+        'pageInfo1
+        '
+        Me.pageInfo1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 5.0!)
+        Me.pageInfo1.Name = "pageInfo1"
+        Me.pageInfo1.PageInfo = DevExpress.XtraPrinting.PageInfo.DateTime
+        Me.pageInfo1.SizeF = New System.Drawing.SizeF(381.1024!, 18.83!)
+        Me.pageInfo1.TextFormatString = "{0:dd/MM/yyyy}"
+        '
+        'pageInfo2
+        '
+        Me.pageInfo2.LocationFloat = New DevExpress.Utils.PointFloat(393.7008!, 5.0!)
+        Me.pageInfo2.Name = "pageInfo2"
+        Me.pageInfo2.SizeF = New System.Drawing.SizeF(381.1024!, 18.83!)
+        Me.pageInfo2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.pageInfo2.TextFormatString = "{0} / {1}"
+        '
+        'Linha17
+        '
+        Me.Linha17.BorderColor = System.Drawing.Color.Black
+        Me.Linha17.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.Linha17.BorderWidth = 1.0!
+        Me.Linha17.ForeColor = System.Drawing.Color.Black
+        Me.Linha17.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
+        Me.Linha17.Name = "Linha17"
+        Me.Linha17.SizeF = New System.Drawing.SizeF(778.0!, 2.0!)
+        '
+        'Linha18
+        '
+        Me.Linha18.BorderColor = System.Drawing.Color.Black
+        Me.Linha18.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.Linha18.BorderWidth = 3.0!
+        Me.Linha18.ForeColor = System.Drawing.Color.Black
+        Me.Linha18.LineWidth = 3.0!
+        Me.Linha18.LocationFloat = New DevExpress.Utils.PointFloat(0!, 2.0!)
+        Me.Linha18.Name = "Linha18"
+        Me.Linha18.SizeF = New System.Drawing.SizeF(778.0!, 3.0!)
+        '
+        'CabeçalhoDoGrupo0
+        '
+        Me.CabeçalhoDoGrupo0.BackColor = System.Drawing.Color.Transparent
+        Me.CabeçalhoDoGrupo0.GroupFields.AddRange(New DevExpress.XtraReports.UI.GroupField() {New DevExpress.XtraReports.UI.GroupField("NomeCartão", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending)})
+        Me.CabeçalhoDoGrupo0.HeightF = 0!
+        Me.CabeçalhoDoGrupo0.Name = "CabeçalhoDoGrupo0"
+        '
+        'RodapéDoGrupo0
+        '
+        Me.RodapéDoGrupo0.BackColor = System.Drawing.Color.Transparent
+        Me.RodapéDoGrupo0.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.Texto20, Me.Rótulo21})
+        Me.RodapéDoGrupo0.HeightF = 24.0!
+        Me.RodapéDoGrupo0.Name = "RodapéDoGrupo0"
+        '
+        'Texto20
+        '
+        Me.Texto20.BackColor = System.Drawing.Color.Transparent
+        Me.Texto20.BorderColor = System.Drawing.Color.Black
+        Me.Texto20.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.Texto20.BorderWidth = 1.0!
+        Me.Texto20.CanGrow = False
+        Me.Texto20.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "sumSum([VC])")})
+        Me.Texto20.Font = New System.Drawing.Font("Arial", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.Texto20.LocationFloat = New DevExpress.Utils.PointFloat(694.0!, 1.0!)
+        Me.Texto20.Name = "Texto20"
+        Me.Texto20.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+        Me.Texto20.SizeF = New System.Drawing.SizeF(82.0!, 19.0!)
+        XrSummary5.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
+        Me.Texto20.Summary = XrSummary5
+        Me.Texto20.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.Texto20.TextFormatString = "{0:n2}"
+        '
+        'Rótulo21
+        '
+        Me.Rótulo21.BackColor = System.Drawing.Color.Transparent
+        Me.Rótulo21.BorderColor = System.Drawing.Color.Black
+        Me.Rótulo21.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.Rótulo21.BorderWidth = 1.0!
+        Me.Rótulo21.CanGrow = False
+        Me.Rótulo21.Font = New System.Drawing.Font("Arial", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.Rótulo21.ForeColor = System.Drawing.Color.Black
+        Me.Rótulo21.LocationFloat = New DevExpress.Utils.PointFloat(606.0!, 1.0!)
+        Me.Rótulo21.Name = "Rótulo21"
+        Me.Rótulo21.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+        Me.Rótulo21.SizeF = New System.Drawing.SizeF(87.0!, 20.0!)
+        Me.Rótulo21.Text = "Total:"
+        Me.Rótulo21.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        '
+        'OleDbDataAdapter1
+        '
+        Me.OleDbDataAdapter1.TableMappings.AddRange(New System.Data.Common.DataTableMapping() {New System.Data.Common.DataTableMapping("Table", "(CARTÕES", New System.Data.Common.DataColumnMapping(-1) {})})
+        '
+        'SqlDataSource
+        '
+        Me.SqlDataSource.ConnectionName = "Pepe.My.MySettings.Pepe_ConnString"
+        Me.SqlDataSource.Name = "SqlDataSource"
+        CustomSqlQuery1.Name = "Query"
+        QueryParameter1.Name = "dt1"
+        QueryParameter1.Type = GetType(Date)
+        QueryParameter1.ValueInfo = "2021-01-01"
+        QueryParameter2.Name = "dt2"
+        QueryParameter2.Type = GetType(Date)
+        QueryParameter2.ValueInfo = "2021-03-31"
+        CustomSqlQuery1.Parameters.Add(QueryParameter1)
+        CustomSqlQuery1.Parameters.Add(QueryParameter2)
+        CustomSqlQuery1.Sql = resources.GetString("CustomSqlQuery1.Sql")
+        Me.SqlDataSource.Queries.AddRange(New DevExpress.DataAccess.Sql.SqlQuery() {CustomSqlQuery1})
+        Me.SqlDataSource.ResultSchemaSerializable = resources.GetString("SqlDataSource.ResultSchemaSerializable")
+        '
+        'TopMarginBand1
+        '
+        Me.TopMarginBand1.HeightF = 26.04167!
+        Me.TopMarginBand1.Name = "TopMarginBand1"
+        '
+        'BottomMarginBand1
+        '
+        Me.BottomMarginBand1.HeightF = 9.000015!
+        Me.BottomMarginBand1.Name = "BottomMarginBand1"
+        '
+        'Cartão
+        '
+        Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.Detalhe, Me.CabeçalhoDoRelatório, Me.RodapéDoRelatório, Me.CabeçalhoDaPágina, Me.RodapéDaPágina, Me.CabeçalhoDoGrupo0, Me.RodapéDoGrupo0, Me.TopMarginBand1, Me.BottomMarginBand1})
+        Me.ComponentStorage.AddRange(New System.ComponentModel.IComponent() {Me.SqlDataSource})
+        Me.DataAdapter = Me.OleDbDataAdapter1
+        Me.DataMember = "Query"
+        Me.DataSource = Me.SqlDataSource
+        Me.Margins = New System.Drawing.Printing.Margins(30, 7, 26, 9)
+        Me.PageWidth = 827
+        Me.PaperKind = System.Drawing.Printing.PaperKind.Custom
+        Me.Version = "20.1"
+        CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
+
+    End Sub
+
+    Friend WithEvents Detalhe As DevExpress.XtraReports.UI.DetailBand
+    Friend WithEvents Vencto As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents VC As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents NomeCartão As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents Texto23 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents Texto25 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents Texto27 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents CabeçalhoDoRelatório As DevExpress.XtraReports.UI.ReportHeaderBand
+    Friend WithEvents RodapéDoRelatório As DevExpress.XtraReports.UI.ReportFooterBand
+    Friend WithEvents Texto28 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents Rótulo29 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents CabeçalhoDaPágina As DevExpress.XtraReports.UI.PageHeaderBand
+    Friend WithEvents XrLabel1 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel2 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents Linha13 As DevExpress.XtraReports.UI.XRLine
+    Friend WithEvents Linha15 As DevExpress.XtraReports.UI.XRLine
+    Friend WithEvents Rótulo6 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents Linha9 As DevExpress.XtraReports.UI.XRLine
+    Friend WithEvents Rótulo19 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents Rótulo22 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents Rótulo24 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents Rótulo26 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents Período As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents RodapéDaPágina As DevExpress.XtraReports.UI.PageFooterBand
+    Friend WithEvents Linha17 As DevExpress.XtraReports.UI.XRLine
+    Friend WithEvents Linha18 As DevExpress.XtraReports.UI.XRLine
+    Friend WithEvents CabeçalhoDoGrupo0 As DevExpress.XtraReports.UI.GroupHeaderBand
+    Friend WithEvents RodapéDoGrupo0 As DevExpress.XtraReports.UI.GroupFooterBand
+    Friend WithEvents Texto20 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents Rótulo21 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents OleDbDataAdapter1 As OleDb.OleDbDataAdapter
+    Friend WithEvents SqlDataSource As DevExpress.DataAccess.Sql.SqlDataSource
+    Friend WithEvents TopMarginBand1 As DevExpress.XtraReports.UI.TopMarginBand
+    Friend WithEvents BottomMarginBand1 As DevExpress.XtraReports.UI.BottomMarginBand
+    Friend WithEvents pageInfo1 As DevExpress.XtraReports.UI.XRPageInfo
+    Friend WithEvents pageInfo2 As DevExpress.XtraReports.UI.XRPageInfo
+    Friend WithEvents XrLine1 As DevExpress.XtraReports.UI.XRLine
+End Class

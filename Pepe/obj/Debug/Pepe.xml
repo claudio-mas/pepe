@@ -1,0 +1,2970 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Pepe
+</name>
+</assembly>
+<members>
+<member name="T:Pepe.My.Resources.Resources">
+<summary>
+  Uma classe de recurso de tipo de alta segurança, para pesquisar cadeias de caracteres localizadas etc.
+</summary>
+</member>
+<member name="P:Pepe.My.Resources.Resources.ResourceManager">
+<summary>
+  Retorna a instância de ResourceManager armazenada em cache usada por essa classe.
+</summary>
+</member>
+<member name="P:Pepe.My.Resources.Resources.Culture">
+<summary>
+  Substitui a propriedade CurrentUICulture do thread atual para todas as
+  pesquisas de recursos que usam essa classe de recurso de tipo de alta segurança.
+</summary>
+</member>
+<member name="P:Pepe.My.Resources.Resources.contact_16x16">
+<summary>
+  Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Pepe.My.Resources.Resources.contact_32x32">
+<summary>
+  Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Pepe.My.Resources.Resources.EmEstoque">
+<summary>
+  Consulta uma cadeia de caracteres localizada semelhante a SELECT SUM(dbo.[1TabPeças].PrVenda) AS PrVenda, SUM(dbo.METAIS.OuroQtde) AS Au, SUM(dbo.[1TabPeças].Custo) AS Custo, COUNT(dbo.[1TabPeças].IDPeça) AS Qtd FROM dbo.VENDAS RIGHT OUTER JOIN dbo.[VENDAS DET] ON dbo.VENDAS.Id = dbo.[VENDAS DET].Venda RIGHT OUTER JOIN dbo.[1TabPeças] LEFT OUTER JOIN dbo.METAIS ON dbo.[1TabPeças].IDPeça = dbo.METAIS.Id INNER JOIN dbo.PEENBase ON dbo.[1TabPeças].IDPeça = dbo.PEENBase.IDPeça AND dbo.[1TabPeças].IDPeça = dbo.PEENBase.IDPeça ON dbo.[VENDAS DET].Peça = dbo.[1TabPeças]. [o restante da cadeia de caracteres foi truncado]&quot;;.
+</summary>
+</member>
+<member name="P:Pepe.My.Resources.Resources.Info">
+<summary>
+  Consulta um recurso localizado do tipo System.Drawing.Icon semelhante a (Ícone).
+</summary>
+</member>
+<member name="P:Pepe.My.Resources.Resources.pepe1">
+<summary>
+  Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Pepe.My.Resources.Resources.plane">
+<summary>
+  Consulta um recurso localizado do tipo System.Drawing.Icon semelhante a (Ícone).
+</summary>
+</member>
+<member name="P:Pepe.My.Resources.Resources.print_16x16">
+<summary>
+  Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Pepe.My.Resources.Resources.print_32x32">
+<summary>
+  Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Pepe.My.Resources.Resources.print_32x321">
+<summary>
+  Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Pepe.My.Resources.Resources.printer_16x16">
+<summary>
+  Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Pepe.My.Resources.Resources.printer_32x32">
+<summary>
+  Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Pepe.My.Resources.Resources.saveandnew_16x16">
+<summary>
+  Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Pepe.My.Resources.Resources.saveandnew_32x32">
+<summary>
+  Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.CCDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.ClientesDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.VENDASdgDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.VENDASDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.Vencto_ChequesDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.cboVendedorasDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.VENDAS_DETDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1._1TabPeçasDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.VendasDetDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.ComprasSubDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.Clientes1DataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.cboClientesDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.Vencto_CartãoDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.CCRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.ClientesRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.VENDASdgRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.VENDASRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.Vencto_ChequesRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.cboVendedorasRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.VENDAS_DETRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1._1TabPeçasRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.VendasDetRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.ComprasSubRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.Clientes1Row">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.cboClientesRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.Vencto_CartãoRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.CCRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.ClientesRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.VENDASdgRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.VENDASRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.Vencto_ChequesRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.cboVendedorasRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.VENDAS_DETRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.DataSet1._1TabPeçasRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.VendasDetRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.ComprasSubRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.Clientes1RowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.cboClientesRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.DataSet1.Vencto_CartãoRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.DataSet1TableAdapters.CCTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1TableAdapters.ClientesTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1TableAdapters.VENDASdgTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1TableAdapters.VENDASTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1TableAdapters.Vencto_ChequesTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1TableAdapters.cboVendedorasTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1TableAdapters.VENDAS_DETTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1TableAdapters._1TabPeçasTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1TableAdapters.VendasDetTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1TableAdapters.ComprasSubTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1TableAdapters.Clientes1TableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1TableAdapters.cboClientesTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1TableAdapters.Vencto_CartãoTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1TableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:Pepe.DataSet1TableAdapters.TableAdapterManager.UpdateUpdatedRows(Pepe.DataSet1,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:Pepe.DataSet1TableAdapters.TableAdapterManager.UpdateInsertedRows(Pepe.DataSet1,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:Pepe.DataSet1TableAdapters.TableAdapterManager.UpdateDeletedRows(Pepe.DataSet1,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:Pepe.DataSet1TableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:Pepe.DataSet1TableAdapters.TableAdapterManager.UpdateAll(Pepe.DataSet1)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:Pepe.DataSet1TableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:Pepe.DataSet1TableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:Pepe.dsComercial">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:Pepe.dsComercial.SaidasDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsComercial.TiposSaidasDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsComercial.cboPeçasDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsComercial.GerencialSaidasDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsComercial.VI_GetnetDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsComercial.SaidasRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsComercial.TiposSaidasRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsComercial.cboPeçasRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsComercial.GerencialSaidasRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsComercial.VI_GetnetRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsComercial.SaidasRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsComercial.TiposSaidasRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsComercial.cboPeçasRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsComercial.GerencialSaidasRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsComercial.VI_GetnetRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsComercialTableAdapters.SaidasTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsComercialTableAdapters.TiposSaidasTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsComercialTableAdapters.cboPeçasTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsComercialTableAdapters.GerencialSaidasTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsComercialTableAdapters.VI_GetnetTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsComercialTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:Pepe.dsComercialTableAdapters.TableAdapterManager.UpdateUpdatedRows(Pepe.dsComercial,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:Pepe.dsComercialTableAdapters.TableAdapterManager.UpdateInsertedRows(Pepe.dsComercial,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:Pepe.dsComercialTableAdapters.TableAdapterManager.UpdateDeletedRows(Pepe.dsComercial,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:Pepe.dsComercialTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:Pepe.dsComercialTableAdapters.TableAdapterManager.UpdateAll(Pepe.dsComercial)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:Pepe.dsComercialTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:Pepe.dsComercialTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:Pepe.dsInconsist">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:Pepe.dsInconsist.Inconsist1DataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsInconsist.Inconsist2DataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsInconsist.Inconsist4DataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsInconsist.Inconsist5DataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsInconsist.Inconsist1Row">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsInconsist.Inconsist2Row">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsInconsist.Inconsist4Row">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsInconsist.Inconsist5Row">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsInconsist.Inconsist1RowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsInconsist.Inconsist2RowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsInconsist.Inconsist4RowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsInconsist.Inconsist5RowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsInconsistTableAdapters.Inconsist1TableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsInconsistTableAdapters.Inconsist2TableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsInconsistTableAdapters.Inconsist4TableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsInconsistTableAdapters.Inconsist5TableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsInconsistTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:Pepe.dsInconsistTableAdapters.TableAdapterManager.UpdateUpdatedRows(Pepe.dsInconsist,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:Pepe.dsInconsistTableAdapters.TableAdapterManager.UpdateInsertedRows(Pepe.dsInconsist,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:Pepe.dsInconsistTableAdapters.TableAdapterManager.UpdateDeletedRows(Pepe.dsInconsist,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:Pepe.dsInconsistTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:Pepe.dsInconsistTableAdapters.TableAdapterManager.UpdateAll(Pepe.dsInconsist)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:Pepe.dsInconsistTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:Pepe.dsInconsistTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:Pepe.dsMatPrima">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:Pepe.dsMatPrima._1TabPeçasDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsMatPrima.tabMateriaPrimaDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsMatPrima.tabMatPrimaDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsMatPrima.MesesDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsMatPrima.CotaçãoDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsMatPrima._1TabPeçasRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsMatPrima.tabMateriaPrimaRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsMatPrima.tabMatPrimaRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsMatPrima.MesesRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsMatPrima.CotaçãoRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsMatPrima._1TabPeçasRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsMatPrima.tabMateriaPrimaRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsMatPrima.tabMatPrimaRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsMatPrima.MesesRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsMatPrima.CotaçãoRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsMatPrimaTableAdapters._1TabPeçasTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsMatPrimaTableAdapters.tabMateriaPrimaTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsMatPrimaTableAdapters.tabMatPrimaTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsMatPrimaTableAdapters.MesesTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsMatPrimaTableAdapters.CotaçãoTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsMatPrimaTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:Pepe.dsMatPrimaTableAdapters.TableAdapterManager.UpdateUpdatedRows(Pepe.dsMatPrima,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:Pepe.dsMatPrimaTableAdapters.TableAdapterManager.UpdateInsertedRows(Pepe.dsMatPrima,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:Pepe.dsMatPrimaTableAdapters.TableAdapterManager.UpdateDeletedRows(Pepe.dsMatPrima,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:Pepe.dsMatPrimaTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:Pepe.dsMatPrimaTableAdapters.TableAdapterManager.UpdateAll(Pepe.dsMatPrima)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:Pepe.dsMatPrimaTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:Pepe.dsMatPrimaTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:Pepe.dsNovo">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.CCDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.ClientesDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.VENDASdgDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.VENDASDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.Vencto_ChequesDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.cboVendedorasDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.VENDAS_DETDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovo._1TabPeçasDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.VendasDetDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.ComprasSubDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.Clientes1DataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.cboClientesDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.Vencto_CartãoDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.CCRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.ClientesRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.VENDASdgRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.VENDASRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.Vencto_ChequesRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.cboVendedorasRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.VENDAS_DETRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovo._1TabPeçasRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.VendasDetRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.ComprasSubRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.Clientes1Row">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.cboClientesRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.Vencto_CartãoRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.CCRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.ClientesRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.VENDASdgRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.VENDASRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.Vencto_ChequesRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.cboVendedorasRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.VENDAS_DETRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsNovo._1TabPeçasRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.VendasDetRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.ComprasSubRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.Clientes1RowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.cboClientesRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsNovo.Vencto_CartãoRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsNovoTableAdapters.CCTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsNovoTableAdapters.ClientesTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsNovoTableAdapters.VENDASdgTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsNovoTableAdapters.VENDASTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsNovoTableAdapters.Vencto_ChequesTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsNovoTableAdapters.cboVendedorasTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsNovoTableAdapters.VENDAS_DETTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsNovoTableAdapters._1TabPeçasTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsNovoTableAdapters.VendasDetTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsNovoTableAdapters.ComprasSubTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsNovoTableAdapters.Clientes1TableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsNovoTableAdapters.cboClientesTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsNovoTableAdapters.Vencto_CartãoTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsNovoTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:Pepe.dsNovoTableAdapters.TableAdapterManager.UpdateUpdatedRows(Pepe.dsNovo,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:Pepe.dsNovoTableAdapters.TableAdapterManager.UpdateInsertedRows(Pepe.dsNovo,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:Pepe.dsNovoTableAdapters.TableAdapterManager.UpdateDeletedRows(Pepe.dsNovo,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:Pepe.dsNovoTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:Pepe.dsNovoTableAdapters.TableAdapterManager.UpdateAll(Pepe.dsNovo)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:Pepe.dsNovoTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:Pepe.dsNovoTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:Pepe.dsVendas">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:Pepe.dsVendas.VENDASDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsVendas.VENDAS_DETDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsVendas.Vencto_CartãoDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsVendas.Vencto_ChequesDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsVendas._1TabPeçasDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsVendas.CartõesDebDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsVendas.ClientesDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsVendas.CartõesCredDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsVendas.CartõesDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsVendas.VendedorasDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsVendas.VENDASdgDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsVendas.VENDASRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsVendas.VENDAS_DETRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsVendas.Vencto_CartãoRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsVendas.Vencto_ChequesRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsVendas._1TabPeçasRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsVendas.CartõesDebRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsVendas.ClientesRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsVendas.CartõesCredRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsVendas.CartõesRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsVendas.VendedorasRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsVendas.VENDASdgRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsVendas.VENDASRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsVendas.VENDAS_DETRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsVendas.Vencto_CartãoRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsVendas.Vencto_ChequesRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsVendas._1TabPeçasRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsVendas.CartõesDebRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsVendas.ClientesRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsVendas.CartõesCredRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsVendas.CartõesRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsVendas.VendedorasRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsVendas.VENDASdgRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsVendasTableAdapters.VENDASTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsVendasTableAdapters.VENDAS_DETTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsVendasTableAdapters.Vencto_CartãoTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsVendasTableAdapters.Vencto_ChequesTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsVendasTableAdapters._1TabPeçasTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsVendasTableAdapters.CartõesDebTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsVendasTableAdapters.ClientesTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsVendasTableAdapters.CartõesCredTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsVendasTableAdapters.CartõesTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsVendasTableAdapters.VendedorasTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsVendasTableAdapters.VENDASdgTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsVendasTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:Pepe.dsVendasTableAdapters.TableAdapterManager.UpdateUpdatedRows(Pepe.dsVendas,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:Pepe.dsVendasTableAdapters.TableAdapterManager.UpdateInsertedRows(Pepe.dsVendas,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:Pepe.dsVendasTableAdapters.TableAdapterManager.UpdateDeletedRows(Pepe.dsVendas,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:Pepe.dsVendasTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:Pepe.dsVendasTableAdapters.TableAdapterManager.UpdateAll(Pepe.dsVendas)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:Pepe.dsVendasTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:Pepe.dsVendasTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="F:Pepe.frmCCdg.components">
+ <summary>
+ Required designer variable.
+ </summary>
+</member>
+<member name="M:Pepe.frmCCdg.Dispose(System.Boolean)">
+ <summary>
+ Clean up any resources being used.
+ </summary>
+ <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+</member>
+<member name="M:Pepe.frmCCdg.InitializeComponent">
+ <summary>
+ Required method for Designer support - do not modify
+ the contents of this method with the code editor.
+ </summary>
+</member>
+<member name="F:Pepe.frmGetnetDG.components">
+ <summary>
+ Required designer variable.
+ </summary>
+</member>
+<member name="M:Pepe.frmGetnetDG.Dispose(System.Boolean)">
+ <summary>
+ Clean up any resources being used.
+ </summary>
+ <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+</member>
+<member name="M:Pepe.frmGetnetDG.InitializeComponent">
+ <summary>
+ Required method for Designer support - do not modify
+ the contents of this method with the code editor.
+ </summary>
+</member>
+<member name="F:Pepe.frmInconsist.components">
+ <summary>
+ Required designer variable.
+ </summary>
+</member>
+<member name="M:Pepe.frmInconsist.Dispose(System.Boolean)">
+ <summary>
+ Clean up any resources being used.
+ </summary>
+ <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+</member>
+<member name="M:Pepe.frmInconsist.InitializeComponent">
+ <summary>
+ Required method for Designer support - do not modify
+ the contents of this method with the code editor.
+ </summary>
+</member>
+<member name="F:Pepe.frmMatPrimaDG.components">
+ <summary>
+ Required designer variable.
+ </summary>
+</member>
+<member name="M:Pepe.frmMatPrimaDG.Dispose(System.Boolean)">
+ <summary>
+ Clean up any resources being used.
+ </summary>
+ <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+</member>
+<member name="M:Pepe.frmMatPrimaDG.InitializeComponent">
+ <summary>
+ Required method for Designer support - do not modify
+ the contents of this method with the code editor.
+ </summary>
+</member>
+<member name="F:Pepe.frmNewVenda.components">
+ <summary>
+ Required designer variable.
+ </summary>
+</member>
+<member name="M:Pepe.frmNewVenda.Dispose(System.Boolean)">
+ <summary>
+ Clean up any resources being used.
+ </summary>
+ <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+</member>
+<member name="M:Pepe.frmNewVenda.InitializeComponent">
+ <summary>
+ Required method for Designer support - do not modify
+ the contents of this method with the code editor.
+ </summary>
+</member>
+<member name="F:Pepe.frmSaidasDG.components">
+ <summary>
+ Required designer variable.
+ </summary>
+</member>
+<member name="M:Pepe.frmSaidasDG.Dispose(System.Boolean)">
+ <summary>
+ Clean up any resources being used.
+ </summary>
+ <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+</member>
+<member name="M:Pepe.frmSaidasDG.InitializeComponent">
+ <summary>
+ Required method for Designer support - do not modify
+ the contents of this method with the code editor.
+ </summary>
+</member>
+<member name="T:Pepe.dsCC">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:Pepe.dsCC.Vencto_ChequesDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsCC.Vencto_CartãoDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsCC.CartõesDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsCC.Conta_CorrenteDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsCC.CC2DataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsCC.Vencto_ChequesRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsCC.Vencto_CartãoRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsCC.CartõesRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsCC.Conta_CorrenteRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsCC.CC2Row">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsCC.Vencto_ChequesRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsCC.Vencto_CartãoRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsCC.CartõesRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsCC.Conta_CorrenteRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsCC.CC2RowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsCCTableAdapters.Vencto_ChequesTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsCCTableAdapters.Vencto_CartãoTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsCCTableAdapters.CartõesTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsCCTableAdapters.Conta_CorrenteTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsCCTableAdapters.CC2TableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsCCTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:Pepe.dsCCTableAdapters.TableAdapterManager.UpdateUpdatedRows(Pepe.dsCC,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:Pepe.dsCCTableAdapters.TableAdapterManager.UpdateInsertedRows(Pepe.dsCC,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:Pepe.dsCCTableAdapters.TableAdapterManager.UpdateDeletedRows(Pepe.dsCC,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:Pepe.dsCCTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:Pepe.dsCCTableAdapters.TableAdapterManager.UpdateAll(Pepe.dsCC)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:Pepe.dsCCTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:Pepe.dsCCTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:Pepe.dsCheques">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.ChequesTodosOkDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.CartõesTodosOkDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.ChequesTodosDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.CartõesTodosDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.VENDAS_DETDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.cboPeçasDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.CartõesAbertoDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.CartõesRecDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.tabCartõesRptDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.ChequesAbertoDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.ChequesRecDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.VENDASDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.Vencto_ChequesDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.VENDAS1DataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.Vencto_Cheques1DataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.ChequesTodosOkRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.CartõesTodosOkRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.ChequesTodosRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.CartõesTodosRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.VENDAS_DETRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.cboPeçasRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.CartõesAbertoRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.CartõesRecRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.tabCartõesRptRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.ChequesAbertoRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.ChequesRecRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.VENDASRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.Vencto_ChequesRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.VENDAS1Row">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.Vencto_Cheques1Row">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.ChequesTodosOkRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.CartõesTodosOkRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.ChequesTodosRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.CartõesTodosRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.VENDAS_DETRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.cboPeçasRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.CartõesAbertoRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.CartõesRecRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.tabCartõesRptRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.ChequesAbertoRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.ChequesRecRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.VENDASRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.Vencto_ChequesRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.VENDAS1RowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsCheques.Vencto_Cheques1RowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsChequesTableAdapters.ChequesTodosOkTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsChequesTableAdapters.CartõesTodosOkTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsChequesTableAdapters.ChequesTodosTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsChequesTableAdapters.CartõesTodosTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsChequesTableAdapters.VENDAS_DETTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsChequesTableAdapters.cboPeçasTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsChequesTableAdapters.CartõesAbertoTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsChequesTableAdapters.CartõesRecTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsChequesTableAdapters.tabCartõesRptTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsChequesTableAdapters.ChequesAbertoTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsChequesTableAdapters.ChequesRecTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsChequesTableAdapters.VENDASTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsChequesTableAdapters.Vencto_ChequesTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsChequesTableAdapters.VENDAS1TableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsChequesTableAdapters.Vencto_Cheques1TableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsChequesTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:Pepe.dsChequesTableAdapters.TableAdapterManager.UpdateUpdatedRows(Pepe.dsCheques,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:Pepe.dsChequesTableAdapters.TableAdapterManager.UpdateInsertedRows(Pepe.dsCheques,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:Pepe.dsChequesTableAdapters.TableAdapterManager.UpdateDeletedRows(Pepe.dsCheques,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:Pepe.dsChequesTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:Pepe.dsChequesTableAdapters.TableAdapterManager.UpdateAll(Pepe.dsCheques)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:Pepe.dsChequesTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:Pepe.dsChequesTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:Pepe.dsCliente">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:Pepe.dsCliente.ClientesDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsCliente.CCDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsCliente.Vencto_CartãoDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsCliente.CartõesDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsCliente.ComprasDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsCliente.ClientesCadastradosDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsCliente.ClientesRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsCliente.CCRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsCliente.Vencto_CartãoRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsCliente.CartõesRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsCliente.ComprasRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsCliente.ClientesCadastradosRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsCliente.ClientesRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsCliente.CCRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsCliente.Vencto_CartãoRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsCliente.CartõesRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsCliente.ComprasRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsCliente.ClientesCadastradosRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsClienteTableAdapters.ClientesTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsClienteTableAdapters.CCTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsClienteTableAdapters.Vencto_CartãoTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsClienteTableAdapters.CartõesTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsClienteTableAdapters.ComprasTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsClienteTableAdapters.ClientesCadastradosTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsClienteTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:Pepe.dsClienteTableAdapters.TableAdapterManager.UpdateUpdatedRows(Pepe.dsCliente,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:Pepe.dsClienteTableAdapters.TableAdapterManager.UpdateInsertedRows(Pepe.dsCliente,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:Pepe.dsClienteTableAdapters.TableAdapterManager.UpdateDeletedRows(Pepe.dsCliente,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:Pepe.dsClienteTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:Pepe.dsClienteTableAdapters.TableAdapterManager.UpdateAll(Pepe.dsCliente)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:Pepe.dsClienteTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:Pepe.dsClienteTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:Pepe.dsEstoque">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:Pepe.dsEstoque.EstoqueDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsEstoque.METAISDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsEstoque._1TabPeçasDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsEstoque.PEDRASDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsEstoque.EstoqueRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsEstoque.METAISRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsEstoque._1TabPeçasRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsEstoque.PEDRASRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsEstoque.EstoqueRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsEstoque.METAISRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsEstoque._1TabPeçasRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsEstoque.PEDRASRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsEstoqueTableAdapters.EstoqueTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsEstoqueTableAdapters.METAISTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsEstoqueTableAdapters._1TabPeçasTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsEstoqueTableAdapters.PEDRASTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsEstoqueTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:Pepe.dsEstoqueTableAdapters.TableAdapterManager.UpdateUpdatedRows(Pepe.dsEstoque,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:Pepe.dsEstoqueTableAdapters.TableAdapterManager.UpdateInsertedRows(Pepe.dsEstoque,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:Pepe.dsEstoqueTableAdapters.TableAdapterManager.UpdateDeletedRows(Pepe.dsEstoque,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:Pepe.dsEstoqueTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:Pepe.dsEstoqueTableAdapters.TableAdapterManager.UpdateAll(Pepe.dsEstoque)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:Pepe.dsEstoqueTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:Pepe.dsEstoqueTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:Pepe.dsGeral">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:Pepe.dsGeral.cboClientesDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsGeral.CONSERTOSDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsGeral.VendedorasDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsGeral.Vencto_ChequesDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsGeral.USP_RPT_VENDASDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsGeral.ClientesDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsGeral.Vencto_CartãoDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsGeral.CartõesDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsGeral.cboClientesRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsGeral.CONSERTOSRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsGeral.VendedorasRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsGeral.Vencto_ChequesRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsGeral.USP_RPT_VENDASRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsGeral.ClientesRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsGeral.Vencto_CartãoRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsGeral.CartõesRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsGeral.cboClientesRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsGeral.CONSERTOSRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsGeral.VendedorasRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsGeral.Vencto_ChequesRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsGeral.USP_RPT_VENDASRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsGeral.ClientesRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsGeral.Vencto_CartãoRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsGeral.CartõesRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsGeralTableAdapters.cboClientesTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsGeralTableAdapters.CONSERTOSTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsGeralTableAdapters.VendedorasTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsGeralTableAdapters.Vencto_ChequesTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsGeralTableAdapters.USP_RPT_VENDASTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsGeralTableAdapters.ClientesTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsGeralTableAdapters.Vencto_CartãoTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsGeralTableAdapters.CartõesTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsGeralTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:Pepe.dsGeralTableAdapters.TableAdapterManager.UpdateUpdatedRows(Pepe.dsGeral,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:Pepe.dsGeralTableAdapters.TableAdapterManager.UpdateInsertedRows(Pepe.dsGeral,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:Pepe.dsGeralTableAdapters.TableAdapterManager.UpdateDeletedRows(Pepe.dsGeral,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:Pepe.dsGeralTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:Pepe.dsGeralTableAdapters.TableAdapterManager.UpdateAll(Pepe.dsGeral)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:Pepe.dsGeralTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:Pepe.dsGeralTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:Pepe.dsNovoEstoque">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:Pepe.dsNovoEstoque._1TabPeçasDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovoEstoque.METAISDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovoEstoque.PEDRASDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovoEstoque.ReajustesDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovoEstoque._1TabPeçasHistóricoDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovoEstoque._1TabPeçasRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovoEstoque.METAISRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovoEstoque.PEDRASRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovoEstoque.ReajustesRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovoEstoque._1TabPeçasHistóricoRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsNovoEstoque._1TabPeçasRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsNovoEstoque.METAISRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsNovoEstoque.PEDRASRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsNovoEstoque.ReajustesRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsNovoEstoque._1TabPeçasHistóricoRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsNovoEstoqueTableAdapters._1TabPeçasTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsNovoEstoqueTableAdapters.METAISTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsNovoEstoqueTableAdapters.PEDRASTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsNovoEstoqueTableAdapters.ReajustesTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsNovoEstoqueTableAdapters._1TabPeçasHistóricoTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsNovoEstoqueTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:Pepe.dsNovoEstoqueTableAdapters.TableAdapterManager.UpdateUpdatedRows(Pepe.dsNovoEstoque,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:Pepe.dsNovoEstoqueTableAdapters.TableAdapterManager.UpdateInsertedRows(Pepe.dsNovoEstoque,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:Pepe.dsNovoEstoqueTableAdapters.TableAdapterManager.UpdateDeletedRows(Pepe.dsNovoEstoque,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:Pepe.dsNovoEstoqueTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:Pepe.dsNovoEstoqueTableAdapters.TableAdapterManager.UpdateAll(Pepe.dsNovoEstoque)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:Pepe.dsNovoEstoqueTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:Pepe.dsNovoEstoqueTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:Pepe.dsReports">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:Pepe.dsReports.CartõesDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsReports.VENDASDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Pepe.dsReports.CartõesRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsReports.VENDASRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Pepe.dsReports.CartõesRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsReports.VENDASRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Pepe.dsReportsTableAdapters.CartõesTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsReportsTableAdapters.VENDASTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Pepe.dsReportsTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:Pepe.dsReportsTableAdapters.TableAdapterManager.UpdateUpdatedRows(Pepe.dsReports,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:Pepe.dsReportsTableAdapters.TableAdapterManager.UpdateInsertedRows(Pepe.dsReports,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:Pepe.dsReportsTableAdapters.TableAdapterManager.UpdateDeletedRows(Pepe.dsReports,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:Pepe.dsReportsTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:Pepe.dsReportsTableAdapters.TableAdapterManager.UpdateAll(Pepe.dsReports)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:Pepe.dsReportsTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:Pepe.dsReportsTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="F:Pepe.frmCartoesDG.components">
+ <summary>
+ Required designer variable.
+ </summary>
+</member>
+<member name="M:Pepe.frmCartoesDG.Dispose(System.Boolean)">
+ <summary>
+ Clean up any resources being used.
+ </summary>
+ <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+</member>
+<member name="M:Pepe.frmCartoesDG.InitializeComponent">
+ <summary>
+ Required method for Designer support - do not modify
+ the contents of this method with the code editor.
+ </summary>
+</member>
+<member name="F:Pepe.frmCC.components">
+ <summary>
+ Required designer variable.
+ </summary>
+</member>
+<member name="M:Pepe.frmCC.Dispose(System.Boolean)">
+ <summary>
+ Clean up any resources being used.
+ </summary>
+ <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+</member>
+<member name="M:Pepe.frmCC.InitializeComponent">
+ <summary>
+ Required method for Designer support - do not modify
+ the contents of this method with the code editor.
+ </summary>
+</member>
+<member name="F:Pepe.frmChequesDG.components">
+ <summary>
+ Required designer variable.
+ </summary>
+</member>
+<member name="M:Pepe.frmChequesDG.Dispose(System.Boolean)">
+ <summary>
+ Clean up any resources being used.
+ </summary>
+ <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+</member>
+<member name="M:Pepe.frmChequesDG.InitializeComponent">
+ <summary>
+ Required method for Designer support - do not modify
+ the contents of this method with the code editor.
+ </summary>
+</member>
+<member name="F:Pepe.frmClientes.components">
+ <summary>
+ Required designer variable.
+ </summary>
+</member>
+<member name="M:Pepe.frmClientes.Dispose(System.Boolean)">
+ <summary>
+ Clean up any resources being used.
+ </summary>
+ <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+</member>
+<member name="M:Pepe.frmClientes.InitializeComponent">
+ <summary>
+ Required method for Designer support - do not modify
+ the contents of this method with the code editor.
+ </summary>
+</member>
+<member name="F:Pepe.frmClientesDG.components">
+ <summary>
+ Required designer variable.
+ </summary>
+</member>
+<member name="M:Pepe.frmClientesDG.Dispose(System.Boolean)">
+ <summary>
+ Clean up any resources being used.
+ </summary>
+ <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+</member>
+<member name="M:Pepe.frmClientesDG.InitializeComponent">
+ <summary>
+ Required method for Designer support - do not modify
+ the contents of this method with the code editor.
+ </summary>
+</member>
+<member name="F:Pepe.frmConsertos.components">
+ <summary>
+ Required designer variable.
+ </summary>
+</member>
+<member name="M:Pepe.frmConsertos.Dispose(System.Boolean)">
+ <summary>
+ Clean up any resources being used.
+ </summary>
+ <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+</member>
+<member name="M:Pepe.frmConsertos.InitializeComponent">
+ <summary>
+ Required method for Designer support - do not modify
+ the contents of this method with the code editor.
+ </summary>
+</member>
+<member name="F:Pepe.frmConsertosfrm.components">
+ <summary>
+ Required designer variable.
+ </summary>
+</member>
+<member name="M:Pepe.frmConsertosfrm.Dispose(System.Boolean)">
+ <summary>
+ Clean up any resources being used.
+ </summary>
+ <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+</member>
+<member name="M:Pepe.frmConsertosfrm.InitializeComponent">
+ <summary>
+ Required method for Designer support - do not modify
+ the contents of this method with the code editor.
+ </summary>
+</member>
+<member name="F:Pepe.frmEstoque.components">
+ <summary>
+ Required designer variable.
+ </summary>
+</member>
+<member name="M:Pepe.frmEstoque.Dispose(System.Boolean)">
+ <summary>
+ Clean up any resources being used.
+ </summary>
+ <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+</member>
+<member name="M:Pepe.frmEstoque.InitializeComponent">
+ <summary>
+ Required method for Designer support - do not modify
+ the contents of this method with the code editor.
+ </summary>
+</member>
+<member name="F:Pepe.frmEstoqueDG.components">
+ <summary>
+ Required designer variable.
+ </summary>
+</member>
+<member name="M:Pepe.frmEstoqueDG.Dispose(System.Boolean)">
+ <summary>
+ Clean up any resources being used.
+ </summary>
+ <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+</member>
+<member name="M:Pepe.frmEstoqueDG.InitializeComponent">
+ <summary>
+ Required method for Designer support - do not modify
+ the contents of this method with the code editor.
+ </summary>
+</member>
+<member name="F:Pepe.frmEtiqAniv.components">
+ <summary>
+ Required designer variable.
+ </summary>
+</member>
+<member name="M:Pepe.frmEtiqAniv.Dispose(System.Boolean)">
+ <summary>
+ Clean up any resources being used.
+ </summary>
+ <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+</member>
+<member name="M:Pepe.frmEtiqAniv.InitializeComponent">
+ <summary>
+ Required method for Designer support - do not modify
+ the contents of this method with the code editor.
+ </summary>
+</member>
+<member name="F:Pepe.frmEtiquetas.components">
+ <summary>
+ Required designer variable.
+ </summary>
+</member>
+<member name="M:Pepe.frmEtiquetas.Dispose(System.Boolean)">
+ <summary>
+ Clean up any resources being used.
+ </summary>
+ <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+</member>
+<member name="M:Pepe.frmEtiquetas.InitializeComponent">
+ <summary>
+ Required method for Designer support - do not modify
+ the contents of this method with the code editor.
+ </summary>
+</member>
+<member name="F:Pepe.frmReajuste.components">
+ <summary>
+ Required designer variable.
+ </summary>
+</member>
+<member name="M:Pepe.frmReajuste.Dispose(System.Boolean)">
+ <summary>
+ Clean up any resources being used.
+ </summary>
+ <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+</member>
+<member name="M:Pepe.frmReajuste.InitializeComponent">
+ <summary>
+ Required method for Designer support - do not modify
+ the contents of this method with the code editor.
+ </summary>
+</member>
+<member name="F:Pepe.frmRptPecasCompradas.components">
+ <summary>
+ Required designer variable.
+ </summary>
+</member>
+<member name="M:Pepe.frmRptPecasCompradas.Dispose(System.Boolean)">
+ <summary>
+ Clean up any resources being used.
+ </summary>
+ <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+</member>
+<member name="M:Pepe.frmRptPecasCompradas.InitializeComponent">
+ <summary>
+ Required method for Designer support - do not modify
+ the contents of this method with the code editor.
+ </summary>
+</member>
+<member name="F:Pepe.frmVenda.components">
+ <summary>
+ Required designer variable.
+ </summary>
+</member>
+<member name="M:Pepe.frmVenda.Dispose(System.Boolean)">
+ <summary>
+ Clean up any resources being used.
+ </summary>
+ <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+</member>
+<member name="M:Pepe.frmVenda.InitializeComponent">
+ <summary>
+ Required method for Designer support - do not modify
+ the contents of this method with the code editor.
+ </summary>
+</member>
+<member name="F:Pepe.frmVendasDG.components">
+ <summary>
+ Required designer variable.
+ </summary>
+</member>
+<member name="M:Pepe.frmVendasDG.Dispose(System.Boolean)">
+ <summary>
+ Clean up any resources being used.
+ </summary>
+ <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+</member>
+<member name="M:Pepe.frmVendasDG.InitializeComponent">
+ <summary>
+ Required method for Designer support - do not modify
+ the contents of this method with the code editor.
+ </summary>
+</member>
+<member name="F:Pepe.ccvendaconserto.components">
+ <summary>
+ Required designer variable.
+ </summary>
+</member>
+<member name="M:Pepe.ccvendaconserto.Dispose(System.Boolean)">
+ <summary>
+ Clean up any resources being used.
+ </summary>
+ <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+</member>
+<member name="M:Pepe.ccvendaconserto.InitializeComponent">
+ <summary>
+ Required method for Designer support - do not modify
+ the contents of this method with the code editor.
+ </summary>
+</member>
+</members>
+</doc>
