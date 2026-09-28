@@ -1,23 +1,36 @@
 ﻿Imports System.ComponentModel
 Imports System.Data.SqlClient
+Imports System.Runtime.InteropServices
 Imports System.Text
-Imports DevExpress.DataAccess
-Imports DevExpress.XtraEditors
 Imports Microsoft.Office.Interop
 
 Partial Public Class frmClientesDG
-    Inherits DevExpress.XtraBars.Ribbon.RibbonForm
-    Shared Sub New()
-        DevExpress.UserSkins.BonusSkins.Register()
-        DevExpress.Skins.SkinManager.EnableFormSkins()
-    End Sub
+    Inherits System.Windows.Forms.Form
+
+    ' Colunas de texto consideradas pela pesquisa (substitui o "find panel" do GridControl DevExpress).
+    Private Shared ReadOnly CamposPesquisa As String() = {"Título", "Nome", "Cliente", "Endereço", "Bairro", "Telefone"}
+
+    ' Mensagem do Windows que mostra o texto de dica ("Pesquisar...") no TextBox vazio.
+    Private Const EM_SETCUEBANNER As Integer = &H1501
+
+    <DllImport("user32.dll", CharSet:=CharSet.Unicode)>
+    Private Shared Function SendMessage(hWnd As IntPtr, msg As Integer, wParam As IntPtr, lParam As String) As IntPtr
+    End Function
+
     Public Sub New()
         InitializeComponent()
+        ' As colunas estão definidas no designer; sem isto o DataGridView acrescentaria
+        ' todas as colunas da tabela Clientes. Por isso o DataSource é ligado aqui, e não no designer.
+        dgvClientes.AutoGenerateColumns = False
+        dgvClientes.DataSource = ClientesBindingSource1
     End Sub
 
     Private Sub frmClientesDG_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.ClientesTableAdapter1.Fill(Me.DsNovo.Clientes)
         'Me.ClientesTableAdapter.Fill(Me.DsPrincipal.Clientes)
+
+        SendMessage(txtPesquisa.Handle, EM_SETCUEBANNER, New IntPtr(1), "Pesquisar...")
+        AtualizarPosicao()
 
         frmDevPrincipal.Visible = False
 
@@ -39,18 +52,161 @@ Partial Public Class frmClientesDG
 
     End Sub
 
-    Private Sub btnFechar_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnFechar.ItemClick
+    Private Sub btnFechar_Click(sender As Object, e As EventArgs) Handles btnFechar.Click
         Me.Close()
 
     End Sub
 
-    Private Sub btnAbrir_ButtonClick(sender As Object, e As DevExpress.XtraEditors.Controls.ButtonPressedEventArgs) Handles btnAbrir.ButtonClick
-        varIdCliente = GridView1.GetFocusedRowCellValue("IDCliente")
+#Region "Grade"
+
+    ''' <summary>Linha de dados (DataRowView) por trás de uma linha da grade.</summary>
+    Private Function LinhaDaGrade(rowIndex As Integer) As DataRowView
+        If rowIndex < 0 OrElse rowIndex >= dgvClientes.Rows.Count Then Return Nothing
+        Return TryCast(dgvClientes.Rows(rowIndex).DataBoundItem, DataRowView)
+    End Function
+
+    ' Os dois botões da grade (abrir cadastro / registrar venda) são colunas de imagem.
+    Private Sub dgvClientes_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvClientes.CellClick
+        Dim drv = LinhaDaGrade(e.RowIndex)
+        If drv Is Nothing Then Return
+
+        If e.ColumnIndex = colAbrir.Index Then
+            AbrirCadastro(drv)
+        ElseIf e.ColumnIndex = colVenda.Index Then
+            AbrirVenda(drv)
+        End If
+    End Sub
+
+    Private Sub dgvClientes_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles dgvClientes.CellFormatting
+        ' Colunas de imagem não vinculadas: sempre mostram o ícone do botão (sem isto aparece o "X" vermelho).
+        If e.ColumnIndex = colAbrir.Index Then
+            e.Value = colAbrir.Image
+        ElseIf e.ColumnIndex = colVenda.Index Then
+            e.Value = colVenda.Image
+        End If
+    End Sub
+
+    Private Sub dgvClientes_CellToolTipTextNeeded(sender As Object, e As DataGridViewCellToolTipTextNeededEventArgs) Handles dgvClientes.CellToolTipTextNeeded
+        If e.RowIndex < 0 Then Return
+        If e.ColumnIndex = colAbrir.Index Then
+            e.ToolTipText = "Abre o cadastro do cliente"
+        ElseIf e.ColumnIndex = colVenda.Index Then
+            e.ToolTipText = "Registra venda para o cliente"
+        End If
+    End Sub
+
+    Private Sub dgvClientes_CellMouseEnter(sender As Object, e As DataGridViewCellEventArgs) Handles dgvClientes.CellMouseEnter
+        Dim ehBotao = e.RowIndex >= 0 AndAlso (e.ColumnIndex = colAbrir.Index OrElse e.ColumnIndex = colVenda.Index)
+        dgvClientes.Cursor = If(ehBotao, Cursors.Hand, Cursors.Default)
+    End Sub
+
+    Private Sub dgvClientes_CellMouseLeave(sender As Object, e As DataGridViewCellEventArgs) Handles dgvClientes.CellMouseLeave
+        dgvClientes.Cursor = Cursors.Default
+    End Sub
+
+    ' O DataGridView só grava o valor do checkbox ao sair da célula; aqui ele é gravado no clique,
+    ' como fazia o CheckEdit do GridControl.
+    Private Sub dgvClientes_CurrentCellDirtyStateChanged(sender As Object, e As EventArgs) Handles dgvClientes.CurrentCellDirtyStateChanged
+        If dgvClientes.IsCurrentCellDirty AndAlso TypeOf dgvClientes.CurrentCell Is DataGridViewCheckBoxCell Then
+            dgvClientes.CommitEdit(DataGridViewDataErrorContexts.Commit)
+        End If
+    End Sub
+
+    Private Sub dgvClientes_DataError(sender As Object, e As DataGridViewDataErrorEventArgs) Handles dgvClientes.DataError
+        ' Evita a caixa de diálogo padrão do DataGridView para erros de formatação.
+        e.ThrowException = False
+    End Sub
+
+    Private Sub ClientesBindingSource1_PositionChanged(sender As Object, e As EventArgs) Handles ClientesBindingSource1.PositionChanged, ClientesBindingSource1.ListChanged
+        AtualizarPosicao()
+    End Sub
+
+    ' Substitui o navegador embutido do GridControl ("{0} / {1}").
+    Private Sub AtualizarPosicao()
+        lblPosicao.Text = String.Format("{0} / {1}", ClientesBindingSource1.Position + 1, ClientesBindingSource1.Count)
+    End Sub
+
+#End Region
+
+#Region "Pesquisa"
+
+    Private Sub txtPesquisa_TextChanged(sender As Object, e As EventArgs) Handles txtPesquisa.TextChanged
+        ' Espera o usuário parar de digitar antes de filtrar.
+        tmrPesquisa.Stop()
+        tmrPesquisa.Start()
+    End Sub
+
+    Private Sub tmrPesquisa_Tick(sender As Object, e As EventArgs) Handles tmrPesquisa.Tick
+        tmrPesquisa.Stop()
+        AplicarFiltro()
+    End Sub
+
+    Private Sub txtPesquisa_KeyDown(sender As Object, e As KeyEventArgs) Handles txtPesquisa.KeyDown
+        Select Case e.KeyCode
+            Case Keys.Enter
+                tmrPesquisa.Stop()
+                AplicarFiltro()
+                e.SuppressKeyPress = True
+            Case Keys.Escape
+                txtPesquisa.Clear()
+                e.SuppressKeyPress = True
+            Case Keys.Down
+                dgvClientes.Focus()
+                e.Handled = True
+        End Select
+    End Sub
+
+    ''' <summary>
+    ''' Filtra a grade como o "find panel" do DevExpress: cada palavra digitada precisa aparecer
+    ''' em pelo menos uma das colunas (inclusive a data de aniversário).
+    ''' </summary>
+    Private Sub AplicarFiltro()
+        Dim palavras = txtPesquisa.Text.Split(New Char() {" "c}, StringSplitOptions.RemoveEmptyEntries)
+
+        dgvClientes.EndEdit()
+        If palavras.Length = 0 Then
+            ClientesBindingSource1.RemoveFilter()
+        Else
+            Dim condicoes As New List(Of String)
+            For Each palavra In palavras
+                Dim valor = EscaparLike(palavra)
+                Dim alternativas As New List(Of String)
+                For Each campo In CamposPesquisa
+                    alternativas.Add(String.Format("[{0}] LIKE '%{1}%'", campo, valor))
+                Next
+                alternativas.Add(String.Format("CONVERT([Aniv], 'System.String') LIKE '%{0}%'", valor))
+                condicoes.Add("(" & String.Join(" OR ", alternativas) & ")")
+            Next
+            ClientesBindingSource1.Filter = String.Join(" AND ", condicoes)
+        End If
+        AtualizarPosicao()
+    End Sub
+
+    ''' <summary>Escapa os caracteres especiais do LIKE do DataView (', [, ], *, %).</summary>
+    Private Shared Function EscaparLike(texto As String) As String
+        Dim sb As New StringBuilder()
+        For Each ch In texto
+            Select Case ch
+                Case "["c, "]"c, "*"c, "%"c
+                    sb.Append("[").Append(ch).Append("]")
+                Case "'"c
+                    sb.Append("''")
+                Case Else
+                    sb.Append(ch)
+            End Select
+        Next
+        Return sb.ToString()
+    End Function
+
+#End Region
+
+    Private Sub AbrirCadastro(drv As DataRowView)
+        varIdCliente = drv("IDCliente")
         frmClientes.Show()
 
     End Sub
 
-    Private Sub btnNovo_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnNovo.ItemClick
+    Private Sub btnNovo_Click(sender As Object, e As EventArgs) Handles btnNovo.Click
         varIdCliente = 0
         frmClientes.Show()
 
@@ -59,15 +215,21 @@ Partial Public Class frmClientesDG
     Private Sub ckTodas_CheckedChanged(sender As Object, e As EventArgs) Handles ckTodas.CheckedChanged
 
         Me.Cursor = Cursors.AppStarting
-        For i As Integer = 0 To GridView1.DataRowCount - 1
-            If ckTodas.Checked Then
-                ckTodas.Text = "Desmarcar todas"
-                GridView1.SetRowCellValue(i, "Imp", 1)
-            Else
-                ckTodas.Text = "Marcar todas"
-                GridView1.SetRowCellValue(i, "Imp", 0)
-            End If
-        Next i
+        ckTodas.Text = If(ckTodas.Checked, "Desmarcar todas", "Marcar todas")
+
+        ' Marca/desmarca só as linhas visíveis (respeita a pesquisa), como o GridView1.DataRowCount fazia.
+        ' Grava direto no DataRow e só redesenha a grade no fim, para não ficar lento com o cadastro inteiro.
+        dgvClientes.EndEdit()
+        Dim linhas = ClientesBindingSource1.List.Cast(Of DataRowView)().Select(Function(v) v.Row).ToList()
+        ClientesBindingSource1.RaiseListChangedEvents = False
+        Try
+            For Each linha In linhas
+                linha("Imp") = ckTodas.Checked
+            Next
+        Finally
+            ClientesBindingSource1.RaiseListChangedEvents = True
+            ClientesBindingSource1.ResetBindings(False)
+        End Try
 
         Me.Validate()
         ClientesBindingSource1.EndEdit()
@@ -77,26 +239,25 @@ Partial Public Class frmClientesDG
 
     End Sub
 
-    Private Sub btnEtiqMalaDireta_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnEtiqMalaDireta.ItemClick
+    Private Sub btnEtiqMalaDireta_Click(sender As Object, e As EventArgs) Handles btnEtiqMalaDireta.Click
         Me.Validate()
         ClientesBindingSource1.EndEdit()
         ClientesTableAdapter1.Update(DsNovo)
 
         Dim x As String = DLookUp("Imp", "Clientes", "Imp = 1", 0)
         If x = "" Then
-            'MsgBox("Nenhum cliente selecionado para impressão de etiquetas", MsgBoxStyle.Critical, "Atenção!")
-            DevExpress.XtraEditors.XtraMessageBox.Show("Nenhum cliente selecionado para impressão de etiquetas", "Atenção!")
+            MessageBox.Show("Nenhum cliente selecionado para impressão de etiquetas", "Atenção!")
         Else
             frmEtiquetas.Show()
         End If
 
     End Sub
 
-    Private Sub btnAbrirVenda_ButtonClick(sender As Object, e As DevExpress.XtraEditors.Controls.ButtonPressedEventArgs) Handles btnAbrirVenda.ButtonClick
+    Private Sub AbrirVenda(drv As DataRowView)
         Try
-            varIdCliente = GridView1.GetFocusedRowCellValue("IDCliente")
-            If Not IsDBNull(GridView1.GetFocusedRowCellValue("Nome")) Then varNomeCli = GridView1.GetFocusedRowCellValue("Nome")
-            If Not IsDBNull(GridView1.GetFocusedRowCellValue("Cliente")) Then varNomeMD = GridView1.GetFocusedRowCellValue("Cliente")
+            varIdCliente = drv("IDCliente")
+            If Not IsDBNull(drv("Nome")) Then varNomeCli = drv("Nome")
+            If Not IsDBNull(drv("Cliente")) Then varNomeMD = drv("Cliente")
 
             Dim rs As New ADODB.Recordset()
             Dim cnStr As String = strAdoConnection()
@@ -121,14 +282,14 @@ Partial Public Class frmClientesDG
 
     End Sub
 
-    Private Sub btnEtiqAniv_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnEtiqAniv.ItemClick
+    Private Sub btnEtiqAniv_Click(sender As Object, e As EventArgs) Handles btnEtiqAniv.Click
         frmEtiqAniv.Show()
 
     End Sub
 
-    Private Sub btnEmails_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnEmails.ItemClick
+    Private Sub btnEmails_Click(sender As Object, e As EventArgs) Handles btnEmails.Click
 
-        Dim conn As New SqlConnection("Server=DESKTOP-9UNO97E\SQLEXPRESS; uid=sa; pwd=oowa2015; Initial Catalog=BDTorras")   'Dim conn As New SqlConnection("Server=MARCELO\SQLEXPRESS; uid=sa; pwd=123456")
+        Dim conn As New SqlConnection(My.Settings.Pepe_ConnString)   ' conexão central (ver modConexao)
         conn.Open()
         Dim ds As DataSet
         Dim dt As DataTable
@@ -184,12 +345,12 @@ Partial Public Class frmClientesDG
 
     End Sub
 
-    Private Sub BarButtonItem4_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem4.ItemClick
+    Private Sub btnEndereços_Click(sender As Object, e As EventArgs) Handles btnEndereços.Click
         EndereçosClientesBase.Show()
 
     End Sub
 
-    Private Sub BarButtonItem5_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem5.ItemClick
+    Private Sub btnTelefones_Click(sender As Object, e As EventArgs) Handles btnTelefones.Click
         TelefonesClientesBase.Show()
 
     End Sub
