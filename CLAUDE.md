@@ -5,34 +5,48 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## O que é
 
 Sistema desktop de gestão para joalheria (clientes, vendas, consertos, estoque, conta corrente,
-cheques/cartões, relatórios). VB.NET / WinForms sobre .NET Framework 4.8, UI DevExpress v23.2,
-banco SQL Server (`BDTorras`). Aplicação single-tenant, distribuída por ClickOnce em
+cheques/cartões, relatórios). VB.NET / WinForms sobre .NET Framework 4.8, UI DevExpress v23.2 (em remoção —
+ver "Saída do DevExpress"), banco SQL Server (`BDTorras`). Aplicação single-tenant, distribuída por ClickOnce em
 https://informas.com.br/pepe/ (ver "Publicação").
 
 ## Layout do repositório (importante)
 
-Há **dois repositórios git aninhados**:
+**Um único repositório git**, na raiz `C:\Sistema\Paco\Pepe\` (em 09/2026 os antigos repositórios aninhados —
+raiz e `Pepe\.git` — foram unidos; o histórico do código foi preservado sob o prefixo `Pepe/`).
+O código fica em `Pepe\`; na raiz ficam `Pepe.sln`, `Setup*`, `docs\` e este arquivo.
+Remoto: repositório **privado** no GitHub (o histórico antigo contém senhas de desenvolvimento — nunca torne público).
 
-- `C:\Sistema\Paco\Pepe\.git` — raiz; versiona só `Pepe.sln`, `Setup*`, `.gitignore`.
-- `C:\Sistema\Paco\Pepe\Pepe\.git` — **onde vive o histórico do código**. Todo commit de código vai aqui.
-
-Dentro do repo interno, `bin/` e `obj/` **são versionados**. Qualquer build suja dezenas de arquivos
-no working tree — isso é esperado, não é regressão. Ao commitar, selecione os arquivos-fonte
-explicitamente em vez de `git add -A`.
+`Pepe/bin/` e `Pepe/obj/` **são versionados** — e `Pepe/bin/Debug` guarda as DLLs de terceiros (DevExpress, C1,
+Infragistics, Telerik) das quais o build depende quando os produtos não estão instalados. Qualquer build suja
+dezenas de arquivos no working tree — isso é esperado, não é regressão. Ao commitar, selecione os arquivos-fonte
+explicitamente em vez de `git add -A`. `packages\` (NuGet) e `publish\` são ignorados.
 
 Pastas a ignorar: `Pepe_Backup_*`, `Rubbish`, `Setup`/`Setup1` (VS Installer legado),
 e os inúmeros `*.bak` / `*.Designer.vb.bak` espalhados pelo projeto.
+
+## Ambiente de desenvolvimento
+
+- Windows 11, **Visual Studio 2026** (workload ".NET desktop development" + targeting pack do .NET Framework 4.8).
+- Banco em **contêiner Docker** (SQL Server 2022 Linux), exposto em `localhost,1433`. Roteiro de instalação e
+  restauração em `docs\Configurar-maquina-nova.md`.
+- O `app.config` versionado **não tem senha** (`Data Source=localhost,1433`). Na 1ª execução a `frmConexao` pede
+  servidor/usuário/senha, testa e grava `%ProgramData%\PepeTorrasDesign\conexao.dat` (DPAPI, escopo da máquina).
+  Para trocar de banco, apague esse arquivo.
+- `strAdoConnection()` (ADODB) escolhe o provider OLE DB pelo **serial da placa-mãe**: `MSOLEDBSQL` só na máquina
+  cujo serial está fixo em `modConn.vb`, `SQLOLEDB.1` em qualquer outra. Numa máquina nova o ADODB cai no
+  `SQLOLEDB.1`; se precisar do `MSOLEDBSQL` (ex.: conexão criptografada), instale o driver e inclua o serial novo
+  na regra.
 
 ## Build
 
 Não há suíte de testes. O ciclo de verificação é compilar e, para relatórios, rodar o harness abaixo.
 
 ```powershell
-& "C:\Program Files\Microsoft Visual Studio\2022\Professional\MSBuild\Current\Bin\MSBuild.exe" `
-  "C:\Sistema\Paco\Pepe\Pepe\Pepe.vbproj" /p:Configuration=Debug /p:Platform=x86 /v:minimal /nologo
+$msb = & "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest -requires Microsoft.Component.MSBuild -find MSBuild\**\Bin\MSBuild.exe | Select-Object -First 1
+& $msb "C:\Sistema\Paco\Pepe\Pepe\Pepe.vbproj" /restore /p:RestorePackagesConfig=true /p:Configuration=Debug /p:Platform=x86 /v:minimal /nologo
 ```
 
-**Tem que ser o MSBuild do VS2022 (Roslyn).** O MSBuild do .NET Framework
+**Use o MSBuild do Visual Studio (2022 ou posterior; Roslyn).** O MSBuild do .NET Framework
 (`C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe`) usa o compilador VB antigo, que não
 conhece interpolated strings (`$"..."`) — `frmCota.vb`, `Financeiro\frmGetnet.vb` e outros usam, e o
 build morre com `BC30037: Caractere inválido` mais um `BC30009` de referência C1.Win.BarCode.
@@ -40,6 +54,11 @@ Esses erros não têm nada a ver com o código: são o compilador errado.
 
 A plataforma é **x86 obrigatoriamente** (`Pepe.exe` é x86).
 `OptionStrict Off`, `OptionInfer On`, `OptionExplicit On` — conversões implícitas são a norma no código.
+
+Referências de terceiros: as HintPaths de C1/Infragistics apontam para `Program Files`; sem os produtos instalados,
+o build em **Debug** acha as DLLs em `bin\Debug` (é o `OutputPath`). Em **Release** é preciso
+`/p:ReferencePath=<caminho>\Pepe\bin\Debug\` — o script de publicação já faz isso. `licenses.licx` lista controles
+licenciados: se o executável gerado exibir aviso de versão *trial*, instale o produto correspondente com a licença.
 
 ### Harness de layout de relatório
 
@@ -60,7 +79,7 @@ cd C:\Sistema\Paco\Pepe\Pepe\bin\Debug
 
 `-platform:x86` é obrigatório; sem ele dá `BadImageFormatException`. Apague o `.exe`/`.pdb`/`.pdf`
 gerados depois — `bin\Debug` é versionado. Aqui o `vbc` antigo serve porque o harness não usa
-interpolated strings; para o projeto inteiro, use o MSBuild do VS2022 (ver acima).
+interpolated strings; para o projeto inteiro, use o MSBuild do Visual Studio (ver acima).
 
 ## Publicação (ClickOnce)
 
@@ -68,23 +87,35 @@ interpolated strings; para o projeto inteiro, use o MSBuild do VS2022 (ver acima
 powershell -ExecutionPolicy Bypass -File Pepe\Scripts\Publicar-ClickOnce.ps1   # -SemEnvio só gera em publish\
 ```
 
-O script compila Release x86 com um `app.config` **sem senha** (servidor `PEPETORRAS-PC\SQLEXPRESS`), publica em
-`publish\` (ignorado pelo git), envia via SSH (host `informas` no `~/.ssh/config`) para
+O script compila Release x86 com um `app.config` **sem senha** (servidor `PEPETORRAS-PC\SQLEXPRESS`, o da loja),
+publica em `publish\` (ignorado pelo git), envia via SSH (host `informas` no `~/.ssh/config`) para
 `/etc/icontainer/apps/openresty/openresty/www/pepe` (OpenResty em contêiner; location em
 `conf.d/users/locations/pepe.conf`, incluída no `main.conf`), mantém 2 versões no servidor, confere por HTTPS e avança
 o `ApplicationRevision`. Atualizações são obrigatórias (`MinimumRequiredVersion` = versão publicada).
 O target `BloquearSenhaNaPublicacao` do `.vbproj` barra qualquer publicação (inclusive pelo Visual Studio) cujo config
 tenha senha. Manifestos não são assinados (de propósito). O disco da VPS está apertado (~5 GB livres; ~250 MB por versão).
+**Publique sempre pelo script**, não pelo assistente do Visual Studio (ele não sabe o `ReferencePath` nem a revisão do servidor).
 
-O script se adapta à máquina: sem VS2022, usa o MSBuild do VS2019 com o Roslyn 64 bits do .NET SDK (o `vbc` 32 bits do
-VS2019 estoura memória); sem os assemblies de referência do .NET 4.8, usa o pacote NuGet
-`Microsoft.NETFramework.ReferenceAssemblies.net48` em `packages\`; sem DevExpress 23.2 instalado, usa `Pepe\bin\Debug`.
+O script localiza o MSBuild com `vswhere` e se adapta à máquina: com VS 2022 ou posterior usa o MSBuild dele; só no
+VS2019 recorre ao Roslyn 64 bits do .NET SDK (o `vbc` 32 bits do VS2019 estoura memória); sem os assemblies de
+referência do .NET 4.8, usa o pacote NuGet `Microsoft.NETFramework.ReferenceAssemblies.net48` em `packages\`; sem
+DevExpress 23.2 instalado, usa `Pepe\bin\Debug`.
+
+## Saída do DevExpress
+
+Objetivo do dono: remover o DevExpress **por completo** (fim da licença), trocando por controles WinForms nativos e
+relatórios RDLC (`Microsoft.ReportingServices.ReportViewerControl.Winforms` via NuGet). Já convertidos:
+`frmClientesDG` (DataGridView) e o relatório `Vendas` + subrelatório `VendasSaidas` (`Relatorios\Vendas.rdlc`,
+formulário `VendasBase` herdando `BaseRelatorio`). O DevExpress 23.2 não tem integração oficial com o VS 2026, então
+os designers de formulários DevExpress podem não abrir — edite o `.Designer.vb` à mão ou converta o formulário.
+Para editar `.rdlc` no VS 2026, instale a extensão "Microsoft RDLC Report Designer" (versão 2022+).
 
 ## Arquitetura
 
 ### Fluxo de inicialização
 
-`My Project\Application.myapp` → `MainForm = frmAcesso` (senha comparada em texto no
+`ApplicationEvents.vb` (`Startup`) → `PrepararConexao()` (ver "Acesso a dados"; se o usuário cancelar a
+`frmConexao`, o app fecha) → `My Project\Application.myapp` → `MainForm = frmAcesso` (senha comparada em texto no
 `frmAcesso.vb`; a validação remota contra `tab_controle` está comentada) → `frmDevPrincipal.Show()`.
 
 `frmDevPrincipal` (em `Datasets\`, apesar do nome da pasta) é a shell: `DevExpress.XtraBars.Ribbon.RibbonForm`.
@@ -98,22 +129,30 @@ antes de abrir o form (ex.: `fExecutarSP("USP_Cheques")`).
 1. **Typed DataSets + TableAdapters** — `DataSet1.xsd` (338 KB) e `Datasets\ds*.xsd`. É o grosso dos
    formulários (~1300 referências a `TableAdapter`).
 2. **ADODB clássico (COM)** via `modConn.vb` — `fExecutarText`, `fExecutarSP`, e `DLookUp` em
-   `modInternas.vb` (~250 usos). `strAdoConnection()` lê a connection string do `app.config`, quebra
-   ela em pedaços com `Mid$`/`InStr` e remonta uma string OLEDB — **escolhendo o provider pelo serial
-   da placa-mãe** (`MSOLEDBSQL` na máquina de desenvolvimento, `SQLOLEDB.1` na do cliente).
+   `modInternas.vb` (~250 usos). `strAdoConnection()` lê a connection string de `My.Settings`, decompõe com
+   `SqlConnectionStringBuilder` e remonta uma string OLEDB — **escolhendo o provider pelo serial
+   da placa-mãe** (ver "Ambiente de desenvolvimento").
 3. **LINQ to SQL** — `Relatorios\lqGerencial.dbml` → `lqGerencialDataContext`. Usado por
-   `GerencialBase` e por `GerencialNovoDados`.
+   `GerencialBase`, `GerencialNovoDados` e `VendasBase`.
 
 Fonte única da conexão: `Pepe.My.MySettings.Pepe_ConnString`. **Nunca** escreva string de conexão com senha
-no código. `modConexao.vb` decide a conexão no `Startup` (`ApplicationEvents.vb`): se existir
+no código nem no `app.config`. `modConexao.vb` decide a conexão no `Startup`: se existir
 `%ProgramData%\PepeTorrasDesign\conexao.dat` (criptografado com DPAPI, criado pela `frmConexao` na 1ª execução),
-aplica-o em memória ao `ConfigurationManager` e ao `My.Settings`; senão, usa o `app.config` se ele tiver senha
-(máquina de desenvolvimento); senão, abre a `frmConexao`. O `app.config` local tem senha e **não pode ser publicado**.
+aplica-o em memória ao `ConfigurationManager` e ao `My.Settings`; senão, usa o `app.config` se ele tiver senha;
+senão, abre a `frmConexao`. Um `app.config` com senha **não pode ser publicado** (o `.vbproj` barra).
+Os relatórios C1 (`frmEtiqAniv`, `frmEtiquetas`, `frmRptPecasCompradas`) recebem `strAdoConnection()` no `Load` —
+não grave conexão no `ReportDefinition` do `.resx`.
 Convenção do projeto: `CommandTimeout = 0` nas consultas de relatório.
 
 ### Relatórios (`Pepe\Relatorios\`)
 
-Convenção de nomes, em pares:
+**Novos (RDLC):** `BaseRelatorio` é o formulário-base WinForms (painel de filtro com `txtData1`/`txtData2`,
+`btnOk2`, `btnFechar` e `ReportViewer1` em `DisplayMode.Normal` — em `PrintLayout` a caixa "Localizar" fica
+desabilitada). O `.rdlc` é recurso embutido, carregado por `BaseRelatorio.CarregarDefinicao`. Em RDLC, somas de
+campos que podem vir nulos: `Sum(CDbl(...))`. Para esconder um valor sem deslocar vizinhos, deixe o texto em branco
+em vez de `Hidden`.
+
+**Legados (DevExpress)** — convenção de nomes, em pares:
 
 - `XxxBase.vb` — o **formulário de filtro** (herda `BaseRpts`, que já traz `txtData1`, `txtData2`,
   `btnOk2` e `DocumentViewer1`). Esconde `frmDevPrincipal` no `Load` e o restaura no `FormClosing`.
@@ -137,14 +176,17 @@ Armadilhas de layout já pagas caro, documentadas no harness e nos commits: na c
 empurram os controles seguintes da banda e deslocam o layout inteiro; com `WordWrap` desligado, texto
 que não cabe é **cortado em silêncio**.
 
+Ao converter um relatório DevExpress para RDLC, confira valor a valor contra o original no mesmo período
+(foi assim com `Vendas`: 07/2026 e 02/2021, todos os valores batendo).
+
 ### Banco de dados
 
 Objetos legados: views `VI_*`, procs `USP_*`. Trabalho novo usa o prefixo `VW_RG2_*` de propósito,
 para ficar óbvio no SSMS o que é novo.
 
 `Pepe\Scripts\` guarda migrações em pares aditivos `_up.sql` / `_down.sql` (+ um `_v0_investigacao.sql`
-read-only). **Rodar sempre primeiro numa cópia de `BDTorras`.** Nenhum script altera ou remove objeto
-existente — mantenha isso.
+read-only). **Rodar sempre primeiro numa cópia de `BDTorras`** (o contêiner Docker local serve para isso).
+Nenhum script altera ou remove objeto existente — mantenha isso.
 
 ## Convenções
 
@@ -153,6 +195,7 @@ existente — mantenha isso.
 - Comentários em português.
 - Commits em português, Conventional Commits com escopo: `feat(gerencial):`, `fix(cotacao):`,
   `perf(gerencial):`, `chore(scripts):`. Corpo explica o *porquê* e o que foi verificado.
+  Mensagens com acento: grave em arquivo UTF-8 e use `git commit -F arquivo.txt` (passar pelo PowerShell 5 corrompe).
 - Cultura pt-BR: use os helpers de `modInternas.vb` (`ConvertToSafeDouble`, `ConvertToSafeDate`,
   `FormatSafeNumber`) em vez de `CDbl`/`CDate` direto — eles tentam cultura atual, invariante e
   formatos explícitos antes de desistir.

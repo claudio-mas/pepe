@@ -80,10 +80,9 @@ if (-not (Test-Path "${env:ProgramFiles(x86)}\Reference Assemblies\Microsoft\Fra
     $extra += "/p:TargetFrameworkRootPath=$($ref.FullName)\build"
     Write-Host "Referências .NET 4.8: pacote NuGet ($($ref.Name))"
 }
-if (-not (Test-Path "$env:ProgramFiles\DevExpress 23.2") -and -not (Test-Path "${env:ProgramFiles(x86)}\DevExpress 23.2")) {
-    $extra += "/p:ReferencePath=$Raiz\Pepe\bin\Debug\"
-    Write-Host 'DevExpress 23.2 não instalado: usando as DLLs de Pepe\bin\Debug'
-}
+# DLLs de terceiros (DevExpress, C1, Infragistics, Telerik) versionadas em Pepe\bin\Debug: o build em Release
+# as acha por aqui, sem depender dos produtos instalados (as HintPaths apontam para Program Files).
+$extra += "/p:ReferencePath=$Raiz\Pepe\bin\Debug\"
 
 # ---------------------------------------------------------------- versão
 Passo 'Definindo a versão'
@@ -116,7 +115,7 @@ Write-Host "Servidor do banco na publicação: $ServidorBanco (a senha é pedida
 # ---------------------------------------------------------------- publicação
 Passo 'Compilando e publicando (Release x86)'
 $log = Join-Path $Tmp 'msbuild.log'
-& $msbuild $Proj /t:Publish /p:Configuration=Release /p:Platform=x86 "/p:AppConfig=$cfgPub" `
+& $msbuild $Proj /restore /p:RestorePackagesConfig=true "/p:SolutionDir=$Raiz\" /t:Publish /p:Configuration=Release /p:Platform=x86 "/p:AppConfig=$cfgPub" `
     "/p:OutDir=$Tmp\bin\" "/p:IntermediateOutputPath=$Tmp\obj\" "/p:PublishDir=$Pub\" `
     "/p:ApplicationRevision=$rev" "/p:MinimumRequiredVersion=$versao" @extra /v:minimal /nologo 2>&1 | Tee-Object -FilePath $log | Out-Null
 if ($LASTEXITCODE -ne 0) { Select-String -Path $log -Pattern ' error ' | ForEach-Object { Write-Host $_.Line -ForegroundColor Red }; throw "Falha na publicação (log: $log)" }
