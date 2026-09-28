@@ -17,7 +17,7 @@
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <PublishUrl>ftp://ftp.drivehq.com/wwwhome/pepe/</PublishUrl>
+    <PublishUrl>..\publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -25,18 +25,18 @@
     <UpdateInterval>1</UpdateInterval>
     <UpdateIntervalUnits>Hours</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
+    <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>http://www.drivehq.com/file/df.aspx/publish/Claudio_Mas/wwwhome/pepe/</InstallUrl>
-    <UpdateUrl>http://www.drivehq.com/file/df.aspx/publish/Claudio_Mas/wwwhome/pepe/</UpdateUrl>
-    <ProductName>Clube CEU - Sistema de Cobrança</ProductName>
+    <InstallUrl>https://informas.com.br/pepe/</InstallUrl>
+    <UpdateUrl>https://informas.com.br/pepe/</UpdateUrl>
+    <ProductName>Pepe Torras Design</ProductName>
     <PublisherName>Cláudio Más Sistemas</PublisherName>
-    <SuiteName>SisCob</SuiteName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>0.0.0.%2a</ApplicationVersion>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>2.2.0.%2a</ApplicationVersion>
+    <MinimumRequiredVersion>2.2.0.0</MinimumRequiredVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -200,12 +200,31 @@
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\VisualBasic.PowerPacks.Vs.1.0.0\lib\Microsoft.VisualBasic.PowerPacks.Vs.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
@@ -560,6 +579,12 @@
     <Compile Include="Relatorios\BalançoBase.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Relatorios\BaseRelatorio.Designer.vb">
+      <DependentUpon>BaseRelatorio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\BaseRelatorio.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Relatorios\BaseRpts.Designer.vb">
       <DependentUpon>BaseRpts.vb</DependentUpon>
     </Compile>
@@ -675,6 +700,12 @@
     </Compile>
     <Compile Include="frmAcesso.Designer.vb">
       <DependentUpon>frmAcesso.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmConexao.Designer.vb">
+      <DependentUpon>frmConexao.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmConexao.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmAcesso.vb">
       <SubType>Form</SubType>
@@ -811,6 +842,7 @@
     <Compile Include="frmVendasDG.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="modConexao.vb" />
     <Compile Include="modConn.vb" />
     <Compile Include="modInternas.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -980,12 +1012,6 @@
     <Compile Include="Relatorios\TelefonesClientesBase.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Relatorios\Vendas.Designer.vb">
-      <DependentUpon>Vendas.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Relatorios\Vendas.vb">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Relatorios\VendasBase.Designer.vb">
       <DependentUpon>VendasBase.vb</DependentUpon>
     </Compile>
@@ -1020,12 +1046,6 @@
       <DependentUpon>rptEtiquetasAniv.vb</DependentUpon>
     </Compile>
     <Compile Include="Relatorios\rptEtiquetasAniv.vb">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Relatorios\VendasSaidas.Designer.vb">
-      <DependentUpon>VendasSaidas.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Relatorios\VendasSaidas.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="x.Designer.vb">
@@ -1208,6 +1228,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\Balanço2.resx">
       <DependentUpon>Balanço2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\BaseRelatorio.resx">
+      <DependentUpon>BaseRelatorio.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\BaseRpts.resx">
       <DependentUpon>BaseRpts.vb</DependentUpon>
@@ -1410,9 +1433,7 @@
     <EmbeddedResource Include="Relatorios\TelefonesClientesBase.resx">
       <DependentUpon>TelefonesClientesBase.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Relatorios\Vendas.resx">
-      <DependentUpon>Vendas.vb</DependentUpon>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Vendas.rdlc" />
     <EmbeddedResource Include="Relatorios\VendasBase.resx">
       <DependentUpon>VendasBase.vb</DependentUpon>
     </EmbeddedResource>
@@ -1430,9 +1451,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\rptEtiquetasAniv.resx">
       <DependentUpon>rptEtiquetasAniv.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Relatorios\VendasSaidas.resx">
-      <DependentUpon>VendasSaidas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="x.resx">
       <DependentUpon>x.vb</DependentUpon>
@@ -1533,24 +1551,9 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 e x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
-      <Visible>False</Visible>
-      <ProductName>Windows Installer 4.5</ProductName>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 e x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
@@ -1576,16 +1579,6 @@
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="C1.Win.C1Report.4">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>Assembly</FileType>
-    </PublishFile>
-    <PublishFile Include="DevComponents.DotNetBar2">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -1691,4 +1684,19 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <!--
+    Trava de segurança da publicação ClickOnce: os arquivos publicados ficam baixáveis em
+    https://informas.com.br/pepe/, então o Pepe.exe.config publicado NÃO pode ter senha.
+    Cada computador guarda a conexão completa, criptografada, em %ProgramData%\PepeTorrasDesign (ver modConexao.vb).
+    Publique com Scripts\Publicar-ClickOnce.ps1, que gera um config sem senha.
+  -->
+  <Target Name="BloquearSenhaNaPublicacao" BeforeTargets="BeforePublish">
+    <ReadLinesFromFile File="@(AppConfigWithTargetPath)">
+      <Output TaskParameter="Lines" ItemName="_LinhasConfigPublicado" />
+    </ReadLinesFromFile>
+    <PropertyGroup>
+      <_ConfigPublicado>@(_LinhasConfigPublicado)</_ConfigPublicado>
+    </PropertyGroup>
+    <Error Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('$(_ConfigPublicado)', '(?i)(password|pwd)\s*=\s*[^;&quot;\s]'))" Text="Publicação bloqueada: o config que seria publicado (@(AppConfigWithTargetPath)) contém senha do banco. Use Scripts\Publicar-ClickOnce.ps1." />
+  </Target>
 </Project>
