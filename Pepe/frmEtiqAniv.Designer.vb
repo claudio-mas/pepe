@@ -186,7 +186,7 @@
         'frmEtiqAniv
         '
         Me.AllowFormGlass = DevExpress.Utils.DefaultBoolean.[True]
-        Me.ClientSize = New System.Drawing.Size(1338, 150)
+        Me.ClientSize = New System.Drawing.Size(1338, 722)
         Me.Controls.Add(Me.LabelControl1)
         Me.Controls.Add(Me.ribbonControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D

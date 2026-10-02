@@ -123,8 +123,8 @@ Telefone, Fax, [Imp], Cliente, Indicaçao, Aniv, Medidas, Saldo, isnull([Cliente
 FROM Clientes 
 WHERE (Nome Is Not Null) AND (isnull([Nome],[Cliente]) Is Not Null) 
 And (case when Aniv is null then 0 else month([Aniv]) end = @mesaniv) 
-AND IDCliente 
-In (SELECT IDCliente FROM VENDAS WHERE (IDCliente Is Not Null) AND (DateDiff(month,[DataVenda],GETDATE()) &lt;= @meses))</value>
+AND (@meses Is Null OR IDCliente
+In (SELECT IDCliente FROM VENDAS WHERE (IDCliente Is Not Null) AND (DateDiff(month,[DataVenda],GETDATE()) &lt;= @meses)))</value>
   </data>
   <data name="SqlDataSource1.ResultSchemaSerializable" xml:space="preserve">
     <value>PERhdGFTZXQgTmFtZT0iU3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9IlF1ZXJ5Ij48RmllbGQgTmFtZT0iSURDbGllbnRlIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iTm9tZUNsaSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJOb21lIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IlTDrXR1bG8iIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iTm9tZUMiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iRW5kZXJlw6dvIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkJhaXJybyIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJDaWRhZGUiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iRXN0YWRvIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkNFUCIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJUZWxlZm9uZSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJGYXgiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iSW1wIiBUeXBlPSJCb29sZWFuIiAvPjxGaWVsZCBOYW1lPSJDbGllbnRlIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkluZGljYcOnYW8iIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iQW5pdiIgVHlwZT0iRGF0ZVRpbWUiIC8+PEZpZWxkIE5hbWU9Ik1lZGlkYXMiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iU2FsZG8iIFR5cGU9IlNpbmdsZSIgLz48RmllbGQgTmFtZT0iTSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJFbWFpbCIgVHlwZT0iU3RyaW5nIiAvPjwvVmlldz48L0RhdGFTZXQ+</value>
