@@ -121,18 +121,6 @@
     <AssemblyOriginatorKeyFile>paco.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Infragistics4.Win.v23.1, Version=23.1.20231.111, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Infragistics\2023.1\Windows Forms\CLR4.0\Bin\Infragistics4.Win.v23.1.dll</HintPath>
-    </Reference>
-    <Reference Include="Infragistics4.Win.UltraWinEditors.v23.1, Version=23.1.20231.111, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Infragistics\2023.1\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinEditors.v23.1.dll</HintPath>
-    </Reference>
-    <Reference Include="Infragistics4.Shared.v23.1, Version=23.1.20231.111, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Infragistics\2023.1\Windows Forms\CLR4.0\Bin\Infragistics4.Shared.v23.1.dll</HintPath>
-    </Reference>
     <Reference Include="DevExpress.DataAccess.v23.2.UI, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.DataVisualization.v23.2.Core, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Spreadsheet.v23.2.Core, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />

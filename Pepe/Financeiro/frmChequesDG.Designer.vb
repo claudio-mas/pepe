@@ -73,9 +73,6 @@
         Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim ValueListItem2 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
-        Dim ValueListItem3 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
-        Dim ValueListItem1 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
         Me.ribbonControl1 = New DevExpress.XtraBars.Ribbon.RibbonControl()
         Me.SkinRibbonGalleryBarItem1 = New DevExpress.XtraBars.SkinRibbonGalleryBarItem()
         Me.SkinRibbonGalleryBarItem2 = New DevExpress.XtraBars.SkinRibbonGalleryBarItem()
@@ -118,7 +115,7 @@
         Me.ChequesTodosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DsCheques = New Pepe.dsCheques()
         Me.ChequesTodosTableAdapter = New Pepe.dsChequesTableAdapters.ChequesTodosTableAdapter()
-        Me.UltraOptionSet1 = New Infragistics.Win.UltraWinEditors.UltraOptionSet()
+        Me.rgSituacao = New DevExpress.XtraEditors.RadioGroup()
         Me.TableAdapterManager1 = New Pepe.dsChequesTableAdapters.TableAdapterManager()
         Me.ChequesAbertoTableAdapter = New Pepe.dsChequesTableAdapters.ChequesAbertoTableAdapter()
         Me.ChequesRecTableAdapter = New Pepe.dsChequesTableAdapters.ChequesRecTableAdapter()
@@ -136,7 +133,7 @@
         CType(Me.btnAbrir, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ChequesTodosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsCheques, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.UltraOptionSet1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rgSituacao.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ChequesRecBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -651,23 +648,20 @@
         '
         Me.ChequesTodosTableAdapter.ClearBeforeFill = True
         '
-        'UltraOptionSet1
+        'rgSituacao
         '
-        Me.UltraOptionSet1.CheckedIndex = 0
-        ValueListItem2.CheckState = System.Windows.Forms.CheckState.Checked
-        ValueListItem2.DataValue = "Em aberto"
-        ValueListItem2.DisplayText = "Em aberto"
-        ValueListItem3.DataValue = "Recebidos"
-        ValueListItem3.DisplayText = "Recebidos"
-        ValueListItem1.DataValue = "Todos"
-        ValueListItem1.DisplayText = "Todos"
-        Me.UltraOptionSet1.Items.AddRange(New Infragistics.Win.ValueListItem() {ValueListItem2, ValueListItem3, ValueListItem1})
-        Me.UltraOptionSet1.ItemSpacingHorizontal = 20
-        Me.UltraOptionSet1.Location = New System.Drawing.Point(549, 205)
-        Me.UltraOptionSet1.Name = "UltraOptionSet1"
-        Me.UltraOptionSet1.Size = New System.Drawing.Size(240, 18)
-        Me.UltraOptionSet1.TabIndex = 9
-        Me.UltraOptionSet1.Text = "Em aberto"
+        Me.rgSituacao.Location = New System.Drawing.Point(549, 203)
+        Me.rgSituacao.MenuManager = Me.ribbonControl1
+        Me.rgSituacao.Name = "rgSituacao"
+        Me.rgSituacao.Properties.Appearance.BackColor = System.Drawing.Color.Transparent
+        Me.rgSituacao.Properties.Appearance.Options.UseBackColor = True
+        Me.rgSituacao.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.rgSituacao.Properties.Columns = 3
+        Me.rgSituacao.Properties.ItemHorzAlignment = DevExpress.XtraEditors.RadioItemHorzAlignment.Near
+        Me.rgSituacao.Properties.Items.AddRange(New DevExpress.XtraEditors.Controls.RadioGroupItem() {New DevExpress.XtraEditors.Controls.RadioGroupItem("Em aberto", "Em aberto"), New DevExpress.XtraEditors.Controls.RadioGroupItem("Recebidos", "Recebidos"), New DevExpress.XtraEditors.Controls.RadioGroupItem("Todos", "Todos")})
+        Me.rgSituacao.Properties.ItemsLayout = DevExpress.XtraEditors.RadioGroupItemsLayout.Column
+        Me.rgSituacao.Size = New System.Drawing.Size(240, 22)
+        Me.rgSituacao.TabIndex = 9
         '
         'TableAdapterManager1
         '
@@ -732,7 +726,7 @@
         Me.AllowFormGlass = DevExpress.Utils.DefaultBoolean.[True]
         Me.ClientSize = New System.Drawing.Size(1338, 722)
         Me.Controls.Add(Me.LabelControl1)
-        Me.Controls.Add(Me.UltraOptionSet1)
+        Me.Controls.Add(Me.rgSituacao)
         Me.Controls.Add(Me.ClientesGridControl)
         Me.Controls.Add(Me.ribbonControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
@@ -755,7 +749,7 @@
         CType(Me.btnAbrir, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ChequesTodosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsCheques, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.UltraOptionSet1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rgSituacao.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ChequesRecBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -799,7 +793,7 @@
     Friend WithEvents colUso As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colObs As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colVencto As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents UltraOptionSet1 As Infragistics.Win.UltraWinEditors.UltraOptionSet
+    Friend WithEvents rgSituacao As DevExpress.XtraEditors.RadioGroup
     Friend WithEvents btnSalvar As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btnUndo As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents RibbonPageGroup2 As DevExpress.XtraBars.Ribbon.RibbonPageGroup

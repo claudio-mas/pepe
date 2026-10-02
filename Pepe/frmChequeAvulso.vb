@@ -27,7 +27,7 @@ Public Class frmChequeAvulso
         frmChequesDG.ChequesAbertoTableAdapter.Fill(frmChequesDG.DsCheques1.ChequesAberto)
         frmChequesDG.ChequesTodosTableAdapter.Fill(frmChequesDG.DsCheques.ChequesTodos)
         frmChequesDG.Visible = True
-        'frmChequesDG.UltraOptionSet1.Value = "Em Aberto"
+        'frmChequesDG.rgSituacao.EditValue = "Em Aberto"
 
     End Sub
 

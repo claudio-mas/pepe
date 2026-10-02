@@ -21,9 +21,6 @@ Partial Public Class frmGetnetDG
         'Me.CartõesAbertoTableAdapter.Fill(Me.DsCheques1.CartõesAberto)
         'Me.CartõesTodosTableAdapter.Fill(Me.DsCheques.CartõesTodos)
 
-        'Me.UltraOptionSet1.Value = "Em aberto"
-        'Me.LabelControl1.Text = "Cartões - " & Me.UltraOptionSet1.Value.ToString
-
         frmDevPrincipal.Visible = False
 
     End Sub
@@ -41,25 +38,6 @@ Partial Public Class frmGetnetDG
 
     Private Sub btnAbrir_ButtonClick(sender As Object, e As DevExpress.XtraEditors.Controls.ButtonPressedEventArgs)
         MsgBox(GridView1.GetFocusedRowCellValue("IDCliente"))
-
-    End Sub
-
-    '    Private Sub gridview1_CellBeginEdit() Handles GridView1.edit
-    Private Sub UltraOptionSet1_ValueChanged(sender As Object, e As EventArgs) Handles UltraOptionSet1.ValueChanged
-
-        'Select Case UltraOptionSet1.Value
-        '    Case "Todos"
-        '        'Me.CartõesTodosBindingSource.RemoveFilter()
-        '        Me.ClientesGridControl.DataSource = Me.CartõesTodosBindingSource
-        '    Case "Em aberto"
-        '        'Me.CartõesTodosBindingSource.Filter = "Pagto is null"
-        '        Me.ClientesGridControl.DataSource = Me.CartõesAbertoBindingSource
-        '    Case "Recebidos"
-        '        'Me.CartõesTodosBindingSource.Filter = "Pagto is not Null"
-        '        Me.ClientesGridControl.DataSource = Me.CartõesRecBindingSource
-        'End Select
-
-        'Me.LabelControl1.Text = "Cartões - " & Me.UltraOptionSet1.Value.ToString
 
     End Sub
 

@@ -19,8 +19,8 @@ Partial Public Class frmChequesDG
         Me.ChequesAbertoTableAdapter.Fill(Me.DsCheques1.ChequesAberto)
         Me.ChequesTodosTableAdapter.Fill(Me.DsCheques.ChequesTodos)
 
-        Me.UltraOptionSet1.Value = "Em aberto"
-        Me.LabelControl1.Text = "Cheques - " & Me.UltraOptionSet1.Value.ToString
+        Me.rgSituacao.EditValue = "Em aberto"
+        Me.LabelControl1.Text = "Cheques - " & Me.rgSituacao.EditValue.ToString
 
         frmDevPrincipal.Visible = False
 
@@ -54,9 +54,9 @@ Partial Public Class frmChequesDG
 
     End Sub
     '    Private Sub gridview1_CellBeginEdit() Handles GridView1.edit
-    Private Sub UltraOptionSet1_ValueChanged(sender As Object, e As EventArgs) Handles UltraOptionSet1.ValueChanged
-        'MsgBox(UltraOptionSet1.Value.ToString)
-        Select Case UltraOptionSet1.Value.ToString
+    Private Sub rgSituacao_EditValueChanged(sender As Object, e As EventArgs) Handles rgSituacao.EditValueChanged
+        'MsgBox(rgSituacao.EditValue.ToString)
+        Select Case rgSituacao.EditValue.ToString
             Case "Todos"
                 'Me.ChequesTodosBindingSource.RemoveFilter()
                 Me.ClientesGridControl.DataSource = Me.ChequesTodosBindingSource
@@ -68,7 +68,7 @@ Partial Public Class frmChequesDG
                 Me.ClientesGridControl.DataSource = Me.ChequesRecBindingSource
         End Select
 
-        Me.LabelControl1.Text = "Cheques - " & Me.UltraOptionSet1.Value.ToString
+        Me.LabelControl1.Text = "Cheques - " & Me.rgSituacao.EditValue.ToString
 
     End Sub
 
@@ -81,9 +81,9 @@ Partial Public Class frmChequesDG
             Me.ChequesAbertoTableAdapter.Fill(Me.DsCheques1.ChequesAberto)
             Me.ChequesTodosTableAdapter.Fill(Me.DsCheques.ChequesTodos)
 
-            Dim x As String = Me.UltraOptionSet1.Value
-            Me.UltraOptionSet1.Value = "Todos"
-            Me.UltraOptionSet1.Value = x
+            Dim x As String = Me.rgSituacao.EditValue
+            Me.rgSituacao.EditValue = "Todos"
+            Me.rgSituacao.EditValue = x
 
             RibbonPageGroup2.Visible = False
             ribbonPageGroup1.Visible = True
@@ -116,9 +116,9 @@ Partial Public Class frmChequesDG
             Me.ChequesRecTableAdapter.Fill(Me.DsCheques1.ChequesRec)
             Me.ChequesAbertoTableAdapter.Fill(Me.DsCheques1.ChequesAberto)
 
-            Dim x As String = Me.UltraOptionSet1.Value
-            Me.UltraOptionSet1.Value = "Todos"
-            Me.UltraOptionSet1.Value = x
+            Dim x As String = Me.rgSituacao.EditValue
+            Me.rgSituacao.EditValue = "Todos"
+            Me.rgSituacao.EditValue = x
 
             RibbonPageGroup2.Visible = False
             ribbonPageGroup1.Visible = True

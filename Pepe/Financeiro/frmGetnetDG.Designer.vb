@@ -26,10 +26,6 @@
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmGetnetDG))
         Dim GridFormatRule1 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
         Dim FormatConditionRuleExpression1 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim Appearance1 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim ValueListItem2 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
-        Dim ValueListItem3 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
-        Dim ValueListItem1 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
         Me.ribbonControl1 = New DevExpress.XtraBars.Ribbon.RibbonControl()
         Me.SkinRibbonGalleryBarItem1 = New DevExpress.XtraBars.SkinRibbonGalleryBarItem()
         Me.SkinRibbonGalleryBarItem2 = New DevExpress.XtraBars.SkinRibbonGalleryBarItem()
@@ -57,7 +53,6 @@
         Me.colParc = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colParcelas = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colValorParcelaGetnet = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.UltraOptionSet1 = New Infragistics.Win.UltraWinEditors.UltraOptionSet()
         Me.XtraFolderBrowserDialog = New DevExpress.XtraEditors.XtraFolderBrowserDialog(Me.components)
         Me.VI_GetnetTableAdapter = New Pepe.dsComercialTableAdapters.VI_GetnetTableAdapter()
         CType(Me.ribbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -65,7 +60,6 @@
         CType(Me.VIGetnetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsComercial, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.UltraOptionSet1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ribbonControl1
@@ -447,25 +441,6 @@
         Me.colValorParcelaGetnet.VisibleIndex = 11
         Me.colValorParcelaGetnet.Width = 129
         '
-        'UltraOptionSet1
-        '
-        Appearance1.ForeColor = System.Drawing.Color.White
-        Me.UltraOptionSet1.ItemAppearance = Appearance1
-        ValueListItem2.CheckState = System.Windows.Forms.CheckState.Checked
-        ValueListItem2.DataValue = "Em aberto"
-        ValueListItem2.DisplayText = "Em aberto"
-        ValueListItem3.DataValue = "Recebidos"
-        ValueListItem3.DisplayText = "Recebidos"
-        ValueListItem1.DataValue = "Todos"
-        ValueListItem1.DisplayText = "Todos"
-        Me.UltraOptionSet1.Items.AddRange(New Infragistics.Win.ValueListItem() {ValueListItem2, ValueListItem3, ValueListItem1})
-        Me.UltraOptionSet1.ItemSpacingHorizontal = 20
-        Me.UltraOptionSet1.Location = New System.Drawing.Point(549, 199)
-        Me.UltraOptionSet1.Name = "UltraOptionSet1"
-        Me.UltraOptionSet1.Size = New System.Drawing.Size(240, 18)
-        Me.UltraOptionSet1.TabIndex = 9
-        Me.UltraOptionSet1.Visible = False
-        '
         'XtraFolderBrowserDialog
         '
         Me.XtraFolderBrowserDialog.DialogStyle = DevExpress.Utils.CommonDialogs.FolderBrowserDialogStyle.Wide
@@ -482,7 +457,6 @@
         Me.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(133, Byte), Integer), CType(CType(133, Byte), Integer), CType(CType(133, Byte), Integer))
         Me.Appearance.Options.UseBackColor = True
         Me.ClientSize = New System.Drawing.Size(1338, 722)
-        Me.Controls.Add(Me.UltraOptionSet1)
         Me.Controls.Add(Me.ClientesGridControl)
         Me.Controls.Add(Me.LabelControl1)
         Me.Controls.Add(Me.ribbonControl1)
@@ -500,7 +474,6 @@
         CType(Me.VIGetnetBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsComercial, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.UltraOptionSet1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -519,7 +492,6 @@
     Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents ClientesGridControl As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents UltraOptionSet1 As Infragistics.Win.UltraWinEditors.UltraOptionSet
     Friend WithEvents btnSalvar As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btnUndo As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btnPrint As DevExpress.XtraBars.BarButtonItem

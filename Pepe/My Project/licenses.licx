@@ -10,7 +10,6 @@ Telerik.WinControls.Themes.Office2010BlackTheme, Telerik.WinControls.Themes.Offi
 DevExpress.XtraEditors.ButtonEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
 DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
 DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
-Infragistics.Win.UltraWinEditors.UltraOptionSet, Infragistics4.Win.UltraWinEditors.v23.1, Version=23.1.20231.111, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb
 DevExpress.XtraEditors.DateEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
 DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
 DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit, DevExpress.XtraEditors.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a

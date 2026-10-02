@@ -19,8 +19,8 @@ Partial Public Class frmCartoesDG
         Me.CartõesAbertoTableAdapter.Fill(Me.DsCheques1.CartõesAberto)
         Me.CartõesTodosTableAdapter.Fill(Me.DsCheques.CartõesTodos)
 
-        Me.UltraOptionSet1.Value = "Em aberto"
-        Me.LabelControl1.Text = "Cartões - " & Me.UltraOptionSet1.Value.ToString
+        Me.rgSituacao.EditValue = "Em aberto"
+        Me.LabelControl1.Text = "Cartões - " & Me.rgSituacao.EditValue.ToString
 
         frmDevPrincipal.Visible = False
 
@@ -54,10 +54,10 @@ Partial Public Class frmCartoesDG
 
     End Sub
     '    Private Sub gridview1_CellBeginEdit() Handles GridView1.edit
-    Private Sub UltraOptionSet1_ValueChanged(sender As Object, e As EventArgs) Handles UltraOptionSet1.ValueChanged
-        'MsgBox(UltraOptionSet1.Value.ToString)
+    Private Sub rgSituacao_EditValueChanged(sender As Object, e As EventArgs) Handles rgSituacao.EditValueChanged
+        'MsgBox(rgSituacao.EditValue.ToString)
 
-        Select Case UltraOptionSet1.Value
+        Select Case rgSituacao.EditValue
             Case "Todos"
                 'Me.CartõesTodosBindingSource.RemoveFilter()
                 Me.ClientesGridControl.DataSource = Me.CartõesTodosBindingSource
@@ -69,7 +69,7 @@ Partial Public Class frmCartoesDG
                 Me.ClientesGridControl.DataSource = Me.CartõesRecBindingSource
         End Select
 
-        Me.LabelControl1.Text = "Cartões - " & Me.UltraOptionSet1.Value.ToString
+        Me.LabelControl1.Text = "Cartões - " & Me.rgSituacao.EditValue.ToString
 
         'Me.Text = Me.GridView1.ActiveFilterString
         'Me.Text = Nz(Me.Text, "") & " And " & Nz(Me.GridView1.FindFilterText, "")
@@ -86,9 +86,9 @@ Partial Public Class frmCartoesDG
             Me.CartõesAbertoTableAdapter.Fill(Me.DsCheques1.CartõesAberto)
             Me.CartõesRecTableAdapter.Fill(Me.DsCheques2.CartõesRec)
 
-            Dim x As String = Me.UltraOptionSet1.Value
-            Me.UltraOptionSet1.Value = "Todos"
-            Me.UltraOptionSet1.Value = x
+            Dim x As String = Me.rgSituacao.EditValue
+            Me.rgSituacao.EditValue = "Todos"
+            Me.rgSituacao.EditValue = x
 
             RibbonPageGroup2.Visible = False
             ribbonPageGroup1.Visible = True
@@ -122,9 +122,9 @@ Partial Public Class frmCartoesDG
             Me.CartõesAbertoTableAdapter.Fill(Me.DsCheques1.CartõesAberto)
             Me.CartõesTodosTableAdapter.Fill(Me.DsCheques.CartõesTodos)
 
-            Dim x As String = Me.UltraOptionSet1.Value
-            Me.UltraOptionSet1.Value = "Todos"
-            Me.UltraOptionSet1.Value = x
+            Dim x As String = Me.rgSituacao.EditValue
+            Me.rgSituacao.EditValue = "Todos"
+            Me.rgSituacao.EditValue = x
 
             RibbonPageGroup2.Visible = False
             ribbonPageGroup1.Visible = True
