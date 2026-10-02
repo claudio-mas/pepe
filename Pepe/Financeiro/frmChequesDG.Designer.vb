@@ -85,7 +85,6 @@
         Me.ribbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.ribbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
-        Me.Office2010BlackTheme1 = New Telerik.WinControls.Themes.Office2010BlackTheme()
         Me.SqlDataSource1 = New DevExpress.DataAccess.Sql.SqlDataSource(Me.components)
         Me.DsPrincipal = New Pepe.DataSet1()
         Me.ClientesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -766,7 +765,6 @@
     'Friend WithEvents DsCadastros As Pepe.dsCadastros
     'Friend WithEvents ClienteNEWTableAdapter As Pepe.dsCadastrosTableAdapters.ClienteNEWTableAdapter
     Friend WithEvents btnFechar As DevExpress.XtraBars.BarButtonItem
-    Friend WithEvents Office2010BlackTheme1 As Telerik.WinControls.Themes.Office2010BlackTheme
     Friend WithEvents btnNovo As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents SqlDataSource1 As DevExpress.DataAccess.Sql.SqlDataSource
     Friend WithEvents DsPrincipal As Pepe.DataSet1

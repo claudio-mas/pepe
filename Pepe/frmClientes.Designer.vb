@@ -60,7 +60,6 @@
         Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPageGroup3 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPageGroup4 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
-        Me.Office2010BlackTheme1 = New Telerik.WinControls.Themes.Office2010BlackTheme()
         Me.DsPrincipal = New Pepe.DataSet1()
         Me.ClientesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ClientesTableAdapter = New Pepe.DataSet1TableAdapters.ClientesTableAdapter()
@@ -1031,7 +1030,6 @@
     'Friend WithEvents DsCadastros As Pepe.dsCadastros
     'Friend WithEvents ClienteNEWTableAdapter As Pepe.dsCadastrosTableAdapters.ClienteNEWTableAdapter
     Friend WithEvents btnFechar As DevExpress.XtraBars.BarButtonItem
-    Friend WithEvents Office2010BlackTheme1 As Telerik.WinControls.Themes.Office2010BlackTheme
     Friend WithEvents btnNovo As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents DsPrincipal As Pepe.DataSet1
     Friend WithEvents ClientesBindingSource As System.Windows.Forms.BindingSource
