@@ -144,22 +144,6 @@
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
-    <Reference Include="C1.C1Report.4, Version=4.0.20152.67, Culture=neutral, PublicKeyToken=594a0605db190bb9, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\ComponentOne\ASP.NET Web Forms Edition\bin\v4\C1.C1Report.4.dll</HintPath>
-    </Reference>
-    <Reference Include="C1.Win.4, Version=4.0.20152.67, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\ComponentOne\ASP.NET Web Forms Edition\bin\v4\C1.Win.4.dll</HintPath>
-    </Reference>
-    <Reference Include="C1.Win.C1Report.4, Version=4.0.20152.67, Culture=neutral, PublicKeyToken=41780e2fc605e636, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\ComponentOne\WinForms Edition\bin\v4.0\C1.Win.C1Report.4.dll</HintPath>
-    </Reference>
-    <Reference Include="C1.Win.ImportServices.4, Version=4.0.20152.67, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\ComponentOne\WinForms Edition\bin\v4.0\C1.Win.ImportServices.4.dll</HintPath>
-    </Reference>
     <Reference Include="DevExpress.BonusSkins.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
@@ -812,12 +796,6 @@
     <Compile Include="Relatorios\frmRptCartões.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="frmRptPecasCompradas.Designer.vb">
-      <DependentUpon>frmRptPecasCompradas.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmRptPecasCompradas.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmSenha.Designer.vb">
       <DependentUpon>frmSenha.vb</DependentUpon>
     </Compile>
@@ -1040,6 +1018,12 @@
       <DependentUpon>rptExtratoCC.vb</DependentUpon>
     </Compile>
     <Compile Include="Relatorios\rptExtratoCC.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Relatorios\rptEtiquetas.Designer.vb">
+      <DependentUpon>rptEtiquetas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\rptEtiquetas.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Relatorios\rptEtiquetasAniv.Designer.vb">
@@ -1336,10 +1320,6 @@
     <EmbeddedResource Include="Relatorios\frmRptCartões.resx">
       <DependentUpon>frmRptCartões.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmRptPecasCompradas.resx">
-      <DependentUpon>frmRptPecasCompradas.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmSenha.resx">
       <DependentUpon>frmSenha.vb</DependentUpon>
     </EmbeddedResource>
@@ -1448,6 +1428,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\rptExtratoCC.resx">
       <DependentUpon>rptExtratoCC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\rptEtiquetas.resx">
+      <DependentUpon>rptEtiquetas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\rptEtiquetasAniv.resx">
       <DependentUpon>rptEtiquetasAniv.vb</DependentUpon>
@@ -1559,26 +1542,6 @@
   </ItemGroup>
   <ItemGroup>
     <PublishFile Include="ADODB">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>Assembly</FileType>
-    </PublishFile>
-    <PublishFile Include="C1.C1Report.4">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>Assembly</FileType>
-    </PublishFile>
-    <PublishFile Include="C1.Win.C1Report.4">
       <Visible>False</Visible>
       <Group>
       </Group>

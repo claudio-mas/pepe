@@ -27,11 +27,7 @@ Partial Class x
         Me.Button1 = New System.Windows.Forms.Button()
         Me.FormAssistant1 = New DevExpress.XtraBars.FormAssistant()
         Me.DefaultLookAndFeel1 = New DevExpress.LookAndFeel.DefaultLookAndFeel(Me.components)
-        Me.C1Report1 = New C1.C1Report.C1Report()
-        Me.C1Report2 = New C1.C1Report.C1Report()
         Me.SpreadsheetControl = New DevExpress.XtraSpreadsheet.SpreadsheetControl()
-        CType(Me.C1Report1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.C1Report2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Button1
@@ -46,16 +42,6 @@ Partial Class x
         'DefaultLookAndFeel1
         '
         Me.DefaultLookAndFeel1.LookAndFeel.SkinName = "Pumpkin"
-        '
-        'C1Report1
-        '
-        Me.C1Report1.ReportDefinition = resources.GetString("C1Report1.ReportDefinition")
-        Me.C1Report1.ReportName = "C1Report1"
-        '
-        'C1Report2
-        '
-        Me.C1Report2.ReportDefinition = resources.GetString("C1Report2.ReportDefinition")
-        Me.C1Report2.ReportName = "C1Report2"
         '
         'SpreadsheetControl
         '
@@ -74,15 +60,11 @@ Partial Class x
         Me.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Glow
         Me.Name = "x"
         Me.Text = "x"
-        CType(Me.C1Report1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.C1Report2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents FormAssistant1 As DevExpress.XtraBars.FormAssistant
     Friend WithEvents DefaultLookAndFeel1 As DevExpress.LookAndFeel.DefaultLookAndFeel
-    Friend WithEvents C1Report1 As C1.C1Report.C1Report
-    Friend WithEvents C1Report2 As C1.C1Report.C1Report
     Friend WithEvents SpreadsheetControl As DevExpress.XtraSpreadsheet.SpreadsheetControl
 End Class

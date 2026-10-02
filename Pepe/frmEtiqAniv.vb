@@ -14,11 +14,6 @@ Partial Public Class frmEtiqAniv
     End Sub
 
     Private Sub frmEtiquetas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Conexão central (ver modConexao); a definição do relatório não guarda mais senha.
-        Me.C1Report1.DataSource.ConnectionString = strAdoConnection()
-        Me.C1PrintPreviewControl1.PreviewPane.Document = Me.C1Report1
-
-        Me.C1PrintPreviewControl1.PreviewTextSearchPanel.Visible = False
 
         frmClientesDG.Visible = False
 
@@ -36,33 +31,6 @@ Partial Public Class frmEtiqAniv
     End Sub
 
     Private Sub btnOk_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnOk.ItemClick
-        'Try
-        '    Dim strSql As String = "SELECT IDCliente, Nome AS NomeCli, Nome, Título, Nome AS NomeC, Endereço, Bairro, Cidade, Estado, CEP, Telefone, Fax, [Imp], Cliente, Indicaçao, Aniv, Medidas, Saldo, isnull([Nome],[Cliente]) AS M, Email FROM Clientes WHERE (Nome Is Not Null) AND (isnull([Nome],[Cliente]) Is Not Null)"
-        '    If IsNumeric(Me.txtMAniv.EditValue) Then
-        '        strSql = strSql & " And (case when Aniv is null then 0 else month([Aniv]) end = " & Me.txtMAniv.EditValue & ")"
-        '    Else
-        '        'MsgBox("Informe o mês de aniversário", MsgBoxStyle.Critical, "Atenção!")
-        '        DevExpress.XtraEditors.XtraMessageBox.Show("Informe o mês de aniversário", "Atenção!")
-        '        Exit Sub
-        '    End If
-
-        '    If IsNumeric(Me.txtAnos.EditValue) Then
-        '        strSql = strSql & " AND IDCliente In (SELECT IDCliente FROM VENDAS WHERE (IDCliente Is Not Null) AND (DateDiff(year,[DataVenda],GETDATE()) <= " & Me.txtAnos.EditValue & "))"
-        '        Me.Tag = strSql
-        '    End If
-
-        '    'C1Report1.Sections.Detail.Height = 2000
-
-        '    Me.C1Report1.DataSource.RecordSource = strSql
-        '    Me.C1PrintPreviewControl1.Document = ""
-        '    Me.C1PrintPreviewControl1.Document = C1Report1.C1Document
-        '    Me.C1PrintPreviewControl1.Refresh()
-
-        'Catch ex As Exception
-        '    MsgBox(ex.Message)
-
-        'End Try
-
         Dim report As New rptEtiquetasAniv
 
         Try
@@ -95,19 +63,6 @@ Partial Public Class frmEtiqAniv
 
     Private Sub ckTodos_CheckedChanged(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles ckTodos.CheckedChanged
         If Me.ckTodos.Checked Then txtAnos.EditValue = ""
-
-    End Sub
-
-    Private Sub SpinEdit_EditValueChanged(sender As Object, e As EventArgs) Handles SpinEdit.EditValueChanged
-
-        If Me.Tag Is Nothing Then Exit Sub
-
-        C1Report1.Sections.Detail.Height = SpinEdit.Value
-
-        Me.C1Report1.DataSource.RecordSource = Me.Tag
-        Me.C1PrintPreviewControl1.Document = ""
-        Me.C1PrintPreviewControl1.Document = C1Report1.C1Document
-        Me.C1PrintPreviewControl1.Refresh()
 
     End Sub
 End Class

@@ -11,16 +11,23 @@ Partial Public Class frmEtiquetas
     End Sub
     Public Sub New()
         InitializeComponent()
+        ' Cria no ribbon do form as abas de impressão/exportação/zoom do DocumentViewer
+        Me.DocumentViewerRibbonController1.Initialize(Me.ribbonControl1, Nothing)
     End Sub
 
     Private Sub frmEtiquetas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Conexão central (ver modConexao); a definição do relatório não guarda mais senha.
-        Me.C1Report1.DataSource.ConnectionString = strAdoConnection()
-        Me.C1PrintPreviewControl1.PreviewPane.Document = Me.C1Report1
-
-        Me.C1PrintPreviewControl1.PreviewTextSearchPanel.Visible = False
 
         frmClientesDG.Visible = False
+
+        Try
+            Dim report As New rptEtiquetas
+            Me.DocumentViewer1.DocumentSource = report
+            report.CreateDocument(False)
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+
+        End Try
 
     End Sub
 

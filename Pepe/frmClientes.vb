@@ -221,7 +221,6 @@ Partial Public Class frmClientes
     End Sub
 
     Private Sub btnPeçasCompradas_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btnPeçasCompradas.ItemClick
-        'frmRptPecasCompradas.Show()
         frmVendasClienteBase.Show()
 
     End Sub
