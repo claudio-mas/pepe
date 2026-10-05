@@ -1,7 +1,7 @@
 ﻿Imports System.Configuration
 Imports System.Data.SqlClient
-Imports System.Management
 Imports DevExpress.XtraEditors
+Imports Microsoft.Win32
 
 Module modConn
     Public varBtn As Integer = 0
@@ -18,32 +18,22 @@ Module modConn
     Public varFlag As Boolean = False
 
 
+    Private provedorOleDb As String = Nothing
+
     Public Function strAdoConnection() As String
-        ' Conexão central (ver modConexao): lida do config, já com a conexão local aplicada no início do programa.
-        Dim b As New SqlConnectionStringBuilder(ConfigurationManager.ConnectionStrings(NOME_CONEXAO).ConnectionString)
-        Dim serv As String = b.DataSource, db As String = b.InitialCatalog, us As String = b.UserID, pw As String = b.Password
+        ' Conexão central (ver modConexao): lida do config, já com a conexão da máquina aplicada no início do programa.
+        Dim info As New SqlConnectionStringBuilder(ConfigurationManager.ConnectionStrings(NOME_CONEXAO).ConnectionString)
 
-        Dim mboard As New ManagementObjectSearcher("select * from Win32_BaseBoard")
-        Dim MB_serial As String = ""
-
-        For Each mb In mboard.Get
-            MB_serial = mb("SerialNumber")
-        Next
-
-        If MB_serial = "BSN12345678901234567" Then  'eu
-            strAdoConnection = "Provider=MSOLEDBSQL;Data Source=" & serv & ";Initial Catalog=" & db _
-           & ";User ID=" & us & ";Password=" & pw & ";"
-        Else
-            strAdoConnection = "Provider=SQLOLEDB.1;Data Source=" & serv & ";Initial Catalog=" & db _
-           & ";User ID=" & us & ";Password=" & pw & ";"
+        ' MSOLEDBSQL quando instalado; senão o SQLOLEDB.1 legado, que vem com o Windows.
+        ' O processo é x86, então o ClassesRoot já é a visão de 32 bits do registro.
+        If provedorOleDb Is Nothing Then
+            Using chave As RegistryKey = Registry.ClassesRoot.OpenSubKey("MSOLEDBSQL")
+                provedorOleDb = If(chave IsNot Nothing, "MSOLEDBSQL", "SQLOLEDB.1")
+            End Using
         End If
 
-        'strAdoConnection = "Provider=SQLOLEDB.1;Data Source=" & serv & ";Initial Catalog=" & db _
-        '& ";User ID=" & us & ";Password=" & pw & ";"
-
-        'Provider=sqloledb
-        'Eu: Provider=MSOLEDBSQL
-        'Pepe: Provider=SQLOLEDB.1
+        strAdoConnection = "Provider=" & provedorOleDb & ";Data Source=" & info.DataSource & ";Initial Catalog=" & info.InitialCatalog _
+           & ";User ID=" & info.UserID & ";Password=" & info.Password & ";"
 
     End Function
 

@@ -15,7 +15,10 @@ Imports System.Text
 '''
 ''' No início do programa (ApplicationEvents), PrepararConexao aplica essa conexão a todo o sistema:
 ''' ConfigurationManager (DevExpress, strAdoConnection) e My.Settings (TableAdapters, LINQ).
-''' Na máquina de desenvolvimento, se o app.config já tiver senha, ele continua sendo usado como antes.
+'''
+''' A escolha é por máquina: nas listadas em MaquinasDesenvolvimento (appSettings do app.config), o
+''' app.config com senha é usado direto, sem perguntar. Em qualquer outra (as estações da loja), a senha
+''' do app.config é ignorada: vale só o arquivo local, ou a frmConexao pede na primeira execução.
 ''' </summary>
 Public Module modConexao
 
@@ -35,6 +38,16 @@ Public Module modConexao
     Public Function ConexaoDoConfig() As String
         Dim cs = ConfigurationManager.ConnectionStrings(NOME_CONEXAO)
         Return If(cs Is Nothing, "", cs.ConnectionString)
+    End Function
+
+    ''' <summary>
+    ''' True se este computador (Environment.MachineName) está na chave MaquinasDesenvolvimento do
+    ''' appSettings, com os nomes separados por ";".
+    ''' </summary>
+    Public Function EhMaquinaDesenvolvimento() As Boolean
+        Dim maquinasDev As String() = (ConfigurationManager.AppSettings("MaquinasDesenvolvimento") & "") _
+            .Split(";"c).Select(Function(m) m.Trim()).Where(Function(m) m <> "").ToArray()
+        Return maquinasDev.Contains(Environment.MachineName, StringComparer.OrdinalIgnoreCase)
     End Function
 
     Public Function TemSenha(connectionString As String) As Boolean
@@ -94,6 +107,9 @@ Public Module modConexao
     ''' Chamado no início do programa. Retorna False se o usuário desistir de configurar a conexão.
     ''' </summary>
     Public Function PrepararConexao() As Boolean
+        ' Máquina de desenvolvimento: o app.config com senha vale como está, sem consultar o arquivo local.
+        If EhMaquinaDesenvolvimento() AndAlso TemSenha(ConexaoDoConfig()) Then Return True
+
         Dim local = LerConexaoLocal()
         If local IsNot Nothing Then
             Dim erro As String = ""
@@ -105,10 +121,8 @@ Public Module modConexao
                                 vbCrLf & erro)
         End If
 
-        ' Máquina de desenvolvimento: app.config com senha continua funcionando como sempre.
-        If TemSenha(ConexaoDoConfig()) Then Return True
-
-        ' Instalação nova (ClickOnce): a publicação não tem senha, então pede neste computador.
+        ' Estação sem arquivo local (instalação nova pelo ClickOnce, cujo config não tem senha): pede neste
+        ' computador. Mesmo que o config tenha senha, fora das máquinas de desenvolvimento ela não é usada.
         Return PedirConexao(ConexaoDoConfig(), "Primeira execução neste computador: informe os dados de acesso ao banco de dados.")
     End Function
 
