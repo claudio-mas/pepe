@@ -35,7 +35,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>2.2.0.%2a</ApplicationVersion>
     <MinimumRequiredVersion>2.2.0.0</MinimumRequiredVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
