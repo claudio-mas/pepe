@@ -264,17 +264,18 @@ Public Class frmGetnet
                         Continue Do
                     End If
 
-                    ' Valida Parcelas
+                    ' Valida Parcelas — vem como "parcela/total" ("3/6", "9/10"), sem zero à esquerda
+                    Dim numParcela As Integer = 0
+                    Dim partesParcela() As String = Nothing
                     If cmd.Parameters("@cp17").Value IsNot DBNull.Value Then
-                        numParcelas = CInt(Microsoft.VisualBasic.Strings.Right$(cmd.Parameters("@cp17").Value, 2))
-                    Else
+                        partesParcela = CStr(cmd.Parameters("@cp17").Value).Split("/"c)
+                    End If
+                    If partesParcela Is Nothing OrElse partesParcela.Length <> 2 OrElse
+                       Not Integer.TryParse(partesParcela(0).Trim(), numParcela) OrElse
+                       Not Integer.TryParse(partesParcela(1).Trim(), numParcelas) Then
                         rowIndex += 1
                         Continue Do
                     End If
-
-                    ' Agora calcula com segurança
-                    Dim diffMeses As Integer = ((datVencto.Year - datVenda.Year) * 12) + (datVencto.Month - datVenda.Month) + 1
-                    Dim numParcela As Integer = CInt(Microsoft.VisualBasic.Strings.Left$(cmd.Parameters("@cp17").Value, 2)) 'Math.Min(Math.Max(diffMeses, 1), numParcelas)
 
                     cmd.Parameters("@parcela").Value = numParcela
                     cmd.Parameters("@parcelas").Value = numParcelas
