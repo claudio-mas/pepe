@@ -109,9 +109,10 @@ DevExpress 25.2 instalado, usa `Pepe\bin\Debug`.
 ## Saída do DevExpress
 
 Objetivo do dono: remover o DevExpress **por completo** (fim da licença), trocando por controles WinForms nativos e
-relatórios RDLC (`Microsoft.ReportingServices.ReportViewerControl.Winforms` via NuGet). Já convertidos:
-`frmClientesDG` (DataGridView) e o relatório `Vendas` + subrelatório `VendasSaidas` (`Relatorios\Vendas.rdlc`,
-formulário `VendasBase` herdando `BaseRelatorio`). ComponentOne, Infragistics e Telerik já saíram do projeto; o
+relatórios RDLC (`Microsoft.ReportingServices.ReportViewerControl.Winforms` via NuGet). Já convertido: o relatório
+`Vendas` + subrelatório `VendasSaidas` (`Relatorios\Vendas.rdlc`, formulário `VendasBase` herdando `BaseRelatorio`).
+O `frmClientesDG` chegou a ser convertido para DataGridView (commit `d9763a9`), mas voltou à versão DevExpress a
+pedido do dono; a versão nativa fica nesse commit para quando for retomada. ComponentOne, Infragistics e Telerik já saíram do projeto; o
 DevExpress foi atualizado para 25.2 enquanto a remoção não termina. Se um designer DevExpress não abrir no VS, edite
 o `.Designer.vb` à mão ou converta o formulário.
 Para editar `.rdlc` no VS 2026, instale a extensão "Microsoft RDLC Report Designer" (versão 2022+).
