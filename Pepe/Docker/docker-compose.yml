@@ -1,0 +1,27 @@
+# SQL Server de desenvolvimento para o Pepe (banco BDTorras).
+# Container dedicado: a porta 1433 desta máquina já é usada por outro projeto.
+# Subir:     docker compose -f Pepe\Docker\docker-compose.yml up -d
+# Restaurar: Pepe\Docker\restaurar-bdtorras.ps1
+name: bdtorras
+
+services:
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: bdtorras_mssql
+    restart: unless-stopped
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"
+      MSSQL_SA_PASSWORD: "Torras#2026Dev"
+      # Mesma collation do BDTorras de produção (RESTORE HEADERONLY): evita "collation conflict" com tempdb.
+      # Só vale na criação do volume; para mudar, recrie com "down -v".
+      MSSQL_COLLATION: "Latin1_General_CI_AS"
+      MSSQL_MEMORY_LIMIT_MB: "2048"
+    ports:
+      - "127.0.0.1:14330:1433"
+    volumes:
+      - bdtorras_mssql_data:/var/opt/mssql
+
+volumes:
+  bdtorras_mssql_data:
+    name: bdtorras_mssql_data
