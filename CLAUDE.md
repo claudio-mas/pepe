@@ -48,8 +48,11 @@ Não há suíte de testes. O ciclo de verificação é compilar e, para relatór
 
 ```powershell
 $msb = & "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest -requires Microsoft.Component.MSBuild -find MSBuild\**\Bin\MSBuild.exe | Select-Object -First 1
-& $msb "C:\Sistema\Paco\Pepe\Pepe\Pepe.vbproj" /restore /p:RestorePackagesConfig=true /p:Configuration=Debug /p:Platform=x86 /v:minimal /nologo
+& $msb "C:\Sistema\Paco\Pepe\Pepe\Pepe.vbproj" /restore /p:RestorePackagesConfig=true /p:SolutionDir=C:\Sistema\Paco\Pepe\ /p:Configuration=Debug /p:Platform=x86 /v:minimal /nologo
 ```
+
+O `/p:SolutionDir` é necessário porque o build é feito no `.vbproj`, não na `.sln`: sem ele, a restauração do
+`packages.config` falha com `NuGet.targets: error : Não foi encontrada nenhuma solução`.
 
 **Use o MSBuild do Visual Studio (2022 ou posterior; Roslyn).** O MSBuild do .NET Framework
 (`C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe`) usa o compilador VB antigo, que não
