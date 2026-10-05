@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## O que é
 
 Sistema desktop de gestão para joalheria (clientes, vendas, consertos, estoque, conta corrente,
-cheques/cartões, relatórios). VB.NET / WinForms sobre .NET Framework 4.8, UI DevExpress v23.2 (em remoção —
+cheques/cartões, relatórios). VB.NET / WinForms sobre .NET Framework 4.8, UI DevExpress v25.2 (em remoção —
 ver "Saída do DevExpress"), banco SQL Server (`BDTorras`). Aplicação single-tenant, distribuída por ClickOnce em
 https://informas.com.br/pepe/ (ver "Publicação").
 
@@ -16,8 +16,9 @@ raiz e `Pepe\.git` — foram unidos; o histórico do código foi preservado sob 
 O código fica em `Pepe\`; na raiz ficam `Pepe.sln`, `Setup*`, `docs\` e este arquivo.
 Remoto: repositório **privado** no GitHub (o histórico antigo contém senhas de desenvolvimento — nunca torne público).
 
-`Pepe/bin/` e `Pepe/obj/` **são versionados** — e `Pepe/bin/Debug` guarda as DLLs de terceiros (DevExpress, C1,
-Infragistics, Telerik) das quais o build depende quando os produtos não estão instalados. Qualquer build suja
+`Pepe/bin/` e `Pepe/obj/` **são versionados** — e `Pepe/bin/Debug` guarda as DLLs de terceiros (DevExpress 25.2 e
+as dependências NuGet dele) das quais o build depende quando o produto não está instalado. O `.gitignore` da raiz
+ignora `bin/`: DLL nova ali só entra com `git add -f`. Qualquer build suja
 dezenas de arquivos no working tree — isso é esperado, não é regressão. Ao commitar, selecione os arquivos-fonte
 explicitamente em vez de `git add -A`. `packages\` (NuGet) e `publish\` são ignorados.
 
@@ -27,15 +28,19 @@ e os inúmeros `*.bak` / `*.Designer.vb.bak` espalhados pelo projeto.
 ## Ambiente de desenvolvimento
 
 - Windows 11, **Visual Studio 2026** (workload ".NET desktop development" + targeting pack do .NET Framework 4.8).
-- Banco em **contêiner Docker** (SQL Server 2022 Linux), exposto em `localhost,1433`. Roteiro de instalação e
-  restauração em `docs\Configurar-maquina-nova.md`.
-- O `app.config` versionado **não tem senha** (`Data Source=localhost,1433`). Na 1ª execução a `frmConexao` pede
-  servidor/usuário/senha, testa e grava `%ProgramData%\PepeTorrasDesign\conexao.dat` (DPAPI, escopo da máquina).
-  Para trocar de banco, apague esse arquivo.
-- `strAdoConnection()` (ADODB) escolhe o provider OLE DB pelo **serial da placa-mãe**: `MSOLEDBSQL` só na máquina
-  cujo serial está fixo em `modConn.vb`, `SQLOLEDB.1` em qualquer outra. Numa máquina nova o ADODB cai no
-  `SQLOLEDB.1`; se precisar do `MSOLEDBSQL` (ex.: conexão criptografada), instale o driver e inclua o serial novo
-  na regra.
+- Banco em **contêiner Docker** (SQL Server 2022 Linux). Roteiro de instalação e restauração em
+  `docs\Configurar-maquina-nova.md`. Na `DESKTOP-SKILL` o contêiner é o `bdtorras_mssql` de `Pepe\Docker`
+  (`docker compose -f Pepe\Docker\docker-compose.yml up -d`; `Pepe\Docker\restaurar-bdtorras.ps1 [-Bak <arquivo>]`
+  restaura sobrescrevendo), em **`127.0.0.1,14330`** (a 1433 dela é de outro projeto), collation
+  `Latin1_General_CI_AS` (a de produção; só se aplica na criação do volume). O SqlClient resolve `localhost` para
+  IPv6 e esse contêiner só publica em `127.0.0.1`: use `127.0.0.1,14330`, nunca `localhost,14330`.
+- **Conexão por máquina** (`modConexao.PrepararConexao`, no `Startup`): nas máquinas listadas na chave
+  `MaquinasDesenvolvimento` do `appSettings` (nomes separados por `;`), o `app.config` com senha (o contêiner de dev)
+  abre direto. Em qualquer outra, a senha do `app.config` é ignorada: vale
+  `%ProgramData%\PepeTorrasDesign\conexao.dat` (DPAPI, escopo da máquina) ou, sem ele, a `frmConexao` pede
+  servidor/usuário/senha na 1ª execução, testa e grava o arquivo. Para trocar de banco numa estação, apague o arquivo.
+- `strAdoConnection()` (ADODB) usa o provider OLE DB `MSOLEDBSQL` se ele estiver registrado na máquina e o
+  `SQLOLEDB.1` (vem com o Windows) caso contrário; a detecção é feita uma vez e fica em cache.
 
 ## Build
 
@@ -49,14 +54,14 @@ $msb = & "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe
 **Use o MSBuild do Visual Studio (2022 ou posterior; Roslyn).** O MSBuild do .NET Framework
 (`C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe`) usa o compilador VB antigo, que não
 conhece interpolated strings (`$"..."`) — `frmCota.vb`, `Financeiro\frmGetnet.vb` e outros usam, e o
-build morre com `BC30037: Caractere inválido` mais um `BC30009` de referência C1.Win.BarCode.
+build morre com `BC30037: Caractere inválido`.
 Esses erros não têm nada a ver com o código: são o compilador errado.
 
 A plataforma é **x86 obrigatoriamente** (`Pepe.exe` é x86).
 `OptionStrict Off`, `OptionInfer On`, `OptionExplicit On` — conversões implícitas são a norma no código.
 
-Referências de terceiros: as HintPaths de C1/Infragistics apontam para `Program Files`; sem os produtos instalados,
-o build em **Debug** acha as DLLs em `bin\Debug` (é o `OutputPath`). Em **Release** é preciso
+Referências de terceiros: sem o DevExpress instalado, o build em **Debug** acha as DLLs em `bin\Debug` (é o
+`OutputPath`). Em **Release** é preciso
 `/p:ReferencePath=<caminho>\Pepe\bin\Debug\` — o script de publicação já faz isso. `licenses.licx` lista controles
 licenciados: se o executável gerado exibir aviso de versão *trial*, instale o produto correspondente com a licença.
 
@@ -70,8 +75,8 @@ probing do CLR não acha o DevExpress:
 ```powershell
 cd C:\Sistema\Paco\Pepe\Pepe\bin\Debug
 & "C:\Windows\Microsoft.NET\Framework\v4.0.30319\vbc.exe" -out:VerificaLayout.exe -platform:x86 `
-  -r:Pepe.exe -r:DevExpress.XtraReports.v23.2.dll -r:DevExpress.Data.v23.2.dll `
-  -r:DevExpress.Printing.v23.2.Core.dll -r:DevExpress.Drawing.v23.2.dll `
+  -r:Pepe.exe -r:DevExpress.XtraReports.v25.2.dll -r:DevExpress.Data.v25.2.dll `
+  -r:DevExpress.Printing.v25.2.Core.dll -r:DevExpress.Drawing.v25.2.dll `
   -r:System.Drawing.dll -r:System.Windows.Forms.dll `
   -imports:Microsoft.VisualBasic,System,System.Linq -nologo ..\..\Scripts\VerificaLayout.vb
 .\VerificaLayout.exe        # sem argumento = sem linha Boutique; "bou" = com
@@ -99,15 +104,16 @@ tenha senha. Manifestos não são assinados (de propósito). O disco da VPS est�
 O script localiza o MSBuild com `vswhere` e se adapta à máquina: com VS 2022 ou posterior usa o MSBuild dele; só no
 VS2019 recorre ao Roslyn 64 bits do .NET SDK (o `vbc` 32 bits do VS2019 estoura memória); sem os assemblies de
 referência do .NET 4.8, usa o pacote NuGet `Microsoft.NETFramework.ReferenceAssemblies.net48` em `packages\`; sem
-DevExpress 23.2 instalado, usa `Pepe\bin\Debug`.
+DevExpress 25.2 instalado, usa `Pepe\bin\Debug`.
 
 ## Saída do DevExpress
 
 Objetivo do dono: remover o DevExpress **por completo** (fim da licença), trocando por controles WinForms nativos e
 relatórios RDLC (`Microsoft.ReportingServices.ReportViewerControl.Winforms` via NuGet). Já convertidos:
 `frmClientesDG` (DataGridView) e o relatório `Vendas` + subrelatório `VendasSaidas` (`Relatorios\Vendas.rdlc`,
-formulário `VendasBase` herdando `BaseRelatorio`). O DevExpress 23.2 não tem integração oficial com o VS 2026, então
-os designers de formulários DevExpress podem não abrir — edite o `.Designer.vb` à mão ou converta o formulário.
+formulário `VendasBase` herdando `BaseRelatorio`). ComponentOne, Infragistics e Telerik já saíram do projeto; o
+DevExpress foi atualizado para 25.2 enquanto a remoção não termina. Se um designer DevExpress não abrir no VS, edite
+o `.Designer.vb` à mão ou converta o formulário.
 Para editar `.rdlc` no VS 2026, instale a extensão "Microsoft RDLC Report Designer" (versão 2022+).
 
 ## Arquitetura
@@ -115,7 +121,8 @@ Para editar `.rdlc` no VS 2026, instale a extensão "Microsoft RDLC Report Desig
 ### Fluxo de inicialização
 
 `ApplicationEvents.vb` (`Startup`) → `PrepararConexao()` (ver "Acesso a dados"; se o usuário cancelar a
-`frmConexao`, o app fecha) → `My Project\Application.myapp` → `MainForm = frmAcesso` (senha comparada em texto no
+`frmConexao`, o app fecha) e `SqlDataSource.DisableCustomQueryValidation = True` (o validador do DevExpress 25.2
+confunde `REPLACE(` com `REPLACE INTO` e recusava queries fixas dos relatórios) → `My Project\Application.myapp` → `MainForm = frmAcesso` (senha comparada em texto no
 `frmAcesso.vb`; a validação remota contra `tab_controle` está comentada) → `frmDevPrincipal.Show()`.
 
 `frmDevPrincipal` (em `Datasets\`, apesar do nome da pasta) é a shell: `DevExpress.XtraBars.Ribbon.RibbonForm`.
@@ -129,19 +136,17 @@ antes de abrir o form (ex.: `fExecutarSP("USP_Cheques")`).
 1. **Typed DataSets + TableAdapters** — `DataSet1.xsd` (338 KB) e `Datasets\ds*.xsd`. É o grosso dos
    formulários (~1300 referências a `TableAdapter`).
 2. **ADODB clássico (COM)** via `modConn.vb` — `fExecutarText`, `fExecutarSP`, e `DLookUp` em
-   `modInternas.vb` (~250 usos). `strAdoConnection()` lê a connection string de `My.Settings`, decompõe com
-   `SqlConnectionStringBuilder` e remonta uma string OLEDB — **escolhendo o provider pelo serial
-   da placa-mãe** (ver "Ambiente de desenvolvimento").
+   `modInternas.vb` (~250 usos). `strAdoConnection()` lê a connection string do `ConfigurationManager`, decompõe
+   com `SqlConnectionStringBuilder` e remonta uma string OLEDB, com o provider detectado no registro (ver
+   "Ambiente de desenvolvimento").
 3. **LINQ to SQL** — `Relatorios\lqGerencial.dbml` → `lqGerencialDataContext`. Usado por
    `GerencialBase`, `GerencialNovoDados` e `VendasBase`.
 
 Fonte única da conexão: `Pepe.My.MySettings.Pepe_ConnString`. **Nunca** escreva string de conexão com senha
-no código nem no `app.config`. `modConexao.vb` decide a conexão no `Startup`: se existir
-`%ProgramData%\PepeTorrasDesign\conexao.dat` (criptografado com DPAPI, criado pela `frmConexao` na 1ª execução),
-aplica-o em memória ao `ConfigurationManager` e ao `My.Settings`; senão, usa o `app.config` se ele tiver senha;
-senão, abre a `frmConexao`. Um `app.config` com senha **não pode ser publicado** (o `.vbproj` barra).
-Os relatórios C1 (`frmEtiqAniv`, `frmEtiquetas`, `frmRptPecasCompradas`) recebem `strAdoConnection()` no `Load` —
-não grave conexão no `ReportDefinition` do `.resx`.
+no código. No `app.config` só entra a senha do contêiner de dev, que a publicação remove. `modConexao.vb` decide a
+conexão no `Startup` (ver "Conexão por máquina" acima) e aplica a escolhida em memória ao `ConfigurationManager`
+e ao `My.Settings`. Um config com senha **não pode ser publicado** (o `.vbproj` barra; o script de publicação gera
+um sem senha, com o servidor da loja).
 Convenção do projeto: `CommandTimeout = 0` nas consultas de relatório.
 
 ### Relatórios (`Pepe\Relatorios\`)

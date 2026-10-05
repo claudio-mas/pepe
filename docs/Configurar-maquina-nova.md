@@ -37,13 +37,13 @@ repositórios, estão em `C:\Sistema\Paco\_git_antigo_Pepe` e podem ser descarta
 | **Docker Desktop** | Backend WSL 2 (o instalador ativa o WSL se precisar; reinicie quando pedir). |
 | **SQL Server Management Studio** | Opcional, para administrar o banco. |
 
-Componentes de terceiros (DevExpress 23.2, ComponentOne, Infragistics 2023.1, Telerik): **não instale de início**.
-As DLLs estão versionadas em `Pepe\bin\Debug` e o projeto compila com elas. Instale um produto só se:
+Componentes de terceiros: só resta o **DevExpress 25.2** (ComponentOne, Infragistics e Telerik já foram removidos
+do projeto). **Não instale de início**: as DLLs estão versionadas em `Pepe\bin\Debug` e o projeto compila com elas.
+Instale o DevExpress 25.2 só se:
 - o executável gerado mostrar aviso de versão *trial* (os controles licenciados estão em `My Project\licenses.licx`;
   a licença vale para a máquina onde se compila) — nesse caso instale o produto com a sua licença; ou
-- precisar do designer visual daquele componente. O DevExpress 23.2 não tem integração oficial com o VS 2026;
-  os formulários DevExpress podem não abrir no designer. Como o plano é removê-lo, edite o `.Designer.vb` à mão
-  ou converta o formulário para WinForms.
+- precisar do designer visual dos formulários DevExpress. Como o plano é removê-lo, também dá para editar o
+  `.Designer.vb` à mão ou converter o formulário para WinForms.
 
 Conferência: `git --version`, `docker version` (cliente e servidor respondem).
 
@@ -115,19 +115,23 @@ certificate*), o banco `BDTorras` aparece e `SELECT COUNT(*) FROM BDTorras.sys.t
 2. Barra de ferramentas: **Debug** e **x86**.
 3. *Build → Build Solution*. Os pacotes NuGet (ReportViewer, SqlServer.Types) são restaurados na primeira
    compilação. Muitos arquivos de `Pepe\bin` e `Pepe\obj` aparecem como alterados no Git — é esperado.
-4. **F5.** Na primeira execução abre a tela **Conexão com o banco de dados**:
-   Servidor `localhost,1433` · Banco `BDTorras` · Usuário `sa` · Senha do contêiner.
-   Ela testa a conexão e grava tudo criptografado em `%ProgramData%\PepeTorrasDesign\conexao.dat`
-   (para trocar de banco depois, apague esse arquivo).
+4. **F5.** A conexão é escolhida por máquina (`modConexao.PrepararConexao`):
+   - Se o nome da máquina (`hostname`) estiver na chave `MaquinasDesenvolvimento` do `Pepe\app.config`, o sistema
+     usa direto a conexão de dev do `app.config` (hoje, o contêiner de `Pepe\Docker` em `127.0.0.1,14330`).
+     Para usar assim, acrescente o nome da máquina à lista (separado por `;`) e ajuste a conexão ao seu contêiner.
+   - Senão, na primeira execução abre a tela **Conexão com o banco de dados**:
+     Servidor `localhost,1433` (ou o do seu contêiner) · Banco `BDTorras` · Usuário `sa` · Senha do contêiner.
+     Ela testa a conexão e grava tudo criptografado em `%ProgramData%\PepeTorrasDesign\conexao.dat`
+     (para trocar de banco depois, apague esse arquivo).
 5. Faça o login do sistema normalmente.
 
 Conferência: abra a lista de clientes e o relatório **Vendas** de um mês conhecido; os números devem bater com a
 máquina antiga. Se aparecer aviso de versão *trial* de algum componente, veja a etapa 1.
 
-Se as telas que usam ADODB (`fExecutarSP`, `DLookUp`) derem erro de conexão: numa máquina nova o sistema usa o
-provider `SQLOLEDB.1` (a regra está em `strAdoConnection`, no `modConn.vb`, e depende do serial da placa-mãe).
-Normalmente funciona com o SQL 2022 local; se não, instale o *Microsoft OLE DB Driver for SQL Server* e inclua o
-serial da máquina nova na regra.
+Se as telas que usam ADODB (`fExecutarSP`, `DLookUp`) derem erro de conexão: `strAdoConnection` (`modConn.vb`)
+usa o provider `MSOLEDBSQL` se ele estiver registrado na máquina e o `SQLOLEDB.1` (que vem com o Windows) caso
+contrário. Normalmente o `SQLOLEDB.1` funciona com o SQL 2022 local; se não, instale o *Microsoft OLE DB Driver
+for SQL Server*.
 
 ## 5. Chaves SSH (publicação)
 

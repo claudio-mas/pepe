@@ -80,8 +80,8 @@ if (-not (Test-Path "${env:ProgramFiles(x86)}\Reference Assemblies\Microsoft\Fra
     $extra += "/p:TargetFrameworkRootPath=$($ref.FullName)\build"
     Write-Host "Referências .NET 4.8: pacote NuGet ($($ref.Name))"
 }
-# DLLs de terceiros (DevExpress, C1, Infragistics, Telerik) versionadas em Pepe\bin\Debug: o build em Release
-# as acha por aqui, sem depender dos produtos instalados (as HintPaths apontam para Program Files).
+# DLLs de terceiros (DevExpress 25.2) versionadas em Pepe\bin\Debug: o build em Release
+# as acha por aqui, sem depender do produto instalado.
 $extra += "/p:ReferencePath=$Raiz\Pepe\bin\Debug\"
 
 # ---------------------------------------------------------------- versão
