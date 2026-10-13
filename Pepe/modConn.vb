@@ -16,6 +16,8 @@ Module modConn
     Public varIdCC As Integer = 0
     Public varIdPeça As Integer = 0
     Public varFlag As Boolean = False
+    ' Formulário que abriu o frmEstoque por AbrirCadastroPeça e volta a aparecer quando ele fecha.
+    Public frmOrigemPeça As Form = Nothing
 
 
     Private provedorOleDb As String = Nothing
@@ -148,5 +150,43 @@ ErrHandler:
 
 
     End Sub
+
+    ' Abre o cadastro da peça escondendo quem chamou; o frmEstoque devolve o foco a ela ao fechar.
+    Public Sub AbrirCadastroPeça(idPeça As Integer, origem As Form)
+        If idPeça = 0 Then
+            MsgBox("Peça não encontrada.", MsgBoxStyle.Information, "Atenção!")
+            Exit Sub
+        End If
+
+        varIdPeça = idPeça
+        varNew = False
+        frmOrigemPeça = origem
+        frmEstoque.Show()
+
+    End Sub
+
+    ' A ficha (Classe + Modêlo) não é única no estoque: só identifica a peça dentro da venda ou da saída.
+    Public Function IdPeçaDaVenda(idVenda As Integer, ficha As String) As Integer
+        Return IdPeçaPorFicha("SELECT TOP 1 d.Peça FROM [VENDAS DET] d INNER JOIN [1TabPeças] p ON p.IDPeça = d.Peça " &
+                              "WHERE d.Venda = @id AND p.Classe + p.Modêlo = @ficha", idVenda, ficha)
+    End Function
+
+    Public Function IdPeçaDaSaída(numSaida As Integer, ficha As String) As Integer
+        Return IdPeçaPorFicha("SELECT TOP 1 s.IdPeça FROM Saidas s INNER JOIN [1TabPeças] p ON p.IDPeça = s.IdPeça " &
+                              "WHERE s.NumSaida = @id AND p.Classe + p.Modêlo = @ficha", numSaida, ficha)
+    End Function
+
+    Private Function IdPeçaPorFicha(sql As String, id As Integer, ficha As String) As Integer
+        Using cnn As New SqlConnection(ConfigurationManager.ConnectionStrings(NOME_CONEXAO).ConnectionString)
+            Using cmd As New SqlCommand(sql, cnn)
+                cmd.Parameters.AddWithValue("@id", id)
+                cmd.Parameters.AddWithValue("@ficha", ficha.Trim())
+                cnn.Open()
+                Dim r As Object = cmd.ExecuteScalar()
+                If r Is Nothing OrElse IsDBNull(r) Then Return 0
+                Return CInt(r)
+            End Using
+        End Using
+    End Function
 
 End Module

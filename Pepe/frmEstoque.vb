@@ -63,7 +63,9 @@ Partial Public Class frmEstoque
 
             Me.Tag = "1"
 
-            If frmEstoqueDG.IsHandleCreated Then
+            If frmOrigemPeça IsNot Nothing Then
+                frmOrigemPeça.Visible = False
+            ElseIf frmEstoqueDG.IsHandleCreated Then
                 frmEstoqueDG.Visible = False
             Else
                 frmInconsist.Visible = False
@@ -90,7 +92,10 @@ Partial Public Class frmEstoque
 
         NomeForm = ""
 
-        If frmEstoqueDG.IsHandleCreated Then
+        If frmOrigemPeça IsNot Nothing Then
+            frmOrigemPeça.Visible = True
+            frmOrigemPeça = Nothing
+        ElseIf frmEstoqueDG.IsHandleCreated Then
             frmEstoqueDG.Visible = True
         Else
             frmInconsist.Inconsist1TableAdapter.Fill(frmInconsist.DsInconsist.Inconsist1)
@@ -181,7 +186,9 @@ Partial Public Class frmEstoque
             Me.grpEstornar.Visible = (LabelControl1.Text <> "Em estoque")
             Me.grpFoto.Visible = True
             Me.RibbonPageGroup2.Visible = False
-            If frmEstoqueDG.IsHandleCreated Then
+            If frmOrigemPeça IsNot Nothing Then
+                ' Aberto por AbrirCadastroPeça: não há lista de estoque a recarregar.
+            ElseIf frmEstoqueDG.IsHandleCreated Then
                 frmEstoqueDG.EstoqueTableAdapter.Fill(frmEstoqueDG.DsEstoque.Estoque)
             Else
                 frmInconsist.Inconsist1TableAdapter.Fill(frmInconsist.DsInconsist.Inconsist1)
@@ -718,7 +725,7 @@ Partial Public Class frmEstoque
             Me.Validate()
             Me._1TabPeçasBindingSource.EndEdit()
             Me.TableAdapterManager.UpdateAll(DsNovoEstoque)
-            frmEstoqueDG.EstoqueTableAdapter.Fill(frmEstoqueDG.DsEstoque.Estoque)
+            If frmOrigemPeça Is Nothing Then frmEstoqueDG.EstoqueTableAdapter.Fill(frmEstoqueDG.DsEstoque.Estoque)
             Me.Close()
         End If
 
