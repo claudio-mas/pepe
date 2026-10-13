@@ -990,6 +990,12 @@
     <Compile Include="Relatorios\TelefonesClientesBase.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Relatorios\Vendas.Designer.vb">
+      <DependentUpon>Vendas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Vendas.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Relatorios\VendasBase.Designer.vb">
       <DependentUpon>VendasBase.vb</DependentUpon>
     </Compile>
@@ -1030,6 +1036,12 @@
       <DependentUpon>rptEtiquetasAniv.vb</DependentUpon>
     </Compile>
     <Compile Include="Relatorios\rptEtiquetasAniv.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Relatorios\VendasSaidas.Designer.vb">
+      <DependentUpon>VendasSaidas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\VendasSaidas.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="x.Designer.vb">
@@ -1410,7 +1422,9 @@
     <EmbeddedResource Include="Relatorios\TelefonesClientesBase.resx">
       <DependentUpon>TelefonesClientesBase.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Relatorios\Vendas.rdlc" />
+    <EmbeddedResource Include="Relatorios\Vendas.resx">
+      <DependentUpon>Vendas.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\VendasBase.resx">
       <DependentUpon>VendasBase.vb</DependentUpon>
     </EmbeddedResource>
@@ -1431,6 +1445,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\rptEtiquetasAniv.resx">
       <DependentUpon>rptEtiquetasAniv.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\VendasSaidas.resx">
+      <DependentUpon>VendasSaidas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="x.resx">
       <DependentUpon>x.vb</DependentUpon>

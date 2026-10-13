@@ -112,10 +112,11 @@ DevExpress 25.2 instalado, usa `Pepe\bin\Debug`.
 ## Saída do DevExpress
 
 Objetivo do dono: remover o DevExpress **por completo** (fim da licença), trocando por controles WinForms nativos e
-relatórios RDLC (`Microsoft.ReportingServices.ReportViewerControl.Winforms` via NuGet). Já convertido: o relatório
-`Vendas` + subrelatório `VendasSaidas` (`Relatorios\Vendas.rdlc`, formulário `VendasBase` herdando `BaseRelatorio`).
-O `frmClientesDG` chegou a ser convertido para DataGridView (commit `d9763a9`), mas voltou à versão DevExpress a
-pedido do dono; a versão nativa fica nesse commit para quando for retomada. ComponentOne, Infragistics e Telerik já saíram do projeto; o
+relatórios RDLC (`Microsoft.ReportingServices.ReportViewerControl.Winforms` via NuGet). Nada convertido em uso
+no momento: o relatório `Vendas` + subrelatório `VendasSaidas` chegou a ir para RDLC (commit `21e8840`,
+`Relatorios\Vendas.rdlc` com `VendasBase` herdando `BaseRelatorio`) e o `frmClientesDG` para DataGridView (commit
+`d9763a9`), mas ambos voltaram à versão DevExpress a pedido do dono; as versões nativas ficam nesses commits para
+quando forem retomadas. `BaseRelatorio` e o ReportViewer continuam no projeto, sem uso, à espera da próxima conversão. ComponentOne, Infragistics e Telerik já saíram do projeto; o
 DevExpress foi atualizado para 25.2 enquanto a remoção não termina. Se um designer DevExpress não abrir no VS, edite
 o `.Designer.vb` à mão ou converta o formulário.
 Para editar `.rdlc` no VS 2026, instale a extensão "Microsoft RDLC Report Designer" (versão 2022+).
@@ -186,7 +187,8 @@ empurram os controles seguintes da banda e deslocam o layout inteiro; com `WordW
 que não cabe é **cortado em silêncio**.
 
 Ao converter um relatório DevExpress para RDLC, confira valor a valor contra o original no mesmo período
-(foi assim com `Vendas`: 07/2026 e 02/2021, todos os valores batendo).
+(foi assim com `Vendas`: 07/2026 e 02/2021, todos os valores batendo — conversão depois revertida, ver
+"Saída do DevExpress").
 
 ### Banco de dados
 
