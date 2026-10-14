@@ -32,6 +32,9 @@ Public Class frmVendasClienteBase
         report.SqlDataSource1.Fill()
         report.txtPeriodo.Text = frmClientes.ClienteTextEdit.Text
 
+        ' Coluna Ref.: clicar na ficha abre o cadastro da peça (venda|ficha, pois a ficha sozinha não é única).
+        TornarFichaClicável(report.mModêlo, "ToStr([Id]) + '|' + [Classe] + [Modêlo]", AddressOf IdPeçaDaVenda, Me)
+
         'Me.DocumentViewer1.Refresh()
         'Me.DocumentViewer1.Show()
 

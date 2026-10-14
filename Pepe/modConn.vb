@@ -1,6 +1,7 @@
 ﻿Imports System.Configuration
 Imports System.Data.SqlClient
 Imports DevExpress.XtraEditors
+Imports DevExpress.XtraReports.UI
 Imports Microsoft.Win32
 
 Module modConn
@@ -174,6 +175,33 @@ ErrHandler:
     Public Function IdPeçaDaSaída(numSaida As Integer, ficha As String) As Integer
         Return IdPeçaPorFicha("SELECT TOP 1 s.IdPeça FROM Saidas s INNER JOIN [1TabPeças] p ON p.IDPeça = s.IdPeça " &
                               "WHERE s.NumSaida = @id AND p.Classe + p.Modêlo = @ficha", numSaida, ficha)
+    End Function
+
+    ' Torna clicável um rótulo de ficha num relatório: o Tag leva "id|ficha" (a ficha sozinha não é única)
+    ' e o clique abre o cadastro da peça resolvida, voltando a 'origem' ao fechar.
+    Public Sub TornarFichaClicável(rótulo As XRLabel, expressãoTag As String,
+                                   resolverPeça As Func(Of Integer, String, Integer), origem As Form)
+        rótulo.ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Tag", expressãoTag))
+
+        AddHandler rótulo.PreviewClick,
+            Sub(sender As Object, e As PreviewMouseEventArgs)
+                Dim id As Integer, ficha As String = ""
+                If LerTagFicha(e.Brick.Value, id, ficha) Then AbrirCadastroPeça(resolverPeça(id, ficha), origem)
+            End Sub
+
+        AddHandler rótulo.PreviewMouseMove,
+            Sub(sender As Object, e As PreviewMouseEventArgs)
+                e.PreviewControl.Cursor = Cursors.Hand
+            End Sub
+
+    End Sub
+
+    Private Function LerTagFicha(tag As Object, ByRef id As Integer, ByRef ficha As String) As Boolean
+        Dim partes = Convert.ToString(tag).Split("|"c)
+        If partes.Length <> 2 OrElse Not Integer.TryParse(partes(0), id) OrElse partes(1).Trim() = "" Then Return False
+        ficha = partes(1)
+        Return True
+
     End Function
 
     Private Function IdPeçaPorFicha(sql As String, id As Integer, ficha As String) As Integer

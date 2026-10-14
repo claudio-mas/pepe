@@ -1,7 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Imports DevExpress.XtraEditors.Controls
 Imports System.Configuration
-Imports DevExpress.XtraReports.UI
 
 Public Class VendasBase
 
@@ -30,13 +29,9 @@ Public Class VendasBase
 
         report.txtPeriodo.Tag = "0"
 
-        ' Fichas clicáveis: o Tag leva "venda|ficha" (ou "lote da saída|ficha"), porque a ficha sozinha não é única.
-        report.mModêlo.ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Tag", "ToStr([Id]) + '|' + [Classe] + [Modêlo]"))
-        AddHandler report.mModêlo.PreviewClick, AddressOf FichaVenda_PreviewClick
-        AddHandler report.mModêlo.PreviewMouseMove, AddressOf Ficha_PreviewMouseMove
-        rptSai.XrLabel3.ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Tag", "ToStr([NumSaida]) + '|' + [Ficha]"))
-        AddHandler rptSai.XrLabel3.PreviewClick, AddressOf FichaSaída_PreviewClick
-        AddHandler rptSai.XrLabel3.PreviewMouseMove, AddressOf Ficha_PreviewMouseMove
+        ' Fichas clicáveis: venda|ficha nas vendas, lote da saída|ficha nas saídas.
+        TornarFichaClicável(report.mModêlo, "ToStr([Id]) + '|' + [Classe] + [Modêlo]", AddressOf IdPeçaDaVenda, Me)
+        TornarFichaClicável(rptSai.XrLabel3, "ToStr([NumSaida]) + '|' + [Ficha]", AddressOf IdPeçaDaSaída, Me)
 
         '---
         Dim formattedDt1 As Date = Me.txtData1.EditValue
@@ -118,31 +113,6 @@ Public Class VendasBase
         End Try
 
     End Sub
-
-    Private Sub FichaVenda_PreviewClick(sender As Object, e As PreviewMouseEventArgs)
-        Dim id As Integer, ficha As String = ""
-        If LerTagFicha(e.Brick.Value, id, ficha) Then AbrirCadastroPeça(IdPeçaDaVenda(id, ficha), Me)
-
-    End Sub
-
-    Private Sub FichaSaída_PreviewClick(sender As Object, e As PreviewMouseEventArgs)
-        Dim id As Integer, ficha As String = ""
-        If LerTagFicha(e.Brick.Value, id, ficha) Then AbrirCadastroPeça(IdPeçaDaSaída(id, ficha), Me)
-
-    End Sub
-
-    Private Sub Ficha_PreviewMouseMove(sender As Object, e As PreviewMouseEventArgs)
-        e.PreviewControl.Cursor = Cursors.Hand
-
-    End Sub
-
-    Private Function LerTagFicha(tag As Object, ByRef id As Integer, ByRef ficha As String) As Boolean
-        Dim partes = CStr(If(tag, "")).Split("|"c)
-        If partes.Length <> 2 OrElse Not Integer.TryParse(partes(0), id) OrElse partes(1).Trim() = "" Then Return False
-        ficha = partes(1)
-        Return True
-
-    End Function
 
     Private Sub VendasBase_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         frmDevPrincipal.Visible = True
