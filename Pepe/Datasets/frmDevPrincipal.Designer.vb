@@ -382,6 +382,7 @@ Partial Class frmDevPrincipal
         Me.btnRptGerencial.ImageOptions.LargeImage = CType(resources.GetObject("btnRptGerencial.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.btnRptGerencial.Name = "btnRptGerencial"
         Me.btnRptGerencial.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText
+        Me.btnRptGerencial.Visibility = DevExpress.XtraBars.BarItemVisibility.OnlyInCustomizing
         '
         'btnRptGerencialNovo
         '
@@ -496,7 +497,7 @@ Partial Class frmDevPrincipal
         '
         'BarStaticItem1
         '
-        Me.BarStaticItem1.Caption = "5.9.9"
+        Me.BarStaticItem1.Caption = "6.0.3"
         Me.BarStaticItem1.Id = 45
         Me.BarStaticItem1.Name = "BarStaticItem1"
         '
@@ -755,8 +756,8 @@ Partial Class frmDevPrincipal
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1338, 725)
         Me.Controls.Add(Me.PictureBox1)
-        Me.Controls.Add(Me.RibbonStatusBar)
         Me.Controls.Add(Me.RibbonControl)
+        Me.Controls.Add(Me.RibbonStatusBar)
         Me.IconOptions.ShowIcon = False
         Me.MaximizeBox = False
         Me.Name = "frmDevPrincipal"
