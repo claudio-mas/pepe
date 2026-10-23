@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+# Instaladores do VS gerados por acidente (Setup e Setup1 são legados versionados)
+/Setup3/
+/Setup4/
