@@ -1,0 +1,47 @@
+schema,objeto,tipo_objeto,coluna,tipo,tamanho
+dbo,1TabPeças,USER_TABLE,IDCliente,nvarchar,75
+dbo,1TabPeçasOld,USER_TABLE,IDCliente,nvarchar,75
+dbo,CC,VIEW,CLIENTE,int,4
+dbo,CC2,VIEW,Cliente,nvarchar,75
+dbo,CC2,VIEW,IDCliente,int,4
+dbo,CCCartãoCC,VIEW,Cliente,int,4
+dbo,CCCartãoConserto,VIEW,CLIENTE,int,4
+dbo,CCCartãoVenda,VIEW,Cliente,int,4
+dbo,CCCash,VIEW,Cliente,int,4
+dbo,CCCashCC,VIEW,Cliente,int,4
+dbo,CCCashVenda,VIEW,Cliente,int,4
+dbo,CCChequeCC,VIEW,Cliente,int,4
+dbo,CCChequeConserto,VIEW,CLIENTE,int,4
+dbo,CCChequeVenda,VIEW,CLIENTE,int,4
+dbo,CCDeb,VIEW,Cliente,int,4
+dbo,CCDeb old,VIEW,Cliente,int,4
+dbo,CCDebCC,VIEW,Cliente,int,4
+dbo,CCDolar,VIEW,Cliente,int,4
+dbo,CCDolarCC,VIEW,Cliente,int,4
+dbo,CCDolarVenda,VIEW,Cliente,int,4
+dbo,CCDolarVendaBase,VIEW,Cliente,int,4
+dbo,CCFIX_v1_Backup,USER_TABLE,Cliente,int,4
+dbo,CCNovoGer,VIEW,Cliente,nvarchar,75
+dbo,CCOld,VIEW,Cliente,int,4
+dbo,CCOuro,VIEW,Cliente,int,4
+dbo,CCOuroCC,VIEW,Cliente,int,4
+dbo,CCOuroVenda,VIEW,Cliente,int,4
+dbo,CCRpt2,VIEW,Cliente,int,4
+dbo,CCTransf,VIEW,Cliente,int,4
+dbo,Compras,USER_TABLE,ID Cliente,int,4
+dbo,CONSERTOS,USER_TABLE,CLIENTE,int,4
+dbo,Conta Corrente,USER_TABLE,Cliente,int,4
+dbo,Contatos,USER_TABLE,ID Cliente,int,4
+dbo,getnet1,VIEW,Cliente,nvarchar,75
+dbo,getnet2,VIEW,Cliente,nvarchar,75
+dbo,getnet3,VIEW,Cliente,nvarchar,75
+dbo,getnet4,VIEW,Cliente,nvarchar,75
+dbo,getnet5,VIEW,Cliente,nvarchar,75
+dbo,tabExtrato,USER_TABLE,IdCliente,int,4
+dbo,VENDAS,USER_TABLE,IDCliente,int,4
+dbo,VENDAS1,USER_TABLE,IDCliente,int,4
+dbo,VI_CC,VIEW,Cliente,int,4
+dbo,VI_CC_SALDOS,VIEW,Cliente,nvarchar,75
+dbo,VI_Getnet,VIEW,Cliente,nvarchar,75
+dbo,VI_Getnet_Base,VIEW,Cliente,nvarchar,75
+dbo,VI_Pecas_Web,VIEW,NomeCliente,nvarchar,75

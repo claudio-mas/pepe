@@ -1,0 +1,42 @@
+schema,tabela,restricao,tipo,colunas
+dbo,1TabPeças,1TabPeças$PrimaryKey,PRIMARY_KEY_CONSTRAINT,IDPeça
+dbo,1TabPeçasHistórico,PK_1TabPeçasHistórico,PRIMARY_KEY_CONSTRAINT,Id
+dbo,1TabPeçasOld,1TabPeçasOld$PrimaryKey,PRIMARY_KEY_CONSTRAINT,IDPeça
+dbo,Aniversariantes,Aniversariantes$PrimaryKey,PRIMARY_KEY_CONSTRAINT,Id
+dbo,Cartões,Cartões$PrimaryKey,PRIMARY_KEY_CONSTRAINT,Ncartao
+dbo,CCFIX_v1_Backup,PK__CCFIX_v1__3214EC2759005F24,PRIMARY_KEY_CONSTRAINT,ID
+dbo,Clientes,Clientes$PrimaryKey,PRIMARY_KEY_CONSTRAINT,IDCliente
+dbo,Compras,Compras$PrimaryKey,PRIMARY_KEY_CONSTRAINT,ID
+dbo,CONSERTOS,CONSERTOS$PrimaryKey,PRIMARY_KEY_CONSTRAINT,ID
+dbo,Conta Corrente,Conta Corrente$PrimaryKey,PRIMARY_KEY_CONSTRAINT,ID
+dbo,Contatos,Contatos$PrimaryKey,PRIMARY_KEY_CONSTRAINT,ID
+dbo,Cotação,Cotação$PrimaryKey,PRIMARY_KEY_CONSTRAINT,Id
+dbo,CotaçãoOld,CotaçãoOld$PrimaryKey,PRIMARY_KEY_CONSTRAINT,ValDólar
+dbo,Despesas,Despesas$PrimaryKey,PRIMARY_KEY_CONSTRAINT,ID
+dbo,DespesasOld,DespesasOld$PrimaryKey,PRIMARY_KEY_CONSTRAINT,ID
+dbo,FORMAS,FORMAS$PrimaryKey,PRIMARY_KEY_CONSTRAINT,ID
+dbo,GASTO OFICINA,GASTO OFICINA$PrimaryKey,PRIMARY_KEY_CONSTRAINT,Id
+dbo,getnet,PK_getnet,PRIMARY_KEY_CONSTRAINT,Id
+dbo,getnet_temp,PK_getnet_temp,PRIMARY_KEY_CONSTRAINT,Id
+dbo,METAIS,PK_METAIS,PRIMARY_KEY_CONSTRAINT,Id
+dbo,PEDRAS,PEDRAS$PrimaryKey,PRIMARY_KEY_CONSTRAINT,Id
+dbo,Pres,Pres$PrimaryKey,PRIMARY_KEY_CONSTRAINT,Id
+dbo,Reajustes,PK_Reajustes,PRIMARY_KEY_CONSTRAINT,Id
+dbo,Saidas,PK_Saidas,PRIMARY_KEY_CONSTRAINT,Id
+dbo,Senha,Senha$PrimaryKey,PRIMARY_KEY_CONSTRAINT,Senha
+dbo,SenhaOld,SenhaOld$PrimaryKey,PRIMARY_KEY_CONSTRAINT,Senha
+dbo,tabCartões,PK_tabCartões,PRIMARY_KEY_CONSTRAINT,IDC
+dbo,tabCartõesRpt,PK_tabCartõesRpt,PRIMARY_KEY_CONSTRAINT,IDC
+dbo,tabCheques,PK_tabCheques,PRIMARY_KEY_CONSTRAINT,IDV
+dbo,tabChequesRpt,PK_tabChequesRpt,PRIMARY_KEY_CONSTRAINT,IDV
+dbo,tabExtrato,PK__tabExtra__3214EC076EEEBCCB,PRIMARY_KEY_CONSTRAINT,Id
+dbo,tabMateriaPrima,PK_tabMateriaPrima,PRIMARY_KEY_CONSTRAINT,Id
+dbo,tabMatPrima,PK_tabMatPrima,PRIMARY_KEY_CONSTRAINT,Id
+dbo,TiposSaidas,PK_TiposSaidas,PRIMARY_KEY_CONSTRAINT,Id
+dbo,Vencto Cartão,Vencto Cartão$PrimaryKey,PRIMARY_KEY_CONSTRAINT,Id
+dbo,Vencto Cheques,Vencto Cheques$PrimaryKey,PRIMARY_KEY_CONSTRAINT,Id
+dbo,VENDAS,VENDAS$PrimaryKey,PRIMARY_KEY_CONSTRAINT,Id
+dbo,VENDAS DET,VENDAS DET$PrimaryKey,PRIMARY_KEY_CONSTRAINT,Id
+dbo,VENDAS1,VENDAS1$PrimaryKey,PRIMARY_KEY_CONSTRAINT,Id
+dbo,Vendedoras,Vendedoras$PrimaryKey,PRIMARY_KEY_CONSTRAINT,ID Vendedora
+dbo,VendedorasOld,VendedorasOld$PrimaryKey,PRIMARY_KEY_CONSTRAINT,ID Vendedora

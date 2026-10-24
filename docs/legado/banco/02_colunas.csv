@@ -1,0 +1,1114 @@
+schema,objeto,tipo_objeto,ordem,coluna,tipo,tamanho,precisao,escala,aceita_nulo,identidade,calculada,padrao,formula,collation
+dbo,1TabPeças,USER_TABLE,1,IDPeça,int,4,10,0,0,1,0,,,
+dbo,1TabPeças,USER_TABLE,2,IDCliente,nvarchar,75,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,1TabPeças,USER_TABLE,3,Num,float,8,53,0,1,0,0,((0)),,
+dbo,1TabPeças,USER_TABLE,4,Classe,nvarchar,20,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,1TabPeças,USER_TABLE,5,Modêlo,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,1TabPeças,USER_TABLE,6,Descrição,nvarchar,200,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,1TabPeças,USER_TABLE,7,Oficial,bit,1,1,0,1,0,0,((0)),,
+dbo,1TabPeças,USER_TABLE,8,Família,nvarchar,12,0,0,1,0,0,(NULL),,Latin1_General_CI_AS
+dbo,1TabPeças,USER_TABLE,9,Quant,tinyint,1,3,0,1,0,0,((0)),,
+dbo,1TabPeças,USER_TABLE,10,Origem,nvarchar,10,0,0,1,0,0,(NULL),,Latin1_General_CI_AS
+dbo,1TabPeças,USER_TABLE,11,DataIn,datetime2,6,19,0,1,0,0,,,
+dbo,1TabPeças,USER_TABLE,12,Custo,money,8,19,4,1,0,0,((0)),,
+dbo,1TabPeças,USER_TABLE,13,Dólar,real,4,24,0,1,0,0,((0)),,
+dbo,1TabPeças,USER_TABLE,14,Posição,nvarchar,7,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,1TabPeças,USER_TABLE,15,Vendida,bit,1,1,0,1,0,0,((0)),,
+dbo,1TabPeças,USER_TABLE,16,DataVenda,datetime2,6,19,0,1,0,0,,,
+dbo,1TabPeças,USER_TABLE,17,Tipo,nvarchar,7,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,1TabPeças,USER_TABLE,18,Vendedora,nvarchar,20,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,1TabPeças,USER_TABLE,19,Valor,money,8,19,4,1,0,0,((0)),,
+dbo,1TabPeças,USER_TABLE,20,Comissão,money,8,19,4,1,0,0,((0)),,
+dbo,1TabPeças,USER_TABLE,21,Com2,money,8,19,4,1,0,0,((0)),,
+dbo,1TabPeças,USER_TABLE,22,Real,money,8,19,4,1,0,0,((0)),,
+dbo,1TabPeças,USER_TABLE,23,DólarVenda,real,4,24,0,1,0,0,((0)),,
+dbo,1TabPeças,USER_TABLE,24,Cheque,money,8,19,4,1,0,0,((0)),,
+dbo,1TabPeças,USER_TABLE,25,Pré,money,8,19,4,1,0,0,((0)),,
+dbo,1TabPeças,USER_TABLE,26,PosiçãoPré,datetime2,6,19,0,1,0,0,,,
+dbo,1TabPeças,USER_TABLE,27,Cartão,money,8,19,4,1,0,0,((0)),,
+dbo,1TabPeças,USER_TABLE,28,ContaCorrente,money,8,19,4,1,0,0,((0)),,
+dbo,1TabPeças,USER_TABLE,29,Desconto,money,8,19,4,1,0,0,((0)),,
+dbo,1TabPeças,USER_TABLE,30,A Receber,bit,1,1,0,1,0,0,((0)),,
+dbo,1TabPeças,USER_TABLE,31,Pré-2,money,8,19,4,1,0,0,((0)),,
+dbo,1TabPeças,USER_TABLE,32,PosPré2,datetime2,6,19,0,1,0,0,,,
+dbo,1TabPeças,USER_TABLE,33,Pré-3,money,8,19,4,1,0,0,((0)),,
+dbo,1TabPeças,USER_TABLE,34,PosPré3,datetime2,6,19,0,1,0,0,,,
+dbo,1TabPeças,USER_TABLE,35,Conserto,money,8,19,4,1,0,0,((0)),,
+dbo,1TabPeças,USER_TABLE,36,PC,nvarchar,5,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,1TabPeças,USER_TABLE,37,PCQtde,float,8,53,0,1,0,0,((0)),,
+dbo,1TabPeças,USER_TABLE,38,Espécie,nvarchar,30,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,1TabPeças,USER_TABLE,39,MOExt,float,8,53,0,1,0,0,((0)),,
+dbo,1TabPeças,USER_TABLE,40,MOInt,float,8,53,0,1,0,0,((0)),,
+dbo,1TabPeças,USER_TABLE,41,Custo2,float,8,53,0,1,0,0,((0)),,
+dbo,1TabPeças,USER_TABLE,42,Oficina,float,8,53,0,1,0,0,((0)),,
+dbo,1TabPeças,USER_TABLE,43,DataReg,date,3,10,0,1,0,0,,,
+dbo,1TabPeças,USER_TABLE,44,Desenho,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,1TabPeças,USER_TABLE,45,Madeira,float,8,53,0,1,0,0,((0)),,
+dbo,1TabPeças,USER_TABLE,46,Couro,float,8,53,0,1,0,0,((0)),,
+dbo,1TabPeças,USER_TABLE,47,Cravação,float,8,53,0,1,0,0,((0)),,
+dbo,1TabPeças,USER_TABLE,48,Outras,float,8,53,0,1,0,0,((0)),,
+dbo,1TabPeças,USER_TABLE,49,Obs,nvarchar,250,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,1TabPeças,USER_TABLE,50,SSMA_TimeStamp,timestamp,8,0,0,0,0,0,,,
+dbo,1TabPeças,USER_TABLE,51,DataFabric,date,3,10,0,1,0,0,,,
+dbo,1TabPeças,USER_TABLE,52,PrVenda,money,8,19,4,1,0,0,,,
+dbo,1TabPeças,USER_TABLE,53,CustoAnt,money,8,19,4,1,0,0,,,
+dbo,1TabPeças,USER_TABLE,54,PrVendaAnt,money,8,19,4,1,0,0,,,
+dbo,1TabPeças,USER_TABLE,55,Excluir,bit,1,1,0,1,0,0,,,
+dbo,1TabPeças,USER_TABLE,56,Volta,bit,1,1,0,1,0,0,,,
+dbo,1TabPeças,USER_TABLE,57,IdPeçaOrigem,int,4,10,0,1,0,0,,,
+dbo,1TabPeças,USER_TABLE,58,Saida,bit,1,1,0,1,0,0,,,
+dbo,1TabPeças,USER_TABLE,59,Foto,image,16,0,0,1,0,0,,,
+dbo,1TabPeças,USER_TABLE,60,SizeMode,int,4,10,0,1,0,0,,,
+dbo,1TabPeças,USER_TABLE,61,vFund,money,8,19,4,1,0,0,,,
+dbo,1TabPeças,USER_TABLE,62,pFund,float,8,53,0,1,0,0,,,
+dbo,1TabPeças,USER_TABLE,63,Local,nchar,3,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,1TabPeçasHistórico,USER_TABLE,1,Id,int,4,10,0,0,1,0,,,
+dbo,1TabPeçasHistórico,USER_TABLE,2,IdPeça,int,4,10,0,1,0,0,,,
+dbo,1TabPeçasHistórico,USER_TABLE,3,DataReajuste,date,3,10,0,1,0,0,,,
+dbo,1TabPeçasHistórico,USER_TABLE,4,CustoAnt,money,8,19,4,1,0,0,,,
+dbo,1TabPeçasHistórico,USER_TABLE,5,FatorC,numeric,5,5,2,1,0,0,,,
+dbo,1TabPeçasHistórico,USER_TABLE,6,Custo,money,8,19,4,1,0,0,,,
+dbo,1TabPeçasHistórico,USER_TABLE,7,PrVendaAnt,money,8,19,4,1,0,0,,,
+dbo,1TabPeçasHistórico,USER_TABLE,8,FatorV,numeric,5,5,2,1,0,0,,,
+dbo,1TabPeçasHistórico,USER_TABLE,9,PrVenda,money,8,19,4,1,0,0,,,
+dbo,1TabPeçasHistórico,USER_TABLE,10,U,int,4,10,0,1,0,0,,,
+dbo,1TabPeçasOld,USER_TABLE,1,IDPeça,int,4,10,0,0,1,0,,,
+dbo,1TabPeçasOld,USER_TABLE,2,IDCliente,nvarchar,75,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,1TabPeçasOld,USER_TABLE,3,Num,float,8,53,0,1,0,0,((0)),,
+dbo,1TabPeçasOld,USER_TABLE,4,Classe,nvarchar,20,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,1TabPeçasOld,USER_TABLE,5,Modêlo,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,1TabPeçasOld,USER_TABLE,6,Descrição,nvarchar,200,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,1TabPeçasOld,USER_TABLE,7,Oficial,bit,1,1,0,1,0,0,((0)),,
+dbo,1TabPeçasOld,USER_TABLE,8,Família,nvarchar,12,0,0,1,0,0,(NULL),,Latin1_General_CI_AS
+dbo,1TabPeçasOld,USER_TABLE,9,Quant,tinyint,1,3,0,1,0,0,((0)),,
+dbo,1TabPeçasOld,USER_TABLE,10,Origem,nvarchar,10,0,0,1,0,0,(NULL),,Latin1_General_CI_AS
+dbo,1TabPeçasOld,USER_TABLE,11,DataIn,datetime2,6,19,0,1,0,0,,,
+dbo,1TabPeçasOld,USER_TABLE,12,Custo,money,8,19,4,1,0,0,((0)),,
+dbo,1TabPeçasOld,USER_TABLE,13,Dólar,real,4,24,0,1,0,0,((0)),,
+dbo,1TabPeçasOld,USER_TABLE,14,Posição,nvarchar,7,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,1TabPeçasOld,USER_TABLE,15,Vendida,bit,1,1,0,1,0,0,((0)),,
+dbo,1TabPeçasOld,USER_TABLE,16,DataVenda,datetime2,6,19,0,1,0,0,,,
+dbo,1TabPeçasOld,USER_TABLE,17,Tipo,nvarchar,7,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,1TabPeçasOld,USER_TABLE,18,Vendedora,nvarchar,20,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,1TabPeçasOld,USER_TABLE,19,Valor,money,8,19,4,1,0,0,((0)),,
+dbo,1TabPeçasOld,USER_TABLE,20,Comissão,money,8,19,4,1,0,0,((0)),,
+dbo,1TabPeçasOld,USER_TABLE,21,Com2,money,8,19,4,1,0,0,((0)),,
+dbo,1TabPeçasOld,USER_TABLE,22,Real,money,8,19,4,1,0,0,((0)),,
+dbo,1TabPeçasOld,USER_TABLE,23,DólarVenda,real,4,24,0,1,0,0,((0)),,
+dbo,1TabPeçasOld,USER_TABLE,24,Cheque,money,8,19,4,1,0,0,((0)),,
+dbo,1TabPeçasOld,USER_TABLE,25,Pré,money,8,19,4,1,0,0,((0)),,
+dbo,1TabPeçasOld,USER_TABLE,26,PosiçãoPré,datetime2,6,19,0,1,0,0,,,
+dbo,1TabPeçasOld,USER_TABLE,27,Cartão,money,8,19,4,1,0,0,((0)),,
+dbo,1TabPeçasOld,USER_TABLE,28,ContaCorrente,money,8,19,4,1,0,0,((0)),,
+dbo,1TabPeçasOld,USER_TABLE,29,Desconto,money,8,19,4,1,0,0,((0)),,
+dbo,1TabPeçasOld,USER_TABLE,30,A Receber,bit,1,1,0,1,0,0,((0)),,
+dbo,1TabPeçasOld,USER_TABLE,31,Pré-2,money,8,19,4,1,0,0,((0)),,
+dbo,1TabPeçasOld,USER_TABLE,32,PosPré2,datetime2,6,19,0,1,0,0,,,
+dbo,1TabPeçasOld,USER_TABLE,33,Pré-3,money,8,19,4,1,0,0,((0)),,
+dbo,1TabPeçasOld,USER_TABLE,34,PosPré3,datetime2,6,19,0,1,0,0,,,
+dbo,1TabPeçasOld,USER_TABLE,35,Conserto,money,8,19,4,1,0,0,((0)),,
+dbo,1TabPeçasOld,USER_TABLE,36,SSMA_TimeStamp,timestamp,8,0,0,0,0,0,,,
+dbo,Aniversariantes,USER_TABLE,1,Id,int,4,10,0,0,1,0,,,
+dbo,Aniversariantes,USER_TABLE,2,Aniv,nvarchar,100,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Aniversariantes,USER_TABLE,3,Endereço,nvarchar,100,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Aniversariantes,USER_TABLE,4,Cidade,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Aniversariantes,USER_TABLE,5,Estado,nvarchar,2,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Aniversariantes,USER_TABLE,6,CEP,nvarchar,9,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Aniversariantes,USER_TABLE,7,Aniversário,datetime2,6,19,0,1,0,0,,,
+dbo,Aniversariantes,USER_TABLE,8,Título,nvarchar,10,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Aniversariantes,USER_TABLE,9,Bairro,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Aniversariantes,USER_TABLE,10,Imp,bit,1,1,0,1,0,0,((0)),,
+dbo,Aniversariantes,USER_TABLE,11,SSMA_TimeStamp,timestamp,8,0,0,0,0,0,,,
+dbo,BasePrecos,VIEW,1,Ficha,nvarchar,255,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,BasePrecos,VIEW,2,Classe,nvarchar,255,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,BasePrecos,VIEW,3,PrVenda,float,8,53,0,1,0,0,,,
+dbo,BasePrecos,VIEW,4,PrAtualizado,float,8,53,0,1,0,0,,,
+dbo,Beth,VIEW,1,Ficha,nvarchar,35,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Beth,VIEW,2,Data,varchar,30,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Beth,VIEW,3,Descrição,nvarchar,250,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Beth,VIEW,4,Peso Ouro,float,8,53,0,1,0,0,,,
+dbo,Beth,VIEW,5,Preço Venda,float,8,53,0,1,0,0,,,
+dbo,Cartões,USER_TABLE,1,Ncartao,nvarchar,30,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,Cartões,USER_TABLE,2,Perc,float,8,53,0,1,0,0,((0)),,
+dbo,Cartões,USER_TABLE,3,Perc2,float,8,53,0,1,0,0,((0)),,
+dbo,Cartões,USER_TABLE,4,SSMA_TimeStamp,timestamp,8,0,0,0,0,0,,,
+dbo,Cartões Em Aberto0,VIEW,1,IdCC,int,4,10,0,1,0,0,,,
+dbo,Cartões Em Aberto0,VIEW,2,IdConserto,int,4,10,0,1,0,0,,,
+dbo,Cartões Em Aberto0,VIEW,3,IDC,int,4,10,0,0,0,0,,,
+dbo,Cartões Em Aberto0,VIEW,4,N,nvarchar,80,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Cartões Em Aberto0,VIEW,5,Nome,nvarchar,75,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Cartões Em Aberto0,VIEW,6,Venda,nvarchar,8,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Cartões Em Aberto0,VIEW,7,DataVenda,datetime2,6,19,0,1,0,0,,,
+dbo,Cartões Em Aberto0,VIEW,8,NomeCartão,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Cartões Em Aberto0,VIEW,9,Parcela,nvarchar,5,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Cartões Em Aberto0,VIEW,10,VValor,float,8,53,0,1,0,0,,,
+dbo,Cartões Em Aberto0,VIEW,11,Pagto,datetime2,6,19,0,1,0,0,,,
+dbo,Cartões Em Aberto0,VIEW,12,Vencto,datetime2,6,19,0,1,0,0,,,
+dbo,Cartões Em Aberto0,VIEW,13,ValorFinal,float,8,53,0,1,0,0,,,
+dbo,CC,VIEW,1,ID,int,4,10,0,0,0,0,,,
+dbo,CC,VIEW,2,CLIENTE,int,4,10,0,1,0,0,,,
+dbo,CC,VIEW,3,Data,datetime2,6,19,0,1,0,0,,,
+dbo,CC,VIEW,4,VValor,float,8,53,0,1,0,0,,,
+dbo,CC,VIEW,5,Tp,varchar,7,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CC,VIEW,6,Op,varchar,8,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CC,VIEW,7,Ident,int,4,10,0,0,0,0,,,
+dbo,CC,VIEW,8,obs,nvarchar,250,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,CC2,VIEW,1,ID,int,4,10,0,0,0,0,,,
+dbo,CC2,VIEW,2,IDCliente,int,4,10,0,1,0,0,,,
+dbo,CC2,VIEW,3,DT,datetime2,6,19,0,1,0,0,,,
+dbo,CC2,VIEW,4,Real,float,8,53,0,1,0,0,,,
+dbo,CC2,VIEW,5,Ouro,float,8,53,0,1,0,0,,,
+dbo,CC2,VIEW,6,Dolar,real,4,24,0,1,0,0,,,
+dbo,CC2,VIEW,7,Cheque,float,8,53,0,1,0,0,,,
+dbo,CC2,VIEW,8,Cartão,float,8,53,0,1,0,0,,,
+dbo,CC2,VIEW,9,CCDeb,float,8,53,0,1,0,0,,,
+dbo,CC2,VIEW,10,Cliente,nvarchar,75,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,CC2,VIEW,11,tp,nvarchar,8,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,CC2,VIEW,12,ValorTransf,money,8,19,4,1,0,0,,,
+dbo,CC2,VIEW,13,Saldo,money,8,19,4,1,0,0,,,
+dbo,CCCartãoCC,VIEW,1,ID,int,4,10,0,0,0,0,,,
+dbo,CCCartãoCC,VIEW,2,Cliente,int,4,10,0,1,0,0,,,
+dbo,CCCartãoCC,VIEW,3,Data,datetime2,6,19,0,1,0,0,,,
+dbo,CCCartãoCC,VIEW,4,VValor,float,8,53,0,1,0,0,,,
+dbo,CCCartãoCC,VIEW,5,Tp,varchar,6,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCCartãoCC,VIEW,6,Op,varchar,7,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCCartãoConserto,VIEW,1,ID,int,4,10,0,0,0,0,,,
+dbo,CCCartãoConserto,VIEW,2,CLIENTE,int,4,10,0,1,0,0,,,
+dbo,CCCartãoConserto,VIEW,3,Data,datetime2,6,19,0,1,0,0,,,
+dbo,CCCartãoConserto,VIEW,4,VValor,float,8,53,0,1,0,0,,,
+dbo,CCCartãoConserto,VIEW,5,Tp,varchar,6,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCCartãoConserto,VIEW,6,Op,varchar,8,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCCartãoVenda,VIEW,1,Id,int,4,10,0,0,0,0,,,
+dbo,CCCartãoVenda,VIEW,2,Cliente,int,4,10,0,1,0,0,,,
+dbo,CCCartãoVenda,VIEW,3,Data,datetime2,6,19,0,1,0,0,,,
+dbo,CCCartãoVenda,VIEW,4,VValor,float,8,53,0,1,0,0,,,
+dbo,CCCartãoVenda,VIEW,5,Tp,varchar,6,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCCartãoVenda,VIEW,6,Op,varchar,5,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCCash,VIEW,1,Cliente,int,4,10,0,1,0,0,,,
+dbo,CCCash,VIEW,2,Data,datetime2,6,19,0,1,0,0,,,
+dbo,CCCash,VIEW,3,Tp,varchar,4,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCCash,VIEW,4,VValor,float,8,53,0,1,0,0,,,
+dbo,CCCash,VIEW,5,Op,varchar,8,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCCash,VIEW,6,ID,int,4,10,0,1,0,0,,,
+dbo,CCCashCC,VIEW,1,Cliente,int,4,10,0,1,0,0,,,
+dbo,CCCashCC,VIEW,2,Data,datetime2,6,19,0,1,0,0,,,
+dbo,CCCashCC,VIEW,3,Tp,varchar,4,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCCashCC,VIEW,4,VValor,float,8,53,0,1,0,0,,,
+dbo,CCCashCC,VIEW,5,Op,varchar,7,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCCashCC,VIEW,6,ID,int,4,10,0,0,1,0,,,
+dbo,CCCashVenda,VIEW,1,Cliente,int,4,10,0,1,0,0,,,
+dbo,CCCashVenda,VIEW,2,Data,datetime2,6,19,0,1,0,0,,,
+dbo,CCCashVenda,VIEW,3,Tp,varchar,4,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCCashVenda,VIEW,4,VValor,real,4,24,0,1,0,0,,,
+dbo,CCCashVenda,VIEW,5,Op,varchar,5,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCCashVenda,VIEW,6,Id,int,4,10,0,0,0,0,,,
+dbo,CCChequeCC,VIEW,1,Cliente,int,4,10,0,1,0,0,,,
+dbo,CCChequeCC,VIEW,2,Data,datetime2,6,19,0,1,0,0,,,
+dbo,CCChequeCC,VIEW,3,VValor,float,8,53,0,1,0,0,,,
+dbo,CCChequeCC,VIEW,4,Tp,varchar,6,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCChequeCC,VIEW,5,Op,varchar,7,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCChequeCC,VIEW,6,ID,int,4,10,0,0,1,0,,,
+dbo,CCChequeConserto,VIEW,1,ID,int,4,10,0,0,0,0,,,
+dbo,CCChequeConserto,VIEW,2,CLIENTE,int,4,10,0,1,0,0,,,
+dbo,CCChequeConserto,VIEW,3,Data,datetime2,6,19,0,1,0,0,,,
+dbo,CCChequeConserto,VIEW,4,VValor,float,8,53,0,1,0,0,,,
+dbo,CCChequeConserto,VIEW,5,Tp,varchar,6,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCChequeConserto,VIEW,6,Op,varchar,8,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCChequeVenda,VIEW,1,Id,int,4,10,0,0,0,0,,,
+dbo,CCChequeVenda,VIEW,2,CLIENTE,int,4,10,0,1,0,0,,,
+dbo,CCChequeVenda,VIEW,3,Data,datetime2,6,19,0,1,0,0,,,
+dbo,CCChequeVenda,VIEW,4,VValor,float,8,53,0,1,0,0,,,
+dbo,CCChequeVenda,VIEW,5,Tp,varchar,6,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCChequeVenda,VIEW,6,Op,varchar,5,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCDeb,VIEW,1,Cliente,int,4,10,0,1,0,0,,,
+dbo,CCDeb,VIEW,2,Data,datetime2,6,19,0,1,0,0,,,
+dbo,CCDeb,VIEW,3,Tp,varchar,6,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCDeb,VIEW,4,Op,varchar,8,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCDeb,VIEW,5,VValor,float,8,53,0,1,0,0,,,
+dbo,CCDeb,VIEW,6,ID,int,4,10,0,1,0,0,,,
+dbo,CCDeb old,VIEW,1,Cliente,int,4,10,0,1,0,0,,,
+dbo,CCDeb old,VIEW,2,Data,datetime2,6,19,0,1,0,0,,,
+dbo,CCDeb old,VIEW,3,Tp,varchar,6,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCDeb old,VIEW,4,Op,varchar,5,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCDeb old,VIEW,5,VValor,float,8,53,0,1,0,0,,,
+dbo,CCDeb old,VIEW,6,Id,int,4,10,0,0,1,0,,,
+dbo,CCDebCC,VIEW,1,Cliente,int,4,10,0,1,0,0,,,
+dbo,CCDebCC,VIEW,2,Data,datetime2,6,19,0,1,0,0,,,
+dbo,CCDebCC,VIEW,3,Tp,varchar,6,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCDebCC,VIEW,4,Op,varchar,8,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCDebCC,VIEW,5,Op2,varchar,8,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCDebCC,VIEW,6,VValor,float,8,53,0,1,0,0,,,
+dbo,CCDebCC,VIEW,7,ID,int,4,10,0,0,1,0,,,
+dbo,CCDolar,VIEW,1,Cliente,int,4,10,0,1,0,0,,,
+dbo,CCDolar,VIEW,2,Data,datetime2,6,19,0,1,0,0,,,
+dbo,CCDolar,VIEW,3,Tp,varchar,5,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCDolar,VIEW,4,VValor,real,4,24,0,1,0,0,,,
+dbo,CCDolar,VIEW,5,Op,varchar,8,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCDolar,VIEW,6,ID,int,4,10,0,1,0,0,,,
+dbo,CCDolarCC,VIEW,1,Cliente,int,4,10,0,1,0,0,,,
+dbo,CCDolarCC,VIEW,2,Data,datetime2,6,19,0,1,0,0,,,
+dbo,CCDolarCC,VIEW,3,Tp,varchar,5,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCDolarCC,VIEW,4,VValor,real,4,24,0,1,0,0,,,
+dbo,CCDolarCC,VIEW,5,Op,varchar,7,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCDolarCC,VIEW,6,ID,int,4,10,0,0,1,0,,,
+dbo,CCDolarVenda,VIEW,1,Cliente,int,4,10,0,1,0,0,,,
+dbo,CCDolarVenda,VIEW,2,Data,datetime2,6,19,0,1,0,0,,,
+dbo,CCDolarVenda,VIEW,3,Tp,varchar,5,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCDolarVenda,VIEW,4,VValor,real,4,24,0,1,0,0,,,
+dbo,CCDolarVenda,VIEW,5,Op,varchar,5,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCDolarVenda,VIEW,6,ID,int,4,10,0,1,0,0,,,
+dbo,CCDolarVendaBase,VIEW,1,Cliente,int,4,10,0,1,0,0,,,
+dbo,CCDolarVendaBase,VIEW,2,Data,datetime2,6,19,0,1,0,0,,,
+dbo,CCDolarVendaBase,VIEW,3,Tp,varchar,5,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCDolarVendaBase,VIEW,4,VValor,real,4,24,0,1,0,0,,,
+dbo,CCDolarVendaBase,VIEW,5,Op,varchar,5,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCDolarVendaBase,VIEW,6,ID,int,4,10,0,0,0,0,,,
+dbo,CCFIX_v1_Backup,USER_TABLE,1,ID,int,4,10,0,0,0,0,,,
+dbo,CCFIX_v1_Backup,USER_TABLE,2,Cliente,int,4,10,0,1,0,0,,,
+dbo,CCFIX_v1_Backup,USER_TABLE,3,Data,datetime2,8,27,7,1,0,0,,,
+dbo,CCFIX_v1_Backup,USER_TABLE,4,RealBin,varbinary,8,0,0,1,0,0,,,
+dbo,CCFIX_v1_Backup,USER_TABLE,5,RealValor,float,8,53,0,1,0,0,,,
+dbo,CCFIX_v1_Backup,USER_TABLE,6,Obs,nvarchar,255,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,CCFIX_v1_Backup,USER_TABLE,7,GravadoEm,datetime2,8,27,7,0,0,0,(sysdatetime()),,
+dbo,CCNovo,VIEW,1,Nome,nvarchar,75,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,CCNovo,VIEW,2,D,datetime2,6,19,0,1,0,0,,,
+dbo,CCNovo,VIEW,3,Anterior,float,8,53,0,0,0,0,,,
+dbo,CCNovo,VIEW,4,Saldo,float,8,53,0,1,0,0,,,
+dbo,CCNovoGer,VIEW,1,Cliente,nvarchar,75,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,CCNovoGer,VIEW,2,D,datetime2,6,19,0,1,0,0,,,
+dbo,CCNovoGer,VIEW,3,Anterior,float,8,53,0,0,0,0,,,
+dbo,CCNovoGer,VIEW,4,Saldo,float,8,53,0,1,0,0,,,
+dbo,CCOld,VIEW,1,Id,int,4,10,0,1,0,0,,,
+dbo,CCOld,VIEW,2,Cliente,int,4,10,0,1,0,0,,,
+dbo,CCOld,VIEW,3,Data,datetime2,6,19,0,1,0,0,,,
+dbo,CCOld,VIEW,4,VValor,float,8,53,0,1,0,0,,,
+dbo,CCOld,VIEW,5,Tp,varchar,22,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCOld,VIEW,6,Op,varchar,8,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCOld,VIEW,7,Ident,int,4,10,0,0,0,0,,,
+dbo,CCOuro,VIEW,1,Cliente,int,4,10,0,1,0,0,,,
+dbo,CCOuro,VIEW,2,Data,datetime2,6,19,0,1,0,0,,,
+dbo,CCOuro,VIEW,3,Tp,varchar,4,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCOuro,VIEW,4,VValor,real,4,24,0,1,0,0,,,
+dbo,CCOuro,VIEW,5,Op,varchar,8,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCOuro,VIEW,6,ID,int,4,10,0,1,0,0,,,
+dbo,CCOuroCC,VIEW,1,Cliente,int,4,10,0,1,0,0,,,
+dbo,CCOuroCC,VIEW,2,Data,datetime2,6,19,0,1,0,0,,,
+dbo,CCOuroCC,VIEW,3,Tp,varchar,4,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCOuroCC,VIEW,4,VValor,float,8,53,0,1,0,0,,,
+dbo,CCOuroCC,VIEW,5,Op,varchar,7,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCOuroCC,VIEW,6,ID,int,4,10,0,0,1,0,,,
+dbo,CCOuroVenda,VIEW,1,ID,int,4,10,0,1,0,0,,,
+dbo,CCOuroVenda,VIEW,2,Cliente,int,4,10,0,1,0,0,,,
+dbo,CCOuroVenda,VIEW,3,Data,datetime2,6,19,0,1,0,0,,,
+dbo,CCOuroVenda,VIEW,4,Tp,varchar,4,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCOuroVenda,VIEW,5,VValor,float,8,53,0,1,0,0,,,
+dbo,CCOuroVenda,VIEW,6,Op,varchar,5,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCRpt1,VIEW,1,Nome,nvarchar,75,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,CCRpt1,VIEW,2,D,datetime2,6,19,0,1,0,0,,,
+dbo,CCRpt1,VIEW,3,Saldo,float,8,53,0,1,0,0,,,
+dbo,CCRpt2,VIEW,1,Cliente,int,4,10,0,1,0,0,,,
+dbo,CCRpt2,VIEW,2,Nome,nvarchar,75,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,CCRpt2,VIEW,3,Anterior,float,8,53,0,1,0,0,,,
+dbo,CCRpt22,VIEW,1,Nome,nvarchar,75,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,CCRpt22,VIEW,2,Anterior,float,8,53,0,0,0,0,,,
+dbo,CCRpt22,VIEW,3,D,datetime2,6,19,0,1,0,0,,,
+dbo,CCRpt22,VIEW,4,Saldo,float,8,53,0,1,0,0,,,
+dbo,CCTransf,VIEW,1,Cliente,int,4,10,0,1,0,0,,,
+dbo,CCTransf,VIEW,2,Data,datetime2,6,19,0,1,0,0,,,
+dbo,CCTransf,VIEW,3,Tp,varchar,22,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCTransf,VIEW,4,VValor,money,8,19,4,1,0,0,,,
+dbo,CCTransf,VIEW,5,Op,varchar,8,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,CCTransf,VIEW,6,ID,int,4,10,0,1,0,0,,,
+dbo,Cheques Base,VIEW,1,IdCC,int,4,10,0,1,0,0,,,
+dbo,Cheques Base,VIEW,2,IdConserto,int,4,10,0,1,0,0,,,
+dbo,Cheques Base,VIEW,3,IDV,int,4,10,0,0,0,0,,,
+dbo,Cheques Base,VIEW,4,N,nvarchar,80,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Cheques Base,VIEW,5,Nome,nvarchar,75,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Cheques Base,VIEW,6,Venda,nvarchar,8,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Cheques Base,VIEW,7,DataVenda,datetime2,6,19,0,1,0,0,,,
+dbo,Cheques Base,VIEW,8,DataVendaAnt,datetime2,6,19,0,1,0,0,,,
+dbo,Cheques Base,VIEW,9,Destino,nvarchar,150,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Cheques Base,VIEW,10,Parcela,nvarchar,5,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Cheques Base,VIEW,11,VValor,float,8,53,0,1,0,0,,,
+dbo,Cheques Base,VIEW,12,Pagto,datetime2,6,19,0,1,0,0,,,
+dbo,Cheques Base,VIEW,13,Cheque,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Cheques Base,VIEW,14,Banco,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Cheques Base,VIEW,15,Uso,datetime2,6,19,0,1,0,0,,,
+dbo,Cheques Base,VIEW,16,Obs,nvarchar,250,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Cheques Base,VIEW,17,Vencto,datetime2,6,19,0,1,0,0,,,
+dbo,Cheques Base,VIEW,18,ValorFinal,float,8,53,0,1,0,0,,,
+dbo,Classes,USER_TABLE,1,Sigla,nvarchar,255,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Classes,USER_TABLE,2,Descrição,nvarchar,255,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Classes,USER_TABLE,3,Ordena,int,4,10,0,1,0,0,,,
+dbo,Clientes,USER_TABLE,1,IDCliente,int,4,10,0,0,1,0,,,
+dbo,Clientes,USER_TABLE,2,Título,nvarchar,10,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Clientes,USER_TABLE,3,Nome,nvarchar,75,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Clientes,USER_TABLE,4,Endereço,nvarchar,80,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Clientes,USER_TABLE,5,Bairro,nvarchar,20,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Clientes,USER_TABLE,6,Cidade,nvarchar,20,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Clientes,USER_TABLE,7,Estado,nvarchar,2,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Clientes,USER_TABLE,8,CEP,nvarchar,9,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Clientes,USER_TABLE,9,Telefone,nvarchar,30,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Clientes,USER_TABLE,10,Fax,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Clientes,USER_TABLE,11,Imp,bit,1,1,0,1,0,0,((0)),,
+dbo,Clientes,USER_TABLE,12,Cliente,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Clientes,USER_TABLE,13,Aniv,datetime2,6,19,0,1,0,0,,,
+dbo,Clientes,USER_TABLE,14,Indicaçao,nvarchar,250,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Clientes,USER_TABLE,15,Medidas,nvarchar,250,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Clientes,USER_TABLE,16,Saldo,real,4,24,0,1,0,0,((0)),,
+dbo,Clientes,USER_TABLE,17,Oculto,bit,1,1,0,1,0,0,((0)),,
+dbo,Clientes,USER_TABLE,18,Email,nvarchar,200,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Clientes,USER_TABLE,19,SSMA_TimeStamp,timestamp,8,0,0,1,0,0,,,
+dbo,Clientes,USER_TABLE,20,CPF,nvarchar,11,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Clientes,USER_TABLE,21,CPF_MD,nvarchar,11,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Clientes,USER_TABLE,22,DataCad,date,3,10,0,1,0,0,,,
+dbo,Clientes,USER_TABLE,23,NaoZerarCC,int,4,10,0,1,0,0,,,
+dbo,Compras,USER_TABLE,1,ID,int,4,10,0,0,1,0,,,
+dbo,Compras,USER_TABLE,2,ID Cliente,int,4,10,0,1,0,0,((0)),,
+dbo,Compras,USER_TABLE,3,Data,datetime2,6,19,0,1,0,0,,,
+dbo,Compras,USER_TABLE,4,Peça,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Compras,USER_TABLE,5,Medidas,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,CONSERTOS,USER_TABLE,1,ID,int,4,10,0,0,1,0,,,
+dbo,CONSERTOS,USER_TABLE,2,CLIENTE,int,4,10,0,1,0,0,((0)),,
+dbo,CONSERTOS,USER_TABLE,3,DT,datetime2,6,19,0,1,0,0,,,
+dbo,CONSERTOS,USER_TABLE,4,VVALOR,float,8,53,0,1,0,0,((0)),,
+dbo,CONSERTOS,USER_TABLE,5,FORMA,int,4,10,0,1,0,0,((0)),,
+dbo,CONSERTOS,USER_TABLE,6,COMISSÃO,float,8,53,0,1,0,0,((0)),,
+dbo,CONSERTOS,USER_TABLE,7,VENDEDORA,int,4,10,0,1,0,0,((0)),,
+dbo,CONSERTOS,USER_TABLE,8,SEMCADASTRO,nvarchar,80,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,CONSERTOS,USER_TABLE,9,OBS,nvarchar,250,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,CONSERTOS,USER_TABLE,10,Real,float,8,53,0,1,0,0,((0)),,
+dbo,CONSERTOS,USER_TABLE,11,Ouro,float,8,53,0,1,0,0,((0)),,
+dbo,CONSERTOS,USER_TABLE,12,Dolar,real,4,24,0,1,0,0,((0)),,
+dbo,CONSERTOS,USER_TABLE,13,Cartão,float,8,53,0,1,0,0,((0)),,
+dbo,CONSERTOS,USER_TABLE,14,Cheque,float,8,53,0,1,0,0,((0)),,
+dbo,CONSERTOS,USER_TABLE,15,FormaCheque,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,CONSERTOS,USER_TABLE,16,FormaCartão,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,CONSERTOS,USER_TABLE,17,ChequeCC,bit,1,1,0,1,0,0,((0)),,
+dbo,CONSERTOS,USER_TABLE,18,CartãoCC,bit,1,1,0,1,0,0,((0)),,
+dbo,CONSERTOS,USER_TABLE,19,DolarCC,bit,1,1,0,1,0,0,((0)),,
+dbo,CONSERTOS,USER_TABLE,20,CashCC,bit,1,1,0,1,0,0,((0)),,
+dbo,CONSERTOS,USER_TABLE,21,OuroCC,bit,1,1,0,1,0,0,((0)),,
+dbo,CONSERTOS,USER_TABLE,22,Banco,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,CONSERTOS,USER_TABLE,23,NomeCartão,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,CONSERTOS,USER_TABLE,24,CCDeb,float,8,53,0,1,0,0,((0)),,
+dbo,CONSERTOS,USER_TABLE,25,ValorFinal,float,8,53,0,1,0,0,((0)),,
+dbo,CONSERTOS,USER_TABLE,26,SSMA_TimeStamp,timestamp,8,0,0,0,0,0,,,
+dbo,CONSERTOS,USER_TABLE,27,Custo,float,8,53,0,1,0,0,((0)),,
+dbo,CONSERTOS,USER_TABLE,28,Debito,float,8,53,0,1,0,0,,,
+dbo,CONSERTOS,USER_TABLE,29,NomeCartãoDébito,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,CONSERTOS,USER_TABLE,30,ValorTransfC,money,8,19,4,1,0,0,,,
+dbo,CONSERTOS,USER_TABLE,31,BancoTransfC,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,CONSERTOS,USER_TABLE,32,Saldo,money,8,19,4,1,0,0,,,
+dbo,CONSERTOS,USER_TABLE,33,Aut,nvarchar,10,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,CONSERTOS,USER_TABLE,34,AutDeb,nvarchar,10,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,ConsultaCC,VIEW,1,ID,int,4,10,0,0,0,0,,,
+dbo,ConsultaCC,VIEW,2,N,nvarchar,75,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,ConsultaCC,VIEW,3,Banco,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,ConsultaCC,VIEW,4,Vencto,datetime2,6,19,0,1,0,0,,,
+dbo,ConsultaCC,VIEW,5,Data,datetime2,6,19,0,1,0,0,,,
+dbo,Conta Corrente,USER_TABLE,1,ID,int,4,10,0,0,1,0,,,
+dbo,Conta Corrente,USER_TABLE,2,Cliente,int,4,10,0,1,0,0,((0)),,
+dbo,Conta Corrente,USER_TABLE,3,Data,datetime2,6,19,0,1,0,0,,,
+dbo,Conta Corrente,USER_TABLE,4,Valor,real,4,24,0,1,0,0,((0)),,
+dbo,Conta Corrente,USER_TABLE,5,Venda,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Conta Corrente,USER_TABLE,6,NCartão,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Conta Corrente,USER_TABLE,7,Vencto,datetime2,6,19,0,1,0,0,,,
+dbo,Conta Corrente,USER_TABLE,8,Conserto,int,4,10,0,1,0,0,((0)),,
+dbo,Conta Corrente,USER_TABLE,9,Parcela,nvarchar,10,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Conta Corrente,USER_TABLE,10,IdConserto,int,4,10,0,1,0,0,((0)),,
+dbo,Conta Corrente,USER_TABLE,11,Real,float,8,53,0,1,0,0,((0)),,
+dbo,Conta Corrente,USER_TABLE,12,Ouro,float,8,53,0,1,0,0,((0)),,
+dbo,Conta Corrente,USER_TABLE,13,Dolar,real,4,24,0,1,0,0,((0)),,
+dbo,Conta Corrente,USER_TABLE,14,Cartão,float,8,53,0,1,0,0,((0)),,
+dbo,Conta Corrente,USER_TABLE,15,Cheque,float,8,53,0,1,0,0,((0)),,
+dbo,Conta Corrente,USER_TABLE,16,FormaCheque,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Conta Corrente,USER_TABLE,17,FormaCartão,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Conta Corrente,USER_TABLE,18,ChequeCC,bit,1,1,0,1,0,0,((0)),,
+dbo,Conta Corrente,USER_TABLE,19,CartãoCC,bit,1,1,0,1,0,0,((0)),,
+dbo,Conta Corrente,USER_TABLE,20,DolarCC,bit,1,1,0,1,0,0,((0)),,
+dbo,Conta Corrente,USER_TABLE,21,CashCC,bit,1,1,0,1,0,0,((0)),,
+dbo,Conta Corrente,USER_TABLE,22,OuroCC,bit,1,1,0,1,0,0,((0)),,
+dbo,Conta Corrente,USER_TABLE,23,Banco,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Conta Corrente,USER_TABLE,24,NomeCartão,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Conta Corrente,USER_TABLE,25,CCDeb,float,8,53,0,1,0,0,((0)),,
+dbo,Conta Corrente,USER_TABLE,26,ValorFinal,float,8,53,0,1,0,0,((0)),,
+dbo,Conta Corrente,USER_TABLE,27,SSMA_TimeStamp,timestamp,8,0,0,0,0,0,,,
+dbo,Conta Corrente,USER_TABLE,28,ValorTransf,money,8,19,4,1,0,0,,,
+dbo,Conta Corrente,USER_TABLE,29,BancoTransf,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Conta Corrente,USER_TABLE,30,Obs,nvarchar,250,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Conta Corrente,USER_TABLE,31,Saldo,money,8,19,4,1,0,0,,,
+dbo,Conta Corrente,USER_TABLE,32,Aut,nvarchar,10,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Conta Corrente,USER_TABLE,33,AutDeb,nvarchar,10,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Contatos,USER_TABLE,1,ID,int,4,10,0,0,1,0,,,
+dbo,Contatos,USER_TABLE,2,ID Cliente,int,4,10,0,1,0,0,((0)),,
+dbo,Contatos,USER_TABLE,3,Data,datetime2,6,19,0,1,0,0,,,
+dbo,Contatos,USER_TABLE,4,Obs,nvarchar,-1,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Contatos,USER_TABLE,5,SSMA_TimeStamp,timestamp,8,0,0,0,0,0,,,
+dbo,Cotação,USER_TABLE,1,Id,int,4,10,0,0,1,0,,,
+dbo,Cotação,USER_TABLE,2,ValDolar,money,8,19,4,0,0,0,((0)),,
+dbo,Cotação,USER_TABLE,3,ValOuro,money,8,19,4,1,0,0,,,
+dbo,Cotação,USER_TABLE,4,DataCot,date,3,10,0,1,0,0,,,
+dbo,Cotação,USER_TABLE,5,ValPrata,money,8,19,4,1,0,0,,,
+dbo,CotaçãoOld,USER_TABLE,1,ValDólar,money,8,19,4,0,0,0,((0)),,
+dbo,Despesas,USER_TABLE,1,ID,int,4,10,0,0,1,0,,,
+dbo,Despesas,USER_TABLE,2,Tipo,nvarchar,20,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Despesas,USER_TABLE,3,Descrição,nvarchar,150,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Despesas,USER_TABLE,4,Valor,real,4,24,0,1,0,0,((0)),,
+dbo,Despesas,USER_TABLE,5,Data,datetime2,6,19,0,1,0,0,,,
+dbo,Despesas,USER_TABLE,6,SSMA_TimeStamp,timestamp,8,0,0,0,0,0,,,
+dbo,DespesasOld,USER_TABLE,1,ID,int,4,10,0,0,1,0,,,
+dbo,DespesasOld,USER_TABLE,2,Tipo,nvarchar,20,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,DespesasOld,USER_TABLE,3,Descrição,nvarchar,150,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,DespesasOld,USER_TABLE,4,Valor,real,4,24,0,1,0,0,((0)),,
+dbo,DespesasOld,USER_TABLE,5,Data,datetime2,6,19,0,1,0,0,,,
+dbo,DespesasOld,USER_TABLE,6,SSMA_TimeStamp,timestamp,8,0,0,0,0,0,,,
+dbo,FORMAS,USER_TABLE,1,ID,int,4,10,0,0,1,0,,,
+dbo,FORMAS,USER_TABLE,2,FORMA,nvarchar,20,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,GASTO OFICINA,USER_TABLE,1,Id,int,4,10,0,0,1,0,,,
+dbo,GASTO OFICINA,USER_TABLE,2,Limite,float,8,53,0,1,0,0,((0)),,
+dbo,GASTO OFICINA,USER_TABLE,3,Custo,float,8,53,0,1,0,0,((0)),,
+dbo,GASTO OFICINA,USER_TABLE,4,SSMA_TimeStamp,timestamp,8,0,0,0,0,0,,,
+dbo,Gerencial,VIEW,1,Peça,nvarchar,20,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Gerencial,VIEW,2,Ficha,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Gerencial,VIEW,3,Data de Registro,datetime,8,23,3,1,0,0,,,
+dbo,Gerencial,VIEW,4,Origem,nvarchar,10,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Gerencial,VIEW,5,Tipo,nvarchar,12,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Gerencial,VIEW,6,Custo,money,8,19,4,1,0,0,,,
+dbo,Gerencial,VIEW,7,Au (R$),float,8,53,0,1,0,0,,,
+dbo,Gerencial,VIEW,8,Mão de Obra,float,8,53,0,0,0,0,,,
+dbo,Gerencial,VIEW,9,Outros,float,8,53,0,1,0,0,,,
+dbo,Gerencial2,VIEW,1,Peça,nvarchar,20,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Gerencial2,VIEW,2,Ficha,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Gerencial2,VIEW,3,Tipo,nvarchar,12,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Gerencial2,VIEW,4,Origem,nvarchar,10,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Gerencial2,VIEW,5,Data da Venda,datetime,8,23,3,1,0,0,,,
+dbo,Gerencial2,VIEW,6,Mão de Obra,float,8,53,0,0,0,0,,,
+dbo,Gerencial2,VIEW,7,Outras,float,8,53,0,1,0,0,,,
+dbo,getnet,USER_TABLE,1,Id,int,4,10,0,0,1,0,,,
+dbo,getnet,USER_TABLE,2,Aut,nvarchar,10,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,getnet,USER_TABLE,3,Produto,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,getnet,USER_TABLE,4,DataVenda,date,3,10,0,1,0,0,,,
+dbo,getnet,USER_TABLE,5,Vencto,date,3,10,0,1,0,0,,,
+dbo,getnet,USER_TABLE,6,Parcela,int,4,10,0,1,0,0,,,
+dbo,getnet,USER_TABLE,7,Parcelas,int,4,10,0,1,0,0,,,
+dbo,getnet,USER_TABLE,8,Total,money,8,19,4,1,0,0,,,
+dbo,getnet,USER_TABLE,9,Liquido,money,8,19,4,1,0,0,,,
+dbo,getnet_temp,USER_TABLE,1,Id,int,4,10,0,0,1,0,,,
+dbo,getnet_temp,USER_TABLE,2,Aut,nvarchar,10,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,getnet_temp,USER_TABLE,3,Produto,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,getnet_temp,USER_TABLE,4,DataVenda,date,3,10,0,1,0,0,,,
+dbo,getnet_temp,USER_TABLE,5,Vencto,date,3,10,0,1,0,0,,,
+dbo,getnet_temp,USER_TABLE,6,Parcela,int,4,10,0,1,0,0,,,
+dbo,getnet_temp,USER_TABLE,7,Parcelas,int,4,10,0,1,0,0,,,
+dbo,getnet_temp,USER_TABLE,8,Total,money,8,19,4,1,0,0,,,
+dbo,getnet_temp,USER_TABLE,9,Liquido,money,8,19,4,1,0,0,,,
+dbo,getnet1,VIEW,1,Venda,nvarchar,8,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,getnet1,VIEW,2,DataVenda,datetime2,6,19,0,1,0,0,,,
+dbo,getnet1,VIEW,3,ValorFinal,float,8,53,0,1,0,0,,,
+dbo,getnet1,VIEW,4,Parc,nvarchar,5,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,getnet1,VIEW,5,Vencto,datetime2,6,19,0,1,0,0,,,
+dbo,getnet1,VIEW,6,VValor,float,8,53,0,1,0,0,,,
+dbo,getnet1,VIEW,7,Pagto,datetime2,6,19,0,1,0,0,,,
+dbo,getnet1,VIEW,8,Aut,nvarchar,10,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,getnet1,VIEW,9,Total Getnet,money,8,19,4,1,0,0,,,
+dbo,getnet1,VIEW,10,Valor Parcela Getnet,money,8,19,4,1,0,0,,,
+dbo,getnet1,VIEW,11,Cliente,nvarchar,75,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,getnet1,VIEW,12,Parcelas,nvarchar,5,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,getnet1,VIEW,13,FormaCartão,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,getnet2,VIEW,1,Venda,nvarchar,8,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,getnet2,VIEW,2,DataVenda,datetime2,6,19,0,1,0,0,,,
+dbo,getnet2,VIEW,3,ValorFinal,float,8,53,0,1,0,0,,,
+dbo,getnet2,VIEW,4,Parc,nvarchar,5,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,getnet2,VIEW,5,Vencto,datetime2,6,19,0,1,0,0,,,
+dbo,getnet2,VIEW,6,VValor,float,8,53,0,1,0,0,,,
+dbo,getnet2,VIEW,7,Pagto,datetime2,6,19,0,1,0,0,,,
+dbo,getnet2,VIEW,8,Aut,nvarchar,10,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,getnet2,VIEW,9,Total Getnet,money,8,19,4,1,0,0,,,
+dbo,getnet2,VIEW,10,Valor Parcela Getnet,money,8,19,4,1,0,0,,,
+dbo,getnet2,VIEW,11,Cliente,nvarchar,75,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,getnet2,VIEW,12,Parcelas,nvarchar,5,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,getnet2,VIEW,13,FormaCartão,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,getnet3,VIEW,1,Venda,varchar,8,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,getnet3,VIEW,2,DataVenda,datetime2,6,19,0,1,0,0,,,
+dbo,getnet3,VIEW,3,ValorFinal,float,8,53,0,1,0,0,,,
+dbo,getnet3,VIEW,4,Parc,nvarchar,5,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,getnet3,VIEW,5,Vencto,datetime2,6,19,0,1,0,0,,,
+dbo,getnet3,VIEW,6,VValor,float,8,53,0,1,0,0,,,
+dbo,getnet3,VIEW,7,Pagto,datetime2,6,19,0,1,0,0,,,
+dbo,getnet3,VIEW,8,Aut,nvarchar,10,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,getnet3,VIEW,9,Total Getnet,money,8,19,4,1,0,0,,,
+dbo,getnet3,VIEW,10,Valor Parcela Getnet,money,8,19,4,1,0,0,,,
+dbo,getnet3,VIEW,11,Cliente,nvarchar,75,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,getnet3,VIEW,12,Parcelas,nvarchar,5,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,getnet3,VIEW,13,FormaCartão,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,getnet4,VIEW,1,Venda,varchar,8,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,getnet4,VIEW,2,DataVenda,datetime2,6,19,0,1,0,0,,,
+dbo,getnet4,VIEW,3,ValorFinal,float,8,53,0,1,0,0,,,
+dbo,getnet4,VIEW,4,Parc,nvarchar,5,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,getnet4,VIEW,5,Vencto,datetime2,6,19,0,1,0,0,,,
+dbo,getnet4,VIEW,6,VValor,float,8,53,0,1,0,0,,,
+dbo,getnet4,VIEW,7,Pagto,datetime2,6,19,0,1,0,0,,,
+dbo,getnet4,VIEW,8,Aut,nvarchar,10,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,getnet4,VIEW,9,Total Getnet,money,8,19,4,1,0,0,,,
+dbo,getnet4,VIEW,10,Valor Parcela Getnet,money,8,19,4,1,0,0,,,
+dbo,getnet4,VIEW,11,Cliente,nvarchar,75,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,getnet4,VIEW,12,Parcelas,nvarchar,5,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,getnet4,VIEW,13,FormaCartão,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,getnet5,VIEW,1,Venda,varchar,5,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,getnet5,VIEW,2,DataVenda,datetime2,6,19,0,1,0,0,,,
+dbo,getnet5,VIEW,3,ValorFinal,float,8,53,0,1,0,0,,,
+dbo,getnet5,VIEW,4,Parc,nvarchar,5,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,getnet5,VIEW,5,Vencto,datetime2,6,19,0,1,0,0,,,
+dbo,getnet5,VIEW,6,VValor,float,8,53,0,1,0,0,,,
+dbo,getnet5,VIEW,7,Pagto,datetime2,6,19,0,1,0,0,,,
+dbo,getnet5,VIEW,8,Aut,nvarchar,10,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,getnet5,VIEW,9,Total Getnet,money,8,19,4,1,0,0,,,
+dbo,getnet5,VIEW,10,Valor Parcela Getnet,money,8,19,4,1,0,0,,,
+dbo,getnet5,VIEW,11,Cliente,nvarchar,75,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,getnet5,VIEW,12,Parcelas,nvarchar,5,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,getnet5,VIEW,13,FormaCartão,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,METAIS,USER_TABLE,1,Id,int,4,10,0,0,0,0,((0)),,
+dbo,METAIS,USER_TABLE,2,OuroQtde,float,8,53,0,1,0,0,((0)),,
+dbo,METAIS,USER_TABLE,3,PaladiumQtde,float,8,53,0,1,0,0,((0)),,
+dbo,METAIS,USER_TABLE,4,PrataQtde,float,8,53,0,1,0,0,((0)),,
+dbo,METAIS,USER_TABLE,5,PlatinaQtde,float,8,53,0,1,0,0,((0)),,
+dbo,METAIS,USER_TABLE,6,PerdaPerc,float,8,53,0,1,0,0,((0)),,
+dbo,METAIS,USER_TABLE,7,PerdaQtde,float,8,53,0,1,0,0,((0)),,
+dbo,METAIS,USER_TABLE,8,SistemaQtde,float,8,53,0,1,0,0,((0)),,
+dbo,METAIS,USER_TABLE,9,TotalQtde,float,8,53,0,1,0,0,((0)),,
+dbo,METAIS,USER_TABLE,10,TotalValor,float,8,53,0,1,0,0,((0)),,
+dbo,METAIS,USER_TABLE,11,SistemaValor,float,8,53,0,1,0,0,((0)),,
+dbo,METAIS,USER_TABLE,12,OuroV,float,8,53,0,1,0,0,((0)),,
+dbo,METAIS,USER_TABLE,13,PaladiumV,float,8,53,0,1,0,0,((0)),,
+dbo,METAIS,USER_TABLE,14,PrataV,float,8,53,0,1,0,0,((0)),,
+dbo,METAIS,USER_TABLE,15,PlatinaV,float,8,53,0,1,0,0,((0)),,
+dbo,METAIS,USER_TABLE,16,SSMA_TimeStamp,timestamp,8,0,0,1,0,0,,,
+dbo,NVendasBase,VIEW,1,Nome,nvarchar,75,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,NVendasBase,VIEW,2,Endereço,nvarchar,80,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,NVendasBase,VIEW,3,Bairro,nvarchar,20,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,NVendasBase,VIEW,4,Cidade,nvarchar,20,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,NVendasBase,VIEW,5,Estado,nvarchar,2,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,NVendasBase,VIEW,6,CEP,nvarchar,9,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,NVendasBase,VIEW,7,Telefone,nvarchar,30,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,NVendasBase,VIEW,8,Última,datetime2,6,19,0,1,0,0,,,
+dbo,NVendasBase0,VIEW,1,Nome,nvarchar,75,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,NVendasBase0,VIEW,2,MáxDeEndereço,nvarchar,80,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,NVendasBase0,VIEW,3,MáxDeBairro,nvarchar,20,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,NVendasBase0,VIEW,4,MáxDeCidade,nvarchar,20,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,NVendasBase0,VIEW,5,MáxDeEstado,nvarchar,2,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,NVendasBase0,VIEW,6,MáxDeCEP,nvarchar,9,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,NVendasBase0,VIEW,7,MáxDeTelefone,nvarchar,30,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,PeçasEstoque,USER_TABLE,1,Ficha,nvarchar,255,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,PeçasEstoque,USER_TABLE,2,Descrição,nvarchar,255,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,PeçasEstoque,USER_TABLE,3,PrVenda,float,8,53,0,1,0,0,,,
+dbo,PeçasEstoque,USER_TABLE,4,PrAtualizado,float,8,53,0,1,0,0,,,
+dbo,PEDRAS,USER_TABLE,1,Id,int,4,10,0,0,0,0,((0)),,
+dbo,PEDRAS,USER_TABLE,2,DiamantesQtde,float,8,53,0,1,0,0,((0)),,
+dbo,PEDRAS,USER_TABLE,3,DiamantesValor,float,8,53,0,1,0,0,((0)),,
+dbo,PEDRAS,USER_TABLE,4,RubiQtde,float,8,53,0,1,0,0,((0)),,
+dbo,PEDRAS,USER_TABLE,5,RubiValor,float,8,53,0,1,0,0,((0)),,
+dbo,PEDRAS,USER_TABLE,6,SafiraQtde,float,8,53,0,1,0,0,((0)),,
+dbo,PEDRAS,USER_TABLE,7,SafiraValor,float,8,53,0,1,0,0,((0)),,
+dbo,PEDRAS,USER_TABLE,8,EsmeraldaQtde,float,8,53,0,1,0,0,((0)),,
+dbo,PEDRAS,USER_TABLE,9,EsmeraldaValor,float,8,53,0,1,0,0,((0)),,
+dbo,PEDRAS,USER_TABLE,10,CitrinoQtde,float,8,53,0,1,0,0,((0)),,
+dbo,PEDRAS,USER_TABLE,11,CitrinoValor,float,8,53,0,1,0,0,((0)),,
+dbo,PEDRAS,USER_TABLE,12,PedrasBrasQtde,float,8,53,0,1,0,0,((0)),,
+dbo,PEDRAS,USER_TABLE,13,PedrasBrasValor,float,8,53,0,1,0,0,((0)),,
+dbo,PEDRAS,USER_TABLE,14,PerolasQtde,float,8,53,0,1,0,0,((0)),,
+dbo,PEDRAS,USER_TABLE,15,PerolasValor,float,8,53,0,1,0,0,((0)),,
+dbo,PEDRAS,USER_TABLE,16,DiamantesCT,float,8,53,0,1,0,0,((0)),,
+dbo,PEDRAS,USER_TABLE,17,RubisCT,float,8,53,0,1,0,0,((0)),,
+dbo,PEDRAS,USER_TABLE,18,SafirasCT,float,8,53,0,1,0,0,((0)),,
+dbo,PEDRAS,USER_TABLE,19,EsmeraldasCT,float,8,53,0,1,0,0,((0)),,
+dbo,PEDRAS,USER_TABLE,20,PedrasCT,float,8,53,0,1,0,0,((0)),,
+dbo,PEDRAS,USER_TABLE,21,BrasCT,float,8,53,0,1,0,0,((0)),,
+dbo,PEDRAS,USER_TABLE,22,PerolasCT,float,8,53,0,1,0,0,((0)),,
+dbo,PEDRAS,USER_TABLE,23,Diamantes2Qtde,float,8,53,0,1,0,0,((0)),,
+dbo,PEDRAS,USER_TABLE,24,Diamantes2Valor,float,8,53,0,1,0,0,((0)),,
+dbo,PEDRAS,USER_TABLE,25,Diamantes2CT,float,8,53,0,1,0,0,((0)),,
+dbo,PEDRAS,USER_TABLE,26,SSMA_TimeStamp,timestamp,8,0,0,0,0,0,,,
+dbo,PEENBase,VIEW,1,IDPeça,int,4,10,0,0,0,0,,,
+dbo,PEENBase,VIEW,2,DiamantesCT,float,8,53,0,1,0,0,,,
+dbo,PEENBase,VIEW,3,RubisCT,float,8,53,0,1,0,0,,,
+dbo,PEENBase,VIEW,4,SafirasCT,float,8,53,0,1,0,0,,,
+dbo,PEENBase,VIEW,5,EsmeraldasCT,float,8,53,0,1,0,0,,,
+dbo,PEENBase,VIEW,6,PedrasCT,float,8,53,0,1,0,0,,,
+dbo,PEENBase,VIEW,7,BrasCT,float,8,53,0,1,0,0,,,
+dbo,PEENBase,VIEW,8,PerolasCT,float,8,53,0,1,0,0,,,
+dbo,PEENBase,VIEW,9,Diamantes2CT,float,8,53,0,1,0,0,,,
+dbo,Pres,USER_TABLE,1,Id,int,4,10,0,0,1,0,,,
+dbo,Pres,USER_TABLE,2,Peça,int,4,10,0,1,0,0,((0)),,
+dbo,Pres,USER_TABLE,3,Dt,datetime2,6,19,0,1,0,0,,,
+dbo,Pres,USER_TABLE,4,Vl,float,8,53,0,1,0,0,((0)),,
+dbo,Pres,USER_TABLE,5,SSMA_TimeStamp,timestamp,8,0,0,0,0,0,,,
+dbo,Reajustes,USER_TABLE,1,Id,int,4,10,0,0,1,0,,,
+dbo,Reajustes,USER_TABLE,2,DataReaj,date,3,10,0,1,0,0,,,
+dbo,Reajustes,USER_TABLE,3,FatorCusto,numeric,5,5,2,1,0,0,,,
+dbo,Reajustes,USER_TABLE,4,FatorVenda,numeric,5,5,2,1,0,0,,,
+dbo,Reajustes,USER_TABLE,5,U,int,4,10,0,1,0,0,,,
+dbo,Saidas,USER_TABLE,1,Id,int,4,10,0,0,1,0,,,
+dbo,Saidas,USER_TABLE,2,NumSaida,nvarchar,8,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Saidas,USER_TABLE,3,DataSaida,date,3,10,0,1,0,0,,,
+dbo,Saidas,USER_TABLE,4,IdPeça,int,4,10,0,1,0,0,,,
+dbo,Saidas,USER_TABLE,5,IdMotivo,int,4,10,0,1,0,0,,,
+dbo,Saidas,USER_TABLE,6,Custo,money,8,19,4,1,0,0,,,
+dbo,Saidas,USER_TABLE,7,PrVenda,money,8,19,4,1,0,0,,,
+dbo,Saidas,USER_TABLE,8,ValorSaida,money,8,19,4,1,0,0,,,
+dbo,Saidas,USER_TABLE,9,Observações,nvarchar,350,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Senha,USER_TABLE,1,Senha,nvarchar,10,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,SenhaOld,USER_TABLE,1,Senha,nvarchar,10,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,tabCartões,USER_TABLE,1,IdCC,int,4,10,0,1,0,0,,,
+dbo,tabCartões,USER_TABLE,2,N1,nvarchar,80,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,tabCartões,USER_TABLE,3,N,nvarchar,80,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,tabCartões,USER_TABLE,4,Venda,nvarchar,8,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,tabCartões,USER_TABLE,5,DataVenda,datetime2,6,19,0,1,0,0,,,
+dbo,tabCartões,USER_TABLE,6,NomeCartão,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,tabCartões,USER_TABLE,7,Parcela,nvarchar,5,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,tabCartões,USER_TABLE,8,VValor,float,8,53,0,1,0,0,,,
+dbo,tabCartões,USER_TABLE,9,Pagto,datetime2,6,19,0,1,0,0,,,
+dbo,tabCartões,USER_TABLE,10,Vencto,datetime2,6,19,0,1,0,0,,,
+dbo,tabCartões,USER_TABLE,11,IDC,int,4,10,0,0,0,0,,,
+dbo,tabCartões,USER_TABLE,12,Baixar,bit,1,1,0,1,0,0,,,
+dbo,tabCartões,USER_TABLE,13,Total,float,8,53,0,1,0,0,,,
+dbo,tabCartõesRpt,USER_TABLE,1,IdCC,int,4,10,0,1,0,0,,,
+dbo,tabCartõesRpt,USER_TABLE,2,N1,nvarchar,80,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,tabCartõesRpt,USER_TABLE,3,N,nvarchar,80,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,tabCartõesRpt,USER_TABLE,4,Venda,nvarchar,8,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,tabCartõesRpt,USER_TABLE,5,DataVenda,datetime2,6,19,0,1,0,0,,,
+dbo,tabCartõesRpt,USER_TABLE,6,NomeCartão,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,tabCartõesRpt,USER_TABLE,7,Parcela,nvarchar,5,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,tabCartõesRpt,USER_TABLE,8,VValor,float,8,53,0,1,0,0,,,
+dbo,tabCartõesRpt,USER_TABLE,9,Pagto,datetime2,6,19,0,1,0,0,,,
+dbo,tabCartõesRpt,USER_TABLE,10,Vencto,datetime2,6,19,0,1,0,0,,,
+dbo,tabCartõesRpt,USER_TABLE,11,IDC,int,4,10,0,0,1,0,,,
+dbo,tabCartõesRpt,USER_TABLE,12,Baixar,bit,1,1,0,1,0,0,,,
+dbo,tabcep,USER_TABLE,1,cep,nvarchar,16,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,tabcep,USER_TABLE,2,logradouro,nvarchar,125,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,tabcep,USER_TABLE,3,bairro,nvarchar,72,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,tabcep,USER_TABLE,4,cidade,nvarchar,60,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,tabcep,USER_TABLE,5,uf,nvarchar,2,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,tabCheques,USER_TABLE,1,IDV,int,4,10,0,0,0,0,,,
+dbo,tabCheques,USER_TABLE,2,IdCC,int,4,10,0,1,0,0,,,
+dbo,tabCheques,USER_TABLE,3,IdConserto,int,4,10,0,1,0,0,,,
+dbo,tabCheques,USER_TABLE,4,IdVenda,int,4,10,0,1,0,0,,,
+dbo,tabCheques,USER_TABLE,5,N1,nvarchar,80,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,tabCheques,USER_TABLE,6,N,nvarchar,80,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,tabCheques,USER_TABLE,7,Venda,nvarchar,8,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,tabCheques,USER_TABLE,8,DataVenda,datetime2,6,19,0,1,0,0,,,
+dbo,tabCheques,USER_TABLE,9,Destino,nvarchar,150,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,tabCheques,USER_TABLE,10,Parcela,nvarchar,5,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,tabCheques,USER_TABLE,11,VValor,float,8,53,0,1,0,0,,,
+dbo,tabCheques,USER_TABLE,12,Pagto,datetime2,6,19,0,1,0,0,,,
+dbo,tabCheques,USER_TABLE,13,Cheque,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,tabCheques,USER_TABLE,14,Banco,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,tabCheques,USER_TABLE,15,Uso,datetime2,6,19,0,1,0,0,,,
+dbo,tabCheques,USER_TABLE,16,Obs,nvarchar,250,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,tabCheques,USER_TABLE,17,Vencto,datetime2,6,19,0,1,0,0,,,
+dbo,tabCheques,USER_TABLE,18,Baixar,bit,1,1,0,1,0,0,,,
+dbo,tabChequesRpt,USER_TABLE,1,IDV,int,4,10,0,0,1,0,,,
+dbo,tabChequesRpt,USER_TABLE,2,Venda,nvarchar,8,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,tabChequesRpt,USER_TABLE,3,DataVenda,datetime2,6,19,0,1,0,0,,,
+dbo,tabChequesRpt,USER_TABLE,4,N,nvarchar,80,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,tabChequesRpt,USER_TABLE,5,Banco,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,tabChequesRpt,USER_TABLE,6,Parcela,nvarchar,5,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,tabChequesRpt,USER_TABLE,7,Cheque,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,tabChequesRpt,USER_TABLE,8,VValor,float,8,53,0,1,0,0,,,
+dbo,tabChequesRpt,USER_TABLE,9,Vencto,datetime2,6,19,0,1,0,0,,,
+dbo,tabChequesRpt,USER_TABLE,10,Uso,datetime2,6,19,0,1,0,0,,,
+dbo,tabChequesRpt,USER_TABLE,11,Destino,nvarchar,150,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,tabChequesRpt,USER_TABLE,12,Obs,nvarchar,250,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,tabChequesRpt,USER_TABLE,13,IdCC,int,4,10,0,1,0,0,,,
+dbo,tabChequesRpt,USER_TABLE,14,IdConserto,int,4,10,0,1,0,0,,,
+dbo,tabChequesRpt,USER_TABLE,15,IdVenda,int,4,10,0,1,0,0,,,
+dbo,tabChequesRpt,USER_TABLE,16,N1,nvarchar,80,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,tabChequesRpt,USER_TABLE,17,Pagto,datetime2,6,19,0,1,0,0,,,
+dbo,tabChequesRpt,USER_TABLE,18,Baixar,bit,1,1,0,1,0,0,,,
+dbo,tabExtrato,USER_TABLE,1,Id,int,4,10,0,0,1,0,,,
+dbo,tabExtrato,USER_TABLE,2,IdCliente,int,4,10,0,0,0,0,,,
+dbo,tabExtrato,USER_TABLE,3,SaldoInicial,money,8,19,4,1,0,0,,,
+dbo,tabMateriaPrima,USER_TABLE,1,Id,int,4,10,0,0,1,0,,,
+dbo,tabMateriaPrima,USER_TABLE,2,MatPrima,nvarchar,20,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,tabMateriaPrima,USER_TABLE,3,Unidade,nvarchar,3,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,tabMatPrima,USER_TABLE,1,Id,int,4,10,0,0,1,0,,,
+dbo,tabMatPrima,USER_TABLE,2,mMes,int,4,10,0,1,0,0,,,
+dbo,tabMatPrima,USER_TABLE,3,aAno,int,4,10,0,1,0,0,,,
+dbo,tabMatPrima,USER_TABLE,4,IdMatPrima,int,4,10,0,1,0,0,,,
+dbo,tabMatPrima,USER_TABLE,5,QtEnt,float,8,53,0,1,0,0,,,
+dbo,tabMatPrima,USER_TABLE,6,PrUnit,money,8,19,4,1,0,0,,,
+dbo,tabMatPrima,USER_TABLE,7,Total,money,8,19,4,1,0,0,,,
+dbo,tabMatPrima,USER_TABLE,8,QtSai,float,8,53,0,1,0,0,,,
+dbo,tabMatPrima,USER_TABLE,9,QtSaldo,float,8,53,0,1,0,0,,,
+dbo,tabMatPrima,USER_TABLE,10,ValSaldo,money,8,19,4,1,0,0,,,
+dbo,TiposSaidas,USER_TABLE,1,Id,int,4,10,0,0,1,0,,,
+dbo,TiposSaidas,USER_TABLE,2,Motivo,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Vencto Cartão,USER_TABLE,1,Id,int,4,10,0,0,1,0,,,
+dbo,Vencto Cartão,USER_TABLE,2,Venda,int,4,10,0,1,0,0,((0)),,
+dbo,Vencto Cartão,USER_TABLE,3,Vencto,datetime2,6,19,0,1,0,0,,,
+dbo,Vencto Cartão,USER_TABLE,4,VValor,float,8,53,0,1,0,0,((0)),,
+dbo,Vencto Cartão,USER_TABLE,5,Pagto,datetime2,6,19,0,1,0,0,,,
+dbo,Vencto Cartão,USER_TABLE,6,Parcela,nvarchar,5,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Vencto Cartão,USER_TABLE,7,IdConserto,int,4,10,0,1,0,0,((0)),,
+dbo,Vencto Cartão,USER_TABLE,8,IdCC,int,4,10,0,1,0,0,((0)),,
+dbo,Vencto Cartão,USER_TABLE,9,NomeCartão,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Vencto Cartão,USER_TABLE,10,SSMA_TimeStamp,timestamp,8,0,0,0,0,0,,,
+dbo,Vencto Cartão,USER_TABLE,11,Deb,bit,1,1,0,1,0,0,,,
+dbo,Vencto Cartão,USER_TABLE,12,Aut,nvarchar,10,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Vencto Cartão,USER_TABLE,13,AutDeb,nvarchar,10,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Vencto Cheques,USER_TABLE,1,Id,int,4,10,0,0,1,0,,,
+dbo,Vencto Cheques,USER_TABLE,2,Venda,int,4,10,0,1,0,0,((0)),,
+dbo,Vencto Cheques,USER_TABLE,3,Parcela,nvarchar,5,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Vencto Cheques,USER_TABLE,4,Vencto,datetime2,6,19,0,1,0,0,,,
+dbo,Vencto Cheques,USER_TABLE,5,VValor,float,8,53,0,1,0,0,((0)),,
+dbo,Vencto Cheques,USER_TABLE,6,Pagto,datetime2,6,19,0,1,0,0,,,
+dbo,Vencto Cheques,USER_TABLE,7,Cheque,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Vencto Cheques,USER_TABLE,8,Uso,datetime2,6,19,0,1,0,0,,,
+dbo,Vencto Cheques,USER_TABLE,9,Destino,nvarchar,150,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Vencto Cheques,USER_TABLE,10,Obs,nvarchar,250,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Vencto Cheques,USER_TABLE,11,IdConserto,int,4,10,0,1,0,0,((0)),,
+dbo,Vencto Cheques,USER_TABLE,12,IdCC,int,4,10,0,1,0,0,((0)),,
+dbo,Vencto Cheques,USER_TABLE,13,Banco,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Vencto Cheques,USER_TABLE,14,SSMA_TimeStamp,timestamp,8,0,0,0,0,0,,,
+dbo,VENDAS,USER_TABLE,1,Id,int,4,10,0,0,1,0,,,
+dbo,VENDAS,USER_TABLE,2,Venda,nvarchar,8,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS,USER_TABLE,3,IDCliente,int,4,10,0,1,0,0,((0)),,
+dbo,VENDAS,USER_TABLE,4,DataVenda,datetime2,6,19,0,1,0,0,,,
+dbo,VENDAS,USER_TABLE,5,Tipo,nvarchar,7,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS,USER_TABLE,6,Vendedora,nvarchar,20,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS,USER_TABLE,7,Real,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS,USER_TABLE,8,Ouro,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS,USER_TABLE,9,Dolar,real,4,24,0,1,0,0,((0)),,
+dbo,VENDAS,USER_TABLE,10,Cheque,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS,USER_TABLE,11,DC,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS,USER_TABLE,12,Pré1,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS,USER_TABLE,13,PosPré1,datetime2,6,19,0,1,0,0,,,
+dbo,VENDAS,USER_TABLE,14,DP1,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS,USER_TABLE,15,Pré2,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS,USER_TABLE,16,PosPré2,datetime2,6,19,0,1,0,0,,,
+dbo,VENDAS,USER_TABLE,17,DP2,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS,USER_TABLE,18,Pré3,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS,USER_TABLE,19,PosPré3,datetime2,6,19,0,1,0,0,,,
+dbo,VENDAS,USER_TABLE,20,DP3,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS,USER_TABLE,21,Pré4,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS,USER_TABLE,22,PosPré4,datetime2,6,19,0,1,0,0,,,
+dbo,VENDAS,USER_TABLE,23,DP4,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS,USER_TABLE,24,Pré5,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS,USER_TABLE,25,PosPré5,datetime2,6,19,0,1,0,0,,,
+dbo,VENDAS,USER_TABLE,26,DP5,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS,USER_TABLE,27,Cartão,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS,USER_TABLE,28,ContaCorrente,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS,USER_TABLE,29,CCCheque,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS,USER_TABLE,30,CredDeb,tinyint,1,3,0,1,0,0,((0)),,
+dbo,VENDAS,USER_TABLE,31,ValorVenda,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS,USER_TABLE,32,Comissão,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS,USER_TABLE,33,Desconto,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS,USER_TABLE,34,ValorFinal,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS,USER_TABLE,35,Destino,nvarchar,300,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS,USER_TABLE,36,FormaCartão,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS,USER_TABLE,37,Conserto,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS,USER_TABLE,38,NomeCartão,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS,USER_TABLE,39,CCDeb,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS,USER_TABLE,40,Troca,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS,USER_TABLE,41,Credito,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS,USER_TABLE,42,SEMCADASTRO,nvarchar,80,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS,USER_TABLE,43,ChequeCC,bit,1,1,0,1,0,0,((0)),,
+dbo,VENDAS,USER_TABLE,44,CartãoCC,bit,1,1,0,1,0,0,((0)),,
+dbo,VENDAS,USER_TABLE,45,DolarCC,bit,1,1,0,1,0,0,((0)),,
+dbo,VENDAS,USER_TABLE,46,CashCC,bit,1,1,0,1,0,0,((0)),,
+dbo,VENDAS,USER_TABLE,47,OuroCC,bit,1,1,0,1,0,0,((0)),,
+dbo,VENDAS,USER_TABLE,48,FormaCheque,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS,USER_TABLE,49,Banco,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS,USER_TABLE,50,SSMA_TimeStamp,timestamp,8,0,0,1,0,0,,,
+dbo,VENDAS,USER_TABLE,51,Peças,nvarchar,-1,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS,USER_TABLE,52,MD,bit,1,1,0,1,0,0,,,
+dbo,VENDAS,USER_TABLE,53,ValorTransf,money,8,19,4,1,0,0,,,
+dbo,VENDAS,USER_TABLE,54,BancoTransf,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS,USER_TABLE,55,Excluir,bit,1,1,0,1,0,0,,,
+dbo,VENDAS,USER_TABLE,56,Deb,float,8,53,0,1,0,0,,,
+dbo,VENDAS,USER_TABLE,57,NomeCDeb,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS,USER_TABLE,58,Cartão2,float,8,53,0,1,0,0,,,
+dbo,VENDAS,USER_TABLE,59,FormaCartão2,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS,USER_TABLE,60,NomeCartão2,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS,USER_TABLE,61,CartãoCC2,bit,1,1,0,1,0,0,,,
+dbo,VENDAS,USER_TABLE,62,Saldo,money,8,19,4,1,0,0,,,
+dbo,VENDAS,USER_TABLE,63,Aut,nvarchar,10,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS,USER_TABLE,64,AutDeb,nvarchar,10,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS,USER_TABLE,65,Aut2,nvarchar,10,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS,USER_TABLE,66,Cartão3,float,8,53,0,1,0,0,,,
+dbo,VENDAS,USER_TABLE,67,FormaCartão3,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS,USER_TABLE,68,NomeCartão3,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS,USER_TABLE,69,CartãoCC3,bit,1,1,0,1,0,0,,,
+dbo,VENDAS,USER_TABLE,70,Aut3,nvarchar,10,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,Vendas Cartão,VIEW,1,Venda,int,4,10,0,1,0,0,,,
+dbo,Vendas Cartão,VIEW,2,Parcelas,int,4,10,0,1,0,0,,,
+dbo,Vendas Cheque,VIEW,1,Venda,int,4,10,0,1,0,0,,,
+dbo,Vendas Cheque,VIEW,2,Parcelas,int,4,10,0,1,0,0,,,
+dbo,VENDAS DET,USER_TABLE,1,Id,int,4,10,0,0,1,0,,,
+dbo,VENDAS DET,USER_TABLE,2,Venda,int,4,10,0,1,0,0,((0)),,
+dbo,VENDAS DET,USER_TABLE,3,Peça,int,4,10,0,1,0,0,((0)),,
+dbo,VENDAS DET,USER_TABLE,4,ValorVenda,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS DET,USER_TABLE,5,SSMA_TimeStamp,timestamp,8,0,0,1,0,0,,,
+dbo,VENDAS DET,USER_TABLE,6,Comissão,money,8,19,4,1,0,0,((0)),,
+dbo,VENDAS DET,USER_TABLE,7,PrVenda,money,8,19,4,1,0,0,,,
+dbo,VENDAS DET,USER_TABLE,8,Desconto,money,8,19,4,1,0,0,,,
+dbo,VENDAS1,USER_TABLE,1,Id,int,4,10,0,0,1,0,,,
+dbo,VENDAS1,USER_TABLE,2,Venda,nvarchar,8,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS1,USER_TABLE,3,IDCliente,int,4,10,0,1,0,0,((0)),,
+dbo,VENDAS1,USER_TABLE,4,DataVenda,datetime2,6,19,0,1,0,0,,,
+dbo,VENDAS1,USER_TABLE,5,Tipo,nvarchar,7,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS1,USER_TABLE,6,Vendedora,nvarchar,20,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS1,USER_TABLE,7,Real,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS1,USER_TABLE,8,Ouro,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS1,USER_TABLE,9,Dolar,real,4,24,0,1,0,0,((0)),,
+dbo,VENDAS1,USER_TABLE,10,Cheque,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS1,USER_TABLE,11,DC,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS1,USER_TABLE,12,Pré1,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS1,USER_TABLE,13,PosPré1,datetime2,6,19,0,1,0,0,,,
+dbo,VENDAS1,USER_TABLE,14,DP1,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS1,USER_TABLE,15,Pré2,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS1,USER_TABLE,16,PosPré2,datetime2,6,19,0,1,0,0,,,
+dbo,VENDAS1,USER_TABLE,17,DP2,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS1,USER_TABLE,18,Pré3,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS1,USER_TABLE,19,PosPré3,datetime2,6,19,0,1,0,0,,,
+dbo,VENDAS1,USER_TABLE,20,DP3,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS1,USER_TABLE,21,Pré4,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS1,USER_TABLE,22,PosPré4,datetime2,6,19,0,1,0,0,,,
+dbo,VENDAS1,USER_TABLE,23,DP4,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS1,USER_TABLE,24,Pré5,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS1,USER_TABLE,25,PosPré5,datetime2,6,19,0,1,0,0,,,
+dbo,VENDAS1,USER_TABLE,26,DP5,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS1,USER_TABLE,27,Cartão,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS1,USER_TABLE,28,ContaCorrente,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS1,USER_TABLE,29,CCCheque,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS1,USER_TABLE,30,CredDeb,tinyint,1,3,0,1,0,0,((0)),,
+dbo,VENDAS1,USER_TABLE,31,ValorVenda,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS1,USER_TABLE,32,Comissão,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS1,USER_TABLE,33,Desconto,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS1,USER_TABLE,34,ValorFinal,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS1,USER_TABLE,35,Destino,nvarchar,100,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS1,USER_TABLE,36,FormaCartão,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS1,USER_TABLE,37,Conserto,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS1,USER_TABLE,38,NomeCartão,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS1,USER_TABLE,39,CCDeb,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS1,USER_TABLE,40,Troca,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS1,USER_TABLE,41,Credito,float,8,53,0,1,0,0,((0)),,
+dbo,VENDAS1,USER_TABLE,42,SEMCADASTRO,nvarchar,80,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS1,USER_TABLE,43,ChequeCC,bit,1,1,0,1,0,0,((0)),,
+dbo,VENDAS1,USER_TABLE,44,CartãoCC,bit,1,1,0,1,0,0,((0)),,
+dbo,VENDAS1,USER_TABLE,45,DolarCC,bit,1,1,0,1,0,0,((0)),,
+dbo,VENDAS1,USER_TABLE,46,CashCC,bit,1,1,0,1,0,0,((0)),,
+dbo,VENDAS1,USER_TABLE,47,OuroCC,bit,1,1,0,1,0,0,((0)),,
+dbo,VENDAS1,USER_TABLE,48,FormaCheque,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS1,USER_TABLE,49,Banco,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VENDAS1,USER_TABLE,50,SSMA_TimeStamp,timestamp,8,0,0,0,0,0,,,
+dbo,Vendedoras,USER_TABLE,1,ID Vendedora,int,4,10,0,0,1,0,,,
+dbo,Vendedoras,USER_TABLE,2,Vendedora,nvarchar,20,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VendedorasOld,USER_TABLE,1,ID Vendedora,int,4,10,0,0,1,0,,,
+dbo,VendedorasOld,USER_TABLE,2,Vendedora,nvarchar,20,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_CC,VIEW,1,ID,int,4,10,0,0,1,0,,,
+dbo,VI_CC,VIEW,2,Cliente,int,4,10,0,1,0,0,,,
+dbo,VI_CC,VIEW,3,Data,datetime2,6,19,0,1,0,0,,,
+dbo,VI_CC,VIEW,4,Valor,real,4,24,0,1,0,0,,,
+dbo,VI_CC,VIEW,5,Venda,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_CC,VIEW,6,NCartão,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_CC,VIEW,7,Vencto,datetime2,6,19,0,1,0,0,,,
+dbo,VI_CC,VIEW,8,Conserto,int,4,10,0,1,0,0,,,
+dbo,VI_CC,VIEW,9,Parcela,nvarchar,10,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_CC,VIEW,10,IdConserto,int,4,10,0,1,0,0,,,
+dbo,VI_CC,VIEW,11,Real,float,8,53,0,1,0,0,,,
+dbo,VI_CC,VIEW,12,Ouro,float,8,53,0,1,0,0,,,
+dbo,VI_CC,VIEW,13,Dolar,real,4,24,0,1,0,0,,,
+dbo,VI_CC,VIEW,14,Cartão,float,8,53,0,1,0,0,,,
+dbo,VI_CC,VIEW,15,Cheque,float,8,53,0,1,0,0,,,
+dbo,VI_CC,VIEW,16,FormaCheque,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_CC,VIEW,17,FormaCartão,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_CC,VIEW,18,ChequeCC,bit,1,1,0,1,0,0,,,
+dbo,VI_CC,VIEW,19,CartãoCC,bit,1,1,0,1,0,0,,,
+dbo,VI_CC,VIEW,20,DolarCC,bit,1,1,0,1,0,0,,,
+dbo,VI_CC,VIEW,21,CashCC,bit,1,1,0,1,0,0,,,
+dbo,VI_CC,VIEW,22,OuroCC,bit,1,1,0,1,0,0,,,
+dbo,VI_CC,VIEW,23,Banco,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_CC,VIEW,24,NomeCartão,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_CC,VIEW,25,CCDeb,float,8,53,0,1,0,0,,,
+dbo,VI_CC,VIEW,26,ValorFinal,float,8,53,0,1,0,0,,,
+dbo,VI_CC,VIEW,27,SSMA_TimeStamp,timestamp,8,0,0,0,0,0,,,
+dbo,VI_CC,VIEW,28,ValorTransf,money,8,19,4,1,0,0,,,
+dbo,VI_CC,VIEW,29,BancoTransf,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_CC,VIEW,30,Obs,nvarchar,250,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_CC,VIEW,31,Saldo,money,8,19,4,1,0,0,,,
+dbo,VI_CC,VIEW,32,Aut,nvarchar,10,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_CC,VIEW,33,AutDeb,nvarchar,10,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_CC_SALDOS,VIEW,1,Cliente,nvarchar,75,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_CC_SALDOS,VIEW,2,Saldo,float,8,53,0,1,0,0,,,
+dbo,VI_CONSERTOS,VIEW,1,Tot,float,8,53,0,1,0,0,,,
+dbo,VI_CONSERTOS,VIEW,2,DT,datetime2,6,19,0,1,0,0,,,
+dbo,VI_CONSERTOS,VIEW,3,Comis,float,8,53,0,1,0,0,,,
+dbo,VI_CONSERTOS,VIEW,4,ID,int,4,10,0,0,1,0,,,
+dbo,VI_CONSERTOS,VIEW,5,Custo,float,8,53,0,1,0,0,,,
+dbo,VI_CONSERTOS,VIEW,6,Real,float,8,53,0,1,0,0,,,
+dbo,VI_CONSERTOS,VIEW,7,Ouro,float,8,53,0,1,0,0,,,
+dbo,VI_CONSERTOS,VIEW,8,Dolar,real,4,24,0,1,0,0,,,
+dbo,VI_CONSERTOS,VIEW,9,Debito,float,8,53,0,1,0,0,,,
+dbo,VI_CONSERTOS,VIEW,10,ValorTransfC,money,8,19,4,1,0,0,,,
+dbo,VI_CONSERTOS,VIEW,11,CCDeb,float,8,53,0,1,0,0,,,
+dbo,VI_CONSERTOS,VIEW,12,CCCred,float,8,53,0,1,0,0,,,
+dbo,VI_GER_CRED,VIEW,1,VValor,float,8,53,0,1,0,0,,,
+dbo,VI_GER_CRED,VIEW,2,Pagto,datetime2,6,19,0,1,0,0,,,
+dbo,VI_GER_CRED,VIEW,3,Parcela,nvarchar,5,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_GER_CRED,VIEW,4,CondPag,varchar,9,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,VI_GER_CRED,VIEW,5,NomeCartão,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_GER_DEB,VIEW,1,Pagto,datetime2,6,19,0,1,0,0,,,
+dbo,VI_GER_DEB,VIEW,2,Parcela,nvarchar,5,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_GER_DEB,VIEW,3,VValor,float,8,53,0,1,0,0,,,
+dbo,VI_GER_DEB,VIEW,4,NomeCartão,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_Getnet,VIEW,1,Cliente,nvarchar,75,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_Getnet,VIEW,2,Venda,nvarchar,8,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_Getnet,VIEW,3,DataVenda,datetime2,6,19,0,1,0,0,,,
+dbo,VI_Getnet,VIEW,4,ValorFinal,float,8,53,0,1,0,0,,,
+dbo,VI_Getnet,VIEW,5,Parc,int,4,10,0,1,0,0,,,
+dbo,VI_Getnet,VIEW,6,Parcelas,int,4,10,0,1,0,0,,,
+dbo,VI_Getnet,VIEW,7,Vencto,datetime2,6,19,0,1,0,0,,,
+dbo,VI_Getnet,VIEW,8,VValor,float,8,53,0,1,0,0,,,
+dbo,VI_Getnet,VIEW,9,Pagto,datetime2,6,19,0,1,0,0,,,
+dbo,VI_Getnet,VIEW,10,Aut,nvarchar,10,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_Getnet,VIEW,11,Total Getnet,money,8,19,4,1,0,0,,,
+dbo,VI_Getnet,VIEW,12,Valor Parcela Getnet,money,8,19,4,1,0,0,,,
+dbo,VI_Getnet_Base,VIEW,1,Cliente,nvarchar,75,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_Getnet_Base,VIEW,2,Venda,nvarchar,8,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_Getnet_Base,VIEW,3,DataVenda,datetime2,6,19,0,1,0,0,,,
+dbo,VI_Getnet_Base,VIEW,4,ValorFinal,float,8,53,0,1,0,0,,,
+dbo,VI_Getnet_Base,VIEW,5,Parc,int,4,10,0,1,0,0,,,
+dbo,VI_Getnet_Base,VIEW,6,Parcelas,nvarchar,5,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_Getnet_Base,VIEW,7,Vencto,datetime2,6,19,0,1,0,0,,,
+dbo,VI_Getnet_Base,VIEW,8,VValor,float,8,53,0,1,0,0,,,
+dbo,VI_Getnet_Base,VIEW,9,Pagto,datetime2,6,19,0,1,0,0,,,
+dbo,VI_Getnet_Base,VIEW,10,Aut,nvarchar,10,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_Getnet_Base,VIEW,11,Total Getnet,money,8,19,4,1,0,0,,,
+dbo,VI_Getnet_Base,VIEW,12,Valor Parcela Getnet,money,8,19,4,1,0,0,,,
+dbo,VI_Getnet_Base,VIEW,13,x,int,4,10,0,0,0,0,,,
+dbo,VI_Getnet_Base,VIEW,14,FormaCartão,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_METAIS,VIEW,1,Id,int,4,10,0,0,0,0,,,
+dbo,VI_METAIS,VIEW,2,DataReg,datetime2,6,19,0,1,0,0,,,
+dbo,VI_METAIS,VIEW,3,OuroQtde,float,8,53,0,1,0,0,,,
+dbo,VI_METAIS,VIEW,4,OuroV,float,8,53,0,1,0,0,,,
+dbo,VI_METAIS,VIEW,5,Origem,nvarchar,10,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_METAIS,VIEW,6,Família,nvarchar,12,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_METAIS,VIEW,7,OT,float,8,53,0,1,0,0,,,
+dbo,VI_METAIS,VIEW,8,OV,float,8,53,0,1,0,0,,,
+dbo,VI_METAIS_VENDAS,VIEW,1,Id,int,4,10,0,0,0,0,,,
+dbo,VI_METAIS_VENDAS,VIEW,2,DataReg,date,3,10,0,1,0,0,,,
+dbo,VI_METAIS_VENDAS,VIEW,3,OuroQtde,float,8,53,0,1,0,0,,,
+dbo,VI_METAIS_VENDAS,VIEW,4,OuroV,float,8,53,0,1,0,0,,,
+dbo,VI_METAIS_VENDAS,VIEW,5,Origem,nvarchar,10,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_METAIS_VENDAS,VIEW,6,Família,nvarchar,12,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_METAIS_VENDAS,VIEW,7,OT,float,8,53,0,1,0,0,,,
+dbo,VI_METAIS_VENDAS,VIEW,8,OV,float,8,53,0,1,0,0,,,
+dbo,VI_METAIS_VENDAS,VIEW,9,DataVenda,datetime2,6,19,0,1,0,0,,,
+dbo,VI_METAIS_VENDAS,VIEW,10,ValorVenda,float,8,53,0,1,0,0,,,
+dbo,VI_PEÇAS,VIEW,1,IDPeça,int,4,10,0,0,1,0,,,
+dbo,VI_PEÇAS,VIEW,2,Custo,money,8,19,4,1,0,0,,,
+dbo,VI_PEÇAS,VIEW,3,DataReg,datetime2,6,19,0,1,0,0,,,
+dbo,VI_PEÇAS,VIEW,4,Origem,nvarchar,10,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_PEÇAS,VIEW,5,MOExt,float,8,53,0,1,0,0,,,
+dbo,VI_PEÇAS,VIEW,6,MOInt,float,8,53,0,1,0,0,,,
+dbo,VI_PEÇAS,VIEW,7,MO,float,8,53,0,0,0,0,,,
+dbo,VI_PEÇAS_VENDAS,VIEW,1,IDPeça,int,4,10,0,0,0,0,,,
+dbo,VI_PEÇAS_VENDAS,VIEW,2,Custo,money,8,19,4,1,0,0,,,
+dbo,VI_PEÇAS_VENDAS,VIEW,3,DataReg,date,3,10,0,1,0,0,,,
+dbo,VI_PEÇAS_VENDAS,VIEW,4,Origem,nvarchar,10,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_PEÇAS_VENDAS,VIEW,5,MOExt,float,8,53,0,1,0,0,,,
+dbo,VI_PEÇAS_VENDAS,VIEW,6,MOInt,float,8,53,0,1,0,0,,,
+dbo,VI_PEÇAS_VENDAS,VIEW,7,MO,float,8,53,0,0,0,0,,,
+dbo,VI_PEÇAS_VENDAS,VIEW,8,DataVenda,datetime2,6,19,0,1,0,0,,,
+dbo,VI_PEÇAS_VENDAS,VIEW,9,Outras,float,8,53,0,1,0,0,,,
+dbo,VI_Pecas_Web,VIEW,1,IDPeça,int,4,10,0,0,0,0,,,
+dbo,VI_Pecas_Web,VIEW,2,Classe,nvarchar,20,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_Pecas_Web,VIEW,3,Modêlo,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_Pecas_Web,VIEW,4,Obs,nvarchar,250,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_Pecas_Web,VIEW,5,PrVenda,money,8,19,4,1,0,0,,,
+dbo,VI_Pecas_Web,VIEW,6,Foto,image,16,0,0,1,0,0,,,
+dbo,VI_Pecas_Web,VIEW,7,DiamantesQtde,float,8,53,0,1,0,0,,,
+dbo,VI_Pecas_Web,VIEW,8,DiamantesCT,float,8,53,0,1,0,0,,,
+dbo,VI_Pecas_Web,VIEW,9,OuroQtde,float,8,53,0,1,0,0,,,
+dbo,VI_Pecas_Web,VIEW,10,DataVenda,datetime2,6,19,0,1,0,0,,,
+dbo,VI_Pecas_Web,VIEW,11,NomeCliente,nvarchar,75,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_Pecas_Web,VIEW,12,Vendida,bit,1,1,0,1,0,0,,,
+dbo,VI_Pecas_Web,VIEW,13,Id,int,4,10,0,1,0,0,,,
+dbo,VI_Pecas_Web,VIEW,14,cLocal,nvarchar,23,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_Pecas_Web,VIEW,15,Local,nchar,3,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_Pecas_Web,VIEW,16,Saida,bit,1,1,0,1,0,0,,,
+dbo,VI_SAIDAS,VIEW,1,DataSaida,date,3,10,0,1,0,0,,,
+dbo,VI_SAIDAS,VIEW,2,Ficha,nvarchar,35,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_SAIDAS,VIEW,3,Custo,money,8,19,4,1,0,0,,,
+dbo,VI_SAIDAS,VIEW,4,ValorSaida,money,8,19,4,1,0,0,,,
+dbo,VI_SAIDAS,VIEW,5,Motivo,nvarchar,50,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_SAIDAS,VIEW,6,Observações,nvarchar,350,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_VENDAS,VIEW,1,Id,int,4,10,0,0,1,0,,,
+dbo,VI_VENDAS,VIEW,2,DataVenda,datetime2,6,19,0,1,0,0,,,
+dbo,VI_VENDAS,VIEW,3,Real,float,8,53,0,1,0,0,,,
+dbo,VI_VENDAS,VIEW,4,Ouro,float,8,53,0,1,0,0,,,
+dbo,VI_VENDAS,VIEW,5,Dolar,real,4,24,0,1,0,0,,,
+dbo,VI_VENDAS,VIEW,6,ValorTransf,money,8,19,4,1,0,0,,,
+dbo,VI_VENDAS,VIEW,7,CCDeb,float,8,53,0,1,0,0,,,
+dbo,VI_VENDAS,VIEW,8,Comissão,float,8,53,0,1,0,0,,,
+dbo,VI_VENDAS,VIEW,9,ValorFinal,float,8,53,0,1,0,0,,,
+dbo,VI_VENDAS,VIEW,10,V,nvarchar,20,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_VENDAS,VIEW,11,Deb,float,8,53,0,1,0,0,,,
+dbo,VI_VENDAS,VIEW,12,valCC,float,8,53,0,1,0,0,,,
+dbo,VI_VENDAS,VIEW,13,CCCred,float,8,53,0,1,0,0,,,
+dbo,VI_VENDAS,VIEW,14,Cartão,float,8,53,0,1,0,0,,,
+dbo,VI_VENDAS,VIEW,15,Cartão2,float,8,53,0,1,0,0,,,
+dbo,VI_VENDAS,VIEW,16,FormaCartão,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_VENDAS,VIEW,17,FormaCartão2,nvarchar,15,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VI_VENDAS,VIEW,18,CartãoVista,float,8,53,0,1,0,0,,,
+dbo,VI_VENDAS,VIEW,19,CartãoVista2,float,8,53,0,1,0,0,,,
+dbo,VI_VENDAS,VIEW,20,CartãoParc,float,8,53,0,1,0,0,,,
+dbo,VI_VENDAS,VIEW,21,CartãoParc2,float,8,53,0,1,0,0,,,
+dbo,VI_VENDAS,VIEW,22,TotalCartãoVista,float,8,53,0,1,0,0,,,
+dbo,VI_VENDAS,VIEW,23,TotalCartãoParc,float,8,53,0,1,0,0,,,
+dbo,VI_VENDIDAS,VIEW,1,Peça,int,4,10,0,1,0,0,,,
+dbo,VI_VENDIDAS,VIEW,2,Custo,money,8,19,4,1,0,0,,,
+dbo,VI_VENDIDAS,VIEW,3,DataVenda,datetime2,6,19,0,1,0,0,,,
+dbo,VI_VENDIDAS,VIEW,4,ValorVenda,money,8,19,4,1,0,0,,,
+dbo,VI_W,VIEW,1,Id,int,4,10,0,0,0,0,,,
+dbo,VI_W,VIEW,2,DataVenda,datetime2,6,19,0,1,0,0,,,
+dbo,VI_W,VIEW,3,ValorVenda,float,8,53,0,1,0,0,,,
+dbo,VW_RG2_ESTOQUE,VIEW,1,IdPeca,int,4,10,0,0,0,0,,,
+dbo,VW_RG2_ESTOQUE,VIEW,2,Familia,nvarchar,12,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VW_RG2_ESTOQUE,VIEW,3,Custo,float,8,53,0,1,0,0,,,
+dbo,VW_RG2_ESTOQUE,VIEW,4,ValorMetal,float,8,53,0,1,0,0,,,
+dbo,VW_RG2_ESTOQUE,VIEW,5,PrVenda,float,8,53,0,1,0,0,,,
+dbo,VW_RG2_ESTOQUE,VIEW,6,GramasOuro,float,8,53,0,1,0,0,,,
+dbo,VW_RG2_ESTOQUE,VIEW,7,GramasPrata,float,8,53,0,1,0,0,,,
+dbo,VW_RG2_PECAS_REG,VIEW,1,IdPeca,int,4,10,0,0,0,0,,,
+dbo,VW_RG2_PECAS_REG,VIEW,2,DataReg,date,3,10,0,1,0,0,,,
+dbo,VW_RG2_PECAS_REG,VIEW,3,Origem,nvarchar,10,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,VW_RG2_PECAS_REG,VIEW,4,Familia,nvarchar,12,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VW_RG2_PECAS_REG,VIEW,5,Custo,float,8,53,0,1,0,0,,,
+dbo,VW_RG2_PECAS_REG,VIEW,6,GramasOuro,float,8,53,0,1,0,0,,,
+dbo,VW_RG2_PECAS_REG,VIEW,7,GramasPrata,float,8,53,0,1,0,0,,,
+dbo,VW_RG2_PECAS_REG,VIEW,8,ValorMetal,float,8,53,0,1,0,0,,,
+dbo,VW_RG2_PECAS_REG,VIEW,9,MO,float,8,53,0,1,0,0,,,
+dbo,VW_RG2_PECAS_VENDIDAS,VIEW,1,IdPeca,int,4,10,0,0,0,0,,,
+dbo,VW_RG2_PECAS_VENDIDAS,VIEW,2,IdItem,int,4,10,0,0,0,0,,,
+dbo,VW_RG2_PECAS_VENDIDAS,VIEW,3,DataVenda,datetime2,6,19,0,1,0,0,,,
+dbo,VW_RG2_PECAS_VENDIDAS,VIEW,4,Familia,nvarchar,12,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VW_RG2_PECAS_VENDIDAS,VIEW,5,Custo,float,8,53,0,1,0,0,,,
+dbo,VW_RG2_PECAS_VENDIDAS,VIEW,6,GramasOuro,float,8,53,0,1,0,0,,,
+dbo,VW_RG2_PECAS_VENDIDAS,VIEW,7,GramasPrata,float,8,53,0,1,0,0,,,
+dbo,VW_RG2_PECAS_VENDIDAS,VIEW,8,ValorMetal,float,8,53,0,1,0,0,,,
+dbo,VW_RG2_PECAS_VENDIDAS,VIEW,9,MO,float,8,53,0,1,0,0,,,
+dbo,VW_RG2_PECAS_VENDIDAS,VIEW,10,Outras,float,8,53,0,1,0,0,,,
+dbo,VW_RG2_PECAS_VENDIDAS,VIEW,11,PrecoVenda,float,8,53,0,1,0,0,,,
+dbo,VW_RG2_VENDAS_ITENS,VIEW,1,IdVenda,int,4,10,0,0,0,0,,,
+dbo,VW_RG2_VENDAS_ITENS,VIEW,2,DataVenda,datetime2,6,19,0,1,0,0,,,
+dbo,VW_RG2_VENDAS_ITENS,VIEW,3,IdItem,int,4,10,0,0,0,0,,,
+dbo,VW_RG2_VENDAS_ITENS,VIEW,4,IdPeca,int,4,10,0,1,0,0,,,
+dbo,VW_RG2_VENDAS_ITENS,VIEW,5,Oficial,bit,1,1,0,0,0,0,,,
+dbo,VW_RG2_VENDAS_ITENS,VIEW,6,Canal,varchar,4,0,0,0,0,0,,,Latin1_General_CI_AS
+dbo,VW_RG2_VENDAS_ITENS,VIEW,7,Familia,nvarchar,12,0,0,1,0,0,,,Latin1_General_CI_AS
+dbo,VW_RG2_VENDAS_ITENS,VIEW,8,ValorItemBruto,float,8,53,0,1,0,0,,,
+dbo,VW_RG2_VENDAS_ITENS,VIEW,9,ValorVendaFinal,float,8,53,0,1,0,0,,,
+dbo,VW_RG2_VENDAS_ITENS,VIEW,10,ValorVendaBruto,float,8,53,0,1,0,0,,,
+dbo,VW_RG2_VENDAS_ITENS,VIEW,11,ValorItemLiquido,float,8,53,0,1,0,0,,,
