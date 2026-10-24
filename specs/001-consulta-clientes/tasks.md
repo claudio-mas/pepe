@@ -274,30 +274,30 @@ desktop (spec, US2).
 
 ### Tests for User Story 4 ⚠️
 
-- [ ] T050 [P] [US4] Teste de contrato de `GET /api/relatorios/clientes-cadastrados` em `web/apps/api/tests/contrato/relatorio-clientes-cadastrados.test.ts`:
+- [X] T050 [P] [US4] Teste de contrato de `GET /api/relatorios/clientes-cadastrados` em `web/apps/api/tests/contrato/relatorio-clientes-cadastrados.test.ts`:
   - sem `de`/`ate` → todos com nome de exibição, **inclusive os ocultos** (FR-021);
   - com período → `DataCad` entre as datas, **as duas inclusive**;
   - `total` igual ao número de linhas;
   - `emitidoEm` presente;
   - só `de` → 400;
   - `ate` anterior a `de` → 400.
-- [ ] T051 [P] [US4] Teste E2E da US4 em `web/apps/spa/tests/e2e/us4-relatorio.spec.ts`:
+- [X] T051 [P] [US4] Teste E2E da US4 em `web/apps/spa/tests/e2e/us4-relatorio.spec.ts`:
   - cenários 4.1 a 4.3;
   - a versão de impressão (`page.emulateMedia({ media: 'print' })`) mostra título, período e data de emissão, sem a barra lateral.
 
 ### Implementation for User Story 4
 
-- [ ] T052 [P] [US4] Criar os esquemas Zod `LinhaClientesCadastrados` e `RelatorioClientesCadastrados` em `web/packages/shared/src/esquemas/relatorios.ts`
-- [ ] T053 [US4] Implementar `relatorioClientesCadastrados({ de, ate })` em `web/apps/api/src/relatorios/clientes-cadastrados.ts`, com a mesma lógica de `Pepe/Relatorios/ClientesCadastradosRpt.resx` (RN-CLI-012): `ISNULL(Nome, Cliente) IS NOT NULL` e, com período, `DataCad BETWEEN @de AND @ate`, sem filtrar `Oculto`, ordenado pelo nome de exibição
-- [ ] T054 [US4] Implementar `GET /api/relatorios/clientes-cadastrados` em `web/apps/api/src/relatorios/rotas.ts`: validação de `de`/`ate` conforme o contrato, `emitidoEm` com a hora do servidor
-- [ ] T055 [US4] Criar a rota `web/apps/spa/src/rotas/_autenticado/relatorios/clientes-cadastrados.tsx`:
+- [X] T052 [P] [US4] Criar os esquemas Zod `LinhaClientesCadastrados` e `RelatorioClientesCadastrados` em `web/packages/shared/src/esquemas/relatorios.ts`
+- [X] T053 [US4] Implementar `relatorioClientesCadastrados({ de, ate })` em `web/apps/api/src/relatorios/clientes-cadastrados.ts`, com a mesma lógica de `Pepe/Relatorios/ClientesCadastradosRpt.resx` (RN-CLI-012): `ISNULL(Nome, Cliente) IS NOT NULL` e, com período, `DataCad BETWEEN @de AND @ate`, sem filtrar `Oculto`, ordenado pelo nome de exibição
+- [X] T054 [US4] Implementar `GET /api/relatorios/clientes-cadastrados` em `web/apps/api/src/relatorios/rotas.ts`: validação de `de`/`ate` conforme o contrato, `emitidoEm` com a hora do servidor
+- [X] T055 [US4] Criar a rota `web/apps/spa/src/rotas/_autenticado/relatorios/clientes-cadastrados.tsx`:
   - período padrão = mês corrente;
   - chave "sem período";
   - tabela e contagem;
   - botão "Imprimir" (`window.print()`).
 
   Criar também `web/apps/spa/src/rotas/_autenticado/relatorios/impressao.css`: `@page { size: A4; margin: 15mm }`, cabeçalho com título, período e data de emissão, barra lateral e controles escondidos na impressão.
-- [ ] T056 [US4] Criar o script de golden master `web/apps/api/scripts/golden-master/clientes-cadastrados.ts`, que roda **na cópia real** (Docker, conexão pela configuração):
+- [X] T056 [US4] Criar o script de golden master `web/apps/api/scripts/golden-master/clientes-cadastrados.ts`, que roda **na cópia real** (Docker, conexão pela configuração):
   - executa a consulta do desktop, copiada **literalmente** de `Pepe/Relatorios/ClientesCadastradosRpt.resx` (as duas queries: com e sem período), e a função do T053;
   - compara contagem e o conjunto de linhas, com SHA-256 de cada linha normalizada;
   - roda para "sem período" e para os dois meses de 2026 com mais cadastros (research.md R13; o script os descobre e os registra);
