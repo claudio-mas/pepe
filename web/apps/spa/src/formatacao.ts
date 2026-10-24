@@ -20,6 +20,14 @@ export function formatarData(valor: string | Date | Vazio): string {
   return `${dois(valor.getDate())}/${dois(valor.getMonth() + 1)}/${valor.getFullYear()}`;
 }
 
+/** Data e hora local em `dd/MM/aaaa HH:mm`, a partir de um instante ISO com fuso (ex.: `emitidoEm` da API). */
+export function formatarDataHora(valor: string | Date | Vazio): string {
+  if (valor == null || valor === '') return '';
+  const data = typeof valor === 'string' ? new Date(valor) : valor;
+  if (Number.isNaN(data.getTime())) return '';
+  return `${formatarData(data)} ${dois(data.getHours())}:${dois(data.getMinutes())}`;
+}
+
 const moeda = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
 const numero = new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 

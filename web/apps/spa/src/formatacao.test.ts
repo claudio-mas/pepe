@@ -1,7 +1,14 @@
 // T025: formatação pt-BR (constituição VI.3).
 import { describe, expect, it } from 'vitest';
 
-import { formatarCpf, formatarData, formatarMoeda, formatarNumero, formatarTexto } from './formatacao';
+import {
+  formatarCpf,
+  formatarData,
+  formatarDataHora,
+  formatarMoeda,
+  formatarNumero,
+  formatarTexto,
+} from './formatacao';
 
 const NBSP = ' ';
 
@@ -63,5 +70,17 @@ describe('formatarTexto', () => {
   it('nulo vira vazio e as pontas perdem os espaços', () => {
     expect(formatarTexto(null)).toBe('');
     expect(formatarTexto('  Maria  ')).toBe('Maria');
+  });
+});
+
+describe('formatarDataHora', () => {
+  it('mostra o instante na hora local', () => {
+    const instante = new Date(2026, 9, 24, 9, 5);
+    expect(formatarDataHora(instante.toISOString())).toBe('24/10/2026 09:05');
+    expect(formatarDataHora(instante)).toBe('24/10/2026 09:05');
+  });
+
+  it('nulo e inválido viram texto vazio', () => {
+    for (const valor of [null, undefined, '', 'ontem']) expect(formatarDataHora(valor)).toBe('');
   });
 });

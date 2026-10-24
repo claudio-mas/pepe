@@ -18,6 +18,7 @@ import { lerConfig } from './config.js';
 import { bancoIndisponivel, MENSAGEM_BANCO_INDISPONIVEL } from './db/indisponivel.js';
 import { type Banco, criarBanco } from './db/kysely.js';
 import { ErroHttp } from './erros.js';
+import { rotasRelatorios } from './relatorios/rotas.js';
 
 export { ErroHttp };
 
@@ -115,6 +116,7 @@ export async function construirApp(opcoes: OpcoesApp): Promise<FastifyInstance> 
   // Rotas da API, sempre com prefixo /api
   await app.register(rotasSessao, { prefix: '/api' });
   await app.register(rotasClientes, { prefix: '/api' });
+  await app.register(rotasRelatorios, { prefix: '/api' });
 
   return app;
 }

@@ -1,0 +1,71 @@
+/* Versão para impressão em A4 dos relatórios (FR-020): só o relatório, em preto sobre branco, com o cabeçalho de
+   título, período e data de emissão. A barra lateral, o topo e os controles ficam de fora. */
+
+.so-impressao {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 15mm;
+  }
+
+  :root {
+    color-scheme: light;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+  }
+
+  .mantine-AppShell-header,
+  .mantine-AppShell-navbar,
+  .nao-imprimir {
+    display: none !important;
+  }
+
+  .mantine-AppShell-main {
+    padding: 0 !important;
+    min-height: 0 !important;
+  }
+
+  .so-impressao {
+    display: block;
+  }
+
+  .relatorio,
+  .relatorio * {
+    color: #000 !important;
+    background: transparent !important;
+    border-color: #999 !important;
+    box-shadow: none !important;
+  }
+
+  .relatorio {
+    font-size: 9pt;
+  }
+
+  .relatorio-tabela {
+    overflow: visible !important;
+  }
+
+  .relatorio-tabela table {
+    width: 100%;
+  }
+
+  /* Cabeçalho da tabela repetido em cada página; linha nunca partida entre páginas */
+  .relatorio-tabela thead {
+    display: table-header-group;
+  }
+
+  .relatorio-tabela tr {
+    break-inside: avoid;
+  }
+
+  .relatorio-tabela th,
+  .relatorio-tabela td {
+    padding: 2pt 4pt !important;
+  }
+}

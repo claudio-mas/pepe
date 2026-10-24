@@ -47,7 +47,7 @@ Roteiro completo em `docs/web/golden-master.md` (criado nas tarefas). Saída for
 
 | Verificação | Como | Esperado |
 |---|---|---|
-| SC-004: relatório "Clientes cadastrados" | rodar a consulta do desktop (`ClientesCadastradosRpt.resx`) e a da web para "sem período" e para os dois meses de referência (R13) | mesma contagem; mesmo conjunto de linhas (comparação por resumo criptográfico de cada linha) |
+| SC-004: relatório "Clientes cadastrados" | `PEPE_WEB_CONFIG=<config da cópia> pnpm --filter @pepe/api golden-master [--saida <pasta>]`: roda a consulta do desktop (`ClientesCadastradosRpt.resx`) e a da web para "sem período" e para os dois meses de 2026 com mais cadastros (R13), e grava só contagens e hashes, fora do git (padrão: a pasta temporária) | `OK` nos três períodos e código de saída 0; mesma contagem e mesmo conjunto de linhas (SHA-256 de cada linha) |
 | SC-003: paridade da ficha | sortear 20 clientes; comparar cadastro, lançamentos de CC (`dsCliente.CC`) e peças compradas (`dsCliente.Compras`) com as respostas da API | nenhuma diferença |
 | Conferência visual | abrir 5 desses clientes no desktop e na web, lado a lado | o dono confirma |
 
