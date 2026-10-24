@@ -1,3 +1,137 @@
-// Ponto de entrada da API. O servidor de verdade (HTTPS, log sem dado pessoal, rotas)
-// é montado na tarefa T016; por enquanto o arquivo só existe para o build e o dev rodarem.
-console.log('Pepe Web: API ainda não implementada (T016).');
+// Servidor da versão web (research.md R2): um único processo Fastify serve a API em /api e a SPA compilada,
+// por HTTPS (constituição V.4). O log nunca registra a URL real nem a query string, porque a pesquisa de
+// clientes leva nomes e telefones (research.md R9; constituição V.3).
+import { existsSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+import fastifyStatic from '@fastify/static';
+import Fastify, { type FastifyInstance, type FastifyServerOptions, LogController } from 'fastify';
+
+import { lerConfig } from './config.js';
+import { type Banco, criarBanco } from './db/kysely.js';
+
+declare module 'fastify' {
+  interface FastifyRequest {
+    /** Preenchido pela verificação de sessão (tarefa T023); entra no log no lugar de dados do usuário. */
+    idUsuario?: number;
+  }
+  interface FastifyInstance {
+    banco: Banco;
+  }
+}
+
+/** Erro previsto, com mensagem para o usuário em português (contrato `Erro`). */
+export class ErroHttp extends Error {
+  constructor(
+    readonly statusCode: number,
+    mensagem: string,
+  ) {
+    super(mensagem);
+    this.name = 'ErroHttp';
+  }
+}
+
+const MENSAGEM_ERRO_INTERNO = 'Erro interno. Tente de novo; se continuar, avise o responsável pelo sistema.';
+const DIRETORIO_SPA_PADRAO = fileURLToPath(new URL('../../spa/dist/', import.meta.url));
+
+export interface OpcoesApp {
+  banco: Banco;
+  /** Certificado e chave em PEM. Sem eles o servidor fica em HTTP: só para testes com inject(). */
+  https?: { cert: Buffer; key: Buffer };
+  diretorioSpa?: string;
+  /** Configuração do logger (pino). Os testes passam um stream próprio para inspecionar o log. */
+  logger?: FastifyServerOptions['logger'];
+}
+
+export async function construirApp(opcoes: OpcoesApp): Promise<FastifyInstance> {
+  const app = Fastify({
+    ...(opcoes.https ? { https: opcoes.https } : {}),
+    logger: opcoes.logger ?? {
+      level: 'info',
+      redact: ['req.headers.cookie', 'req.headers.authorization', 'res.headers["set-cookie"]'],
+    },
+    // O log padrão de requisição registra a URL completa; o onResponse abaixo registra só o padrão da rota.
+    logController: new LogController({ disableRequestLogging: true }),
+    trustProxy: false,
+  }) as unknown as FastifyInstance;
+
+  app.decorate('banco', opcoes.banco);
+
+  app.addHook('onResponse', async (request, reply) => {
+    request.log.info(
+      {
+        metodo: request.method,
+        rota: request.routeOptions.url ?? '(sem rota)',
+        status: reply.statusCode,
+        ms: Math.round(reply.elapsedTime),
+        idUsuario: request.idUsuario,
+      },
+      'requisição',
+    );
+  });
+
+  app.setErrorHandler(
+    (erro: Error & { statusCode?: number; validation?: unknown; code?: string; number?: number }, request, reply) => {
+      if (erro instanceof ErroHttp) {
+        return reply.status(erro.statusCode).send({ mensagem: erro.message });
+      }
+      if (erro.validation) {
+        return reply.status(400).send({ mensagem: 'Parâmetro inválido.' });
+      }
+      const status = erro.statusCode && erro.statusCode >= 400 && erro.statusCode < 500 ? erro.statusCode : 500;
+      if (status >= 500) {
+        // Só nome e códigos: a mensagem de um erro do banco pode citar o valor de um campo (dado pessoal).
+        request.log.error({ erro: { nome: erro.name, codigo: erro.code, numeroSql: erro.number } }, 'erro interno');
+        return reply.status(500).send({ mensagem: MENSAGEM_ERRO_INTERNO });
+      }
+      return reply.status(status).send({ mensagem: 'Requisição inválida.' });
+    },
+  );
+
+  const diretorioSpa = opcoes.diretorioSpa ?? DIRETORIO_SPA_PADRAO;
+  const temSpa = existsSync(join(diretorioSpa, 'index.html'));
+  if (temSpa) {
+    await app.register(fastifyStatic, { root: diretorioSpa, wildcard: false, index: ['index.html'] });
+  }
+
+  app.setNotFoundHandler((request, reply) => {
+    const rotaDaApi = request.url === '/api' || request.url.startsWith('/api/');
+    if (rotaDaApi || !temSpa || request.method !== 'GET') {
+      return reply.status(404).send({ mensagem: 'Recurso não encontrado.' });
+    }
+    // Rotas da SPA (ex.: /clientes/12): o roteador do navegador resolve a partir do index.html
+    return reply.type('text/html').sendFile('index.html');
+  });
+
+  // As rotas da API entram nas tarefas seguintes, sempre com prefixo /api:
+  //   app.register(rotasSessao, { prefix: '/api' }) etc.
+
+  return app;
+}
+
+async function iniciar(): Promise<void> {
+  const config = lerConfig();
+  const banco = criarBanco(config.bancoDeDados);
+  const app = await construirApp({
+    banco,
+    https: { cert: readFileSync(config.https.certificado), key: readFileSync(config.https.chave) },
+    ...(config.diretorioSpa ? { diretorioSpa: config.diretorioSpa } : {}),
+  });
+  app.addHook('onClose', async () => {
+    await banco.destroy();
+  });
+  for (const sinal of ['SIGINT', 'SIGTERM'] as const) {
+    process.once(sinal, () => {
+      void app.close().then(() => process.exit(0));
+    });
+  }
+  await app.listen({ port: config.porta, host: config.host });
+}
+
+if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
+  iniciar().catch((erro: unknown) => {
+    console.error(erro instanceof Error ? erro.message : erro);
+    process.exit(1);
+  });
+}

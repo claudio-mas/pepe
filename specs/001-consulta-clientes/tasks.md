@@ -51,7 +51,7 @@ master para aceitar um módulo. Em cada história, os testes vêm antes da imple
 
 ### Banco
 
-- [ ] T007 Criar `Pepe/Scripts/WEB001_v1_up.sql`, idempotente, com comentários sem acento como os outros scripts. Conteúdo:
+- [X] T007 Criar `Pepe/Scripts/WEB001_v1_up.sql`, idempotente, com comentários sem acento como os outros scripts. Conteúdo:
   - `CREATE SCHEMA web`.
   - `web.Usuario`: `IdUsuario int IDENTITY PK`; `Login nvarchar(50) NOT NULL` com índice único; `Nome nvarchar(100) NOT NULL`; `HashSenha nvarchar(255) NOT NULL`; `Ativo bit NOT NULL DEFAULT 1`; `TentativasFalhas int NOT NULL DEFAULT 0`; `BloqueadoAte datetime2(0) NULL`; `CriadoEm datetime2(0) NOT NULL DEFAULT SYSDATETIME()`; `UltimoAcesso datetime2(0) NULL`.
   - `web.Sessao`: `IdSessao char(64) PK` (SHA-256 hex do identificador do cookie); `IdUsuario int NOT NULL` com FK para `web.Usuario`; `CriadaEm datetime2(0) NOT NULL`; `UltimoUso datetime2(0) NOT NULL`; `ExpiraEm datetime2(0) NOT NULL`.
@@ -60,13 +60,13 @@ master para aceitar um módulo. Em cada história, os testes vêm antes da imple
   - `GRANT SELECT` **só** em `dbo.Clientes`, `dbo.CC`, `dbo.VENDAS`, `dbo.[VENDAS DET]` e `dbo.[1TabPeças]`.
   - `GRANT SELECT, INSERT, UPDATE, DELETE ON SCHEMA::web`.
   - Nenhum objeto existente alterado (constituição I.1; research.md R10).
-- [ ] T008 Criar `Pepe/Scripts/WEB001_v1_down.sql`, que desfaz exatamente o T007 (remove usuário e login `pepe_web`, as três tabelas e o schema `web`), idempotente
-- [ ] T009 Criar `web/docker-compose.teste.yml` com um SQL Server 2022 só para testes (contêiner `pepe_web_teste`, `127.0.0.1:14331`, collation `Latin1_General_CI_AS`, senha por variável de ambiente lida de `web/.env.teste.local`, que é ignorado pelo git)
-- [ ] T010 Criar `web/apps/api/tests/banco-teste/estrutura.sql`. Ele cria o banco `BDTorrasTeste` com `COMPATIBILITY_LEVEL = 120` e collation `Latin1_General_CI_AS`, e:
+- [X] T008 Criar `Pepe/Scripts/WEB001_v1_down.sql`, que desfaz exatamente o T007 (remove usuário e login `pepe_web`, as três tabelas e o schema `web`), idempotente
+- [X] T009 Criar `web/docker-compose.teste.yml` com um SQL Server 2022 só para testes (contêiner `pepe_web_teste`, `127.0.0.1:14331`, senha por variável de ambiente lida de `web/.env.teste.local`, que é ignorado pelo git). Feito sem `MSSQL_COLLATION`: trocar a collation do servidor travou a instância na primeira inicialização; a collation da produção fica no banco (T010)
+- [X] T010 Criar `web/apps/api/tests/banco-teste/estrutura.sql`. Ele cria o banco `BDTorrasTeste` com `COMPATIBILITY_LEVEL = 120` e collation `Latin1_General_CI_AS`, e:
   - as tabelas `dbo.Clientes` (as 23 colunas, com os mesmos nomes, tipos, tamanhos e nulidade de `docs/legado/banco/02_colunas.csv`, inclusive `SSMA_TimeStamp timestamp`, `Imp bit DEFAULT 0` e `Oculto bit DEFAULT 0`);
   - `dbo.VENDAS`, `dbo.[VENDAS DET]`, `dbo.[1TabPeças]`, `dbo.CONSERTOS` e `dbo.[Conta Corrente]`, cada uma com **todas** as colunas citadas pela view `CC` e pelas consultas de `data-model.md`, nos tipos do catálogo;
   - a view `dbo.CC`, copiada **sem alteração** de `docs/legado/banco/modulos/VIEW/dbo.CC.sql`.
-- [ ] T011 Criar `web/apps/api/tests/banco-teste/dados.sql` com dados **inventados** (nenhum dado real, constituição V.3), cobrindo os casos de `quickstart.md` §1:
+- [X] T011 Criar `web/apps/api/tests/banco-teste/dados.sql` com dados **inventados** (nenhum dado real, constituição V.3), cobrindo os casos de `quickstart.md` §1:
   - cliente só com mala direta;
   - cliente sem `Nome` nem `Cliente`;
   - clientes com `Oculto = 1` e com `Oculto` nulo;
@@ -77,17 +77,17 @@ master para aceitar um módulo. Em cada história, os testes vêm antes da imple
   - uma venda com `IDCliente` inexistente (órfã);
   - clientes com e sem `DataCad` em pelo menos dois meses diferentes;
   - mais de 120 clientes no total, para testar a paginação.
-- [ ] T012 Criar `web/apps/api/tests/banco-teste/preparar.ts`, que sobe o contêiner do T009 se preciso, aplica `estrutura.sql`, `Pepe/Scripts/WEB001_v1_up.sql` (com uma senha de teste) e `dados.sql`, e é usado como `globalSetup` do Vitest e do Playwright
-- [ ] T013 Criar `web/apps/api/src/config.ts`. Ele lê o JSON do caminho em `PEPE_WEB_CONFIG` e valida com Zod: `bancoDeDados` (servidor, porta, banco, usuário, senha), `porta`, `certificado` e `chave` (caminhos do PEM), `origemPublica`. Se faltar configuração, o serviço não sobe e mostra a mensagem do erro, sem nenhum segredo. Criar também `web/apps/api/config.exemplo.json`, sem valores reais
-- [ ] T014 Criar `web/apps/api/src/db/kysely.ts`: `Kysely` com `MssqlDialect` (`tedious` + `tarn`), pool `min: 0`, `max: 5` (research.md R3), `trustServerCertificate` configurável, e função de encerramento para os testes
-- [ ] T015 Configurar o script `gerar-tipos` (`kysely-codegen --dialect mssql`) contra o `BDTorrasTeste` e gerar `web/apps/api/src/db/tipos.ts`, restrito aos schemas `dbo` e `web`, com aviso "gerado, não editar". Commitar o arquivo gerado (ele não tem segredo)
-- [ ] T016 Criar `web/apps/api/src/server.ts`. Ele exporta `construirApp(config)` e sobe o Fastify com:
+- [X] T012 Criar `web/apps/api/tests/banco-teste/preparar.ts`, que sobe o contêiner do T009 se preciso, aplica `estrutura.sql`, `Pepe/Scripts/WEB001_v1_up.sql` (com uma senha de teste) e `dados.sql`, e é usado como `globalSetup` do Vitest e do Playwright
+- [X] T013 Criar `web/apps/api/src/config.ts`. Ele lê o JSON do caminho em `PEPE_WEB_CONFIG` e valida com Zod: `bancoDeDados` (servidor, porta, banco, usuário, senha), `porta`, `certificado` e `chave` (caminhos do PEM), `origemPublica`. Se faltar configuração, o serviço não sobe e mostra a mensagem do erro, sem nenhum segredo. Criar também `web/apps/api/config.exemplo.json`, sem valores reais
+- [X] T014 Criar `web/apps/api/src/db/kysely.ts`: `Kysely` com `MssqlDialect` (`tedious` + `tarn`), pool `min: 0`, `max: 5` (research.md R3), `trustServerCertificate` configurável, e função de encerramento para os testes
+- [X] T015 Configurar o script `gerar-tipos` (`kysely-codegen --dialect mssql --default-schema dbo`, conectando como `pepe_web`, para entrarem só os objetos que a web lê e as tabelas novas saírem como `web.Usuario` etc.) contra o `BDTorrasTeste` e gerar `web/apps/api/src/db/tipos.ts`, restrito aos schemas `dbo` e `web`, com aviso "gerado, não editar". Commitar o arquivo gerado (ele não tem segredo)
+- [X] T016 Criar `web/apps/api/src/server.ts`. Ele exporta `construirApp(config)` e sobe o Fastify com:
   - HTTPS (certificado e chave da configuração);
   - prefixo `/api`;
   - `@fastify/static` servindo `web/apps/spa/dist`, com fallback para `index.html` nas rotas da SPA;
   - tratador de erro que devolve `{ mensagem }` em português, sem pilha nem SQL (contrato `Erro`);
   - **log conforme research.md R9**: serializador de requisição só com `method`, `routeOptions.url` (o padrão da rota), `statusCode`, `responseTime` e `idUsuario`, **sem URL real nem query string**, e `redact` de `req.headers.cookie`, `req.headers.authorization` e corpo.
-- [ ] T017 [P] Criar os esquemas Zod `Erro`, `Credenciais` (`login` 1 a 50, `senha` 1 a 200) e `UsuarioConectado` em `web/packages/shared/src/esquemas/sessao.ts`, iguais a `contracts/openapi.yaml`
+- [X] T017 [P] Criar os esquemas Zod `Erro`, `Credenciais` (`login` 1 a 50, `senha` 1 a 200) e `UsuarioConectado` em `web/packages/shared/src/esquemas/sessao.ts`, iguais a `contracts/openapi.yaml`
 
 ### Autenticação (research.md R7, R8; FR-001, FR-002, FR-004, FR-025)
 

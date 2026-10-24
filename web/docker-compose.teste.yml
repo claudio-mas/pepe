@@ -1,0 +1,24 @@
+# SQL Server só para os testes automáticos da web (banco sintético BDTorrasTeste, sem dado real).
+# Separado do bdtorras_mssql (127.0.0.1,14330), que guarda a cópia real e é usado só no golden master.
+#
+# Quem sobe e prepara este contêiner é apps/api/tests/banco-teste/preparar.ts (globalSetup dos testes).
+# Para subir à mão: docker compose --env-file .env.teste.local -f docker-compose.teste.yml up -d
+# A senha do sa fica em .env.teste.local (ignorado pelo git; o preparar.ts cria o arquivo se faltar).
+name: pepe_web_teste
+
+services:
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: pepe_web_teste
+    environment:
+      ACCEPT_EULA: 'Y'
+      MSSQL_PID: 'Developer'
+      MSSQL_SA_PASSWORD: ${PEPE_TESTE_SA_SENHA:?defina PEPE_TESTE_SA_SENHA em .env.teste.local}
+      # Sem MSSQL_COLLATION: trocar a collation do servidor na primeira inicialização travou a instância.
+      # Quem precisa da collation da produção (Latin1_General_CI_AS) é o banco, e o estrutura.sql já
+      # cria o BDTorrasTeste com ela.
+      MSSQL_MEMORY_LIMIT_MB: '2048'
+    ports:
+      - '127.0.0.1:14331:1433'
+    # Sem volume: o BDTorrasTeste é apagado e recriado a cada preparação.
+    # (tmpfs não serve: o SQL Server no Linux exige O_DIRECT, que o tmpfs não suporta.)
