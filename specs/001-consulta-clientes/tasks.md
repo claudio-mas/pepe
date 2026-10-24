@@ -125,8 +125,8 @@ master para aceitar um módulo. Em cada história, os testes vêm antes da imple
 
 ### Esqueleto da SPA (FR-005, FR-006)
 
-- [ ] T025 [P] Criar `web/apps/spa/src/formatacao.ts`: datas `dd/MM/aaaa`, moeda `R$ 1.234,56`, CPF `000.000.000-00` a partir de 11 dígitos, e vazio (nunca "null") para valores nulos (constituição VI.3), mais o teste `web/apps/spa/src/formatacao.test.ts`
-- [ ] T026 Criar `web/apps/spa/src/api/cliente.ts` (`fetch` com `credentials: 'include'`, respostas validadas com os esquemas de `@pepe/shared`; ao receber 401, guarda a rota atual e manda para `/entrar`) e `web/apps/spa/src/api/consulta.ts` (`QueryClient` do TanStack Query, mensagem clara quando o banco não responde, nunca tela em branco)
+- [X] T025 [P] Criar `web/apps/spa/src/formatacao.ts`: datas `dd/MM/aaaa`, moeda `R$ 1.234,56`, CPF `000.000.000-00` a partir de 11 dígitos, e vazio (nunca "null") para valores nulos (constituição VI.3), mais o teste `web/apps/spa/src/formatacao.test.ts`
+- [X] T026 Criar `web/apps/spa/src/api/cliente.ts` (`fetch` com `credentials: 'include'`, respostas validadas com os esquemas de `@pepe/shared`; ao receber 401, guarda a rota atual e manda para `/entrar`) e `web/apps/spa/src/api/consulta.ts` (`QueryClient` do TanStack Query, mensagem clara quando o banco não responde, nunca tela em branco)
 - [ ] T027 Criar a rota `web/apps/spa/src/rotas/entrar.tsx`: formulário de usuário e senha (Mantine), que mostra a mensagem da API e, depois de entrar, volta à rota guardada
 - [ ] T028 Criar o layout `web/apps/spa/src/rotas/__root.tsx` e `web/apps/spa/src/rotas/_autenticado.tsx` com o `AppShell` do Mantine:
   - barra lateral com os grupos de `docs/legado/01-modulos.md`, mostrando **só** "Cadastros › Clientes" e "Relatórios › Clientes cadastrados" (FR-005);

@@ -1,6 +1,7 @@
 // Base do servidor (T016): formato de erro do contrato e log sem URL nem query string (research.md R9).
 import { Writable } from 'node:stream';
 
+import * as Tedious from 'tedious';
 import { afterAll, beforeAll, describe, expect, inject, it } from 'vitest';
 
 import { criarBanco } from '../../src/db/kysely.js';
@@ -19,6 +20,10 @@ describe('servidor', () => {
       },
     });
     app = await construirApp({ banco, diretorioSpa: '/nao/existe', logger: { level: 'info', stream: destino } });
+    // Rota só do teste, para simular o banco fora do ar
+    app.get('/api/teste-banco-fora', { config: { publica: true } }, async () => {
+      throw new Tedious.ConnectionError('Failed to connect', 'ESOCKET');
+    });
   });
 
   afterAll(async () => {
@@ -37,6 +42,12 @@ describe('servidor', () => {
     const log = linhasDeLog.join('');
     expect(log).toContain('"metodo":"GET"');
     expect(log).not.toMatch(/busca|Jos|Ara%C3%BAjo|Araújo|nao-existe/);
+  });
+
+  it('banco fora do ar → 503 com mensagem clara', async () => {
+    const resposta = await app.inject({ method: 'GET', url: '/api/teste-banco-fora' });
+    expect(resposta.statusCode).toBe(503);
+    expect(resposta.json().mensagem).toMatch(/^Não foi possível consultar o banco de dados agora/);
   });
 
   it('conecta ao banco de teste como pepe_web', async () => {

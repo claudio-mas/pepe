@@ -14,6 +14,7 @@ import { exigirSessao } from './auth/exigir-sessao.js';
 import { rotasSessao } from './auth/rotas.js';
 import { limparSessoesVencidas } from './auth/sessao.js';
 import { lerConfig } from './config.js';
+import { bancoIndisponivel, MENSAGEM_BANCO_INDISPONIVEL } from './db/indisponivel.js';
 import { type Banco, criarBanco } from './db/kysely.js';
 import { ErroHttp } from './erros.js';
 
@@ -75,6 +76,10 @@ export async function construirApp(opcoes: OpcoesApp): Promise<FastifyInstance> 
       }
       if (erro.validation) {
         return reply.status(400).send({ mensagem: 'Parâmetro inválido.' });
+      }
+      if (bancoIndisponivel(erro)) {
+        request.log.error({ erro: { nome: erro.constructor.name, codigo: erro.code } }, 'banco indisponível');
+        return reply.status(503).send({ mensagem: MENSAGEM_BANCO_INDISPONIVEL });
       }
       const status = erro.statusCode && erro.statusCode >= 400 && erro.statusCode < 500 ? erro.statusCode : 500;
       if (status >= 500) {
