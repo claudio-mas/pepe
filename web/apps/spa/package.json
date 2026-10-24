@@ -18,6 +18,7 @@
     "@pepe/shared": "workspace:*",
     "@tanstack/react-query": "^5.104.5",
     "@tanstack/react-router": "^1.170.46",
+    "cloudscape-ui": "github:claudio-mas/cloudscape-ui#a2a2d8b38cddb3229a07f3f2ca357abac11e400a",
     "dayjs": "^1.11.23",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"

@@ -127,10 +127,11 @@ master para aceitar um módulo. Em cada história, os testes vêm antes da imple
 
 - [X] T025 [P] Criar `web/apps/spa/src/formatacao.ts`: datas `dd/MM/aaaa`, moeda `R$ 1.234,56`, CPF `000.000.000-00` a partir de 11 dígitos, e vazio (nunca "null") para valores nulos (constituição VI.3), mais o teste `web/apps/spa/src/formatacao.test.ts`
 - [X] T026 Criar `web/apps/spa/src/api/cliente.ts` (`fetch` com `credentials: 'include'`, respostas validadas com os esquemas de `@pepe/shared`; ao receber 401, guarda a rota atual e manda para `/entrar`) e `web/apps/spa/src/api/consulta.ts` (`QueryClient` do TanStack Query, mensagem clara quando o banco não responde, nunca tela em branco)
-- [ ] T027 Criar a rota `web/apps/spa/src/rotas/entrar.tsx`: formulário de usuário e senha (Mantine), que mostra a mensagem da API e, depois de entrar, volta à rota guardada
-- [ ] T028 Criar o layout `web/apps/spa/src/rotas/__root.tsx` e `web/apps/spa/src/rotas/_autenticado.tsx` com o `AppShell` do Mantine:
+- [X] T026a Aplicar o design system Cloudscape UI como tema do Mantine (research.md R4a): dependência `cloudscape-ui` fixa num commit, `web/apps/spa/src/tema/` (tema, ponte de variáveis, estilos dos componentes, claro/escuro/sistema sincronizado com `data-cs-theme`, cores e logotipo da marca)
+- [X] T027 Criar a rota `web/apps/spa/src/rotas/entrar.tsx`: formulário de usuário e senha (Mantine), que mostra a mensagem da API e, depois de entrar, volta à rota guardada
+- [X] T028 Criar o layout `web/apps/spa/src/rotas/__root.tsx` e `web/apps/spa/src/rotas/_autenticado.tsx` com o `AppShell` do Mantine:
   - barra lateral com os grupos de `docs/legado/01-modulos.md`, mostrando **só** "Cadastros › Clientes" e "Relatórios › Clientes cadastrados" (FR-005);
-  - topo com o nome do usuário e "Sair" (FR-006);
+  - topo com o nome do usuário e "Sair" (FR-006), e a escolha de aparência (claro, escuro ou sistema);
   - `MantineProvider` e `DatesProvider` com `locale: 'pt-br'`.
 
 **Checkpoint**: banco de teste no ar, entrada e saída funcionando, barra lateral visível. As histórias podem começar.

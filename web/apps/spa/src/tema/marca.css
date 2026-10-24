@@ -1,0 +1,7 @@
+/* Cores da joalheria. Sobrescrevem as cores de marca do Cloudscape UI (tokens.css), no tema claro e no escuro;
+   o resto do visual continua vindo do kit. Enquanto as cores da loja não chegam, valem as do kit.
+   Variáveis que a marca pode definir (ver cloudscape-ui/tokens.json):
+     --cs-color-brand, --cs-color-brand-hover, --cs-color-brand-pressed, --cs-color-brand-soft,
+     --cs-color-brand-indigo (fim do degradê do botão principal), --cs-color-brand-foreground (texto e links),
+     --cs-color-focus.
+   No escuro, use :root[data-cs-theme='dark'] para --cs-color-brand-foreground e --cs-color-brand-soft. */

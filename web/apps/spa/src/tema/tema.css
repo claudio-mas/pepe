@@ -1,0 +1,38 @@
+/* Ponte entre os tokens do Cloudscape UI (--cs-*) e o Mantine. Carregar depois de tokens.css e marca.css.
+   As variáveis --cs-* trocam sozinhas entre claro e escuro (data-cs-theme no <html>, ver esquema.tsx). */
+
+:root {
+  /* Escala da cor de marca para o Mantine, derivada das cores do kit (ou da marca da loja) */
+  --pepe-marca-0: var(--cs-color-brand-soft);
+  --pepe-marca-1: color-mix(in srgb, var(--cs-color-brand) 15%, white);
+  --pepe-marca-2: color-mix(in srgb, var(--cs-color-brand) 30%, white);
+  --pepe-marca-3: color-mix(in srgb, var(--cs-color-brand) 45%, white);
+  --pepe-marca-4: color-mix(in srgb, var(--cs-color-brand) 60%, white);
+  --pepe-marca-5: color-mix(in srgb, var(--cs-color-brand) 80%, white);
+  --pepe-marca-6: var(--cs-color-brand);
+  --pepe-marca-7: var(--cs-color-brand-hover);
+  --pepe-marca-8: color-mix(in srgb, var(--cs-color-brand-hover) 50%, var(--cs-color-brand-pressed));
+  --pepe-marca-9: var(--cs-color-brand-pressed);
+}
+
+body {
+  background: var(--cs-color-canvas);
+  color: var(--cs-color-text);
+  font-family: var(--cs-font-family);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Foco visível do kit em todos os controles */
+:focus-visible {
+  outline: 2px solid var(--cs-color-focus);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

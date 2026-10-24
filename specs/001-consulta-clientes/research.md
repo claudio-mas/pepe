@@ -45,6 +45,30 @@ Fase 0 do `/speckit-plan`. Cada item fecha uma decisão técnica que a spec deix
 - **Alternativas**: componentes próprios com TanStack Table e CSS (mais código para manter); MUI (mais pesado, visual
   menos neutro); Angular (outra linguagem de templates; a decisão foi TS + React no roteiro).
 
+## R4a. Design system: Cloudscape UI como tema do Mantine
+
+- **Decisão**: o visual segue o design system do dono, o Cloudscape UI (`github.com/claudio-mas/cloudscape-ui`), usado
+  como **tema do Mantine**, não no lugar dele. A dependência `cloudscape-ui` vem do repositório do GitHub fixa num
+  commit (nunca pelo nome no npm, onde o nome não é dele). Da biblioteca, a SPA usa só o `tokens.css` (as variáveis
+  `--cs-*`, com tema claro e escuro) e o `Icon`, que é SVG puro. Em `web/apps/spa/src/tema/`:
+  - `tema.ts`: tema do Mantine com toda cor, fonte, espaço, canto e sombra apontando para uma variável `--cs-*`. A cor
+    principal é uma escala derivada de `--cs-color-brand` (`tema.css`), e as cores de base do Mantine (fundo, texto,
+    bordas) são trocadas pelas do kit;
+  - `componentes.module.css`: o desenho dos componentes do kit aplicado aos do Mantine (botão principal em pílula com
+    o degradê da marca, item ativo da barra lateral com a barra de 3 px, cabeçalho e barra lateral sem bordas);
+  - `esquema.tsx`: claro, escuro ou "Sistema" (padrão), escolhido no menu do usuário e guardado pelo Mantine; o esquema
+    resolvido vai para `data-cs-theme` no `<html>`, que liga o tema escuro dos tokens;
+  - `marca.css` e `Marca.tsx`: cores e logotipo da joalheria, que substituem os do kit. Enquanto não chegam, valem as
+    cores do kit e o nome da loja no lugar do logotipo.
+- **Por quê**: o kit traz os tokens e 18 componentes desenhados para uma tela de arquivos; faltam campo de senha,
+  chave, tabela genérica com paginação, abas, seletor de período em pt-BR, aviso de erro e diálogo, que a spec 001
+  usa e o Mantine já tem (R4). Usar os componentes do kit junto com os do Mantine também não dá: o `components.css`
+  aplica regras a todo botão e campo dentro de `.cs-ui` e quebraria os do Mantine. Como tema, os tokens continuam a
+  fonte única do visual: atualizar o commit da dependência atualiza o Pepe.
+- **Alternativas**: trocar o Mantine pelos componentes do kit (uns oito componentes novos para escrever e manter,
+  entre eles um calendário; contraria a constituição VII); copiar o `tokens.css` para o projeto (mais simples, mas
+  deixa de acompanhar o kit).
+
 ## R5. Pesquisa de clientes sem diferenciar acento
 
 - **Decisão**: a pesquisa compara com `COLLATE Latin1_General_CI_AI` sobre `Nome`, `Cliente` e `Telefone`

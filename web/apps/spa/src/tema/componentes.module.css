@@ -1,0 +1,85 @@
+/* Ajustes dos componentes do Mantine para o desenho do Cloudscape UI (components.css do kit). */
+
+/* Botão principal: pílula com o degradê da marca */
+.botao[data-variant='filled']:not([data-disabled]) {
+  background: linear-gradient(105deg, var(--cs-color-brand), var(--cs-color-brand-indigo));
+  border-color: transparent;
+  border-radius: var(--cs-radius-pill);
+  color: var(--cs-color-text-on-brand);
+  font-weight: var(--cs-font-semibold);
+}
+
+.botao[data-variant='filled']:not([data-disabled]):hover {
+  filter: brightness(0.94);
+}
+
+/* Item da barra lateral: sem fundo quando ativo, com a barra de 3 px à esquerda */
+.linkLateral {
+  height: var(--cs-size-control);
+  padding: 0 var(--cs-space-3);
+  border-radius: var(--cs-radius-small);
+  color: var(--cs-color-text);
+  position: relative;
+}
+
+.linkLateral:hover {
+  background: var(--cs-color-surface-muted);
+}
+
+.linkLateral[data-active] {
+  background: transparent;
+  color: var(--cs-color-text);
+}
+
+.linkLateral[data-active]::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: calc(-1 * var(--cs-space-2));
+  border-left: 3px solid var(--cs-color-brand-foreground);
+  border-radius: 2px;
+}
+
+.linkLateral[data-active] .iconeLateral {
+  color: var(--cs-color-brand-foreground);
+}
+
+.iconeLateral {
+  color: var(--cs-color-text-secondary);
+}
+
+.rotuloLateral {
+  font-size: var(--cs-font-body);
+}
+
+/* Cabeçalho e barra lateral na mesma cor do fundo, sem bordas (como no kit) */
+.cabecalho,
+.lateral {
+  background: var(--cs-color-canvas);
+  border: 0;
+}
+
+.principal {
+  background: var(--cs-color-canvas);
+}
+
+/* Campos com a superfície do kit */
+.campo {
+  background: var(--cs-color-surface);
+  border-color: var(--cs-color-border);
+}
+
+.cartao {
+  background: var(--cs-color-surface);
+  border-color: var(--cs-color-border-subtle);
+}
+
+@media (forced-colors: active) {
+  .botao[data-variant='filled']:not([data-disabled]) {
+    border: 2px solid ButtonText;
+  }
+  .linkLateral[data-active]::before {
+    border-color: Highlight;
+  }
+}
