@@ -1,0 +1,15 @@
+node_modules/
+dist/
+build/
+coverage/
+playwright-report/
+test-results/
+*.log
+*.local.json
+.env*
+!.env.exemplo
+*.tsbuildinfo
+
+# O .gitignore da raiz ignora **/packages/* (a pasta do NuGet do projeto VB).
+# Aqui packages/ guarda os pacotes do monorepo, que precisam ser versionados.
+!/packages/*

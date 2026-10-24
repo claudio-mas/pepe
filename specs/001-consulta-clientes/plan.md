@@ -26,9 +26,11 @@ abordagem:
 - API: Fastify 5 (+ `@fastify/static`, `@fastify/cookie`, `@fastify/rate-limit`) e Kysely com `MssqlDialect`
   (`tedious` + `tarn`); tipos do banco gerados por `kysely-codegen` (R2, R3).
 - Senhas: `@node-rs/argon2` (R7).
-- SPA: React 19, Vite, TanStack Router e TanStack Query, Mantine 8 (R4).
+- SPA: React 19, Vite 8, TanStack Router e TanStack Query, Mantine 9 (R4).
 - Compartilhado: Zod.
-- As versões exatas ficam travadas no lockfile.
+- As versões exatas ficam travadas no lockfile (`web/pnpm-lock.yaml`). Ajustes da implantação da Fase 1: Mantine 9
+  (a versão atual; o plano falava em 8), TypeScript 6.0 (o `typescript-eslint` ainda não aceita o 7) e `tedious` 19
+  (o `kysely-codegen` exige versão abaixo da 20).
 
 **Storage**: SQL Server Express (`PEPETORRAS-PC\SQLEXPRESS`, ~650 MB, collation `Latin1_General_CI_AS`, nível de
 compatibilidade 120). Leitura de `dbo.Clientes`, `dbo.CC` (view), `dbo.VENDAS`, `dbo.[VENDAS DET]` e

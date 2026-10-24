@@ -34,12 +34,12 @@ master para aceitar um módulo. Em cada história, os testes vêm antes da imple
 
 **Purpose**: criar o monorepo e as ferramentas
 
-- [ ] T001 Criar o workspace pnpm em `web/`: `web/package.json` (privado, `"engines": { "node": ">=24" }`, scripts `lint`, `test`, `build`, `dev` que delegam aos pacotes), `web/pnpm-workspace.yaml` (`apps/*`, `packages/*`), `web/tsconfig.base.json` (`strict: true`, `noUncheckedIndexedAccess: true`, módulos ESM) e `web/.gitignore` (`node_modules/`, `dist/`, `coverage/`, `playwright-report/`, `test-results/`, `*.local.json`)
-- [ ] T002 [P] Criar o pacote `web/packages/shared` (`package.json` com nome `@pepe/shared`, dependência `zod`, `tsconfig.json`, `src/index.ts` exportando `src/esquemas/`)
-- [ ] T003 [P] Criar o pacote `web/apps/api` (`package.json` com `fastify@5`, `@fastify/static`, `@fastify/cookie`, `@fastify/rate-limit`, `kysely`, `tedious`, `tarn`, `@node-rs/argon2`, `zod`, `@pepe/shared` (workspace); dev: `vitest`, `tsx`, `kysely-codegen`; `tsconfig.json`; scripts `dev` (tsx watch), `build` (tsc para `dist/`), `test`, `gerar-tipos`, `usuario`)
-- [ ] T004 [P] Criar o pacote `web/apps/spa` com Vite + React 19 + TypeScript (`package.json` com `@mantine/core@8`, `@mantine/hooks`, `@mantine/dates`, `dayjs`, `@tanstack/react-router`, `@tanstack/react-query`, `@pepe/shared`; dev: `@playwright/test`, `@tanstack/router-plugin`; `vite.config.ts` com proxy de `/api` para a API em desenvolvimento e saída do build em `web/apps/spa/dist`)
-- [ ] T005 [P] Configurar ESLint (flat config, `typescript-eslint`) e Prettier na raiz de `web/` (`web/eslint.config.js`, `web/.prettierrc`), com o script `lint` rodando nos três pacotes
-- [ ] T006 [P] Configurar o Vitest em `web/apps/api/vitest.config.ts` e `web/packages/shared/vitest.config.ts`, e o Playwright em `web/apps/spa/playwright.config.ts` (navegador Chromium, `baseURL` da API de teste, `locale: 'pt-BR'`)
+- [X] T001 Criar o workspace pnpm em `web/`: `web/package.json` (privado, `"engines": { "node": ">=24" }`, scripts `lint`, `test`, `build`, `dev` que delegam aos pacotes), `web/pnpm-workspace.yaml` (`apps/*`, `packages/*`), `web/tsconfig.base.json` (`strict: true`, `noUncheckedIndexedAccess: true`, módulos ESM) e `web/.gitignore` (`node_modules/`, `dist/`, `coverage/`, `playwright-report/`, `test-results/`, `*.local.json`)
+- [X] T002 [P] Criar o pacote `web/packages/shared` (`package.json` com nome `@pepe/shared`, dependência `zod`, `tsconfig.json`, `src/index.ts` exportando `src/esquemas/`)
+- [X] T003 [P] Criar o pacote `web/apps/api` (`package.json` com `fastify@5`, `@fastify/static`, `@fastify/cookie`, `@fastify/rate-limit`, `kysely`, `tedious`, `tarn`, `@node-rs/argon2`, `zod`, `@pepe/shared` (workspace); dev: `vitest`, `tsx`, `kysely-codegen`; `tsconfig.json`; scripts `dev` (tsx watch), `build` (tsc para `dist/`), `test`, `gerar-tipos`, `usuario`)
+- [X] T004 [P] Criar o pacote `web/apps/spa` com Vite + React 19 + TypeScript (`package.json` com `@mantine/core@9`, `@mantine/hooks`, `@mantine/dates`, `dayjs`, `@tanstack/react-router`, `@tanstack/react-query`, `@pepe/shared`; dev: `@playwright/test`, `@tanstack/router-plugin`; `vite.config.ts` com proxy de `/api` para a API em desenvolvimento e saída do build em `web/apps/spa/dist`)
+- [X] T005 [P] Configurar ESLint (flat config, `typescript-eslint`) e Prettier na raiz de `web/` (`web/eslint.config.js`, `web/.prettierrc`), com o script `lint` rodando nos três pacotes
+- [X] T006 [P] Configurar o Vitest em `web/apps/api/vitest.config.ts` e `web/packages/shared/vitest.config.ts`, e o Playwright em `web/apps/spa/playwright.config.ts` (navegador Chromium, `baseURL` da API de teste, `locale: 'pt-BR'`)
 
 ---
 
