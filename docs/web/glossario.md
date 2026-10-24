@@ -7,7 +7,8 @@ precisam da validação do dono. Na coluna "No banco / código", caminhos relati
 |---|---|---|
 | Cliente | Pessoa que compra, encomenda conserto ou tem conta corrente na loja. Nome de exibição = `ISNULL(Nome, Cliente)`. | `Clientes` (`IDCliente`, `Nome`) |
 | Mala direta (nome) | Nome do cliente como sai no envelope ou etiqueta. Na tela aparece como "Mala direta", mas a **coluna se chama `Cliente`**. Nas etiquetas tem preferência sobre `Nome`. | `Clientes.Cliente`; `docs/legado/10-clientes.md` |
-| Etiqueta (marcação) | Cliente marcado para sair na próxima impressão de etiquetas de mala direta; a marcação fica gravada no banco. | `Clientes.Imp` |
+| Cliente oculto | Cliente que não pode ser excluído por ter histórico (vendas, consertos, CC) e foi tirado das listas e dos combos. Continua nos relatórios históricos. Uso novo, da web. | `Clientes.Oculto`; RN-CLI-018 |
+| Etiqueta (marcação) | Cliente marcado para sair na próxima impressão de etiquetas de mala direta; a marcação fica gravada no banco e é compartilhada entre os usuários (decisão do dono). | `Clientes.Imp` |
 | Vendedora | Quem atende a venda ou o conserto; base da comissão. | `Vendedoras` |
 | Venda | Registro de uma venda: cliente (ou "sem cadastro"), data, formas de pagamento, valor final, comissão. | `VENDAS` (`Id`, `Venda` = nº da venda, `DataVenda`, `SEMCADASTRO`, `ValorFinal`) |
 | Item de venda | Peça vendida numa venda. | `[VENDAS DET]` |
