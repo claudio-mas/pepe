@@ -15,7 +15,7 @@ relatório de clientes cadastrados, convivendo com o sistema desktop no mesmo ba
 
 ### User Story 1 - Encontrar um cliente (Priority: P1)
 
-Na loja, a pessoa entra na web com o próprio usuário, abre "Clientes" na barra lateral e encontra um cliente digitando
+Na loja, o dono entra na web com o próprio usuário, abre "Clientes" na barra lateral e encontra um cliente digitando
 parte do nome, do nome de mala direta ou do telefone. A lista mostra os dados que ela usa para reconhecer o cliente
 sem abrir a ficha.
 
@@ -133,10 +133,12 @@ o relatório do desktop.
   vale na web (constituição V.2).
 - **FR-002**: O sistema DEVE guardar senhas de forma irreversível, bloquear temporariamente o usuário após tentativas
   seguidas de senha errada e encerrar a sessão após um período sem uso.
-- **FR-003**: O sistema DEVE ter perfis de acesso. Nesta entrega: [NEEDS CLARIFICATION: quais perfis existem e o que
-  cada um vê nesta entrega, em especial CPF e valores da conta corrente?]
-- **FR-004**: O sistema DEVE permitir criar, desativar e redefinir a senha de usuários por meio de [NEEDS CLARIFICATION:
-  uma tela de administração para o dono, ou um procedimento técnico executado pelo responsável pelo sistema?]
+- **FR-003**: Nesta entrega há **um perfil só**: todo usuário ativo vê tudo o que a entrega mostra, inclusive CPF e
+  valores da conta corrente (decisão do dono, 24/10/2026). Os perfis da constituição (V.2) entram numa entrega futura,
+  antes de a web ir para as vendedoras.
+- **FR-004**: Usuários são criados, desativados e têm a senha redefinida por um **procedimento técnico** executado pelo
+  responsável pelo sistema no servidor, sem tela de administração nesta entrega (decisão do dono). O procedimento
+  NÃO PODE exigir que a senha fique gravada em texto em lugar nenhum.
 
 **Navegação**
 
@@ -214,10 +216,11 @@ o relatório do desktop.
 
 ## Assumptions
 
-- Quem usa: o dono e as vendedoras da loja, na rede da loja (intranet), em computadores com navegador atualizado.
-  Uso em celular fica fora desta entrega.
-- [NEEDS CLARIFICATION: esta entrega vai para uso diário na loja, junto com o desktop, ou só para validação pelo dono
-  antes de ser liberada para as vendedoras?]
+- Quem usa nesta entrega: o dono, na rede da loja (intranet), em computador com navegador atualizado. Uso em celular
+  fica fora desta entrega.
+- **Uso nesta entrega** (decisão do dono): validação pelo dono, que usa a web e confere contra o desktop. A entrega
+  inclui a instalação no servidor da loja, mas não a liberação para as vendedoras: contas para elas, perfis e
+  orientação de uso vêm numa entrega seguinte.
 - A edição de clientes (criar, editar, ocultar, busca de CEP, validação de CPF), as etiquetas, a lista de e-mails e a
   venda aberta a partir do cliente ficam para a próxima entrega (`docs/legado/10-clientes.md` §9).
 - O relatório completo de peças compradas com valores, custo e margem (`VendasCliente` no desktop) fica fora desta

@@ -13,7 +13,7 @@
 
 ## Requirement Completeness
 
-- [ ] No [NEEDS CLARIFICATION] markers remain
+- [x] No [NEEDS CLARIFICATION] markers remain
 - [x] Requirements are testable and unambiguous
 - [x] Success criteria are measurable
 - [x] Success criteria are technology-agnostic (no implementation details)
@@ -31,8 +31,8 @@
 
 ## Notes
 
-- **3 marcadores [NEEDS CLARIFICATION]** aguardando o dono: perfis e o que cada um vê (FR-003), como os usuários são
-  administrados (FR-004) e se a entrega vai para uso diário ou só para validação (Assumptions).
+- Os 3 marcadores [NEEDS CLARIFICATION] foram respondidos pelo dono em 24/10/2026: um perfil só (FR-003), usuários
+  por procedimento técnico (FR-004) e entrega para validação pelo dono, instalada no servidor da loja (Assumptions).
 - Nomes de objetos do banco (`Clientes`, view `CC`, `Oculto`, `VI_Pecas_Web`, schema `web`) aparecem na spec de
   propósito: a constituição (II) exige rastrear cada regra até o legado, e eles descrevem **o dado e a restrição**, não
   a implementação. Nenhuma linguagem, biblioteca ou API é citada; a tecnologia fica para o `/speckit-plan`.
