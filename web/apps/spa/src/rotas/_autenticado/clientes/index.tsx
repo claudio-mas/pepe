@@ -24,6 +24,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import { consultaClientes, POR_PAGINA } from '../../../api/clientes';
 import { mensagemDeErro } from '../../../api/consulta';
+import { lembrarBuscaDaLista } from '../../../estado/lista-de-clientes';
 import { formatarData, formatarTexto } from '../../../formatacao';
 
 interface BuscaNaUrl {
@@ -69,6 +70,9 @@ function ListaDeClientes() {
       replace: true,
     });
   }, [textoEstavel, navigate]);
+
+  // Para o "Voltar" da ficha trazer esta mesma lista
+  useEffect(() => lembrarBuscaDaLista(busca), [busca]);
 
   const consulta = useQuery(consultaClientes(filtro));
   const paginas = consulta.data ? Math.ceil(consulta.data.total / POR_PAGINA) : 0;

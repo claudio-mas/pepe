@@ -198,7 +198,7 @@ desktop (spec, US2).
 
 ### Tests for User Story 2 ⚠️
 
-- [ ] T036 [P] [US2] Teste de contrato de `GET /api/clientes/{id}` em `web/apps/api/tests/contrato/clientes-ficha.test.ts`:
+- [X] T036 [P] [US2] Teste de contrato de `GET /api/clientes/{id}` em `web/apps/api/tests/contrato/clientes-ficha.test.ts`:
   - devolve todos os campos de `ClienteFicha`;
   - `cpf` com 11 dígitos;
   - `versao` em hexadecimal;
@@ -207,24 +207,24 @@ desktop (spec, US2).
   - `DataCad` nulo → `dataCadastro: null`;
   - id inexistente → 404;
   - cliente sem nome nem mala direta → 404.
-- [ ] T037 [P] [US2] Teste de contrato de `GET /api/clientes/{id}/conta-corrente` em `web/apps/api/tests/contrato/clientes-cc.test.ts`:
+- [X] T037 [P] [US2] Teste de contrato de `GET /api/clientes/{id}/conta-corrente` em `web/apps/api/tests/contrato/clientes-cc.test.ts`:
   - lançamentos das três origens (`Venda`, `Conserto`, lançamento de CC) com `forma` e `valor`, e débito negativo;
   - ordem por `Data` e depois `Ident`;
   - cliente sem lançamentos → lista vazia;
   - a venda órfã não aparece em cliente nenhum;
   - id inexistente → 404.
-- [ ] T038 [P] [US2] Teste E2E da US2 em `web/apps/spa/tests/e2e/us2-ficha.spec.ts`: os cenários 2.1 a 2.4 da spec, conferindo também que não há nenhum campo editável
+- [X] T038 [P] [US2] Teste E2E da US2 em `web/apps/spa/tests/e2e/us2-ficha.spec.ts`: os cenários 2.1 a 2.4 da spec, conferindo também que não há nenhum campo editável
 
 ### Implementation for User Story 2
 
-- [ ] T039 [P] [US2] Criar os esquemas Zod `ClienteFicha` e `LancamentoCC` em `web/packages/shared/src/esquemas/clientes.ts`
-- [ ] T040 [US2] Implementar `obterFicha(id)` em `web/apps/api/src/clientes/consultas.ts`:
+- [X] T039 [P] [US2] Criar os esquemas Zod `ClienteFicha` e `LancamentoCC` em `web/packages/shared/src/esquemas/clientes.ts`
+- [X] T040 [US2] Implementar `obterFicha(id)` em `web/apps/api/src/clientes/consultas.ts`:
   - colunas de `data-model.md` `ClienteFicha`;
   - `versao` = `SSMA_TimeStamp` convertido para hexadecimal;
   - `null` quando o cliente não existe ou não tem nome de exibição.
-- [ ] T041 [US2] Implementar `listarContaCorrente(id)` em `web/apps/api/src/clientes/consultas.ts`: `SELECT ID, Data, Op, Tp, VValor, Ident FROM dbo.CC WHERE CLIENTE = @id ORDER BY Data, Ident`, a mesma fonte do desktop (`dsCliente.CC`; RN-CLI-017). Mapear para `idOrigem`, `data`, `operacao`, `forma`, `valor`
-- [ ] T042 [US2] Implementar `GET /api/clientes/{id}` e `GET /api/clientes/{id}/conta-corrente` em `web/apps/api/src/clientes/rotas.ts`, com 404 (`NaoEncontrado`) quando `obterFicha` devolve `null`
-- [ ] T043 [US2] Criar a rota `web/apps/spa/src/rotas/_autenticado/clientes/$id.tsx`:
+- [X] T041 [US2] Implementar `listarContaCorrente(id)` em `web/apps/api/src/clientes/consultas.ts`: `SELECT ID, Data, Op, Tp, VValor, Ident FROM dbo.CC WHERE CLIENTE = @id ORDER BY Data, Ident`, a mesma fonte do desktop (`dsCliente.CC`; RN-CLI-017). Mapear para `idOrigem`, `data`, `operacao`, `forma`, `valor`
+- [X] T042 [US2] Implementar `GET /api/clientes/{id}` e `GET /api/clientes/{id}/conta-corrente` em `web/apps/api/src/clientes/rotas.ts`, com 404 (`NaoEncontrado`) quando `obterFicha` devolve `null`
+- [X] T043 [US2] Criar a rota `web/apps/spa/src/rotas/_autenticado/clientes/$id.tsx`:
   - campos só de leitura (FR-013, com o CPF formatado);
   - aviso "oculto";
   - abas "Cadastro" e "Conta corrente";

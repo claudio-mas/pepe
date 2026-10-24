@@ -42,3 +42,37 @@ export const esquemaPaginaClientes = z.object({
   porPagina: z.number().int(),
 });
 export type PaginaClientes = z.infer<typeof esquemaPaginaClientes>;
+
+/** Id de cliente na rota (`/clientes/{id}`): inteiro positivo que cabe num `int` do SQL Server. */
+export const esquemaIdCliente = z.coerce.number().int().min(1).max(2_147_483_647);
+
+/** Ficha (FR-013). Sem os campos sem uso: Fax, CPF_MD, Saldo, Imp, NaoZerarCC (RN-CLI-022). */
+export const esquemaClienteFicha = esquemaClienteResumo.extend({
+  /** O Nome como está gravado (o `nomeExibicao` cai para a mala direta quando ele é nulo). */
+  nome: z.string().nullable(),
+  cidade: z.string().nullable(),
+  uf: z.string().nullable(),
+  cep: z.string().nullable(),
+  email: z.string().nullable(),
+  /** 11 dígitos, sem formatação; a SPA formata. */
+  cpf: z.string().nullable(),
+  medidas: z.string().nullable(),
+  indicacao: z.string().nullable(),
+  dataCadastro: z.iso.date().nullable(),
+  /** SSMA_TimeStamp em hexadecimal, para a edição futura. */
+  versao: z.string(),
+});
+export type ClienteFicha = z.infer<typeof esquemaClienteFicha>;
+
+/**
+ * Lançamento de conta corrente (FR-014), da view dbo.CC. `data` é o relógio gravado, sem fuso
+ * (`YYYY-MM-DDTHH:mm:ss`); débitos já vêm negativos da view.
+ */
+export const esquemaLancamentoCC = z.object({
+  idOrigem: z.number().int(),
+  data: z.iso.datetime({ local: true }).nullable(),
+  operacao: z.string(),
+  forma: z.string(),
+  valor: z.number().nullable(),
+});
+export type LancamentoCC = z.infer<typeof esquemaLancamentoCC>;
