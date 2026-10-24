@@ -1,0 +1,287 @@
+openapi: 3.1.0
+info:
+  title: Pepe Web — API da entrega 001 (consulta de clientes)
+  version: 0.1.0
+  description: |
+    API da primeira entrega da web: só leitura de clientes, mais entrada e saída.
+    Todas as rotas, menos POST /api/sessao, exigem o cookie de sessão `pepe_sessao` (R7).
+    Datas em ISO 8601 (YYYY-MM-DD ou data e hora), valores numéricos como número; a SPA formata em pt-BR.
+    Os esquemas Zod em web/packages/shared são a fonte; este arquivo é o contrato de referência dos testes.
+servers:
+  - url: https://{servidor}/api
+    variables:
+      servidor:
+        default: pepetorras-pc
+security:
+  - sessao: []
+
+paths:
+  /sessao:
+    post:
+      summary: Entrar (FR-001, FR-002)
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/Credenciais' }
+      responses:
+        '200':
+          description: Entrou. Devolve o usuário e grava o cookie de sessão (HttpOnly, Secure, SameSite=Strict).
+          headers:
+            Set-Cookie: { schema: { type: string } }
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/UsuarioConectado' }
+        '401':
+          description: Usuário ou senha errados, usuário inativo ou bloqueado. Mensagem única (cenário 1.5).
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Erro' }
+        '429':
+          description: Muitas tentativas a partir do mesmo endereço.
+    get:
+      summary: Usuário da sessão atual (FR-006)
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/UsuarioConectado' }
+          description: Sessão válida.
+        '401': { $ref: '#/components/responses/SemSessao' }
+    delete:
+      summary: Sair (FR-006)
+      responses:
+        '204': { description: Sessão encerrada e cookie apagado. }
+
+  /clientes:
+    get:
+      summary: Lista e pesquisa de clientes (FR-007 a FR-012)
+      parameters:
+        - name: busca
+          in: query
+          description: Texto procurado em nome, mala direta e telefone, sem diferenciar maiúsculas e acentos (R5). Vazio = todos.
+          schema: { type: string, maxLength: 100 }
+        - name: ocultos
+          in: query
+          description: true = incluir os clientes ocultos (FR-011).
+          schema: { type: boolean, default: false }
+        - name: pagina
+          in: query
+          schema: { type: integer, minimum: 1, default: 1 }
+        - name: porPagina
+          in: query
+          schema: { type: integer, minimum: 10, maximum: 100, default: 50 }
+      responses:
+        '200':
+          description: Página de clientes, ordenada pelo nome de exibição.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/PaginaClientes' }
+        '400': { $ref: '#/components/responses/Invalido' }
+        '401': { $ref: '#/components/responses/SemSessao' }
+
+  /clientes/{id}:
+    get:
+      summary: Ficha do cliente (FR-013)
+      parameters:
+        - $ref: '#/components/parameters/IdCliente'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ClienteFicha' }
+          description: Ficha.
+        '401': { $ref: '#/components/responses/SemSessao' }
+        '404': { $ref: '#/components/responses/NaoEncontrado' }
+
+  /clientes/{id}/conta-corrente:
+    get:
+      summary: Lançamentos de conta corrente do cliente (FR-014), na ordem de data
+      parameters:
+        - $ref: '#/components/parameters/IdCliente'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/LancamentoCC' }
+          description: Lançamentos (lista vazia se não houver).
+        '401': { $ref: '#/components/responses/SemSessao' }
+        '404': { $ref: '#/components/responses/NaoEncontrado' }
+
+  /clientes/{id}/pecas-compradas:
+    get:
+      summary: Peças compradas pelo cliente (FR-016, FR-017), da mais recente para a mais antiga
+      parameters:
+        - $ref: '#/components/parameters/IdCliente'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/PecaComprada' }
+          description: Peças (lista vazia se não houver).
+        '401': { $ref: '#/components/responses/SemSessao' }
+        '404': { $ref: '#/components/responses/NaoEncontrado' }
+
+  /relatorios/clientes-cadastrados:
+    get:
+      summary: Relatório "Clientes cadastrados" (FR-018 a FR-021)
+      parameters:
+        - name: de
+          in: query
+          description: Data inicial (inclusive). Omitir de e ate = "sem período".
+          schema: { type: string, format: date }
+        - name: ate
+          in: query
+          description: Data final (inclusive). Obrigatória se de for informada, e não pode ser anterior a de.
+          schema: { type: string, format: date }
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/RelatorioClientesCadastrados' }
+          description: Linhas do relatório, com a contagem. Inclui os ocultos.
+        '400': { $ref: '#/components/responses/Invalido' }
+        '401': { $ref: '#/components/responses/SemSessao' }
+
+components:
+  securitySchemes:
+    sessao:
+      type: apiKey
+      in: cookie
+      name: pepe_sessao
+
+  parameters:
+    IdCliente:
+      name: id
+      in: path
+      required: true
+      schema: { type: integer, minimum: 1 }
+
+  responses:
+    SemSessao:
+      description: Sem sessão válida (expirada, encerrada, usuário inativo). A SPA volta para a entrada.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Erro' }
+    NaoEncontrado:
+      description: Cliente inexistente ou sem nome de exibição (RN-CLI-001).
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Erro' }
+    Invalido:
+      description: Parâmetro inválido.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Erro' }
+
+  schemas:
+    Erro:
+      type: object
+      required: [mensagem]
+      properties:
+        mensagem: { type: string, description: Texto para o usuário, em português, sem detalhes técnicos. }
+
+    Credenciais:
+      type: object
+      required: [login, senha]
+      properties:
+        login: { type: string, minLength: 1, maxLength: 50 }
+        senha: { type: string, minLength: 1, maxLength: 200 }
+
+    UsuarioConectado:
+      type: object
+      required: [login, nome]
+      properties:
+        login: { type: string }
+        nome: { type: string }
+
+    ClienteResumo:
+      type: object
+      required: [id, nomeExibicao, oculto]
+      properties:
+        id: { type: integer }
+        nomeExibicao: { type: string, description: 'ISNULL(Nome, Cliente) — RN-CLI-002' }
+        titulo: { type: [string, 'null'] }
+        malaDireta: { type: [string, 'null'] }
+        endereco: { type: [string, 'null'] }
+        bairro: { type: [string, 'null'] }
+        telefone: { type: [string, 'null'] }
+        aniversario: { type: [string, 'null'], format: date }
+        oculto: { type: boolean }
+
+    PaginaClientes:
+      type: object
+      required: [itens, total, pagina, porPagina]
+      properties:
+        itens:
+          type: array
+          items: { $ref: '#/components/schemas/ClienteResumo' }
+        total: { type: integer, description: Total de clientes que atendem ao filtro. }
+        pagina: { type: integer }
+        porPagina: { type: integer }
+
+    ClienteFicha:
+      allOf:
+        - $ref: '#/components/schemas/ClienteResumo'
+        - type: object
+          required: [versao]
+          properties:
+            cidade: { type: [string, 'null'] }
+            uf: { type: [string, 'null'] }
+            cep: { type: [string, 'null'] }
+            email: { type: [string, 'null'] }
+            cpf: { type: [string, 'null'], description: 11 dígitos, sem formatação. }
+            medidas: { type: [string, 'null'] }
+            indicacao: { type: [string, 'null'] }
+            dataCadastro: { type: [string, 'null'], format: date }
+            versao: { type: string, description: 'SSMA_TimeStamp em hexadecimal; usado na edição futura.' }
+
+    LancamentoCC:
+      type: object
+      required: [idOrigem, operacao, forma]
+      properties:
+        idOrigem: { type: integer }
+        data: { type: [string, 'null'], format: date-time }
+        operacao: { type: string, description: 'Venda, Conserto ou lançamento de CC' }
+        forma: { type: string, description: 'Cartão, Cash, Cheque, Débito, Dólar, Ouro…' }
+        valor: { type: [number, 'null'] }
+
+    PecaComprada:
+      type: object
+      required: [numeroVenda]
+      properties:
+        dataVenda: { type: [string, 'null'], format: date-time }
+        numeroVenda: { type: [string, 'null'] }
+        classe: { type: [string, 'null'] }
+        modelo: { type: [string, 'null'] }
+        descricao: { type: [string, 'null'] }
+        observacoes: { type: [string, 'null'] }
+
+    LinhaClientesCadastrados:
+      type: object
+      required: [nomeExibicao]
+      properties:
+        nomeExibicao: { type: string }
+        aniversario: { type: [string, 'null'], format: date }
+        endereco: { type: [string, 'null'] }
+        bairro: { type: [string, 'null'] }
+        telefone: { type: [string, 'null'] }
+        email: { type: [string, 'null'] }
+        dataCadastro: { type: [string, 'null'], format: date }
+
+    RelatorioClientesCadastrados:
+      type: object
+      required: [linhas, total, emitidoEm]
+      properties:
+        de: { type: [string, 'null'], format: date }
+        ate: { type: [string, 'null'], format: date }
+        total: { type: integer }
+        emitidoEm: { type: string, format: date-time }
+        linhas:
+          type: array
+          items: { $ref: '#/components/schemas/LinhaClientesCadastrados' }
