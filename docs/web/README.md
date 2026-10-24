@@ -17,7 +17,7 @@ Versão web do sistema de gestão da joalheria: uma SPA com sidebar no lugar das
 
 | # | Fase | Saída | Situação |
 |---|---|---|---|
-| 0 | Fundação | Constituição, glossário, este roteiro | **rascunhos** em `docs/web/` |
+| 0 | Fundação | Spec Kit, constituição, glossário, este roteiro | Spec Kit inicializado; **constituição 1.0.0** em `.specify/memory/constitution.md`; glossário e roteiro em `docs/web/` |
 | 1 | Inventário do legado | `docs/legado/`: mapa de navegação, índice de módulos, um inventário por módulo, catálogo de RNs, catálogo do banco e matriz CRUD | mapa, índice e **Clientes** (`10-clientes.md`) prontos; catálogo do banco extraído e analisado (`90-banco.md`); demais módulos pendentes |
 | 2 | Golden master | Roteiro de captura dos resultados do legado em períodos fixos, rodado sobre uma cópia do banco | pendente |
 | 3 | PRD + ADRs | `docs/web/PRD.md`, `docs/web/adr/NNNN-*.md` | pendente |
@@ -81,24 +81,25 @@ Regra: **nenhuma RN sem origem**. O que for dedução do agente fica marcado com
 
 ### Fase 5 — ciclo por módulo
 
-`/speckit.specify` (alimentado por `docs/legado/<módulo>.md` + RNs) → `/speckit.clarify` (dúvidas ao dono) →
-`/speckit.plan` → `/speckit.tasks` → `/speckit.analyze` → `/speckit.implement`.
+`/speckit-specify` (alimentado por `docs/legado/<módulo>.md` + RNs) → `/speckit-clarify` (dúvidas ao dono) →
+`/speckit-plan` → `/speckit-tasks` → `/speckit-analyze` → `/speckit-implement`.
 Aceite: testes de contrato da API, E2E Playwright, golden master batendo e revisão do dono.
 
-## Para começar o Spec Kit
+## Spec Kit
 
-Na máquina de desenvolvimento, na raiz do repositório:
+Inicializado em 24/10/2026 com:
 
 ```powershell
-uvx --from git+https://github.com/github/spec-kit.git specify init --here --ai claude
+uvx --from git+https://github.com/github/spec-kit.git specify init --here --integration claude --script ps
 ```
 
-Depois, levar o conteúdo de `docs/web/constituicao-rascunho.md` para `.specify/memory/constitution.md` (via
-`/speckit.constitution`).
+(Nas versões novas, `--ai` virou `--integration`.) Isso criou `.specify/` (modelos, scripts PowerShell e a
+constituição) e os comandos como skills em `.claude/skills/speckit-*`, chamados com hífen: `/speckit-specify`,
+`/speckit-plan` etc. As specs ficam em `specs/NNN-<nome>/`.
 
 ## Documentos
 
-- [`constituicao-rascunho.md`](constituicao-rascunho.md): princípios inegociáveis para humanos e agentes.
+- [`../../.specify/memory/constitution.md`](../../.specify/memory/constitution.md): a constituição, com os princípios inegociáveis para pessoas e agentes.
 - [`glossario.md`](glossario.md): vocabulário do domínio.
 - [`../legado/00-mapa-de-navegacao.md`](../legado/00-mapa-de-navegacao.md): ribbon → telas → SQL prévio.
 - [`../legado/01-modulos.md`](../legado/01-modulos.md): módulos, tabelas, sidebar proposta, candidatos a código morto.
