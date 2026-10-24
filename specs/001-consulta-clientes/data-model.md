@@ -129,7 +129,8 @@ por `VENDAS.IDCliente`. É a mesma junção do `dsCliente.Compras` (tela "Compra
 | `descricao` | `[1TabPeças].Descrição` |
 | `observacoes` | `[1TabPeças].Obs` (o desktop rotula como "Medidas") |
 
-Ordem: `DataVenda` decrescente, depois `VENDAS.Id` decrescente. Sem custo, preço nem comissão (FR-017).
+Ordem: `DataVenda` decrescente, depois `VENDAS.Id` decrescente; as peças da mesma venda, na ordem do item
+(`[VENDAS DET].Id`). `dataVenda` sai como o relógio gravado, sem fuso. Sem custo, preço nem comissão (FR-017).
 Venda sem item (sem linha em `[VENDAS DET]`) não aparece, como no desktop.
 
 ### `LinhaClientesCadastrados` (FR-018 a FR-021)

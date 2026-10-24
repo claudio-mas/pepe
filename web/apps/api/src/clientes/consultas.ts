@@ -7,6 +7,7 @@ import {
   type LancamentoCC,
   nomeExibicao,
   type PaginaClientes,
+  type PecaComprada,
 } from '@pepe/shared';
 import { sql } from 'kysely';
 
@@ -174,5 +175,31 @@ export async function listarContaCorrente(banco: Banco, id: number): Promise<Lan
     operacao: l.Op,
     forma: l.Tp,
     valor: l.VValor,
+  }));
+}
+
+/**
+ * Peças compradas pelo cliente (FR-016): a junção da tela "Compras" do desktop (dsCliente.Compras), da venda mais
+ * recente para a mais antiga. Só os campos de exibição: nada de custo, preço ou comissão (FR-017). Venda sem item
+ * não aparece. O id do item desempata as peças da mesma venda.
+ */
+export async function listarPecasCompradas(banco: Banco, id: number): Promise<PecaComprada[]> {
+  const linhas = await banco
+    .selectFrom('VENDAS as v')
+    .innerJoin('VENDAS DET as d', 'd.Venda', 'v.Id')
+    .innerJoin('1TabPeças as p', 'p.IDPeça', 'd.Peça')
+    .select(['v.DataVenda', 'v.Venda', 'p.Classe', 'p.Modêlo', 'p.Descrição', 'p.Obs'])
+    .where('v.IDCliente', '=', id)
+    .orderBy('v.DataVenda', 'desc')
+    .orderBy('v.Id', 'desc')
+    .orderBy('d.Id')
+    .execute();
+  return linhas.map((l) => ({
+    dataVenda: dataHoraLocal(l.DataVenda),
+    numeroVenda: l.Venda,
+    classe: l.Classe,
+    modelo: l.Modêlo,
+    descricao: l.Descrição,
+    observacoes: l.Obs,
   }));
 }

@@ -244,23 +244,23 @@ desktop (spec, US2).
 
 ### Tests for User Story 3 ⚠️
 
-- [ ] T044 [P] [US3] Teste de contrato de `GET /api/clientes/{id}/pecas-compradas` em `web/apps/api/tests/contrato/clientes-pecas.test.ts`:
+- [X] T044 [P] [US3] Teste de contrato de `GET /api/clientes/{id}/pecas-compradas` em `web/apps/api/tests/contrato/clientes-pecas.test.ts`:
   - as 3 peças do cliente de teste em ordem de `DataVenda` decrescente e depois `VENDAS.Id` decrescente;
   - campos `dataVenda`, `numeroVenda`, `classe`, `modelo`, `descricao`, `observacoes`;
   - a resposta **não tem** custo, preço nem comissão (FR-017);
   - cliente sem compras → lista vazia;
   - id inexistente → 404.
-- [ ] T045 [P] [US3] Teste E2E da US3 em `web/apps/spa/tests/e2e/us3-pecas-compradas.spec.ts`: cenários 3.1 e 3.2
+- [X] T045 [P] [US3] Teste E2E da US3 em `web/apps/spa/tests/e2e/us3-pecas-compradas.spec.ts`: cenários 3.1 e 3.2
 
 ### Implementation for User Story 3
 
-- [ ] T046 [P] [US3] Criar o esquema Zod `PecaComprada` em `web/packages/shared/src/esquemas/clientes.ts`
-- [ ] T047 [US3] Implementar `listarPecasCompradas(id)` em `web/apps/api/src/clientes/consultas.ts`:
+- [X] T046 [P] [US3] Criar o esquema Zod `PecaComprada` em `web/packages/shared/src/esquemas/clientes.ts`
+- [X] T047 [US3] Implementar `listarPecasCompradas(id)` em `web/apps/api/src/clientes/consultas.ts`:
   - junção `dbo.VENDAS` ⨝ `dbo.[VENDAS DET]` (`[VENDAS DET].Venda = VENDAS.Id`) ⨝ `dbo.[1TabPeças]` (`[VENDAS DET].Peça = [1TabPeças].IDPeça`), filtrada por `VENDAS.IDCliente = @id`;
   - selecionar só `DataVenda`, `Venda`, `Classe`, `Modêlo`, `Descrição` e `Obs`;
   - ordem `DataVenda DESC`, depois `VENDAS.Id DESC`.
-- [ ] T048 [US3] Implementar `GET /api/clientes/{id}/pecas-compradas` em `web/apps/api/src/clientes/rotas.ts` (404 se `obterFicha` devolver `null`)
-- [ ] T049 [US3] Adicionar a aba "Peças compradas" em `web/apps/spa/src/rotas/_autenticado/clientes/$id.tsx`: tabela com data, nº da venda, classe + modelo, descrição e observações, e o aviso "Não há compras registradas" quando a lista vier vazia
+- [X] T048 [US3] Implementar `GET /api/clientes/{id}/pecas-compradas` em `web/apps/api/src/clientes/rotas.ts` (404 se `obterFicha` devolver `null`)
+- [X] T049 [US3] Adicionar a aba "Peças compradas" em `web/apps/spa/src/rotas/_autenticado/clientes/$id.tsx`: tabela com data, nº da venda, classe + modelo, descrição e observações, e o aviso "Não há compras registradas" quando a lista vier vazia
 
 **Checkpoint**: US1, US2 e US3 funcionam
 

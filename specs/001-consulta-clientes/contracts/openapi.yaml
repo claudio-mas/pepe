@@ -257,7 +257,7 @@ components:
       type: object
       required: [numeroVenda]
       properties:
-        dataVenda: { type: [string, 'null'], format: date-time }
+        dataVenda: { type: [string, 'null'], description: 'Data e hora gravadas, sem fuso (YYYY-MM-DDTHH:mm:ss).' }
         numeroVenda: { type: [string, 'null'] }
         classe: { type: [string, 'null'] }
         modelo: { type: [string, 'null'] }

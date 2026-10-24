@@ -1,5 +1,5 @@
-// Clientes: lista, ficha e conta corrente (contracts/openapi.yaml, GET /api/clientes...).
-import { esquemaClienteFicha, esquemaLancamentoCC, esquemaPaginaClientes } from '@pepe/shared';
+// Clientes: lista, ficha, conta corrente e peças compradas (contracts/openapi.yaml, GET /api/clientes...).
+import { esquemaClienteFicha, esquemaLancamentoCC, esquemaPaginaClientes, esquemaPecaComprada } from '@pepe/shared';
 import { keepPreviousData, queryOptions } from '@tanstack/react-query';
 
 import { chamarApi } from './cliente';
@@ -37,5 +37,13 @@ export function consultaContaCorrente(id: number) {
     queryKey: ['clientes', id, 'conta-corrente'],
     queryFn: ({ signal }) =>
       chamarApi(`/clientes/${id}/conta-corrente`, { esquema: esquemaLancamentoCC.array(), sinal: signal }),
+  });
+}
+
+export function consultaPecasCompradas(id: number) {
+  return queryOptions({
+    queryKey: ['clientes', id, 'pecas-compradas'],
+    queryFn: ({ signal }) =>
+      chamarApi(`/clientes/${id}/pecas-compradas`, { esquema: esquemaPecaComprada.array(), sinal: signal }),
   });
 }

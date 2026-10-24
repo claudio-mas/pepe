@@ -1,4 +1,5 @@
-// Rotas de clientes (contracts/openapi.yaml): lista (FR-007 a FR-012), ficha (FR-013) e conta corrente (FR-014).
+// Rotas de clientes (contracts/openapi.yaml): lista (FR-007 a FR-012), ficha (FR-013), conta corrente (FR-014)
+// e peças compradas (FR-016).
 // A sessão é exigida pelo hook exigir-sessao.
 import {
   type ClienteFicha,
@@ -6,11 +7,12 @@ import {
   esquemaIdCliente,
   type LancamentoCC,
   type PaginaClientes,
+  type PecaComprada,
 } from '@pepe/shared';
 import type { FastifyInstance } from 'fastify';
 
 import { ErroHttp } from '../erros.js';
-import { clienteExiste, listarClientes, listarContaCorrente, obterFicha } from './consultas.js';
+import { clienteExiste, listarClientes, listarContaCorrente, listarPecasCompradas, obterFicha } from './consultas.js';
 
 const NAO_ENCONTRADO = 'Cliente não encontrado.';
 
@@ -37,5 +39,11 @@ export async function rotasClientes(app: FastifyInstance): Promise<void> {
     const id = idDaRota(request.params);
     if (!(await clienteExiste(app.banco, id))) throw new ErroHttp(404, NAO_ENCONTRADO);
     return listarContaCorrente(app.banco, id);
+  });
+
+  app.get('/clientes/:id/pecas-compradas', async (request): Promise<PecaComprada[]> => {
+    const id = idDaRota(request.params);
+    if (!(await clienteExiste(app.banco, id))) throw new ErroHttp(404, NAO_ENCONTRADO);
+    return listarPecasCompradas(app.banco, id);
   });
 }
