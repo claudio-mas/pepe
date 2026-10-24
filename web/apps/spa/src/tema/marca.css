@@ -1,0 +1,26 @@
+/* Cores da joalheria (pepetorras.com.br): sobrescrevem as cores de marca do Cloudscape UI (tokens.css), no tema
+   claro e no escuro; o resto do visual continua vindo do kit.
+   - #996633: cor de destaque e dos botões do site (--accent-color, --button-background);
+   - #5C4535: marrom das etiquetas do site (--label-background), usado no fim do degradê e no foco;
+   - no escuro, um bronze claro para texto e foco sobre o fundo #141414.
+   Contraste conferido (WCAG): branco sobre #996633 4,88:1; #996633 sobre o fundo 4,76:1; #d6a76f sobre o fundo
+   escuro 8,44:1; foco #5C4535 8,68:1 e #e0b98c 9,02:1. */
+
+:root,
+:root[data-cs-theme='light'] {
+  --cs-color-brand: #996633;
+  --cs-color-brand-hover: #7a5229;
+  --cs-color-brand-pressed: #5c4535;
+  --cs-color-brand-soft: #f3ebe2;
+  --cs-color-brand-indigo: #5c4535;
+  --cs-color-brand-foreground: #996633;
+  --cs-color-surface-selected: #f3ebe2;
+  --cs-color-focus: #5c4535;
+}
+
+:root[data-cs-theme='dark'] {
+  --cs-color-brand-foreground: #d6a76f;
+  --cs-color-brand-soft: #3a2c20;
+  --cs-color-surface-selected: #3a2c20;
+  --cs-color-focus: #e0b98c;
+}
