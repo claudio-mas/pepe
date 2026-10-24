@@ -68,10 +68,11 @@ Caminhos relativos a `Pepe/`.
 ### SAI — Saídas
 - **Telas**: `frmSaidasDG`.
 - **Relatórios**: `frmSaidasBase` (`rptSaidas`); entra em `VendasSaidas` e no gerencial (`VI_SAIDAS`).
-- **Tabelas**: `Saidas`, `TiposSaidas`, `[1TabPeças]`.
+- **Tabelas**: `Saidas`, `TiposSaidas` (cadastro de motivos: `Id`, `Motivo`), `[1TabPeças]`.
 - **Escritas**: grade editável em `Saidas` (TableAdapter); `update [1TabPeças]` (baixa e custo da peça).
-- **A definir no glossário**: o que é uma "saída" no negócio (retirada de peça do estoque por motivo diferente de
-  venda?). Confirmar com o dono.
+- **Definição (dono, 24/10/2026)**: saída é a retirada de uma peça do estoque por qualquer motivo que não seja venda. O
+  motivo é a coluna "Saída para" (`Saidas.IdMotivo` → `TiposSaidas.Id`, `frmSaidasDG.Designer.vb:363-365`), e a
+  lista de motivos é dado mantido pelo usuário, não fixa no código.
 
 ### CC — Conta corrente
 - **Telas**: `frmCCdg` (saldos por cliente), `frmCC` (extrato e lançamentos).
@@ -117,7 +118,9 @@ Caminhos relativos a `Pepe/`.
 - **Tabelas**: tabelas de inconsistência (`Inconsist1`, `2`, `4` e `5` nos DataSets; a confirmar se são views).
 - **Na web**: usuários, perfis e auditoria são novos (tabelas no schema `web`).
 
-## Candidatos a código morto (confirmar com o dono antes de excluir do escopo)
+## Fora do escopo da web (confirmado pelo dono em 24/10/2026)
+
+Nenhum item abaixo vira spec nem tela na web. Itens que servem de referência de cálculo continuam valendo como fonte de RN.
 
 | Item | Evidência |
 |---|---|
@@ -131,7 +134,7 @@ Caminhos relativos a `Pepe/`.
 | `PeçasEmEstoqueBase` (página RELATÓRIOS ANTIGOS) | Existe a versão nova `PeçasEmEstoqueNovoBase` |
 | `Financeiro/frmOuro` (botão oculto) | Substituído por `frmCota` |
 | Botões soltos da ribbon (`BarButtonItem1/2/3/7/24`) | Sem grupo nem handler |
-| Avisos de vencimento (`frmDevPrincipal.vb:287-345`) | Desligados por `Exit Sub`. Funcionalidade a decidir: voltar na web como painel? |
+| Avisos de vencimento (`frmDevPrincipal.vb:287-345`) | Desligados por `Exit Sub`. O dono decidiu que **não voltam** na web |
 
 ## Próximos inventários (ordem sugerida, alinhada ao roadmap)
 

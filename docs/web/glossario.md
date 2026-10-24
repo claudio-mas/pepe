@@ -12,7 +12,7 @@ precisam da validação do dono. Na coluna "No banco / código", caminhos relati
 | Venda interna | Venda criada a partir do cadastro de clientes (`Tipo = 'Interna'`). **(a confirmar)** a diferença para a venda comum. | `frmClientesDG.vb:111` |
 | Peça | Joia do estoque, identificada por nº de ficha/modelo; tem classe, família, custo, preço, foto e situação (em estoque ou vendida). | `[1TabPeças]` (`IDPeça`, `Modêlo`, `Classe`, `Vendida`, `Custo`, `Foto`) |
 | Ficha | Número que identifica a peça fisicamente. Na "volta", a peça ganha novo nº de ficha. | `frmVolta.vb` |
-| Classe | Tipo da peça: `AN` (anel), `BR` (brinco), `GAR` (gargantilha), `PEN` (pingente), `PUL` (pulseira), `ALI` (aliança), `OUT` (peça diversa). Os nomes por extenso são **(a confirmar)**. Há classes legadas em peças vendidas (`BOU`, `BUT`). Os relatórios `Balanço41BR`/`42GAR`/`43OUT`/`44PEN` são o balanço por classe. | `[1TabPeças].Classe`; `Scripts/BOU_v1_up.sql` |
+| Classe | Tipo da peça: `AN` (anel), `BR` (brinco), `GAR` (gargantilha), `PEN` (pingente), `PUL` (pulseira), `ALI` (aliança), `OUT` (peça diversa). Há classes legadas em peças vendidas (`BOU`, `BUT`). Os relatórios `Balanço41BR`/`42GAR`/`43OUT`/`44PEN` são o balanço por classe. | `[1TabPeças].Classe`; `Scripts/BOU_v1_up.sql` |
 | Situação da peça | Em estoque = `Vendida = 0` e `Saida = 0`. O desktop troca `Vendida` nulo por 0 antes de vários relatórios. | `[1TabPeças].Vendida`, `.Saida`; `frmDevPrincipal.vb:192` |
 | Família | O metal da peça: `Ou` (ouro), `Ag` (prata), `Ou / Ag`, `Boutique` (sem ouro nem prata). | `[1TabPeças].Familia`; `Scripts/BOU_v1_up.sql` |
 | Boutique | Peça sem ouro nem prata (bijuteria/acessório). Até o `BOU_v1` também era uma classe; hoje é só família. | idem |
@@ -22,7 +22,7 @@ precisam da validação do dono. Na coluna "No banco / código", caminhos relati
 | Volta | Retorno ao estoque de uma peça vendida, com novo nº de ficha. | `USP_VOLTA`, `frmVolta` |
 | Clonar peça | Criar uma peça nova a partir de outra. | `USP_CLONA_PECA` |
 | Conserto | Serviço de reparo/ajuste de joia para um cliente, com valor, pagamento e prazo. | `CONSERTOS` |
-| Saída | Retirada de peça do estoque registrada por tipo. **(a confirmar)**: quais motivos (brinde, perda, uso interno, consignação?). | `Saidas`, `TiposSaidas` |
+| Saída | Retirada de uma peça do estoque por qualquer motivo que não seja venda. O motivo ("Saída para") vem de uma lista mantida pelo próprio usuário. | `Saidas` (`IdMotivo`) → `TiposSaidas` (`Id`, `Motivo`); `frmSaidasDG` |
 | Conta corrente (CC) | Saldo do cliente com a loja: vendas e consertos lançados a prazo e pagamentos recebidos. | `CC`, `CC2`, `[Conta Corrente]`, `USP_UPDATE_SALDO_CC` |
 | Extrato | Movimento da conta corrente de um cliente num período. | `tabExtrato` (tabela de trabalho), `rptExtratoCC` |
 | Parcela de cartão | Vencimento a receber de uma venda, conserto ou CC paga no cartão. | `[Vencto Cartão]` (`Venda`, `IdConserto`, `IdCC`, `Parcela`, `Vencto`, `Pagto`) |

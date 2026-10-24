@@ -15,7 +15,8 @@ modo de personalização, ou seja, inacessível ao usuário).
    `BACKUP DATABASE BDTorras TO DISK = 'G:\Meu Drive\Backup Sistema\Backup{1,2}.bak'`, com rodízio entre dois arquivos e
    o controle "já fez hoje" em `My.Settings.BackupSQL`.
 4. `frmDevPrincipal_Activated` (`:287`) — os avisos de cartões e cheques a vencer na semana estão **desligados** (o
-   `Exit Sub` da linha 290 vem antes do código). O botão "Não exibir avisos" (`ckAvisos`) fica oculto.
+   `Exit Sub` da linha 290 vem antes do código). O botão "Não exibir avisos" (`ckAvisos`) fica oculto. Decisão do
+   dono (24/10/2026): os avisos **não voltam** na web.
 
 Padrão das telas: cada formulário é aberto pela instância padrão do VB (`frmX.Show()`), esconde a `frmDevPrincipal` no
 `Load` e a restaura no `FormClosing`.
@@ -90,7 +91,7 @@ A galeria de temas do DevExpress não tem equivalente funcional. Na web isso vir
 
 `BarButtonItem1` "Lançamento de boletas", `BarButtonItem7` "Entradas F.P." (oculto), `BarButtonItem24` "Cheques pré",
 `BarButtonItem2` "Importar planilha" e `BarButtonItem3` "Verificar recebimentos". Nenhum está ligado a um grupo nem a um
-handler. São candidatos a código morto (ver `01-modulos.md`).
+handler. Ficam fora do escopo da web (confirmado pelo dono; ver `01-modulos.md`).
 
 ## Navegação entre telas (fora da ribbon)
 
