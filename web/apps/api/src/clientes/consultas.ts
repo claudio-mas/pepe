@@ -15,6 +15,13 @@ export function escaparLike(texto: string): string {
   return texto.replace(/[[%_]/g, '[$&]');
 }
 
+/** O telefone é comparado sem parênteses, espaços e hífen: "988880001" acha "(11) 98888-0001". */
+export function semPontuacaoDeTelefone(texto: string): string {
+  return texto.replace(/[() -]/g, '');
+}
+
+const telefoneSemPontuacao = sql`REPLACE(REPLACE(REPLACE(REPLACE(Telefone, '(', ''), ')', ''), ' ', ''), '-', '')`;
+
 const nomeDeExibicao = sql<string>`ISNULL(Nome, Cliente)`;
 
 export async function listarClientes(banco: Banco, filtro: FiltroClientes): Promise<PaginaClientes> {
@@ -25,10 +32,12 @@ export async function listarClientes(banco: Banco, filtro: FiltroClientes): Prom
   if (filtro.busca) {
     // R5: a collation do banco diferencia acento; CI_AI só na expressão, sem alterar objeto nenhum
     const padrao = `%${escaparLike(filtro.busca)}%`;
+    const telefone = semPontuacaoDeTelefone(filtro.busca);
+    const padraoTelefone = telefone ? `%${escaparLike(telefone)}%` : padrao;
     consulta = consulta.where(
       sql<boolean>`(Nome COLLATE Latin1_General_CI_AI LIKE ${padrao}
         OR Cliente COLLATE Latin1_General_CI_AI LIKE ${padrao}
-        OR Telefone COLLATE Latin1_General_CI_AI LIKE ${padrao})`,
+        OR ${telefoneSemPontuacao} COLLATE Latin1_General_CI_AI LIKE ${padraoTelefone})`,
     );
   }
 

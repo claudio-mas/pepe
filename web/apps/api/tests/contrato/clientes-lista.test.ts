@@ -52,6 +52,12 @@ describe('GET /api/clientes', () => {
     expect(ids(await listar({ busca: 'BEATRIZ' }))).toEqual([2]);
   });
 
+  it('telefone sem parênteses, espaços nem hífen: só os dígitos acham o cliente', async () => {
+    for (const busca of ['988880001', '11988880001', '(11)98888', '11 98888 0001', '98888 - 0001']) {
+      expect(ids(await listar({ busca })), busca).toEqual([1]);
+    }
+  });
+
   it('cliente só com mala direta aparece com o nome de mala direta', async () => {
     const [cliente] = (await listar({ busca: 'Beatriz' })).itens;
     expect(cliente).toMatchObject({ id: 2, nomeExibicao: 'Sra. Beatriz Lima', malaDireta: 'Sra. Beatriz Lima' });

@@ -76,7 +76,9 @@ Fase 0 do `/speckit-plan`. Cada item fecha uma decisão técnica que a spec deix
 
 - **Decisão**: a pesquisa compara com `COLLATE Latin1_General_CI_AI` sobre `Nome`, `Cliente` e `Telefone`
   (`LIKE '%' + @texto + '%'`), e a ordenação usa `ISNULL(Nome, Cliente) COLLATE Latin1_General_CI_AI`. Paginação com
-  `OFFSET … FETCH`, 50 por página, mais a contagem total.
+  `OFFSET … FETCH`, 50 por página, mais a contagem total. O telefone é comparado sem parênteses, espaços e hífen,
+  dos dois lados (`REPLACE` aninhado na coluna, e o mesmo no texto digitado): "988880001" acha "(11) 98888-0001"
+  (pedido do dono, 24/10/2026). Os curingas do `LIKE` (`%`, `_`, `[`) digitados são escapados.
 - **Por quê**: o banco é `Latin1_General_CI_AS`, que diferencia acento (FR-010). Trocar a collation só na expressão
   não altera nenhum objeto (constituição I.1). Não há índice em `Nome` (`docs/legado/90-banco.md` §5), mas com cerca
   de 5.300 clientes a varredura completa leva poucos milissegundos: dá folga para SC-002 (1 s) sem índice novo.
