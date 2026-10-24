@@ -21,9 +21,10 @@ segue mudando, mas a estrutura é a mesma.
 Consequências para a web:
 - **Integridade referencial só existe no código.** Nada impede registros órfãos, e eles existem (§3).
 - **Sem gatilhos**: toda regra de gravação está no desktop ou nas procs. A web precisa reproduzi-las (constituição I.4).
-- **Nível 120**: as consultas da web devem ser testadas com esse nível de compatibilidade. A versão e a edição do
-  SQL Server **da loja** (`PEPETORRAS-PC\SQLEXPRESS`) não foram capturadas. Se for Express, há limite de 10 GB por
-  banco e de memória (item do ADR de implantação).
+- **Nível 120**: as consultas da web devem ser testadas com esse nível de compatibilidade.
+- **Produção é SQL Server Express**, com cerca de 650 MB (informação do dono, 24/10/2026). O limite de 10 GB por banco
+  está longe. Os limites de memória e de CPU do Express entram no ADR de implantação: a web vai dividir o mesmo
+  servidor com o desktop e com o outro sistema (§6).
 
 ## 2. Concorrência: `SSMA_TimeStamp`
 
@@ -90,8 +91,13 @@ ADR de convivência se índices novos são permitidos (proposta: sim, com prefix
 - **Getnet**: `getnet1` a `getnet5`, `VI_Getnet`, `VI_Getnet_Base`.
 - **Relatórios**: `VI_*` (legado) e `VW_RG2_*` (novo).
 - **`VI_Pecas_Web`** (criada em 08/2025, alterada em 05/2026): catálogo de peças com foto, pedras, ouro e última
-  venda. **Nenhum código deste repositório a usa**: há outro sistema lendo o `BDTorras` (ver §8).
-- Views `Beth` (02/2025) e `BasePrecos` (09/2025): também sem uso no código deste repositório.
+  venda. Nenhum código deste repositório a usa. **O dono confirmou que há outro sistema usando o `BDTorras`, e ele
+  precisa continuar funcionando.**
+- Views `Beth` (02/2025) e `BasePrecos` (09/2025): também sem uso neste repositório; tratadas como do outro sistema.
+- Objetos de que essas views dependem (`09_dependencias.csv`), que portanto **não podem mudar de forma nem de
+  significado**: `1TabPeças`, `METAIS`, `PEDRAS`, `VENDAS`, `[VENDAS DET]`, `Clientes` e `PeçasEstoque`. Isso vale
+  também para os dados: `VI_Pecas_Web` mostra o nome do cliente da última venda, então ocultar cliente não pode mexer
+  em `Clientes.Nome`.
 - Procs: as 19 citadas pelo desktop (`USP_*`). Parâmetros em `07_parametros.csv`; código em `banco/modulos/`.
 
 ## 7. Respostas para o inventário de Clientes
@@ -112,17 +118,15 @@ ADR de convivência se índices novos são permitidos (proposta: sim, com prefix
 | Venda "Interna" é exceção? | Não: **15.268 de 15.611** vendas são `Tipo = 'Interna'`. É o tipo normal. |
 | Marcados para etiqueta | 1. |
 
-## 8. Novas dúvidas para o dono
+## 8. Decisões do dono (24/10/2026)
 
-1. **`Oculto` já está preenchido em 2.188 clientes.** Quem marcou e o que significava (uma versão antiga do sistema,
-   em Access)? Se a web passar a esconder `Oculto = 1` (RN-CLI-018), **41% do cadastro some da lista**. Opções:
-   a. usar `Oculto` como está, aceitando que esses 2.188 somem;
-   b. zerar `Oculto` antes de a web entrar (alteração de dados, com script `_up`/`_down`);
-   c. usar uma marcação nova, no schema `web`, e deixar `Oculto` como está.
-2. **Há outro sistema usando o `BDTorras`?** As views `VI_Pecas_Web`, `Beth` e `BasePrecos` não são usadas por este
-   repositório. Quem lê `VI_Pecas_Web` (um catálogo de peças na internet?) também convive com a web e não pode quebrar.
-3. **Tabelas sem uso aparente**: `Aniversariantes`, `Contatos`, `Compras`, `PeçasEstoque`, `GASTO OFICINA`, `Senha`.
-   Ainda servem para algo? (Nada será apagado; a pergunta é se a web precisa delas.)
-4. **Clientes cadastrados por período** (RN-CLI-012): com 93% dos clientes sem `DataCad`, o filtro por período só
-   mostra os cadastros recentes. Isso é esperado? Na web, `DataCad` passa a ser sempre gravada.
-5. **Versão do SQL Server da loja**: se for Express, confirmar o tamanho atual do banco (limite de 10 GB).
+| # | Pergunta | Decisão |
+|---|---|---|
+| 1 | 2.188 clientes já têm `Oculto = 1`. O que fazer? | **Usar `Oculto` como está**, aceitando que esses clientes somem da lista e dos combos da web (RN-CLI-018). |
+| 2 | Há outro sistema usando o `BDTorras`? | **Sim, e ele precisa continuar funcionando.** As views `VI_Pecas_Web`, `Beth`, `BasePrecos` e os objetos de que dependem ficam protegidos (§6; constituição I.6). |
+| 3 | A web precisa de `Aniversariantes`, `Contatos`, `Compras`, `PeçasEstoque`, `GASTO OFICINA`, `Senha`? | **Não.** Ficam no banco intocadas (`PeçasEstoque` é usada pela `BasePrecos`, do outro sistema). |
+| 4 | 93% dos clientes sem `DataCad`: o relatório por período só mostra os recentes. Esperado? | **Sim, é esperado.** Na web, `DataCad` passa a ser sempre gravada. |
+| 5 | Versão do SQL Server da loja | **SQL Server Express, banco com cerca de 650 MB** (§1). |
+
+Pendente: quem mantém o outro sistema, se ele também **grava** no banco e se lê mais objetos além das três views.
+Isso define até onde vale a proteção da constituição I.6.

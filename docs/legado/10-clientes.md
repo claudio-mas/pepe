@@ -48,7 +48,7 @@ do módulo CC); nenhuma das duas está nos DataSets do módulo.
 | `Medidas` | string | 250 | Medidas | ficha | texto livre, também na web (dono) |
 | `Imp` | boolean | — | Etiquetas | lista (checkbox editável) | marcação "imprimir etiqueta", **gravada no banco** |
 | `Saldo` | float | — | — | nenhuma tela do módulo | **sem uso** no módulo: a web ignora (dono). O saldo da CC vem das procs do módulo CC |
-| `Oculto` | boolean | — | — | nenhuma tela | sem uso no código atual, mas **2.188 clientes já têm `Oculto = 1`** (dado antigo, origem desconhecida). A web passaria a usá-la para ocultar o cliente que não pode ser excluído (RN-CLI-018). Ver pendência em §8 |
+| `Oculto` | boolean | — | — | nenhuma tela | sem uso no código atual, mas **2.188 clientes já têm `Oculto = 1`** (dado antigo). A web usa a coluna como está (decisão do dono) para esconder clientes, inclusive o que não pode ser excluído (RN-CLI-018) |
 | `DataCad` | date | — | Data Cadastro | ficha, relatório de cadastrados | preenchida com a data do dia ao criar (`frmClientes.vb:27`). **4.906 dos 5.279 clientes não têm data** |
 
 Nenhuma coluna é obrigatória no DataSet (todas `minOccurs=0`, menos `IDCliente`).
@@ -108,7 +108,7 @@ continua com o defeito até ser ajustado.
 | RN-CLI-009 | Etiqueta de aniversário: clientes com `Nome` não nulo cujo mês de `Aniv` = mês informado; opcionalmente só os que compraram nos últimos N meses (`@meses` nulo = todos). | `rptEtiquetasAniv.resx`; `frmEtiqAniv.vb` | alta. Na web: filtro em anos (RN-CLI-021) |
 | RN-CLI-010 | "Nova venda" a partir do cliente cria em `VENDAS` uma linha `Tipo = 'Interna'` (o tipo normal: 15.268 de 15.611 vendas) com `DataVenda = hoje` e número `NNNN/aa`: o maior `Venda` do ano corrente + 1 (4 primeiros caracteres), ou `0001/aa` se for a primeira do ano. **Regra do módulo VEN** disparada daqui. | `frmClientesDG.vb:95-122` | alta |
 | RN-CLI-011 | Lista de e-mails: e-mails que contêm `@`, de clientes com `Nome` não nulo, ordenados por e-mail. | `frmClientesDG.vb:139` | alta |
-| RN-CLI-012 | Clientes cadastrados: filtro por `DataCad` entre as datas (padrão: mês corrente) ou "Sem período" (todos); exportação para Excel só no modo "Sem período". | `Relatorios/ClientesCadastrados.vb` | alta |
+| RN-CLI-012 | Clientes cadastrados: filtro por `DataCad` entre as datas (padrão: mês corrente) ou "Sem período" (todos); exportação para Excel só no modo "Sem período". Como 93% dos clientes não têm `DataCad`, o filtro por período só mostra cadastros recentes, e isso é esperado (dono). | `Relatorios/ClientesCadastrados.vb` | alta |
 | RN-CLI-013 | Clientes sem compras: clientes cuja `Última` compra (em `NVendasBase`) **não** está entre as datas. `NVendasBase` agrupa por **nome**, então clientes homônimos (36 nomes repetidos) se misturam. | `ClientesSemCompras.resx`; `banco/modulos/VIEW/dbo.NVendasBase.sql` | alta |
 | RN-CLI-014 | Compras por cliente no período: nº de vendas e total (`SUM(ValorFinal)`) por nome de cliente, nº de peças e data da última compra no período; vendas sem cliente aparecem como `'S/ Nome'` e somem do resultado final (o JOIN externo é por `Clientes.Nome`). | `ComprasPorCliente.resx` | alta (o comportamento com "S/ Nome" e nomes repetidos merece golden master) |
 | RN-CLI-015 | Geral de clientes: clientes que compraram nos últimos N meses (`DATEDIFF(month, DataVenda, GETDATE()) <= N`). | `GeralClientes.resx` | alta |
@@ -192,9 +192,10 @@ Estas regras **mudam** o comportamento do legado. Valem para a web. O desktop s�
 Pendência derivada: o que exatamente o "ocultar" esconde (proposta em §7) e se o desktop será ajustado para respeitar
 `Oculto`.
 
-**Pendência nova, do catálogo do banco (`90-banco.md` §8): 2.188 clientes já têm `Oculto = 1`**, sem código atual que
-leia ou grave a coluna. Antes de a web usar `Oculto` (RN-CLI-018), o dono precisa dizer o que essa marcação antiga
-significa: se a web esconder `Oculto = 1`, 41% do cadastro some da lista.
+**Decidido (dono, 24/10/2026; `90-banco.md` §8):** 2.188 clientes já têm `Oculto = 1`, sem código atual que leia ou
+grave a coluna. A web **usa `Oculto` como está**: esses clientes somem da lista e dos combos (41% do cadastro) e
+voltam com o filtro "mostrar ocultos". Ocultar mexe só em `Oculto`, nunca em `Nome`: a `VI_Pecas_Web`, do outro
+sistema que lê o banco, mostra o nome do cliente.
 
 ## 9. Proposta para a fatia de validação (só leitura)
 

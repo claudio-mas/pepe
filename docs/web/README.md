@@ -65,7 +65,8 @@ Regra: **nenhuma RN sem origem**. O que for dedução do agente fica marcado com
 5. Etiquetas (endereço e aniversário) e impressão local.
 6. Fotos das peças (hoje em coluna binária de `[1TabPeças]`).
 7. Importação da planilha Getnet sem DevExpress.
-8. Implantação na loja: serviço Windows ou Docker, HTTPS interno e **backup do banco**. Hoje o backup é feito pelo
+8. Implantação na loja: serviço Windows ou Docker, HTTPS interno e **backup do banco**. O servidor é **SQL Server
+   Express** (banco de ~650 MB), dividido com o desktop e com um terceiro sistema que também usa o `BDTorras`. Hoje o backup é feito pelo
    próprio desktop às quartas-feiras; quando o desktop sair, esse papel precisa de outro dono.
 
 ### Fase 4 — ordem dos módulos (proposta)
