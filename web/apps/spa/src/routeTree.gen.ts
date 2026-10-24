@@ -13,6 +13,7 @@ import { Route as AutenticadoRouteImport } from './rotas/_autenticado'
 import { Route as EntrarRouteImport } from './rotas/entrar'
 import { Route as AutenticadoIndexRouteImport } from './rotas/_autenticado/index'
 import { Route as AutenticadoClientesIndexRouteImport } from './rotas/_autenticado/clientes/index'
+import { Route as AutenticadoClientesIdRouteImport } from './rotas/_autenticado/clientes/$id'
 import { Route as AutenticadoRelatoriosClientesCadastradosRouteImport } from './rotas/_autenticado/relatorios/clientes-cadastrados'
 
 const AutenticadoRoute = AutenticadoRouteImport.update({
@@ -35,6 +36,11 @@ const AutenticadoClientesIndexRoute =
     path: '/clientes/',
     getParentRoute: () => AutenticadoRoute,
   } as any)
+const AutenticadoClientesIdRoute = AutenticadoClientesIdRouteImport.update({
+  id: '/clientes/$id',
+  path: '/clientes/$id',
+  getParentRoute: () => AutenticadoRoute,
+} as any)
 const AutenticadoRelatoriosClientesCadastradosRoute =
   AutenticadoRelatoriosClientesCadastradosRouteImport.update({
     id: '/relatorios/clientes-cadastrados',
@@ -45,12 +51,14 @@ const AutenticadoRelatoriosClientesCadastradosRoute =
 export interface FileRoutesByFullPath {
   '/': typeof AutenticadoIndexRoute
   '/entrar': typeof EntrarRoute
+  '/clientes/$id': typeof AutenticadoClientesIdRoute
   '/relatorios/clientes-cadastrados': typeof AutenticadoRelatoriosClientesCadastradosRoute
   '/clientes/': typeof AutenticadoClientesIndexRoute
 }
 export interface FileRoutesByTo {
   '/entrar': typeof EntrarRoute
   '/': typeof AutenticadoIndexRoute
+  '/clientes/$id': typeof AutenticadoClientesIdRoute
   '/relatorios/clientes-cadastrados': typeof AutenticadoRelatoriosClientesCadastradosRoute
   '/clientes': typeof AutenticadoClientesIndexRoute
 }
@@ -59,19 +67,31 @@ export interface FileRoutesById {
   '/_autenticado': typeof AutenticadoRouteWithChildren
   '/entrar': typeof EntrarRoute
   '/_autenticado/': typeof AutenticadoIndexRoute
+  '/_autenticado/clientes/$id': typeof AutenticadoClientesIdRoute
   '/_autenticado/relatorios/clientes-cadastrados': typeof AutenticadoRelatoriosClientesCadastradosRoute
   '/_autenticado/clientes/': typeof AutenticadoClientesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/entrar' | '/relatorios/clientes-cadastrados' | '/clientes/'
+  fullPaths:
+    | '/'
+    | '/entrar'
+    | '/clientes/$id'
+    | '/relatorios/clientes-cadastrados'
+    | '/clientes/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/entrar' | '/' | '/relatorios/clientes-cadastrados' | '/clientes'
+  to:
+    | '/entrar'
+    | '/'
+    | '/clientes/$id'
+    | '/relatorios/clientes-cadastrados'
+    | '/clientes'
   id:
     | '__root__'
     | '/_autenticado'
     | '/entrar'
     | '/_autenticado/'
+    | '/_autenticado/clientes/$id'
     | '/_autenticado/relatorios/clientes-cadastrados'
     | '/_autenticado/clientes/'
   fileRoutesById: FileRoutesById
@@ -111,6 +131,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AutenticadoClientesIndexRouteImport
       parentRoute: typeof AutenticadoRoute
     }
+    '/_autenticado/clientes/$id': {
+      id: '/_autenticado/clientes/$id'
+      path: '/clientes/$id'
+      fullPath: '/clientes/$id'
+      preLoaderRoute: typeof AutenticadoClientesIdRouteImport
+      parentRoute: typeof AutenticadoRoute
+    }
     '/_autenticado/relatorios/clientes-cadastrados': {
       id: '/_autenticado/relatorios/clientes-cadastrados'
       path: '/relatorios/clientes-cadastrados'
@@ -123,12 +150,14 @@ declare module '@tanstack/react-router' {
 
 interface AutenticadoRouteChildren {
   AutenticadoIndexRoute: typeof AutenticadoIndexRoute
+  AutenticadoClientesIdRoute: typeof AutenticadoClientesIdRoute
   AutenticadoRelatoriosClientesCadastradosRoute: typeof AutenticadoRelatoriosClientesCadastradosRoute
   AutenticadoClientesIndexRoute: typeof AutenticadoClientesIndexRoute
 }
 
 const AutenticadoRouteChildren: AutenticadoRouteChildren = {
   AutenticadoIndexRoute: AutenticadoIndexRoute,
+  AutenticadoClientesIdRoute: AutenticadoClientesIdRoute,
   AutenticadoRelatoriosClientesCadastradosRoute:
     AutenticadoRelatoriosClientesCadastradosRoute,
   AutenticadoClientesIndexRoute: AutenticadoClientesIndexRoute,
