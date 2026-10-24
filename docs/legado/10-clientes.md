@@ -23,7 +23,9 @@ código), "a confirmar" (precisa do dono).
 
 ## 2. Campos — tabela `Clientes`
 
-Tipos e tamanhos tirados do `Datasets/dsCliente.xsd`. O tipo SQL exato fica para o catálogo do banco (`90-banco.md`).
+Tipos e tamanhos tirados do `Datasets/dsCliente.xsd` e conferidos no catálogo do banco (`banco/02_colunas.csv`, ver
+`90-banco.md`). A tabela real tem também `SSMA_TimeStamp` (rowversion) e `NaoZerarCC` (int, usada pela view `CCNovoGer`
+do módulo CC); nenhuma das duas está nos DataSets do módulo.
 
 | Coluna | Tipo (DataSet) | Tam. | Rótulo na tela | Onde aparece | Observação |
 |---|---|---|---|---|---|
@@ -39,15 +41,15 @@ Tipos e tamanhos tirados do `Datasets/dsCliente.xsd`. O tipo SQL exato fica para
 | `Telefone` | string | 30 | Telefone | lista, ficha, relatórios | texto livre (pode ter mais de um número) |
 | `Fax` | string | 15 | — | só em relatórios antigos | **sem uso**: a web ignora (dono) |
 | `Email` | string | 200 | E-mail | ficha, lista de e-mails | sem validação na ficha |
-| `CPF` | string | 11 | CPF | ficha | máscara `000.000.000-00`; guarda só dígitos (a confirmar); o desktop não valida. Na web: dígito verificador validado **só em cadastro novo** (RN-CLI-020) |
+| `CPF` | string | 11 | CPF | ficha | máscara `000.000.000-00`; guarda só dígitos (confirmado: os 845 preenchidos têm 11 dígitos); o desktop não valida. Na web: dígito verificador validado **só em cadastro novo** (RN-CLI-020) |
 | `CPF_MD` | string | 11 | — | nenhuma tela | **sem uso**: a web ignora (dono) |
 | `Aniv` | dateTime | — | Aniversário | lista, ficha, etiquetas de aniversário | |
 | `Indicaçao` | string | 250 | Indicação | ficha | texto livre, também na web (dono) |
 | `Medidas` | string | 250 | Medidas | ficha | texto livre, também na web (dono) |
 | `Imp` | boolean | — | Etiquetas | lista (checkbox editável) | marcação "imprimir etiqueta", **gravada no banco** |
 | `Saldo` | float | — | — | nenhuma tela do módulo | **sem uso** no módulo: a web ignora (dono). O saldo da CC vem das procs do módulo CC |
-| `Oculto` | boolean | — | — | nenhuma tela | sem uso no desktop; **passa a ser usado pela web** para ocultar o cliente que não pode ser excluído (RN-CLI-018) |
-| `DataCad` | dateTime | — | Data Cadastro | ficha, relatório de cadastrados | preenchida com a data do dia ao criar (`frmClientes.vb:27`) |
+| `Oculto` | boolean | — | — | nenhuma tela | sem uso no código atual, mas **2.188 clientes já têm `Oculto = 1`** (dado antigo, origem desconhecida). A web passaria a usá-la para ocultar o cliente que não pode ser excluído (RN-CLI-018). Ver pendência em §8 |
+| `DataCad` | date | — | Data Cadastro | ficha, relatório de cadastrados | preenchida com a data do dia ao criar (`frmClientes.vb:27`). **4.906 dos 5.279 clientes não têm data** |
 
 Nenhuma coluna é obrigatória no DataSet (todas `minOccurs=0`, menos `IDCliente`).
 
@@ -102,12 +104,12 @@ continua com o defeito até ser ajustado.
 | RN-CLI-005 | Título do cliente vem de uma lista fixa de 7 opções. | `frmClientes.Designer.vb:707` | alta |
 | RN-CLI-006 | Endereço pode ser preenchido a partir do CEP pela tabela local `tabcep` (`cep` sem hífen → `logradouro`, `bairro`, `cidade`, `uf`). | `frmClientes.vb:286-309` | alta |
 | RN-CLI-007 | Etiqueta de mala direta sai para os clientes com `Imp = 1` e nome de exibição não nulo. A marcação fica gravada no banco até alguém desmarcar. | `frmClientesDG.vb:80-93`; `rptEtiquetas.resx` | alta |
-| RN-CLI-008 | Exclusão de cliente apaga só a linha de `Clientes`, sem verificar vendas, consertos ou CC ligados. Se houver FK, o banco recusa e o erro some (salvar ignora erro). | `frmClientes.vb:275-284` | média (FK a confirmar no catálogo). Na web: substituída por RN-CLI-018 |
+| RN-CLI-008 | Exclusão de cliente apaga só a linha de `Clientes`, sem verificar vendas, consertos ou CC ligados. Se houver FK, o banco recusa e o erro some (salvar ignora erro). | `frmClientes.vb:275-284`; `banco/04_fks.csv` (nenhuma FK) | alta: não há FK, a exclusão nunca falha e deixou órfãos (1.944 vendas, 688 consertos, 428 lançamentos de CC; `90-banco.md` §3). Na web: substituída por RN-CLI-018 |
 | RN-CLI-009 | Etiqueta de aniversário: clientes com `Nome` não nulo cujo mês de `Aniv` = mês informado; opcionalmente só os que compraram nos últimos N meses (`@meses` nulo = todos). | `rptEtiquetasAniv.resx`; `frmEtiqAniv.vb` | alta. Na web: filtro em anos (RN-CLI-021) |
-| RN-CLI-010 | "Nova venda" a partir do cliente cria em `VENDAS` uma linha `Tipo = 'Interna'` com `DataVenda = hoje` e número `NNNN/aa`: o maior `Venda` do ano corrente + 1 (4 primeiros caracteres), ou `0001/aa` se for a primeira do ano. **Regra do módulo VEN** disparada daqui. | `frmClientesDG.vb:95-122` | alta |
+| RN-CLI-010 | "Nova venda" a partir do cliente cria em `VENDAS` uma linha `Tipo = 'Interna'` (o tipo normal: 15.268 de 15.611 vendas) com `DataVenda = hoje` e número `NNNN/aa`: o maior `Venda` do ano corrente + 1 (4 primeiros caracteres), ou `0001/aa` se for a primeira do ano. **Regra do módulo VEN** disparada daqui. | `frmClientesDG.vb:95-122` | alta |
 | RN-CLI-011 | Lista de e-mails: e-mails que contêm `@`, de clientes com `Nome` não nulo, ordenados por e-mail. | `frmClientesDG.vb:139` | alta |
 | RN-CLI-012 | Clientes cadastrados: filtro por `DataCad` entre as datas (padrão: mês corrente) ou "Sem período" (todos); exportação para Excel só no modo "Sem período". | `Relatorios/ClientesCadastrados.vb` | alta |
-| RN-CLI-013 | Clientes sem compras: clientes cuja `Última` compra (em `NVendasBase`) **não** está entre as datas. | `ClientesSemCompras.resx` | alta (definição de `NVendasBase` a levantar) |
+| RN-CLI-013 | Clientes sem compras: clientes cuja `Última` compra (em `NVendasBase`) **não** está entre as datas. `NVendasBase` agrupa por **nome**, então clientes homônimos (36 nomes repetidos) se misturam. | `ClientesSemCompras.resx`; `banco/modulos/VIEW/dbo.NVendasBase.sql` | alta |
 | RN-CLI-014 | Compras por cliente no período: nº de vendas e total (`SUM(ValorFinal)`) por nome de cliente, nº de peças e data da última compra no período; vendas sem cliente aparecem como `'S/ Nome'` e somem do resultado final (o JOIN externo é por `Clientes.Nome`). | `ComprasPorCliente.resx` | alta (o comportamento com "S/ Nome" e nomes repetidos merece golden master) |
 | RN-CLI-015 | Geral de clientes: clientes que compraram nos últimos N meses (`DATEDIFF(month, DataVenda, GETDATE()) <= N`). | `GeralClientes.resx` | alta |
 | RN-CLI-016 | Telefones de clientes: só clientes com `Telefone` não nulo. Endereços de clientes: só com `Endereço` não nulo. | `TelefonesClientes.Designer.vb:76`; `EndereçosClientes.resx` | alta |
@@ -130,12 +132,12 @@ Estas regras **mudam** o comportamento do legado. Valem para a web. O desktop s�
 | Tabela / objeto | C | R | U | D | Quem |
 |---|---|---|---|---|---|
 | `Clientes` | ficha | todos | ficha; lista (`Imp`) | ficha | `frmClientes`, `frmClientesDG` |
-| `CC` (provavelmente view: só `SELECT` nos DataSets) | | ficha | | | `frmClientes` |
+| `CC` (view: `UNION ALL` de `CONSERTOS`, `VENDAS` e `[Conta Corrente]` marcados como CC) | | ficha | | | `frmClientes` |
 | `tabcep` | | ficha | | | `frmClientes` (CEP) |
 | `VENDAS` | lista (venda Interna) | relatórios, compras | | | `frmClientesDG`, relatórios |
 | `[VENDAS DET]`, `[1TabPeças]` | | compras, relatórios | | | `frmCompras`, `ComprasPorCliente` |
 | `[Vencto Cartão]`, `[Vencto Cheques]` | | | | `idcc = -1` | `frmClientes` (Lançamento C/C) |
-| `NVendasBase` (view?) | | relatório | | | `ClientesSemCompras` |
+| `NVendasBase` (view, sobre `NVendasBase0`) | | relatório | | | `ClientesSemCompras` |
 | `USP_RPT_VENDA_CLIENTE` | | relatório | | | `VendasCliente` |
 
 ## 6. Defeitos e comportamentos do legado que a web não deve copiar
@@ -155,12 +157,14 @@ Estas regras **mudam** o comportamento do legado. Valem para a web. O desktop s�
 
 ## 7. Convivência (desktop + web no mesmo banco)
 
-- Concorrência: os DataSets em uso na lista e na ficha (`dsNovo`, `dsCliente`) **não** leem `SSMA_TimeStamp`. Eles
-  detectam conflito comparando os valores originais de todas as colunas no `UPDATE`/`DELETE` (TableAdapter com
-  concorrência otimista). Já os DataSets mais antigos `dsGeral` e `dsVendas` leem `Clientes.SSMA_TimeStamp`, então a
-  coluna `rowversion` provavelmente existe (confirmar no catálogo do banco). Se existir, a web usa
-  `UPDATE … WHERE IDCliente = @id AND SSMA_TimeStamp = @versao`. Senão, compara os valores originais das colunas
-  editadas. Nos dois casos, 0 linhas afetadas = conflito com outra edição.
+- Concorrência: `Clientes.SSMA_TimeStamp` **existe** (catálogo, `banco/01_tabelas.csv`). A web grava com
+  `UPDATE … WHERE IDCliente = @id AND SSMA_TimeStamp = @versao`, e 0 linhas afetadas = conflito com outra edição.
+  O desktop (`dsNovo`, `dsCliente`) compara os valores originais das colunas. Os dois mecanismos convivem: qualquer
+  `UPDATE`, inclusive o do desktop, muda o `SSMA_TimeStamp`.
+- Desempenho: não há índice em `Clientes.Nome` (só em `Cliente`), em `CONSERTOS.CLIENTE`, em `[Conta Corrente].Cliente`
+  nem em `tabcep.cep` (909 mil linhas). A pesquisa e a regra "tem histórico?" (RN-CLI-018) varrem tabelas. Índices
+  novos dependem do ADR de convivência (`90-banco.md` §5).
+- Órfãos: as telas da web que listam vendas, consertos ou CC precisam aceitar `IDCliente` sem cliente correspondente.
 - Etiquetas: a web lê e grava `Clientes.Imp` (RN-CLI-019), então desktop e web enxergam a mesma seleção.
 - **Oculto** (RN-CLI-018), proposta a validar na spec:
   - Cliente oculto **some** da lista de clientes e dos combos de escolha de cliente (nova venda, conserto, CC) e não
@@ -188,6 +192,10 @@ Estas regras **mudam** o comportamento do legado. Valem para a web. O desktop s�
 Pendência derivada: o que exatamente o "ocultar" esconde (proposta em §7) e se o desktop será ajustado para respeitar
 `Oculto`.
 
+**Pendência nova, do catálogo do banco (`90-banco.md` §8): 2.188 clientes já têm `Oculto = 1`**, sem código atual que
+leia ou grave a coluna. Antes de a web usar `Oculto` (RN-CLI-018), o dono precisa dizer o que essa marcação antiga
+significa: se a web esconder `Oculto = 1`, 41% do cadastro some da lista.
+
 ## 9. Proposta para a fatia de validação (só leitura)
 
 Entra:
@@ -205,7 +213,7 @@ Fica para a etapa seguinte (edição de clientes): criar, editar, excluir e ocul
 (depende do módulo VEN).
 
 ### Golden master sugerido para a fatia
-- `ClientesCadastradosRpt` em 2 períodos (um mês recente e 02/2021) + modo "Sem período": contagem de linhas e
-  conferência de 10 linhas sorteadas.
+- `ClientesCadastradosRpt` em 2 períodos + modo "Sem período": contagem de linhas e conferência de 10 linhas sorteadas.
+  Como só 373 clientes têm `DataCad`, escolher períodos que tenham cadastros (ex.: um mês de 2026).
 - Lista de clientes: contagem total com RN-CLI-001 e 20 clientes sorteados (nome de exibição, telefone, aniversário).
 - Peças compradas de 5 clientes escolhidos (com muitas compras, com nenhuma, com venda sem peça).

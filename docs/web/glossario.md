@@ -12,7 +12,7 @@ precisam da validação do dono. Na coluna "No banco / código", caminhos relati
 | Vendedora | Quem atende a venda ou o conserto; base da comissão. | `Vendedoras` |
 | Venda | Registro de uma venda: cliente (ou "sem cadastro"), data, formas de pagamento, valor final, comissão. | `VENDAS` (`Id`, `Venda` = nº da venda, `DataVenda`, `SEMCADASTRO`, `ValorFinal`) |
 | Item de venda | Peça vendida numa venda. | `[VENDAS DET]` |
-| Venda interna | Venda criada a partir do cadastro de clientes (`Tipo = 'Interna'`). **(a confirmar)** a diferença para a venda comum. | `frmClientesDG.vb:111` |
+| Venda interna | `VENDAS.Tipo = 'Interna'`: é o tipo normal (15.268 de 15.611 vendas), gravado também pela venda aberta a partir do cadastro de clientes. Os outros tipos ficam para o inventário de Vendas. | `frmClientesDG.vb:111`; `docs/legado/90-banco.md` |
 | Peça | Joia do estoque, identificada por nº de ficha/modelo; tem classe, família, custo, preço, foto e situação (em estoque ou vendida). | `[1TabPeças]` (`IDPeça`, `Modêlo`, `Classe`, `Vendida`, `Custo`, `Foto`) |
 | Ficha | Número que identifica a peça fisicamente. Na "volta", a peça ganha novo nº de ficha. | `frmVolta.vb` |
 | Classe | Tipo da peça: `AN` (anel), `BR` (brinco), `GAR` (gargantilha), `PEN` (pingente), `PUL` (pulseira), `ALI` (aliança), `OUT` (peça diversa). Há classes legadas em peças vendidas (`BOU`, `BUT`). Os relatórios `Balanço41BR`/`42GAR`/`43OUT`/`44PEN` são o balanço por classe. | `[1TabPeças].Classe`; `Scripts/BOU_v1_up.sql` |
@@ -26,7 +26,7 @@ precisam da validação do dono. Na coluna "No banco / código", caminhos relati
 | Clonar peça | Criar uma peça nova a partir de outra. | `USP_CLONA_PECA` |
 | Conserto | Serviço de reparo/ajuste de joia para um cliente, com valor, pagamento e prazo. | `CONSERTOS` |
 | Saída | Retirada de uma peça do estoque por qualquer motivo que não seja venda. O motivo ("Saída para") vem de uma lista mantida pelo próprio usuário. | `Saidas` (`IdMotivo`) → `TiposSaidas` (`Id`, `Motivo`); `frmSaidasDG` |
-| Conta corrente (CC) | Saldo do cliente com a loja: vendas e consertos lançados a prazo e pagamentos recebidos. | `CC`, `CC2`, `[Conta Corrente]`, `USP_UPDATE_SALDO_CC` |
+| Conta corrente (CC) | Saldo do cliente com a loja: vendas e consertos lançados a prazo e pagamentos recebidos. Não é uma tabela única: a view `CC` une vendas, consertos e lançamentos marcados como "na CC". | `CC`, `CC2`, `[Conta Corrente]`, `USP_UPDATE_SALDO_CC` |
 | Extrato | Movimento da conta corrente de um cliente num período. | `tabExtrato` (tabela de trabalho), `rptExtratoCC` |
 | Parcela de cartão | Vencimento a receber de uma venda, conserto ou CC paga no cartão. | `[Vencto Cartão]` (`Venda`, `IdConserto`, `IdCC`, `Parcela`, `Vencto`, `Pagto`) |
 | Cheque pré | Cheque pré-datado recebido, controlado por vencimento e destino/uso. | `[Vencto Cheques]` (`Vencto`, `Uso`, `Destino`) |
