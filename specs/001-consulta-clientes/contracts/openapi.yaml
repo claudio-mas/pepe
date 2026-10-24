@@ -232,6 +232,7 @@ components:
         - type: object
           required: [versao]
           properties:
+            nome: { type: [string, 'null'], description: 'Nome como está gravado; nulo quando só há mala direta.' }
             cidade: { type: [string, 'null'] }
             uf: { type: [string, 'null'] }
             cep: { type: [string, 'null'] }
@@ -247,7 +248,7 @@ components:
       required: [idOrigem, operacao, forma]
       properties:
         idOrigem: { type: integer }
-        data: { type: [string, 'null'], format: date-time }
+        data: { type: [string, 'null'], description: 'Data e hora gravadas, sem fuso (YYYY-MM-DDTHH:mm:ss).' }
         operacao: { type: string, description: 'Venda, Conserto ou lançamento de CC' }
         forma: { type: string, description: 'Cartão, Cash, Cheque, Débito, Dólar, Ouro…' }
         valor: { type: [number, 'null'] }

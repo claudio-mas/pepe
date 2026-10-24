@@ -21,6 +21,12 @@ pacote são definidos nas tarefas (`tasks.md`). Aqui ficam os cenários e os res
 | Contrato | cada rota de `contracts/openapi.yaml` contra o banco sintético, validando com os esquemas de `packages/shared` | respostas batem com o contrato; `401` sem sessão; `404` para cliente inexistente ou sem nome |
 | E2E | as 4 histórias da spec no navegador | todos os cenários de aceite passam |
 
+Comandos, em `web/` (com o Docker no ar): `pnpm -r test` roda os unitários e os de contrato, e
+`pnpm --filter @pepe/spa test:e2e` roda os E2E. Os E2E compilam a SPA e sobem sozinhos o servidor de teste
+(`apps/api/tests/e2e/servidor.ts`), que recria o banco sintético e cria o usuário E2E. Para usar um Chromium já
+instalado, defina `PEPE_E2E_CHROMIUM` com o caminho do executável; para testar outro servidor, `PEPE_WEB_URL`.
+Os dois comandos recriam o mesmo banco de teste: rode um de cada vez.
+
 Casos que o banco sintético precisa ter: cliente só com mala direta; cliente sem nome nem mala direta; cliente
 oculto (`Oculto = 1`) e com `Oculto` nulo; nomes repetidos; nome com acento (pesquisado sem acento); cliente com
 lançamentos de CC das três origens; cliente com peças compradas e cliente sem nenhuma; venda de cliente inexistente

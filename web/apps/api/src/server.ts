@@ -13,6 +13,7 @@ import Fastify, { type FastifyInstance, type FastifyServerOptions, LogController
 import { exigirSessao } from './auth/exigir-sessao.js';
 import { rotasSessao } from './auth/rotas.js';
 import { limparSessoesVencidas } from './auth/sessao.js';
+import { rotasClientes } from './clientes/rotas.js';
 import { lerConfig } from './config.js';
 import { bancoIndisponivel, MENSAGEM_BANCO_INDISPONIVEL } from './db/indisponivel.js';
 import { type Banco, criarBanco } from './db/kysely.js';
@@ -113,6 +114,7 @@ export async function construirApp(opcoes: OpcoesApp): Promise<FastifyInstance> 
 
   // Rotas da API, sempre com prefixo /api
   await app.register(rotasSessao, { prefix: '/api' });
+  await app.register(rotasClientes, { prefix: '/api' });
 
   return app;
 }

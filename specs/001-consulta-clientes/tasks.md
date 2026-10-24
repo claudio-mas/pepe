@@ -149,11 +149,11 @@ master para aceitar um módulo. Em cada história, os testes vêm antes da imple
 
 > Escrever primeiro e ver falhar
 
-- [ ] T029 [P] [US1] Teste unitário do nome de exibição e do filtro de oculto em `web/packages/shared/tests/regras-cliente.test.ts`:
+- [X] T029 [P] [US1] Teste unitário do nome de exibição e do filtro de oculto em `web/packages/shared/tests/regras-cliente.test.ts`:
   - `nomeExibicao = Nome ?? Cliente` (RN-CLI-002);
   - cliente sem os dois fica fora (RN-CLI-001);
   - `Oculto` nulo conta como visível.
-- [ ] T030 [P] [US1] Teste de contrato de `GET /api/clientes` em `web/apps/api/tests/contrato/clientes-lista.test.ts`:
+- [X] T030 [P] [US1] Teste de contrato de `GET /api/clientes` em `web/apps/api/tests/contrato/clientes-lista.test.ts`:
   - pesquisa "jose araujo" encontra "José Araújo";
   - busca por telefone;
   - cliente só com mala direta aparece com o nome de mala direta;
@@ -164,20 +164,20 @@ master para aceitar um módulo. Em cada história, os testes vêm antes da imple
   - `pagina`/`porPagina`/`total` corretos;
   - `porPagina=500` → 400;
   - sem sessão → 401.
-- [ ] T031 [P] [US1] Teste E2E da US1 em `web/apps/spa/tests/e2e/us1-encontrar-cliente.spec.ts`: os cenários de aceite 1.1 a 1.5 da spec
+- [X] T031 [P] [US1] Teste E2E da US1 em `web/apps/spa/tests/e2e/us1-encontrar-cliente.spec.ts`: os cenários de aceite 1.1 a 1.5 da spec
 
 ### Implementation for User Story 1
 
-- [ ] T032 [P] [US1] Criar os esquemas Zod `ClienteResumo` e `PaginaClientes` e a função `nomeExibicao` em `web/packages/shared/src/esquemas/clientes.ts`, iguais a `contracts/openapi.yaml`
-- [ ] T033 [US1] Implementar `listarClientes({ busca, ocultos, pagina, porPagina })` em `web/apps/api/src/clientes/consultas.ts` com Kysely e parâmetros ligados (research.md R5, R6):
+- [X] T032 [P] [US1] Criar os esquemas Zod `ClienteResumo` e `PaginaClientes` e a função `nomeExibicao` em `web/packages/shared/src/esquemas/clientes.ts`, iguais a `contracts/openapi.yaml`
+- [X] T033 [US1] Implementar `listarClientes({ busca, ocultos, pagina, porPagina })` em `web/apps/api/src/clientes/consultas.ts` com Kysely e parâmetros ligados (research.md R5, R6):
   - filtro fixo `ISNULL(Nome, Cliente) IS NOT NULL`;
   - sem `ocultos`, `ISNULL(Oculto, 0) = 0`;
   - pesquisa `LIKE '%' + @busca + '%'` com `COLLATE Latin1_General_CI_AI` sobre `Nome`, `Cliente` e `Telefone`;
   - ordem por `ISNULL(Nome, Cliente) COLLATE Latin1_General_CI_AI`, depois `IDCliente`;
   - `OFFSET/FETCH`, mais a consulta de contagem;
   - nada de `OPENJSON`.
-- [ ] T034 [US1] Implementar `GET /api/clientes` em `web/apps/api/src/clientes/rotas.ts`, com a validação dos parâmetros do contrato (`busca` até 100, `porPagina` de 10 a 100, padrão 50) e registro em `server.ts`
-- [ ] T035 [US1] Criar a rota `web/apps/spa/src/rotas/_autenticado/clientes/index.tsx`:
+- [X] T034 [US1] Implementar `GET /api/clientes` em `web/apps/api/src/clientes/rotas.ts`, com a validação dos parâmetros do contrato (`busca` até 100, `porPagina` de 10 a 100, padrão 50) e registro em `server.ts`
+- [X] T035 [US1] Criar a rota `web/apps/spa/src/rotas/_autenticado/clientes/index.tsx`:
   - campo de pesquisa com espera de 300 ms;
   - chave "mostrar ocultos";
   - tabela paginada com nome de exibição, título, mala direta, endereço, bairro, telefone e aniversário (FR-009);
@@ -198,7 +198,7 @@ desktop (spec, US2).
 
 ### Tests for User Story 2 ⚠️
 
-- [ ] T036 [P] [US2] Teste de contrato de `GET /api/clientes/{id}` em `web/apps/api/tests/contrato/clientes-ficha.test.ts`:
+- [X] T036 [P] [US2] Teste de contrato de `GET /api/clientes/{id}` em `web/apps/api/tests/contrato/clientes-ficha.test.ts`:
   - devolve todos os campos de `ClienteFicha`;
   - `cpf` com 11 dígitos;
   - `versao` em hexadecimal;
@@ -207,24 +207,24 @@ desktop (spec, US2).
   - `DataCad` nulo → `dataCadastro: null`;
   - id inexistente → 404;
   - cliente sem nome nem mala direta → 404.
-- [ ] T037 [P] [US2] Teste de contrato de `GET /api/clientes/{id}/conta-corrente` em `web/apps/api/tests/contrato/clientes-cc.test.ts`:
+- [X] T037 [P] [US2] Teste de contrato de `GET /api/clientes/{id}/conta-corrente` em `web/apps/api/tests/contrato/clientes-cc.test.ts`:
   - lançamentos das três origens (`Venda`, `Conserto`, lançamento de CC) com `forma` e `valor`, e débito negativo;
   - ordem por `Data` e depois `Ident`;
   - cliente sem lançamentos → lista vazia;
   - a venda órfã não aparece em cliente nenhum;
   - id inexistente → 404.
-- [ ] T038 [P] [US2] Teste E2E da US2 em `web/apps/spa/tests/e2e/us2-ficha.spec.ts`: os cenários 2.1 a 2.4 da spec, conferindo também que não há nenhum campo editável
+- [X] T038 [P] [US2] Teste E2E da US2 em `web/apps/spa/tests/e2e/us2-ficha.spec.ts`: os cenários 2.1 a 2.4 da spec, conferindo também que não há nenhum campo editável
 
 ### Implementation for User Story 2
 
-- [ ] T039 [P] [US2] Criar os esquemas Zod `ClienteFicha` e `LancamentoCC` em `web/packages/shared/src/esquemas/clientes.ts`
-- [ ] T040 [US2] Implementar `obterFicha(id)` em `web/apps/api/src/clientes/consultas.ts`:
+- [X] T039 [P] [US2] Criar os esquemas Zod `ClienteFicha` e `LancamentoCC` em `web/packages/shared/src/esquemas/clientes.ts`
+- [X] T040 [US2] Implementar `obterFicha(id)` em `web/apps/api/src/clientes/consultas.ts`:
   - colunas de `data-model.md` `ClienteFicha`;
   - `versao` = `SSMA_TimeStamp` convertido para hexadecimal;
   - `null` quando o cliente não existe ou não tem nome de exibição.
-- [ ] T041 [US2] Implementar `listarContaCorrente(id)` em `web/apps/api/src/clientes/consultas.ts`: `SELECT ID, Data, Op, Tp, VValor, Ident FROM dbo.CC WHERE CLIENTE = @id ORDER BY Data, Ident`, a mesma fonte do desktop (`dsCliente.CC`; RN-CLI-017). Mapear para `idOrigem`, `data`, `operacao`, `forma`, `valor`
-- [ ] T042 [US2] Implementar `GET /api/clientes/{id}` e `GET /api/clientes/{id}/conta-corrente` em `web/apps/api/src/clientes/rotas.ts`, com 404 (`NaoEncontrado`) quando `obterFicha` devolve `null`
-- [ ] T043 [US2] Criar a rota `web/apps/spa/src/rotas/_autenticado/clientes/$id.tsx`:
+- [X] T041 [US2] Implementar `listarContaCorrente(id)` em `web/apps/api/src/clientes/consultas.ts`: `SELECT ID, Data, Op, Tp, VValor, Ident FROM dbo.CC WHERE CLIENTE = @id ORDER BY Data, Ident`, a mesma fonte do desktop (`dsCliente.CC`; RN-CLI-017). Mapear para `idOrigem`, `data`, `operacao`, `forma`, `valor`
+- [X] T042 [US2] Implementar `GET /api/clientes/{id}` e `GET /api/clientes/{id}/conta-corrente` em `web/apps/api/src/clientes/rotas.ts`, com 404 (`NaoEncontrado`) quando `obterFicha` devolve `null`
+- [X] T043 [US2] Criar a rota `web/apps/spa/src/rotas/_autenticado/clientes/$id.tsx`:
   - campos só de leitura (FR-013, com o CPF formatado);
   - aviso "oculto";
   - abas "Cadastro" e "Conta corrente";

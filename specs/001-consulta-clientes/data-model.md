@@ -88,7 +88,8 @@ Filtro fixo: `ISNULL(Nome, Cliente) IS NOT NULL` (RN-CLI-001). Sem "mostrar ocul
 
 ### `ClienteFicha`: ficha (FR-013)
 
-Fonte: `dbo.Clientes` pelo `IDCliente`. Campos do resumo mais `cidade` (`Cidade`), `uf` (`Estado`), `cep` (`CEP`),
+Fonte: `dbo.Clientes` pelo `IDCliente`. Campos do resumo mais `nome` (`Nome` como está gravado: a ficha mostra
+"Nome" e "Mala direta" separados, e o `nomeExibicao` cai para a mala direta quando o Nome é nulo), `cidade` (`Cidade`), `uf` (`Estado`), `cep` (`CEP`),
 `email` (`Email`), `cpf` (`CPF`: 11 dígitos no banco; a SPA formata `000.000.000-00`), `medidas` (`Medidas`),
 `indicacao` (`Indicaçao`), `dataCadastro` (`DataCad`, `date`, quase sempre nulo) e `versao` (`SSMA_TimeStamp` em
 hex, para a edição futura; só leitura agora).
@@ -106,7 +107,7 @@ Mesma consulta do desktop (`dsCliente.CC`: `WHERE Cliente = @IdCli`).
 | Campo | Origem | Observação |
 |---|---|---|
 | `idOrigem` | `ID` | id da venda, do conserto ou do lançamento, conforme `operacao` |
-| `data` | `Data` (`datetime2`) | |
+| `data` | `Data` (`datetime2`) | o relógio gravado, sem fuso: `YYYY-MM-DDTHH:mm:ss` |
 | `operacao` | `Op` (`varchar(8)`) | `Venda`, `Conserto` ou lançamento de CC |
 | `forma` | `Tp` (`varchar(7)`) | `Cartão`, `Cash`, `Cheque`, `Débito`, `Dólar`, `Ouro`… |
 | `valor` | `VValor` (`float`) | débitos vêm negativos da própria view (`Abs(CCDeb) * -1`) |
