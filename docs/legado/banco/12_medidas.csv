@@ -1,0 +1,13 @@
+medida,valor,erro
+clientes_com_vendas,3630,
+clientes_com_consertos,1408,
+clientes_com_conta_corrente,503,
+clientes_com_algum_historico,4129,
+vendas_sem_cliente,514,
+vendas_com_cliente_inexistente,1944,
+consertos_com_cliente_inexistente,688,
+cc_com_cliente_inexistente,428,
+vendas_internas,15268,
+tabcep_linhas,909585,
+nvendasbase_linhas,3613,
+cc_linhas,4961,

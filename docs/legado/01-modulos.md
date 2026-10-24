@@ -143,4 +143,4 @@ Nenhum item abaixo vira spec nem tela na web. Itens que servem de referência de
 3. `14-consertos.md`, `15-saidas.md`
 4. `16-vendas.md`, `17-conta-corrente.md`, `18-financeiro.md`
 5. `19-relatorios.md` (um quadro por relatório: filtros, fonte, colunas, totais e período de referência para o golden master)
-6. `90-banco.md`: catálogo extraído do `BDTorras`, que depende de rodar um script somente leitura no contêiner local.
+6. [`90-banco.md`](90-banco.md): análise do catálogo extraído do `BDTorras` (saída em [`banco/`](banco/README.md)). **Pronto.**

@@ -14,6 +14,10 @@
    derivados, mesmas procs. Uma diferença intencional só entra com ADR e com o desktop ajustado junto.
 5. A web **não depende** do SQL de manutenção que o desktop roda ao abrir as telas (`docs/legado/00-mapa-de-navegacao.md`):
    cada caso é tratado na leitura ou vira job explícito.
+6. **Há um terceiro sistema usando o `BDTorras`**, mantido pelo dono, que só lê a view `VI_Pecas_Web`, e ele precisa
+   continuar funcionando. A view e as colunas de que ela depende (em `[1TabPeças]`, `PEDRAS`, `METAIS`,
+   `[VENDAS DET]`, `VENDAS` e `Clientes`; lista em `docs/legado/90-banco.md` §6) não mudam de nome, tipo nem
+   significado. As views `Beth` e `BasePrecos` não são usadas, mas ficam no banco.
 
 ## II. Regras de negócio rastreáveis
 

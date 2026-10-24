@@ -1,0 +1,45 @@
+schema,tabela,linhas,coluna_identidade,coluna_rowversion,chave_primaria,criada_em,alterada_em
+dbo,1TabPeças,23118,IDPeça,SSMA_TimeStamp,1TabPeças$PrimaryKey,2023-08-03 16:45:05,2025-08-29 11:24:16
+dbo,1TabPeçasHistórico,3265,Id,,PK_1TabPeçasHistórico,2020-08-26 16:11:34,2020-08-26 16:11:34
+dbo,1TabPeçasOld,3672,IDPeça,SSMA_TimeStamp,1TabPeçasOld$PrimaryKey,2015-12-20 23:52:13,2015-12-20 23:53:36
+dbo,Aniversariantes,275,Id,SSMA_TimeStamp,Aniversariantes$PrimaryKey,2015-12-20 23:52:15,2015-12-20 23:53:16
+dbo,Cartões,24,,SSMA_TimeStamp,Cartões$PrimaryKey,2015-12-20 23:52:16,2015-12-20 23:53:17
+dbo,CCFIX_v1_Backup,2,,,PK__CCFIX_v1__3214EC2759005F24,2026-08-04 14:58:48,2026-08-04 14:58:48
+dbo,Classes,8,,,,2021-01-22 12:11:15,2021-01-22 12:11:15
+dbo,Clientes,5279,IDCliente,SSMA_TimeStamp,Clientes$PrimaryKey,2024-07-30 14:40:50,2024-07-30 14:40:50
+dbo,Compras,10629,ID,,Compras$PrimaryKey,2015-12-20 23:52:17,2015-12-20 23:53:39
+dbo,CONSERTOS,4848,ID,SSMA_TimeStamp,CONSERTOS$PrimaryKey,2015-12-20 23:52:18,2022-09-23 12:02:53
+dbo,Conta Corrente,4747,ID,SSMA_TimeStamp,Conta Corrente$PrimaryKey,2015-12-20 23:52:19,2022-09-23 12:03:22
+dbo,Contatos,120,ID,SSMA_TimeStamp,Contatos$PrimaryKey,2015-12-20 23:52:20,2015-12-20 23:53:41
+dbo,Cotação,25,Id,,Cotação$PrimaryKey,2024-12-16 15:48:04,2026-08-01 11:17:05
+dbo,CotaçãoOld,1,,,CotaçãoOld$PrimaryKey,2015-12-20 23:52:21,2015-12-20 23:52:43
+dbo,Despesas,0,ID,SSMA_TimeStamp,Despesas$PrimaryKey,2015-12-20 23:52:22,2015-12-20 23:53:03
+dbo,DespesasOld,0,ID,SSMA_TimeStamp,DespesasOld$PrimaryKey,2015-12-20 23:52:23,2015-12-20 23:53:03
+dbo,FORMAS,5,ID,,FORMAS$PrimaryKey,2015-12-20 23:52:24,2015-12-20 23:53:19
+dbo,GASTO OFICINA,5,Id,SSMA_TimeStamp,GASTO OFICINA$PrimaryKey,2015-12-20 23:52:25,2015-12-20 23:52:51
+dbo,getnet,1852,Id,,PK_getnet,2022-09-23 12:05:11,2022-09-23 12:05:11
+dbo,getnet_temp,57,Id,,PK_getnet_temp,2022-09-23 12:05:41,2022-09-23 12:05:41
+dbo,METAIS,21936,,SSMA_TimeStamp,PK_METAIS,2015-12-23 14:19:36,2015-12-23 14:33:32
+dbo,PeçasEstoque,590,,,,2025-09-23 15:33:57,2025-09-23 15:33:57
+dbo,PEDRAS,14822,,SSMA_TimeStamp,PEDRAS$PrimaryKey,2015-12-20 23:52:27,2015-12-20 23:52:52
+dbo,Pres,0,Id,SSMA_TimeStamp,Pres$PrimaryKey,2015-12-20 23:52:29,2015-12-20 23:59:55
+dbo,Reajustes,6,Id,,PK_Reajustes,2020-08-26 16:10:48,2020-08-26 16:10:48
+dbo,Saidas,287,Id,,PK_Saidas,2022-07-29 14:21:10,2022-07-29 14:21:10
+dbo,Senha,3,,,Senha$PrimaryKey,2015-12-20 23:52:30,2015-12-20 23:53:42
+dbo,SenhaOld,1,,,SenhaOld$PrimaryKey,2015-12-20 23:52:31,2015-12-20 23:53:24
+dbo,tabCartões,18803,,,PK_tabCartões,2015-12-21 00:09:28,2022-06-02 15:13:29
+dbo,tabCartõesRpt,241,IDC,,PK_tabCartõesRpt,2021-01-22 12:07:57,2021-01-22 12:07:57
+dbo,tabcep,909585,,,,2021-03-09 12:11:46,2021-03-09 12:11:46
+dbo,tabCheques,8300,,,PK_tabCheques,2021-01-22 12:06:20,2021-01-22 12:06:20
+dbo,tabChequesRpt,6,IDV,,PK_tabChequesRpt,2021-01-22 12:06:44,2021-01-22 12:06:44
+dbo,tabExtrato,3,Id,,PK__tabExtra__3214EC076EEEBCCB,2022-08-09 11:32:17,2022-08-09 11:32:17
+dbo,tabMateriaPrima,9,Id,,PK_tabMateriaPrima,2022-04-01 16:13:34,2022-04-01 16:13:34
+dbo,tabMatPrima,108,Id,,PK_tabMatPrima,2022-04-01 16:13:34,2022-04-01 16:13:34
+dbo,TiposSaidas,13,Id,,PK_TiposSaidas,2022-07-29 14:21:10,2022-07-29 14:21:10
+dbo,Vencto Cartão,18806,Id,SSMA_TimeStamp,Vencto Cartão$PrimaryKey,2015-12-20 23:52:32,2022-09-23 12:04:28
+dbo,Vencto Cheques,8851,Id,SSMA_TimeStamp,Vencto Cheques$PrimaryKey,2015-12-20 23:52:33,2015-12-20 23:52:53
+dbo,VENDAS,15611,Id,SSMA_TimeStamp,VENDAS$PrimaryKey,2021-12-14 17:00:49,2025-10-06 14:12:59
+dbo,VENDAS DET,20713,Id,SSMA_TimeStamp,VENDAS DET$PrimaryKey,2015-12-21 00:11:16,2021-03-05 10:46:55
+dbo,VENDAS1,0,Id,SSMA_TimeStamp,VENDAS1$PrimaryKey,2015-12-20 23:52:37,2015-12-20 23:53:05
+dbo,Vendedoras,13,ID Vendedora,,Vendedoras$PrimaryKey,2015-12-20 23:52:40,2015-12-20 23:53:35
+dbo,VendedorasOld,13,ID Vendedora,,VendedorasOld$PrimaryKey,2015-12-20 23:52:41,2015-12-20 23:53:42

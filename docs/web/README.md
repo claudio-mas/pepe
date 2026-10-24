@@ -18,7 +18,7 @@ Versão web do sistema de gestão da joalheria: uma SPA com sidebar no lugar das
 | # | Fase | Saída | Situação |
 |---|---|---|---|
 | 0 | Fundação | Constituição, glossário, este roteiro | **rascunhos** em `docs/web/` |
-| 1 | Inventário do legado | `docs/legado/`: mapa de navegação, índice de módulos, um inventário por módulo, catálogo de RNs, catálogo do banco e matriz CRUD | mapa, índice e **Clientes** (`10-clientes.md`) prontos; demais módulos pendentes |
+| 1 | Inventário do legado | `docs/legado/`: mapa de navegação, índice de módulos, um inventário por módulo, catálogo de RNs, catálogo do banco e matriz CRUD | mapa, índice e **Clientes** (`10-clientes.md`) prontos; catálogo do banco extraído e analisado (`90-banco.md`); demais módulos pendentes |
 | 2 | Golden master | Roteiro de captura dos resultados do legado em períodos fixos, rodado sobre uma cópia do banco | pendente |
 | 3 | PRD + ADRs | `docs/web/PRD.md`, `docs/web/adr/NNNN-*.md` | pendente |
 | 4 | Ordem dos módulos | Roadmap no PRD | proposta abaixo |
@@ -65,7 +65,8 @@ Regra: **nenhuma RN sem origem**. O que for dedução do agente fica marcado com
 5. Etiquetas (endereço e aniversário) e impressão local.
 6. Fotos das peças (hoje em coluna binária de `[1TabPeças]`).
 7. Importação da planilha Getnet sem DevExpress.
-8. Implantação na loja: serviço Windows ou Docker, HTTPS interno e **backup do banco**. Hoje o backup é feito pelo
+8. Implantação na loja: serviço Windows ou Docker, HTTPS interno e **backup do banco**. O servidor é **SQL Server
+   Express** (banco de ~650 MB), dividido com o desktop e com um terceiro sistema que também usa o `BDTorras`. Hoje o backup é feito pelo
    próprio desktop às quartas-feiras; quando o desktop sair, esse papel precisa de outro dono.
 
 ### Fase 4 — ordem dos módulos (proposta)
