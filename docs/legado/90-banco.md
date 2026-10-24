@@ -93,11 +93,19 @@ ADR de convivência se índices novos são permitidos (proposta: sim, com prefix
 - **`VI_Pecas_Web`** (criada em 08/2025, alterada em 05/2026): catálogo de peças com foto, pedras, ouro e última
   venda. Nenhum código deste repositório a usa. **O dono confirmou que há outro sistema usando o `BDTorras`, e ele
   precisa continuar funcionando.**
-- Views `Beth` (02/2025) e `BasePrecos` (09/2025): também sem uso neste repositório; tratadas como do outro sistema.
-- Objetos de que essas views dependem (`09_dependencias.csv`), que portanto **não podem mudar de forma nem de
-  significado**: `1TabPeças`, `METAIS`, `PEDRAS`, `VENDAS`, `[VENDAS DET]`, `Clientes` e `PeçasEstoque`. Isso vale
-  também para os dados: `VI_Pecas_Web` mostra o nome do cliente da última venda, então ocultar cliente não pode mexer
-  em `Clientes.Nome`.
+- O outro sistema **só lê a `VI_Pecas_Web`** (dono). Ela depende destas colunas, que portanto **não podem mudar de
+  nome, tipo nem significado**:
+  - `[1TabPeças]`: `IDPeça`, `Classe`, `Modêlo`, `Obs`, `PrVenda`, `Foto`, `Vendida`, `Local`, `Saida`;
+  - `PEDRAS`: `Id`, `DiamantesQtde`, `DiamantesCT`;
+  - `METAIS`: `Id`, `OuroQtde`;
+  - `[VENDAS DET]`: `Peça`, `Venda`;
+  - `VENDAS`: `Id`, `DataVenda`, `IDCliente`;
+  - `Clientes`: `IDCliente`, `Nome`.
+
+  Isso vale também para os dados: a view mostra o nome do cliente da última venda da peça, então ocultar cliente não
+  pode mexer em `Clientes.Nome`.
+- Views `Beth` (02/2025) e `BasePrecos` (09/2025): **ninguém usa**, mas o dono quer que **continuem no banco**. A web
+  não depende delas e nenhum script as remove.
 - Procs: as 19 citadas pelo desktop (`USP_*`). Parâmetros em `07_parametros.csv`; código em `banco/modulos/`.
 
 ## 7. Respostas para o inventário de Clientes
@@ -123,11 +131,11 @@ ADR de convivência se índices novos são permitidos (proposta: sim, com prefix
 | # | Pergunta | Decisão |
 |---|---|---|
 | 1 | 2.188 clientes já têm `Oculto = 1`. O que fazer? | **Usar `Oculto` como está**, aceitando que esses clientes somem da lista e dos combos da web (RN-CLI-018). |
-| 2 | Há outro sistema usando o `BDTorras`? | **Sim, e ele precisa continuar funcionando.** As views `VI_Pecas_Web`, `Beth`, `BasePrecos` e os objetos de que dependem ficam protegidos (§6; constituição I.6). |
-| 3 | A web precisa de `Aniversariantes`, `Contatos`, `Compras`, `PeçasEstoque`, `GASTO OFICINA`, `Senha`? | **Não.** Ficam no banco intocadas (`PeçasEstoque` é usada pela `BasePrecos`, do outro sistema). |
+| 2 | Há outro sistema usando o `BDTorras`? | **Sim, e ele precisa continuar funcionando.** Só lê a `VI_Pecas_Web`, que fica protegida junto com as colunas de que depende (§6; constituição I.6). `Beth` e `BasePrecos` não são usadas, mas ficam no banco. |
+| 3 | A web precisa de `Aniversariantes`, `Contatos`, `Compras`, `PeçasEstoque`, `GASTO OFICINA`, `Senha`? | **Não.** Ficam no banco intocadas. |
 | 4 | 93% dos clientes sem `DataCad`: o relatório por período só mostra os recentes. Esperado? | **Sim, é esperado.** Na web, `DataCad` passa a ser sempre gravada. |
 | 5 | Versão do SQL Server da loja | **SQL Server Express, banco com cerca de 650 MB** (§1). |
 
-Sobre o outro sistema (dono, 24/10/2026): ele **só lê** o banco e é mantido pelo próprio dono. Como não grava, não
-disputa registros com a web nem com o desktop. O cuidado se resume a não mudar o que ele lê (constituição I.6).
-Pendente: confirmar se ele lê algum objeto além das três views.
+Sobre o outro sistema (dono, 24/10/2026): ele **só lê**, só a `VI_Pecas_Web`, e é mantido pelo próprio dono. Como não
+grava, não disputa registros com a web nem com o desktop. O cuidado se resume a não mudar o que a view lê
+(constituição I.6).
