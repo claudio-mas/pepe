@@ -4,7 +4,7 @@ import { inject } from 'vitest';
 
 import { criarUsuario } from '../../src/auth/usuarios.js';
 import { type Banco, criarBanco } from '../../src/db/kysely.js';
-import { construirApp } from '../../src/server.js';
+import { construirApp, type OpcoesApp } from '../../src/server.js';
 
 export const SENHA_DE_TESTE = 'senha-de-teste-123';
 
@@ -16,9 +16,10 @@ export interface AppDeTeste {
   entrarComo: (login: string) => Promise<string>;
 }
 
-export async function montarAppDeTeste(): Promise<AppDeTeste> {
+/** `logger`: por padrão sem log; o teste de log sem dado pessoal passa um logger com destino próprio. */
+export async function montarAppDeTeste(opcoes: Pick<OpcoesApp, 'logger'> = {}): Promise<AppDeTeste> {
   const banco = criarBanco(inject('bancoTeste'));
-  const app = await construirApp({ banco, diretorioSpa: '/nao/existe', logger: false });
+  const app = await construirApp({ banco, diretorioSpa: '/nao/existe', logger: opcoes.logger ?? false });
   return {
     app,
     banco,

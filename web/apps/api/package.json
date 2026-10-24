@@ -12,7 +12,8 @@
     "gerar-tipos": "tsx tests/banco-teste/gerar-tipos.ts",
     "usuario": "tsx src/cli/usuario.ts",
     "preparar-banco-teste": "tsx tests/banco-teste/preparar.ts",
-    "golden-master": "tsx scripts/golden-master/clientes-cadastrados.ts"
+    "golden-master": "tsx scripts/golden-master/clientes-cadastrados.ts",
+    "paridade-ficha": "tsx scripts/golden-master/paridade-ficha.ts"
   },
   "dependencies": {
     "@fastify/cookie": "^11.1.3",

@@ -312,8 +312,8 @@ desktop (spec, US2).
 
 **Purpose**: paridade, privacidade de log, documentação e instalação na loja
 
-- [ ] T057 [P] Teste de log sem dado pessoal em `web/apps/api/tests/contrato/log-sem-dado-pessoal.test.ts`: captura a saída do logger durante pesquisas e aberturas de ficha e falha se aparecer o texto pesquisado, um nome, um telefone ou um CPF do banco de teste (SC-006; constituição V.3)
-- [ ] T058 [P] Criar o script de paridade `web/apps/api/scripts/golden-master/paridade-ficha.ts` (SC-003), que roda na cópia real:
+- [X] T057 [P] Teste de log sem dado pessoal em `web/apps/api/tests/contrato/log-sem-dado-pessoal.test.ts`: captura a saída do logger durante pesquisas e aberturas de ficha e falha se aparecer o texto pesquisado, um nome, um telefone ou um CPF do banco de teste (SC-006; constituição V.3)
+- [X] T058 [P] Criar o script de paridade `web/apps/api/scripts/golden-master/paridade-ficha.ts` (SC-003), que roda na cópia real:
   - sorteia 20 clientes com nome de exibição;
   - compara o cadastro, os lançamentos de CC (consulta do desktop `SELECT Id, Cliente, Data, VValor, Tp, Op, Ident FROM CC WHERE Cliente = @IdCli`) e as peças compradas (junção do `dsCliente.Compras`) com as funções da API;
   - grava o resultado fora do repositório e sai com código diferente de zero se houver diferença.

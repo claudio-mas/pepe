@@ -14,7 +14,7 @@ import { exigirSessao } from './auth/exigir-sessao.js';
 import { rotasSessao } from './auth/rotas.js';
 import { limparSessoesVencidas } from './auth/sessao.js';
 import { rotasClientes } from './clientes/rotas.js';
-import { lerConfig } from './config.js';
+import { exigirHttps, lerConfig } from './config.js';
 import { bancoIndisponivel, MENSAGEM_BANCO_INDISPONIVEL } from './db/indisponivel.js';
 import { type Banco, criarBanco } from './db/kysely.js';
 import { ErroHttp } from './erros.js';
@@ -123,11 +123,12 @@ export async function construirApp(opcoes: OpcoesApp): Promise<FastifyInstance> 
 
 async function iniciar(): Promise<void> {
   const config = lerConfig();
+  const https = exigirHttps(config);
   const banco = criarBanco(config.bancoDeDados);
   await limparSessoesVencidas(banco, new Date());
   const app = await construirApp({
     banco,
-    https: { cert: readFileSync(config.https.certificado), key: readFileSync(config.https.chave) },
+    https: { cert: readFileSync(https.certificado), key: readFileSync(https.chave) },
     ...(config.diretorioSpa ? { diretorioSpa: config.diretorioSpa } : {}),
   });
   app.addHook('onClose', async () => {
