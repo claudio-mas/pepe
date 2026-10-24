@@ -91,12 +91,12 @@ master para aceitar um módulo. Em cada história, os testes vêm antes da imple
 
 ### Autenticação (research.md R7, R8; FR-001, FR-002, FR-004, FR-025)
 
-- [ ] T018 [P] Teste unitário das regras de sessão e bloqueio em `web/apps/api/tests/unit/regras-sessao.test.ts`:
+- [X] T018 [P] Teste unitário das regras de sessão e bloqueio em `web/apps/api/tests/unit/regras-sessao.test.ts`:
   - a sessão vale enquanto `agora < ExpiraEm` e `UltimoUso` tem menos de 30 minutos;
   - o teto é de 12 h depois da entrada;
   - o usuário inativo ou bloqueado invalida a sessão;
   - 5 falhas seguidas bloqueiam por 15 minutos, e o acerto zera o contador.
-- [ ] T019 [P] Teste de contrato de `POST/GET/DELETE /api/sessao` em `web/apps/api/tests/contrato/sessao.test.ts`:
+- [X] T019 [P] Teste de contrato de `POST/GET/DELETE /api/sessao` em `web/apps/api/tests/contrato/sessao.test.ts`:
   - entrada correta → 200 com `UsuarioConectado` e cookie `pepe_sessao` `HttpOnly`, `Secure`, `SameSite=Strict`;
   - usuário errado e senha errada → 401 com **a mesma** mensagem;
   - usuário inativo → 401;
@@ -104,20 +104,20 @@ master para aceitar um módulo. Em cada história, os testes vêm antes da imple
   - `GET` sem cookie → 401;
   - `DELETE` → 204 e sessão apagada;
   - eventos gravados em `web.RegistroAcesso`.
-- [ ] T020 Implementar `web/apps/api/src/auth/senha.ts`: hash e verificação argon2id com `@node-rs/argon2`, formato PHC; verificação em tempo constante também quando o usuário não existe, comparando com um hash fixo para não revelar logins
-- [ ] T021 Implementar `web/apps/api/src/auth/sessao.ts`. Ele faz:
+- [X] T020 Implementar `web/apps/api/src/auth/senha.ts`: hash e verificação argon2id com `@node-rs/argon2`, formato PHC; verificação em tempo constante também quando o usuário não existe, comparando com um hash fixo para não revelar logins
+- [X] T021 Implementar `web/apps/api/src/auth/sessao.ts`. Ele faz:
   - criar: 32 bytes aleatórios em base64url no cookie; em `web.Sessao` vai **só** o SHA-256 hex;
   - validar: as regras do T018;
   - tocar: atualizar `UltimoUso` no máximo uma vez por minuto;
   - encerrar;
   - limpar as sessões vencidas na inicialização e na entrada do usuário.
-- [ ] T022 Implementar `web/apps/api/src/auth/rotas.ts` com `POST/GET/DELETE /api/sessao`, conforme `contracts/openapi.yaml`:
+- [X] T022 Implementar `web/apps/api/src/auth/rotas.ts` com `POST/GET/DELETE /api/sessao`, conforme `contracts/openapi.yaml`:
   - a entrada atualiza `web.Usuario` (`TentativasFalhas`, `BloqueadoAte`, `UltimoAcesso`), cria `web.Sessao` e grava `web.RegistroAcesso` **numa única transação** (constituição IV.1);
   - mensagem única de recusa;
   - `@fastify/rate-limit` no `POST` por IP;
   - registros `ENTRADA`, `ENTRADA_RECUSADA`, `BLOQUEIO` e `SAIDA`.
-- [ ] T023 Implementar `web/apps/api/src/auth/exigir-sessao.ts`: um hook `preHandler` aplicado a todo `/api`, menos `POST /api/sessao`. Ele responde 401 (`SemSessao`) quando a sessão é inválida, registra `SESSAO_EXPIRADA` quando é o caso e põe `idUsuario` na requisição para o log
-- [ ] T024 Implementar `web/apps/api/src/cli/usuario.ts` (script `pnpm --filter api usuario <criar|desativar|reativar|senha|listar>`):
+- [X] T023 Implementar `web/apps/api/src/auth/exigir-sessao.ts`: um hook `preHandler` aplicado a todo `/api`, menos `POST /api/sessao`. Ele responde 401 (`SemSessao`) quando a sessão é inválida, registra `SESSAO_EXPIRADA` quando é o caso e põe `idUsuario` na requisição para o log
+- [X] T024 Implementar `web/apps/api/src/cli/usuario.ts` (script `pnpm --filter api usuario <criar|desativar|reativar|senha|listar>`):
   - a senha é digitada **sem eco**, duas vezes, e nunca vem por argumento, arquivo ou log (research.md R8);
   - senha com no mínimo 10 caracteres;
   - login em minúsculas, só letras, dígitos, `.` e `-`, com até 50 caracteres;

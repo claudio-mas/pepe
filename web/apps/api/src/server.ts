@@ -5,30 +5,27 @@ import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import fastifyCookie from '@fastify/cookie';
+import fastifyRateLimit from '@fastify/rate-limit';
 import fastifyStatic from '@fastify/static';
 import Fastify, { type FastifyInstance, type FastifyServerOptions, LogController } from 'fastify';
 
+import { exigirSessao } from './auth/exigir-sessao.js';
+import { rotasSessao } from './auth/rotas.js';
+import { limparSessoesVencidas } from './auth/sessao.js';
 import { lerConfig } from './config.js';
 import { type Banco, criarBanco } from './db/kysely.js';
+import { ErroHttp } from './erros.js';
+
+export { ErroHttp };
 
 declare module 'fastify' {
   interface FastifyRequest {
-    /** Preenchido pela verificação de sessão (tarefa T023); entra no log no lugar de dados do usuário. */
+    /** Preenchido pela verificação de sessão (auth/exigir-sessao.ts); entra no log no lugar de dados do usuário. */
     idUsuario?: number;
   }
   interface FastifyInstance {
     banco: Banco;
-  }
-}
-
-/** Erro previsto, com mensagem para o usuário em português (contrato `Erro`). */
-export class ErroHttp extends Error {
-  constructor(
-    readonly statusCode: number,
-    mensagem: string,
-  ) {
-    super(mensagem);
-    this.name = 'ErroHttp';
   }
 }
 
@@ -104,8 +101,13 @@ export async function construirApp(opcoes: OpcoesApp): Promise<FastifyInstance> 
     return reply.type('text/html').sendFile('index.html');
   });
 
-  // As rotas da API entram nas tarefas seguintes, sempre com prefixo /api:
-  //   app.register(rotasSessao, { prefix: '/api' }) etc.
+  await app.register(fastifyCookie);
+  // Sem limite global: só a entrada (POST /api/sessao) tem limite por endereço
+  await app.register(fastifyRateLimit, { global: false });
+  exigirSessao(app);
+
+  // Rotas da API, sempre com prefixo /api
+  await app.register(rotasSessao, { prefix: '/api' });
 
   return app;
 }
@@ -113,6 +115,7 @@ export async function construirApp(opcoes: OpcoesApp): Promise<FastifyInstance> 
 async function iniciar(): Promise<void> {
   const config = lerConfig();
   const banco = criarBanco(config.bancoDeDados);
+  await limparSessoesVencidas(banco, new Date());
   const app = await construirApp({
     banco,
     https: { cert: readFileSync(config.https.certificado), key: readFileSync(config.https.chave) },

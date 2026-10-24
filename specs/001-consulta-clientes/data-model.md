@@ -6,6 +6,9 @@ conferidos em `docs/legado/banco/02_colunas.csv`.
 
 ## 1. Tabelas novas (schema `web`)
 
+As datas destas tabelas são gravadas pela aplicação, em **UTC** (o tedious usa `useUTC: true`). Os padrões
+`SYSDATETIME()` só valem para linhas inseridas à mão no SSMS, que ficam no horário local do servidor.
+
 ### `web.Usuario`
 
 | Coluna | Tipo | Regra |
