@@ -1,0 +1,17 @@
+{
+  "porta": 3000,
+  "host": "0.0.0.0",
+  "https": {
+    "certificado": "C:\\PepeWeb\\certificados\\pepetorras-pc.pem",
+    "chave": "C:\\PepeWeb\\certificados\\pepetorras-pc-key.pem"
+  },
+  "bancoDeDados": {
+    "servidor": "PEPETORRAS-PC",
+    "instancia": "SQLEXPRESS",
+    "banco": "BDTorras",
+    "usuario": "pepe_web",
+    "senha": "<a senha do login pepe_web; este arquivo fica fora do git>",
+    "criptografar": true,
+    "confiarCertificado": true
+  }
+}

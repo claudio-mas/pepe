@@ -9,8 +9,9 @@
     "dev": "tsx watch src/server.ts",
     "test": "vitest run",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "gerar-tipos": "kysely-codegen --dialect mssql --out-file src/db/tipos.ts",
-    "usuario": "tsx src/cli/usuario.ts"
+    "gerar-tipos": "tsx tests/banco-teste/gerar-tipos.ts",
+    "usuario": "tsx src/cli/usuario.ts",
+    "preparar-banco-teste": "tsx tests/banco-teste/preparar.ts"
   },
   "dependencies": {
     "@fastify/cookie": "^11.1.3",
@@ -25,6 +26,7 @@
     "zod": "^4.6.7"
   },
   "devDependencies": {
+    "@tediousjs/connection-string": "^1.1.0",
     "@types/node": "^24.19.2",
     "kysely-codegen": "^0.20.0",
     "tsx": "^4.23.15",
