@@ -126,7 +126,8 @@ Para editar `.rdlc` no VS 2026, instale a extensão "Microsoft RDLC Report Desig
 Há uma versão web em planejamento: SPA com sidebar, Node/TypeScript, mesmo `BDTorras`, convivência módulo a módulo com o
 desktop, desenvolvida com Spec-Driven Development (GitHub Spec Kit). Roteiro, constituição e glossário em `docs/web/`;
 o inventário do legado (mapa de navegação, módulos, regras de negócio) em `docs/legado/`. Para trabalho na web, a
-constituição (`docs/web/constituicao-rascunho.md`, depois `.specify/memory/constitution.md`) prevalece.
+constituição (`.specify/memory/constitution.md`) prevalece. O Spec Kit está inicializado: comandos em `.claude/skills/speckit-*`,
+specs em `specs/NNN-<nome>/`.
 
 ## Arquitetura
 
