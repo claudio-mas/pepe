@@ -121,6 +121,13 @@ DevExpress foi atualizado para 25.2 enquanto a remoção não termina. Se um des
 o `.Designer.vb` à mão ou converta o formulário.
 Para editar `.rdlc` no VS 2026, instale a extensão "Microsoft RDLC Report Designer" (versão 2022+).
 
+## Versão web (em planejamento)
+
+Há uma versão web em planejamento: SPA com sidebar, Node/TypeScript, mesmo `BDTorras`, convivência módulo a módulo com o
+desktop, desenvolvida com Spec-Driven Development (GitHub Spec Kit). Roteiro, constituição e glossário em `docs/web/`;
+o inventário do legado (mapa de navegação, módulos, regras de negócio) em `docs/legado/`. Para trabalho na web, a
+constituição (`docs/web/constituicao-rascunho.md`, depois `.specify/memory/constitution.md`) prevalece.
+
 ## Arquitetura
 
 ### Fluxo de inicialização
