@@ -37,7 +37,7 @@ Fase 0 do `/speckit-plan`. Cada item fecha uma decisão técnica que a spec deix
 ## R4. SPA e validação compartilhada
 
 - **Decisão**: React 19 + Vite + TanStack Router (rotas tipadas, layout com barra lateral) + TanStack Query (cache e
-  estados de carga e erro). Componentes de interface Mantine 8 (`AppShell` com `Navbar`, tabela, campos, datas em
+  estados de carga e erro). Componentes de interface Mantine 9 (`AppShell` com `Navbar`, tabela, campos, datas em
   pt-BR). Esquemas Zod em `packages/shared`, usados pela API (validação) e pela SPA (tipos).
 - **Por quê**: o `AppShell` do Mantine já é a "barra lateral no lugar das ribbons", e tabela paginada, campos e datas
   vêm prontos, sem CSS próprio. Isso justifica a dependência (constituição VII.2). Zod compartilhado garante que a
