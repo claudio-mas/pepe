@@ -1,5 +1,5 @@
-// T043: ficha do cliente, só de leitura (US2; FR-013 a FR-015). Abas "Cadastro" e "Conta corrente"; a aba fica na
-// URL. Nenhum campo é editável nesta entrega: os dados aparecem como texto, não como campos de formulário.
+// T043 e T049: ficha do cliente, só de leitura (US2 e US3; FR-013 a FR-017). Abas "Cadastro", "Conta corrente" e
+// "Peças compradas"; a aba fica na URL. Nenhum campo é editável nesta entrega: os dados aparecem como texto, não como campos de formulário.
 import {
   Alert,
   Anchor,
@@ -22,16 +22,17 @@ import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
 import { Icon } from 'cloudscape-ui';
 
 import { ErroApi } from '../../../api/cliente';
-import { consultaContaCorrente, consultaFicha } from '../../../api/clientes';
+import { consultaContaCorrente, consultaFicha, consultaPecasCompradas } from '../../../api/clientes';
 import { mensagemDeErro } from '../../../api/consulta';
 import { buscaDaLista } from '../../../estado/lista-de-clientes';
 import { formatarCpf, formatarData, formatarMoeda, formatarTexto } from '../../../formatacao';
 
-type Aba = 'cadastro' | 'conta-corrente';
+type Aba = 'cadastro' | 'conta-corrente' | 'pecas-compradas';
+const ABAS_DA_URL: Aba[] = ['conta-corrente', 'pecas-compradas'];
 
 export const Route = createFileRoute('/_autenticado/clientes/$id')({
   validateSearch: (s: Record<string, unknown>): { aba?: Aba } => ({
-    aba: s.aba === 'conta-corrente' ? 'conta-corrente' : undefined,
+    aba: ABAS_DA_URL.find((a) => a === s.aba),
   }),
   component: Ficha,
 });
@@ -99,7 +100,7 @@ function Ficha() {
             value={aba}
             onChange={(valor) =>
               void navigate({
-                search: { aba: valor === 'conta-corrente' ? 'conta-corrente' : undefined },
+                search: { aba: ABAS_DA_URL.find((a) => a === valor) },
                 replace: true,
               })
             }
@@ -107,12 +108,16 @@ function Ficha() {
             <Tabs.List>
               <Tabs.Tab value="cadastro">Cadastro</Tabs.Tab>
               <Tabs.Tab value="conta-corrente">Conta corrente</Tabs.Tab>
+              <Tabs.Tab value="pecas-compradas">Peças compradas</Tabs.Tab>
             </Tabs.List>
             <Tabs.Panel value="cadastro" pt="md">
               <Cadastro ficha={ficha.data} />
             </Tabs.Panel>
             <Tabs.Panel value="conta-corrente" pt="md">
               {aba === 'conta-corrente' && <ContaCorrente id={ficha.data.id} />}
+            </Tabs.Panel>
+            <Tabs.Panel value="pecas-compradas" pt="md">
+              {aba === 'pecas-compradas' && <PecasCompradas id={ficha.data.id} />}
             </Tabs.Panel>
           </Tabs>
         </>
@@ -158,19 +163,30 @@ function Cadastro({ ficha }: { ficha: ClienteFicha }) {
   );
 }
 
+/** Erro de uma aba, com "Tentar de novo" (a tela nunca fica em branco). */
+function ErroDaAba({ titulo, erro, tentar }: { titulo: string; erro: unknown; tentar: () => void }) {
+  return (
+    <Alert color="red" title={titulo}>
+      <Stack gap="sm" align="flex-start">
+        {mensagemDeErro(erro)}
+        <Button variant="default" onClick={tentar}>
+          Tentar de novo
+        </Button>
+      </Stack>
+    </Alert>
+  );
+}
+
 function ContaCorrente({ id }: { id: number }) {
   const consulta = useQuery(consultaContaCorrente(id));
   if (consulta.isPending) return <Skeleton h={160} radius="lg" aria-label="Carregando a conta corrente" />;
   if (consulta.isError) {
     return (
-      <Alert color="red" title="Não foi possível consultar a conta corrente">
-        <Stack gap="sm" align="flex-start">
-          {mensagemDeErro(consulta.error)}
-          <Button variant="default" onClick={() => void consulta.refetch()}>
-            Tentar de novo
-          </Button>
-        </Stack>
-      </Alert>
+      <ErroDaAba
+        titulo="Não foi possível consultar a conta corrente"
+        erro={consulta.error}
+        tentar={() => void consulta.refetch()}
+      />
     );
   }
   if (consulta.data.length === 0) {
@@ -206,6 +222,56 @@ function ContaCorrente({ id }: { id: number }) {
               >
                 {formatarMoeda(l.valor)}
               </Table.Td>
+            </Table.Tr>
+          ))}
+        </Table.Tbody>
+      </Table>
+    </Table.ScrollContainer>
+  );
+}
+
+function PecasCompradas({ id }: { id: number }) {
+  const consulta = useQuery(consultaPecasCompradas(id));
+  if (consulta.isPending) return <Skeleton h={160} radius="lg" aria-label="Carregando as peças compradas" />;
+  if (consulta.isError) {
+    return (
+      <ErroDaAba
+        titulo="Não foi possível consultar as peças compradas"
+        erro={consulta.error}
+        tentar={() => void consulta.refetch()}
+      />
+    );
+  }
+  if (consulta.data.length === 0) {
+    return (
+      <Text c="dimmed" role="status">
+        Não há compras registradas.
+      </Text>
+    );
+  }
+  return (
+    <Table.ScrollContainer minWidth={720}>
+      <Table aria-label="Peças compradas" verticalSpacing="sm">
+        <Table.Thead>
+          <Table.Tr>
+            <Table.Th>Data</Table.Th>
+            <Table.Th>Venda</Table.Th>
+            <Table.Th>Peça</Table.Th>
+            <Table.Th>Descrição</Table.Th>
+            <Table.Th>Observações</Table.Th>
+          </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>
+          {consulta.data.map((p, i) => (
+            <Table.Tr key={`${p.numeroVenda}-${p.classe}-${p.modelo}-${i}`}>
+              <Table.Td>{formatarData(p.dataVenda)}</Table.Td>
+              <Table.Td style={{ whiteSpace: 'nowrap' }}>{formatarTexto(p.numeroVenda)}</Table.Td>
+              {/* Classe + modelo, como a peça é chamada na loja (ex.: AN 1001) */}
+              <Table.Td style={{ whiteSpace: 'nowrap' }}>
+                {[p.classe, p.modelo].map(formatarTexto).filter(Boolean).join(' ')}
+              </Table.Td>
+              <Table.Td>{formatarTexto(p.descricao)}</Table.Td>
+              <Table.Td>{formatarTexto(p.observacoes)}</Table.Td>
             </Table.Tr>
           ))}
         </Table.Tbody>

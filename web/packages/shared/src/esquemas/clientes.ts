@@ -76,3 +76,17 @@ export const esquemaLancamentoCC = z.object({
   valor: z.number().nullable(),
 });
 export type LancamentoCC = z.infer<typeof esquemaLancamentoCC>;
+
+/**
+ * Peça comprada pelo cliente (FR-016). Sem custo, preço nem comissão (FR-017). `dataVenda` é o relógio gravado,
+ * sem fuso; `observacoes` é o `Obs` da peça (o desktop rotula como "Medidas").
+ */
+export const esquemaPecaComprada = z.object({
+  dataVenda: z.iso.datetime({ local: true }).nullable(),
+  numeroVenda: z.string().nullable(),
+  classe: z.string().nullable(),
+  modelo: z.string().nullable(),
+  descricao: z.string().nullable(),
+  observacoes: z.string().nullable(),
+});
+export type PecaComprada = z.infer<typeof esquemaPecaComprada>;
