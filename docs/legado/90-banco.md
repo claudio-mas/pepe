@@ -128,5 +128,6 @@ ADR de convivência se índices novos são permitidos (proposta: sim, com prefix
 | 4 | 93% dos clientes sem `DataCad`: o relatório por período só mostra os recentes. Esperado? | **Sim, é esperado.** Na web, `DataCad` passa a ser sempre gravada. |
 | 5 | Versão do SQL Server da loja | **SQL Server Express, banco com cerca de 650 MB** (§1). |
 
-Pendente: quem mantém o outro sistema, se ele também **grava** no banco e se lê mais objetos além das três views.
-Isso define até onde vale a proteção da constituição I.6.
+Sobre o outro sistema (dono, 24/10/2026): ele **só lê** o banco e é mantido pelo próprio dono. Como não grava, não
+disputa registros com a web nem com o desktop. O cuidado se resume a não mudar o que ele lê (constituição I.6).
+Pendente: confirmar se ele lê algum objeto além das três views.
