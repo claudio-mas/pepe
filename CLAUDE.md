@@ -206,6 +206,9 @@ para ficar óbvio no SSMS o que é novo.
 read-only). **Rodar sempre primeiro numa cópia de `BDTorras`** (o contêiner Docker local serve para isso).
 Nenhum script altera ou remove objeto existente — mantenha isso.
 
+Catálogo do banco para a versão web: `Pepe\Scripts\Exportar-Catalogo.ps1` roda o `CAT_v0_investigacao.sql` (somente
+leitura, sem dado pessoal) e grava CSVs e o código de views/procs/funções/gatilhos em `docs\legado\banco\`.
+
 ## Convenções
 
 - **Identificadores e nomes de arquivo em português com acento**: `frmTaxasCartão.vb`, `Balanço41BR.vb`,

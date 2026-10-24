@@ -18,7 +18,7 @@ Versão web do sistema de gestão da joalheria: uma SPA com sidebar no lugar das
 | # | Fase | Saída | Situação |
 |---|---|---|---|
 | 0 | Fundação | Constituição, glossário, este roteiro | **rascunhos** em `docs/web/` |
-| 1 | Inventário do legado | `docs/legado/`: mapa de navegação, índice de módulos, um inventário por módulo, catálogo de RNs, catálogo do banco e matriz CRUD | mapa, índice e **Clientes** (`10-clientes.md`) prontos; demais módulos pendentes |
+| 1 | Inventário do legado | `docs/legado/`: mapa de navegação, índice de módulos, um inventário por módulo, catálogo de RNs, catálogo do banco e matriz CRUD | mapa, índice e **Clientes** (`10-clientes.md`) prontos; extrator do catálogo do banco pronto, aguardando execução (`docs/legado/banco/`); demais módulos pendentes |
 | 2 | Golden master | Roteiro de captura dos resultados do legado em períodos fixos, rodado sobre uma cópia do banco | pendente |
 | 3 | PRD + ADRs | `docs/web/PRD.md`, `docs/web/adr/NNNN-*.md` | pendente |
 | 4 | Ordem dos módulos | Roadmap no PRD | proposta abaixo |
