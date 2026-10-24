@@ -21,11 +21,16 @@ export const esquemaConfigBanco = z.object({
 export const esquemaConfig = z.object({
   porta: z.number().int().positive().default(3000),
   host: z.string().min(1).default('0.0.0.0'),
-  /** Caminhos dos arquivos PEM do certificado e da chave (HTTPS obrigatório, constituição V.4). */
-  https: z.object({
-    certificado: z.string().min(1),
-    chave: z.string().min(1),
-  }),
+  /**
+   * Caminhos dos arquivos PEM do certificado e da chave. Obrigatório para o servidor (HTTPS, constituição V.4; ver
+   * exigirHttps); os scripts que só leem o banco (procedimento de usuários, golden master) não precisam dele.
+   */
+  https: z
+    .object({
+      certificado: z.string().min(1),
+      chave: z.string().min(1),
+    })
+    .optional(),
   /** Pasta com a SPA compilada. Padrão: web/apps/spa/dist. */
   diretorioSpa: z.string().min(1).optional(),
   bancoDeDados: esquemaConfigBanco,
@@ -54,4 +59,14 @@ export function lerConfig(caminho = process.env.PEPE_WEB_CONFIG): Config {
     throw new Error(`Configuração inválida em ${caminho}:\n  ${campos.join('\n  ')}`);
   }
   return resultado.data;
+}
+
+/** Certificado e chave do servidor. O servidor nunca sobe em HTTP (constituição V.4). */
+export function exigirHttps(config: Config): NonNullable<Config['https']> {
+  if (!config.https) {
+    throw new Error(
+      'Configuração sem o bloco "https" (certificado e chave): o servidor só sobe com HTTPS. Modelo: config.exemplo.json.',
+    );
+  }
+  return config.https;
 }

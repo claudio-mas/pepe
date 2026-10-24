@@ -10,11 +10,6 @@
 // O resultado (só contagens e hashes, nenhum dado de cliente: constituição V.3) vai para FORA do repositório:
 //   pnpm --filter @pepe/api golden-master [--saida <pasta>]     (padrão: a pasta temporária do usuário)
 // Termina com código 1 se houver qualquer diferença.
-import { createHash } from 'node:crypto';
-import { mkdirSync, writeFileSync } from 'node:fs';
-import { tmpdir } from 'node:os';
-import { join } from 'node:path';
-
 import { type LinhaClientesCadastrados } from '@pepe/shared';
 import { sql } from 'kysely';
 
@@ -22,6 +17,7 @@ import { dataIso } from '../../src/clientes/consultas.js';
 import { lerConfig } from '../../src/config.js';
 import { type Banco, criarBanco } from '../../src/db/kysely.js';
 import { linhasClientesCadastrados } from '../../src/relatorios/clientes-cadastrados.js';
+import { diferenca, gravarResultado, hashDaLinha, pastaDeSaida } from './comum.js';
 
 // Consultas do desktop, literais (ClientesCadastradosRpt.resx "CustomSqlQuery1.Sql" e Designer.vb "Query_1")
 const DESKTOP_COM_PERIODO = `SELECT        ISNULL(Nome, Cliente) AS NomeCliente, Aniv, Endereço, Bairro, Telefone, Email, DataCad AS Data1Cad
@@ -47,13 +43,7 @@ interface Periodo {
   ate?: string;
 }
 
-/** Linha normalizada: os mesmos campos, na mesma ordem, datas só com o dia (como os dois relatórios mostram). */
-function hashDaLinha(campos: (string | null)[]): string {
-  return createHash('sha256')
-    .update(campos.map((c) => c ?? '␀').join('\u001f'))
-    .digest('hex');
-}
-
+// Linha normalizada: os mesmos campos, na mesma ordem, datas só com o dia (como os dois relatórios mostram)
 const hashWeb = (l: LinhaClientesCadastrados) =>
   hashDaLinha([l.nomeExibicao, l.aniversario, l.endereco, l.bairro, l.telefone, l.email, l.dataCadastro]);
 const hashDesktop = (l: LinhaDesktop) =>
@@ -84,24 +74,8 @@ async function mesesDeReferencia(banco: Banco): Promise<Periodo[]> {
   });
 }
 
-/** Diferença entre dois multiconjuntos de hashes: o que sobra em cada lado. */
-function diferenca(a: string[], b: string[]): { soNoPrimeiro: string[]; soNoSegundo: string[] } {
-  const contagem = new Map<string, number>();
-  for (const h of a) contagem.set(h, (contagem.get(h) ?? 0) + 1);
-  const soNoSegundo: string[] = [];
-  for (const h of b) {
-    const n = contagem.get(h) ?? 0;
-    if (n > 0) contagem.set(h, n - 1);
-    else soNoSegundo.push(h);
-  }
-  const soNoPrimeiro = [...contagem].flatMap(([h, n]) => Array<string>(n).fill(h));
-  return { soNoPrimeiro, soNoSegundo };
-}
-
 async function principal(): Promise<number> {
-  const indiceSaida = process.argv.indexOf('--saida');
-  const pastaSaida = indiceSaida > 0 ? process.argv[indiceSaida + 1] : join(tmpdir(), 'pepe-golden-master');
-  if (!pastaSaida) throw new Error('Informe a pasta depois de --saida.');
+  const pastaSaida = pastaDeSaida();
 
   const banco = criarBanco(lerConfig().bancoDeDados);
   try {
@@ -129,12 +103,11 @@ async function principal(): Promise<number> {
     }
     if (periodos.length < 3) console.log('Atenção: menos de dois meses de 2026 com cadastros na cópia.');
 
-    mkdirSync(pastaSaida, { recursive: true });
-    const arquivo = join(pastaSaida, `clientes-cadastrados-${new Date().toISOString().replace(/[:.]/g, '-')}.json`);
-    writeFileSync(
-      arquivo,
-      JSON.stringify({ relatorio: 'clientes-cadastrados', emitidoEm: new Date(), resultados }, null, 2),
-    );
+    const arquivo = gravarResultado(pastaSaida, 'clientes-cadastrados', {
+      relatorio: 'clientes-cadastrados',
+      emitidoEm: new Date(),
+      resultados,
+    });
     console.log(`Resultado em ${arquivo}`);
     return resultados.every((r) => r.igual) ? 0 : 1;
   } finally {
