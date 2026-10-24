@@ -42,7 +42,7 @@ function Entrar() {
       <Paper withBorder radius="lg" p="xl" w="100%" maw={400} component="main">
         <form onSubmit={enviar} noValidate>
           <Stack gap="md">
-            <Marca tamanho="xl" />
+            <Marca tamanho="entrada" />
             <Title order={2} fz="var(--cs-font-subtitle)">
               Entrar
             </Title>

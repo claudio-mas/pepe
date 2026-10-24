@@ -58,8 +58,11 @@ Fase 0 do `/speckit-plan`. Cada item fecha uma decisão técnica que a spec deix
     o degradê da marca, item ativo da barra lateral com a barra de 3 px, cabeçalho e barra lateral sem bordas);
   - `esquema.tsx`: claro, escuro ou "Sistema" (padrão), escolhido no menu do usuário e guardado pelo Mantine; o esquema
     resolvido vai para `data-cs-theme` no `<html>`, que liga o tema escuro dos tokens;
-  - `marca.css` e `Marca.tsx`: cores e logotipo da joalheria, que substituem os do kit. Enquanto não chegam, valem as
-    cores do kit e o nome da loja no lugar do logotipo.
+  - `marca.css` e `Marca.tsx`: cores e logotipo da joalheria, tirados de pepetorras.com.br, que substituem os do kit.
+    Botões e destaques em `#996633` (a cor de destaque do site) com degradê até o marrom `#5C4535`, bronze claro
+    `#d6a76f` no escuro, contraste conferido; logotipo completo na entrada e só o nome no cabeçalho (o lema
+    "identidade e tradição" fica ilegível a 28 px); o ícone do site como favicon. A fonte continua a do kit (Segoe
+    UI): a Poppins do site exigiria baixar fonte de fora ou uma dependência nova, sem ganho para a loja.
 - **Por quê**: o kit traz os tokens e 18 componentes desenhados para uma tela de arquivos; faltam campo de senha,
   chave, tabela genérica com paginação, abas, seletor de período em pt-BR, aviso de erro e diálogo, que a spec 001
   usa e o Mantine já tem (R4). Usar os componentes do kit junto com os do Mantine também não dá: o `components.css`
