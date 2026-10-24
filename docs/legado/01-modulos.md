@@ -138,7 +138,7 @@ Nenhum item abaixo vira spec nem tela na web. Itens que servem de referência de
 
 ## Próximos inventários (ordem sugerida, alinhada ao roadmap)
 
-1. `10-clientes.md` (fatia de validação: só leitura)
+1. [`10-clientes.md`](10-clientes.md) (fatia de validação: só leitura). **Pronto.**
 2. `11-cotacoes.md`, `12-estoque.md`, `13-materia-prima.md`
 3. `14-consertos.md`, `15-saidas.md`
 4. `16-vendas.md`, `17-conta-corrente.md`, `18-financeiro.md`

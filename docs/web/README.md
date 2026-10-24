@@ -18,7 +18,7 @@ Versão web do sistema de gestão da joalheria: uma SPA com sidebar no lugar das
 | # | Fase | Saída | Situação |
 |---|---|---|---|
 | 0 | Fundação | Constituição, glossário, este roteiro | **rascunhos** em `docs/web/` |
-| 1 | Inventário do legado | `docs/legado/`: mapa de navegação, índice de módulos, um inventário por módulo, catálogo de RNs, catálogo do banco e matriz CRUD | mapa e índice **prontos**; inventários por módulo pendentes |
+| 1 | Inventário do legado | `docs/legado/`: mapa de navegação, índice de módulos, um inventário por módulo, catálogo de RNs, catálogo do banco e matriz CRUD | mapa, índice e **Clientes** (`10-clientes.md`) prontos; demais módulos pendentes |
 | 2 | Golden master | Roteiro de captura dos resultados do legado em períodos fixos, rodado sobre uma cópia do banco | pendente |
 | 3 | PRD + ADRs | `docs/web/PRD.md`, `docs/web/adr/NNNN-*.md` | pendente |
 | 4 | Ordem dos módulos | Roadmap no PRD | proposta abaixo |
@@ -58,8 +58,9 @@ Regra: **nenhuma RN sem origem**. O que for dedução do agente fica marcado com
    views, procs e nomes acentuados); SPA **React + Vite + TanStack Router/Query**; **Zod** em `packages/shared`;
    Vitest + Playwright; monorepo pnpm (`web/apps/api`, `web/apps/spa`, `web/packages/shared`).
 2. Autenticação e perfis: usuários reais (hoje é uma senha compartilhada), hash argon2, sessão por cookie, tabelas no schema `web`.
-3. Convivência no banco: transações, concorrência otimista sem `rowversion`, procs legadas como contrato, o que fazer
-   com o SQL de manutenção que o desktop roda ao abrir as telas.
+3. Convivência no banco: transações, concorrência otimista (`SSMA_TimeStamp`, a coluna `rowversion` herdada da
+   migração do Access, onde existir; comparação de valores originais onde não existir), procs legadas como contrato, o
+   que fazer com o SQL de manutenção que o desktop roda ao abrir as telas.
 4. Relatórios: HTML imprimível × PDF gerado no servidor.
 5. Etiquetas (endereço e aniversário) e impressão local.
 6. Fotos das peças (hoje em coluna binária de `[1TabPeças]`).
