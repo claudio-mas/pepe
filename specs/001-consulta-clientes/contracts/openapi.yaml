@@ -4,7 +4,8 @@ info:
   version: 0.1.0
   description: |
     API da primeira entrega da web: só leitura de clientes, mais entrada e saída.
-    Todas as rotas, menos POST /api/sessao, exigem o cookie de sessão `pepe_sessao` (R7).
+    Todas as rotas, menos POST e DELETE /api/sessao (sair nunca falha), exigem o cookie de sessão `pepe_sessao` (R7).
+    Qualquer rota pode responder 503 (`Erro`) quando o banco está fora do ar ou lento demais.
     Datas em ISO 8601 (YYYY-MM-DD ou data e hora), valores numéricos como número; a SPA formata em pt-BR.
     Os esquemas Zod em web/packages/shared são a fonte; este arquivo é o contrato de referência dos testes.
 servers:
